@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		47DE6AD3196123E90049C253 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47DE6AD2196123E90049C253 /* AVFoundation.framework */; };
+		47E509A6196254470034BE1E /* mono-power-button-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = 47E509A5196254470034BE1E /* mono-power-button-hi.png */; };
+		47E509A819625F7F0034BE1E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E509A719625F7F0034BE1E /* SettingsViewController.swift */; };
+		47E509AC196264EA0034BE1E /* TMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E509AB196264EA0034BE1E /* TMViewController.swift */; };
+		47E509AE196264FE0034BE1E /* SoundBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E509AD196264FE0034BE1E /* SoundBoxViewController.swift */; };
+		47E509B01962659D0034BE1E /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E509AF1962659D0034BE1E /* ShopViewController.swift */; };
 		B54B660C1950CBF400FF48DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54B660B1950CBF400FF48DC /* AppDelegate.swift */; };
 		B54B660E1950CBF400FF48DC /* MainScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54B660D1950CBF400FF48DC /* MainScreenController.swift */; };
 		B54B66111950CBF400FF48DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B54B660F1950CBF400FF48DC /* Main.storyboard */; };
@@ -27,6 +32,11 @@
 
 /* Begin PBXFileReference section */
 		47DE6AD2196123E90049C253 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		47E509A5196254470034BE1E /* mono-power-button-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mono-power-button-hi.png"; sourceTree = SOURCE_ROOT; };
+		47E509A719625F7F0034BE1E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		47E509AB196264EA0034BE1E /* TMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMViewController.swift; sourceTree = "<group>"; };
+		47E509AD196264FE0034BE1E /* SoundBoxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundBoxViewController.swift; sourceTree = "<group>"; };
+		47E509AF1962659D0034BE1E /* ShopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		B54B66061950CBF400FF48DC /* TerrorTorch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerrorTorch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B54B660A1950CBF400FF48DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B54B660B1950CBF400FF48DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +91,11 @@
 			children = (
 				B54B660B1950CBF400FF48DC /* AppDelegate.swift */,
 				B54B660D1950CBF400FF48DC /* MainScreenController.swift */,
+				47E509A719625F7F0034BE1E /* SettingsViewController.swift */,
+				47E509AB196264EA0034BE1E /* TMViewController.swift */,
+				47E509AD196264FE0034BE1E /* SoundBoxViewController.swift */,
 				B54B660F1950CBF400FF48DC /* Main.storyboard */,
+				47E509AF1962659D0034BE1E /* ShopViewController.swift */,
 				B54B66121950CBF400FF48DC /* Images.xcassets */,
 				B54B66091950CBF400FF48DC /* Supporting Files */,
 			);
@@ -108,6 +122,7 @@
 		B54B661C1950CBF400FF48DC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				47E509A5196254470034BE1E /* mono-power-button-hi.png */,
 				B54B661D1950CBF400FF48DC /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -193,6 +208,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47E509A6196254470034BE1E /* mono-power-button-hi.png in Resources */,
 				B54B66111950CBF400FF48DC /* Main.storyboard in Resources */,
 				B54B66131950CBF400FF48DC /* Images.xcassets in Resources */,
 			);
@@ -213,7 +229,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B54B660E1950CBF400FF48DC /* MainScreenController.swift in Sources */,
+				47E509AC196264EA0034BE1E /* TMViewController.swift in Sources */,
+				47E509B01962659D0034BE1E /* ShopViewController.swift in Sources */,
+				47E509AE196264FE0034BE1E /* SoundBoxViewController.swift in Sources */,
 				B54B660C1950CBF400FF48DC /* AppDelegate.swift in Sources */,
+				47E509A819625F7F0034BE1E /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

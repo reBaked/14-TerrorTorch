@@ -9,11 +9,9 @@
 import UIKit
 import AVFoundation
 
-
 class MainScreenController: UIViewController {
                             
-    @IBOutlet var lightToggle : UIButton = nil;
-    @IBOutlet var brightnessSlider: UISlider = nil;
+    @IBOutlet var powerView: UIImageView = nil;
     
     var _device : AVCaptureDevice?
     var isTorchOn = false;
@@ -23,33 +21,51 @@ class MainScreenController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         _device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo);
         
-        //Disable views pertaining to flashlight if torch mode isn't support
+        //Gesture recognizer for transition to settings page
+        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("presentSettingsScreen:"));
+        swipeRecognizer.direction = UISwipeGestureRecognizerDirection.Left;
+        self.view.addGestureRecognizer(swipeRecognizer);
+        
+        //Don't add gesture recognizer to handle user interactions if device doesn't support torch mode
+        //There should also be some kind of UI change to signify it's disabled.
         //Torch mode isn't supported on iOS simulator
         if let dvc = _device {
-            if(!dvc.hasTorch) { lightToggle.enabled = false;}
-        } else {
-            lightToggle.enabled = false;
-            brightnessSlider.enabled = false;
+            if(!dvc.hasTorch) {
+                //Gesture recognizer for enabling torch mode
+                let singleTapRecognizer = UITapGestureRecognizer(target: self, action: Selector("toggleTorchLight:"));
+                powerView.addGestureRecognizer(singleTapRecognizer);
+            }
         }
-
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated);
+        self.navigationController.navigationBar.hidden = true;
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+       // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func toggleTorchPressed() {
-        if let dvc = _device{
-            dvc.lockForConfiguration(nil); //TODO: Resolve possible errors, this can't stay nil
-            dvc.torchMode = (isTorchOn) ? AVCaptureTorchMode.Off : AVCaptureTorchMode.On;
-            dvc.unlockForConfiguration();
+    func presentSettingsScreen(recognizer: UISwipeGestureRecognizer){
+        if(recognizer.state == UIGestureRecognizerState.Ended){ //Had to cast to raw because equality wasn't working
+            self.performSegueWithIdentifier("mainToSettings", sender: self);
+        }
+    }
+    
+    func toggleTorchLight(recognizer: UITapGestureRecognizer) {
+        if(recognizer.state == UIGestureRecognizerState.Ended){
+            if let dvc = _device{
+                dvc.lockForConfiguration(nil);
+                dvc.torchMode = (isTorchOn) ? AVCaptureTorchMode.Off : AVCaptureTorchMode.On;
+                dvc.unlockForConfiguration();
+            }
         }
     }
 
-    @IBAction func brightnessValueChanged(sender: UISlider) {
+    func brightnessValueChanged(sender: UISlider) {
         if let dvc = _device{
-            dvc.setTorchModeOnWithLevel(sender.value, error: nil) //TODO: Resolve possible errors
+            dvc.setTorchModeOnWithLevel(sender.value, error: nil)
         }
     }
 }
