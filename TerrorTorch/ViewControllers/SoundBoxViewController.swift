@@ -7,17 +7,25 @@
 //
 
 import UIKit
+import AVFoundation
+import SpriteKit
 
 class SoundBoxViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        let spriteView = self.view as SKView;
+        spriteView.showsDrawCount = true;
+        spriteView.showsNodeCount = true;
+        spriteView.showsFPS = true;
     }
 
     override func viewWillAppear(animated: Bool) {
         self.navigationController.navigationBar.hidden = false;
+        let scene = SoundBoxScene(size: CGSizeMake(768, 1024));
+        let spriteView = self.view as SKView;
+        spriteView.presentScene(scene);
     }
     
     override func didReceiveMemoryWarning() {
