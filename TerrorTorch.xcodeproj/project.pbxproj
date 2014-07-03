@@ -7,14 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47D20FF619654AF200BCB1D0 /* dollhead.png in Resources */ = {isa = PBXBuildFile; fileRef = 47D20FE519654AF200BCB1D0 /* dollhead.png */; };
+		47D20FF719654AF200BCB1D0 /* mono-power-button-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = 47D20FE619654AF200BCB1D0 /* mono-power-button-hi.png */; };
+		47D20FF819654AF200BCB1D0 /* SoundBoxScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */; };
+		47D20FF919654AF200BCB1D0 /* devil-laugh.wav in Resources */ = {isa = PBXBuildFile; fileRef = 47D20FEB19654AF200BCB1D0 /* devil-laugh.wav */; };
+		47D20FFA19654AF200BCB1D0 /* ghost-egyptian-phantom.wav in Resources */ = {isa = PBXBuildFile; fileRef = 47D20FEC19654AF200BCB1D0 /* ghost-egyptian-phantom.wav */; };
+		47D20FFB19654AF200BCB1D0 /* its-behind-you-spoken.wav in Resources */ = {isa = PBXBuildFile; fileRef = 47D20FED19654AF200BCB1D0 /* its-behind-you-spoken.wav */; };
+		47D20FFC19654AF200BCB1D0 /* knife-stab-splatter.wav in Resources */ = {isa = PBXBuildFile; fileRef = 47D20FEE19654AF200BCB1D0 /* knife-stab-splatter.wav */; };
+		47D20FFD19654AF200BCB1D0 /* young-girl-scream.wav in Resources */ = {isa = PBXBuildFile; fileRef = 47D20FEF19654AF200BCB1D0 /* young-girl-scream.wav */; };
+		47D20FFE19654AF200BCB1D0 /* MainScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D20FF119654AF200BCB1D0 /* MainScreenController.swift */; };
+		47D20FFF19654AF200BCB1D0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D20FF219654AF200BCB1D0 /* SettingsViewController.swift */; };
+		47D2100019654AF200BCB1D0 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D20FF319654AF200BCB1D0 /* ShopViewController.swift */; };
+		47D2100119654AF200BCB1D0 /* SoundBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D20FF419654AF200BCB1D0 /* SoundBoxViewController.swift */; };
+		47D2100219654AF200BCB1D0 /* TMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D20FF519654AF200BCB1D0 /* TMViewController.swift */; };
 		47DE6AD3196123E90049C253 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47DE6AD2196123E90049C253 /* AVFoundation.framework */; };
-		47E509A6196254470034BE1E /* mono-power-button-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = 47E509A5196254470034BE1E /* mono-power-button-hi.png */; };
-		47E509A819625F7F0034BE1E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E509A719625F7F0034BE1E /* SettingsViewController.swift */; };
-		47E509AC196264EA0034BE1E /* TMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E509AB196264EA0034BE1E /* TMViewController.swift */; };
-		47E509AE196264FE0034BE1E /* SoundBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E509AD196264FE0034BE1E /* SoundBoxViewController.swift */; };
-		47E509B01962659D0034BE1E /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E509AF1962659D0034BE1E /* ShopViewController.swift */; };
 		B54B660C1950CBF400FF48DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54B660B1950CBF400FF48DC /* AppDelegate.swift */; };
-		B54B660E1950CBF400FF48DC /* MainScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54B660D1950CBF400FF48DC /* MainScreenController.swift */; };
 		B54B66111950CBF400FF48DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B54B660F1950CBF400FF48DC /* Main.storyboard */; };
 		B54B66131950CBF400FF48DC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54B66121950CBF400FF48DC /* Images.xcassets */; };
 		B54B661F1950CBF400FF48DC /* TerrorTorchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54B661E1950CBF400FF48DC /* TerrorTorchTests.swift */; };
@@ -31,16 +38,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		47D20FE519654AF200BCB1D0 /* dollhead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dollhead.png; sourceTree = "<group>"; };
+		47D20FE619654AF200BCB1D0 /* mono-power-button-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mono-power-button-hi.png"; sourceTree = "<group>"; };
+		47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundBoxScene.swift; sourceTree = "<group>"; };
+		47D20FEB19654AF200BCB1D0 /* devil-laugh.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "devil-laugh.wav"; sourceTree = "<group>"; };
+		47D20FEC19654AF200BCB1D0 /* ghost-egyptian-phantom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "ghost-egyptian-phantom.wav"; sourceTree = "<group>"; };
+		47D20FED19654AF200BCB1D0 /* its-behind-you-spoken.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "its-behind-you-spoken.wav"; sourceTree = "<group>"; };
+		47D20FEE19654AF200BCB1D0 /* knife-stab-splatter.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "knife-stab-splatter.wav"; sourceTree = "<group>"; };
+		47D20FEF19654AF200BCB1D0 /* young-girl-scream.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "young-girl-scream.wav"; sourceTree = "<group>"; };
+		47D20FF119654AF200BCB1D0 /* MainScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenController.swift; sourceTree = "<group>"; };
+		47D20FF219654AF200BCB1D0 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		47D20FF319654AF200BCB1D0 /* ShopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		47D20FF419654AF200BCB1D0 /* SoundBoxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundBoxViewController.swift; sourceTree = "<group>"; };
+		47D20FF519654AF200BCB1D0 /* TMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMViewController.swift; sourceTree = "<group>"; };
 		47DE6AD2196123E90049C253 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		47E509A5196254470034BE1E /* mono-power-button-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mono-power-button-hi.png"; sourceTree = SOURCE_ROOT; };
-		47E509A719625F7F0034BE1E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		47E509AB196264EA0034BE1E /* TMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMViewController.swift; sourceTree = "<group>"; };
-		47E509AD196264FE0034BE1E /* SoundBoxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundBoxViewController.swift; sourceTree = "<group>"; };
-		47E509AF1962659D0034BE1E /* ShopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		B54B66061950CBF400FF48DC /* TerrorTorch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerrorTorch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B54B660A1950CBF400FF48DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B54B660B1950CBF400FF48DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B54B660D1950CBF400FF48DC /* MainScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenController.swift; sourceTree = "<group>"; };
 		B54B66101950CBF400FF48DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B54B66121950CBF400FF48DC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B54B66181950CBF400FF48DC /* TerrorTorchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TerrorTorchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +81,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47D20FE419654AF200BCB1D0 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				47D20FE519654AF200BCB1D0 /* dollhead.png */,
+				47D20FE619654AF200BCB1D0 /* mono-power-button-hi.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		47D20FE719654AF200BCB1D0 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		47D20FE919654AF200BCB1D0 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				47D20FEA19654AF200BCB1D0 /* SoundBox */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		47D20FEA19654AF200BCB1D0 /* SoundBox */ = {
+			isa = PBXGroup;
+			children = (
+				47D20FEB19654AF200BCB1D0 /* devil-laugh.wav */,
+				47D20FEC19654AF200BCB1D0 /* ghost-egyptian-phantom.wav */,
+				47D20FED19654AF200BCB1D0 /* its-behind-you-spoken.wav */,
+				47D20FEE19654AF200BCB1D0 /* knife-stab-splatter.wav */,
+				47D20FEF19654AF200BCB1D0 /* young-girl-scream.wav */,
+			);
+			path = SoundBox;
+			sourceTree = "<group>";
+		};
+		47D20FF019654AF200BCB1D0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				47D20FF119654AF200BCB1D0 /* MainScreenController.swift */,
+				47D20FF219654AF200BCB1D0 /* SettingsViewController.swift */,
+				47D20FF319654AF200BCB1D0 /* ShopViewController.swift */,
+				47D20FF419654AF200BCB1D0 /* SoundBoxViewController.swift */,
+				47D20FF519654AF200BCB1D0 /* TMViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		B54B65FD1950CBF400FF48DC = {
 			isa = PBXGroup;
 			children = (
@@ -89,13 +152,10 @@
 		B54B66081950CBF400FF48DC /* TerrorTorch */ = {
 			isa = PBXGroup;
 			children = (
+				47D20FE719654AF200BCB1D0 /* Scenes */,
+				47D20FF019654AF200BCB1D0 /* ViewControllers */,
 				B54B660B1950CBF400FF48DC /* AppDelegate.swift */,
-				B54B660D1950CBF400FF48DC /* MainScreenController.swift */,
-				47E509A719625F7F0034BE1E /* SettingsViewController.swift */,
-				47E509AB196264EA0034BE1E /* TMViewController.swift */,
-				47E509AD196264FE0034BE1E /* SoundBoxViewController.swift */,
 				B54B660F1950CBF400FF48DC /* Main.storyboard */,
-				47E509AF1962659D0034BE1E /* ShopViewController.swift */,
 				B54B66121950CBF400FF48DC /* Images.xcassets */,
 				B54B66091950CBF400FF48DC /* Supporting Files */,
 			);
@@ -105,6 +165,8 @@
 		B54B66091950CBF400FF48DC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				47D20FE419654AF200BCB1D0 /* Images */,
+				47D20FE919654AF200BCB1D0 /* Sounds */,
 				B54B660A1950CBF400FF48DC /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -122,7 +184,6 @@
 		B54B661C1950CBF400FF48DC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				47E509A5196254470034BE1E /* mono-power-button-hi.png */,
 				B54B661D1950CBF400FF48DC /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -208,9 +269,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47E509A6196254470034BE1E /* mono-power-button-hi.png in Resources */,
+				47D20FF919654AF200BCB1D0 /* devil-laugh.wav in Resources */,
+				47D20FFC19654AF200BCB1D0 /* knife-stab-splatter.wav in Resources */,
+				47D20FF619654AF200BCB1D0 /* dollhead.png in Resources */,
+				47D20FFD19654AF200BCB1D0 /* young-girl-scream.wav in Resources */,
+				47D20FF719654AF200BCB1D0 /* mono-power-button-hi.png in Resources */,
 				B54B66111950CBF400FF48DC /* Main.storyboard in Resources */,
 				B54B66131950CBF400FF48DC /* Images.xcassets in Resources */,
+				47D20FFB19654AF200BCB1D0 /* its-behind-you-spoken.wav in Resources */,
+				47D20FFA19654AF200BCB1D0 /* ghost-egyptian-phantom.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,12 +295,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B54B660E1950CBF400FF48DC /* MainScreenController.swift in Sources */,
-				47E509AC196264EA0034BE1E /* TMViewController.swift in Sources */,
-				47E509B01962659D0034BE1E /* ShopViewController.swift in Sources */,
-				47E509AE196264FE0034BE1E /* SoundBoxViewController.swift in Sources */,
+				47D2100119654AF200BCB1D0 /* SoundBoxViewController.swift in Sources */,
+				47D2100219654AF200BCB1D0 /* TMViewController.swift in Sources */,
+				47D2100019654AF200BCB1D0 /* ShopViewController.swift in Sources */,
+				47D20FFE19654AF200BCB1D0 /* MainScreenController.swift in Sources */,
+				47D20FFF19654AF200BCB1D0 /* SettingsViewController.swift in Sources */,
 				B54B660C1950CBF400FF48DC /* AppDelegate.swift in Sources */,
-				47E509A819625F7F0034BE1E /* SettingsViewController.swift in Sources */,
+				47D20FF819654AF200BCB1D0 /* SoundBoxScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
