@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import MobileCoreServices
 
 protocol Ticker {
     func Tick(timeLeft:Double)
@@ -38,10 +38,11 @@ class CountdownTimerModel :NSObject {
     }
 }
 
-class TMViewController: UIViewController, Ticker {
+class TMViewController: UIViewController, Ticker, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CVDetectorDelegate {
 
     @IBOutlet var labelCountdown:UILabel
     var countdown: CountdownTimerModel?
+    var detector: CVDetectorViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,8 +50,9 @@ class TMViewController: UIViewController, Ticker {
         // Do any additional setup after loading the view.
 
         // start countdown
-        let totalTime:Double = 15
-        self.labelCountdown.text = String(totalTime)
+        let totalTime:Double = 3
+        self.labelCountdown.center = self.view.center
+        self.labelCountdown.text = String(Int(totalTime))
         self.countdown = CountdownTimerModel(initialTime:totalTime, delegate:self)
         self.countdown?.startCountdown()
     }
@@ -77,11 +79,31 @@ class TMViewController: UIViewController, Ticker {
     // Ticker delegate
     func Tick(timeLeft:Double) {
         NSLog("Tick: \(timeLeft)")
-        self.labelCountdown.text = String(timeLeft)
+        self.labelCountdown.text = String(Int(timeLeft))
     }
 
     func Timeout() {
         NSLog("Done")
-        self.labelCountdown.text = "Starting camera"
+        self.labelCountdown.text = "Starting camera..."
+
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        {
+            var detector = CVDetectorViewController()
+            detector.delegate = self
+            self.detector = detector
+            self.presentViewController(detector, animated: true, completion: { _ in
+            })
+        }
+        else {
+            NSLog("Must have camera-enabled device")
+        }
+    }
+
+    // delegate
+    func motionTriggered() {
+        self.dismissViewControllerAnimated(true, completion: { _ in
+            self.labelCountdown.text = "Motion triggered!"
+            self.detector = nil
+            })
     }
 }
