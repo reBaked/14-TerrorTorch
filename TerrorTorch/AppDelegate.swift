@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let COLOR_RED:UIColor = UIColor(hexColor:0xC11D25);
     let COLOR_BLACK:UIColor = UIColor(hexColor:0x040404);
     let COLOR_WHITE:UIColor = UIColor(hexColor:0xFFFAFA);
+    let COLOR_GREY:UIColor = UIColor(hexColor:0x2C2E2D);
     
     // Logo Constants
     let FONT_TITLE:UIFont = UIFont(name: "HelveticaNeue", size: 20.0);

@@ -15,4 +15,8 @@ extension UIColor {
         let b = CGFloat((hexColor & 0x0000FF)) / 255.0;
         self.init(red:r, green:g, blue:b, alpha:alpha);
     }
+    
+    class func fromHex(hex: Int, alpha: CGFloat = 1.0) -> UIColor {
+        return UIColor(hexColor: hex, alpha: alpha);
+    }
 }
