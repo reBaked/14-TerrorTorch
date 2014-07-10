@@ -25,6 +25,7 @@
 		B54B66111950CBF400FF48DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B54B660F1950CBF400FF48DC /* Main.storyboard */; };
 		B54B66131950CBF400FF48DC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54B66121950CBF400FF48DC /* Images.xcassets */; };
 		B54B661F1950CBF400FF48DC /* TerrorTorchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54B661E1950CBF400FF48DC /* TerrorTorchTests.swift */; };
+		FCEE317F196C738F00DCF7F0 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCEE317E196C738F00DCF7F0 /* logo@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		B54B66181950CBF400FF48DC /* TerrorTorchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TerrorTorchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B54B661D1950CBF400FF48DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B54B661E1950CBF400FF48DC /* TerrorTorchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrorTorchTests.swift; sourceTree = "<group>"; };
+		FCEE317E196C738F00DCF7F0 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		47D20FE419654AF200BCB1D0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FCEE317E196C738F00DCF7F0 /* logo@2x.png */,
 				47D20FE519654AF200BCB1D0 /* dollhead.png */,
 				47D20FE619654AF200BCB1D0 /* mono-power-button-hi.png */,
 			);
@@ -275,6 +278,7 @@
 				47D20FFD19654AF200BCB1D0 /* young-girl-scream.wav in Resources */,
 				47D20FF719654AF200BCB1D0 /* mono-power-button-hi.png in Resources */,
 				B54B66111950CBF400FF48DC /* Main.storyboard in Resources */,
+				FCEE317F196C738F00DCF7F0 /* logo@2x.png in Resources */,
 				B54B66131950CBF400FF48DC /* Images.xcassets in Resources */,
 				47D20FFB19654AF200BCB1D0 /* its-behind-you-spoken.wav in Resources */,
 				47D20FFA19654AF200BCB1D0 /* ghost-egyptian-phantom.wav in Resources */,

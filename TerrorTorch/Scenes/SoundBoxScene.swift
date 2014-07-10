@@ -40,7 +40,7 @@ class SoundBoxScene: SKScene {
                     let url = NSURL.fileURLWithPath(path);
                     let audioAsset = AVURLAsset.URLAssetWithURL(url, options: nil);
                     let duration = audioAsset.duration;
-                    node.runAction(SKAction.rotateByAngle(6*M_PI, duration: CMTimeGetSeconds(duration)));
+                    node.runAction(SKAction.rotateByAngle(CGFloat(6*M_PI), duration: CMTimeGetSeconds(duration)));
                 }
             }
         }
