@@ -12,10 +12,14 @@ import SpriteKit
 
 class SoundBoxViewController: UIViewController {
 
+    var presentedScene:SKScene? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         let spriteView = self.view as SKView;
+        
+        //Diagnostic info
         spriteView.showsDrawCount = true;
         spriteView.showsNodeCount = true;
         spriteView.showsFPS = true;
@@ -23,9 +27,14 @@ class SoundBoxViewController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         self.navigationController.navigationBar.hidden = false;
+        
+        //Create scene
         let scene = SoundBoxScene(size: CGSizeMake(768, 1024));
         let spriteView = self.view as SKView;
+        
+        //Present it
         spriteView.presentScene(scene);
+        presentedScene = scene;
     }
     
     override func didReceiveMemoryWarning() {
