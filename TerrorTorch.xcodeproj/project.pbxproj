@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3180972B196CCA0D0097E18C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3180972A196CCA0D0097E18C /* UIColorExtension.swift */; };
 		47D20FF619654AF200BCB1D0 /* dollhead.png in Resources */ = {isa = PBXBuildFile; fileRef = 47D20FE519654AF200BCB1D0 /* dollhead.png */; };
 		47D20FF719654AF200BCB1D0 /* mono-power-button-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = 47D20FE619654AF200BCB1D0 /* mono-power-button-hi.png */; };
 		47D20FF819654AF200BCB1D0 /* SoundBoxScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3180972A196CCA0D0097E18C /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		47D20FE519654AF200BCB1D0 /* dollhead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dollhead.png; sourceTree = "<group>"; };
 		47D20FE619654AF200BCB1D0 /* mono-power-button-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mono-power-button-hi.png"; sourceTree = "<group>"; };
 		47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundBoxScene.swift; sourceTree = "<group>"; };
@@ -81,6 +83,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31809728196CC8A70097E18C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				47DE6AD2196123E90049C253 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		31809729196CC9E70097E18C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3180972A196CCA0D0097E18C /* UIColorExtension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		47D20FE419654AF200BCB1D0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,9 +151,9 @@
 		B54B65FD1950CBF400FF48DC = {
 			isa = PBXGroup;
 			children = (
-				47DE6AD2196123E90049C253 /* AVFoundation.framework */,
 				B54B66081950CBF400FF48DC /* TerrorTorch */,
 				B54B661B1950CBF400FF48DC /* TerrorTorchTests */,
+				31809728196CC8A70097E18C /* Frameworks */,
 				B54B66071950CBF400FF48DC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -152,6 +170,7 @@
 		B54B66081950CBF400FF48DC /* TerrorTorch */ = {
 			isa = PBXGroup;
 			children = (
+				31809729196CC9E70097E18C /* Extensions */,
 				47D20FE719654AF200BCB1D0 /* Scenes */,
 				47D20FF019654AF200BCB1D0 /* ViewControllers */,
 				B54B660B1950CBF400FF48DC /* AppDelegate.swift */,
@@ -296,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47D2100119654AF200BCB1D0 /* SoundBoxViewController.swift in Sources */,
+				3180972B196CCA0D0097E18C /* UIColorExtension.swift in Sources */,
 				47D2100219654AF200BCB1D0 /* TMViewController.swift in Sources */,
 				47D2100019654AF200BCB1D0 /* ShopViewController.swift in Sources */,
 				47D20FFE19654AF200BCB1D0 /* MainScreenController.swift in Sources */,

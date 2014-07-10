@@ -12,10 +12,20 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
+    
+    // Color Constants in HEX
+    let COLOR_RED:UIColor = UIColor(hexColor:0xC11D25);
+    let COLOR_BLACK:UIColor = UIColor(hexColor:0x040404);
+    let COLOR_WHITE:UIColor = UIColor(hexColor:0xFFFAFA);
+    let COLOR_GREY:UIColor = UIColor(hexColor:0x2C2E2D);
+    
+    // Logo Constants
+    let FONT_TITLE:UIFont = UIFont(name: "HelveticaNeue", size: 20.0);
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         // Override point for customization after application launch.
+        initStyles();
         return true
     }
 
@@ -42,5 +52,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    func initStyles() {
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false);
+        let navBar:UINavigationBar = UINavigationBar.appearance();
+        let regBtn:UIButton = UIButton.appearance();
+        let barBtn:UIBarButtonItem = UIBarButtonItem.appearance();
+        
+        navBar.titleTextAttributes = [ NSFontAttributeName: FONT_TITLE, NSForegroundColorAttributeName: COLOR_WHITE ];
+        navBar.setBackgroundImage(UIImage(named: "bar-bg"), forBarPosition: UIBarPosition.Any, barMetrics: UIBarMetrics.Default);
+        navBar.tintColor = COLOR_RED;
+        regBtn.tintColor = COLOR_RED;
+        barBtn.tintColor = COLOR_RED;
+    }
 }
 

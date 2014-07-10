@@ -24,7 +24,7 @@ class SettingsViewController: UIViewController {
     
     func dismissThisController(recognizer: UISwipeGestureRecognizer){
         if(recognizer.state == UIGestureRecognizerState.Ended){
-            self.dismissModalViewControllerAnimated(true);
+            self.dismissViewControllerAnimated(true, completion: nil);
         }
     }
 }
