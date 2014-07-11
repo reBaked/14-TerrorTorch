@@ -63,10 +63,10 @@ using namespace cv;
 }
 
 -(void)setupView {
-    CGRect frame = self.view.frame;
-    frame.origin.x = 0;
-    frame.origin.y = 0;
-    imageView = [[UIImageView alloc] initWithFrame:frame];
+    CGRect newFrame = self.view.frame;
+    newFrame.origin.x = 0;
+    newFrame.origin.y = 0;
+    imageView = [[UIImageView alloc] initWithFrame:newFrame];
 #if TESTING
     [self.view addSubview:imageView];
 #endif

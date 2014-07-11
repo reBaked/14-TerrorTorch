@@ -80,7 +80,7 @@
 		9E12A477196EEA140018AD6F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9E12A479196EECE50018AD6F /* CVDetectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVDetectorViewController.h; sourceTree = "<group>"; };
 		9E12A47A196EECE50018AD6F /* CVDetectorViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVDetectorViewController.mm; sourceTree = "<group>"; };
-		9EC9CF03196EE75D00EAF3D9 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		9EC9CF03196EE75D00EAF3D9 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = TerrorTorch/opencv2.framework; sourceTree = "<group>"; };
 		9EDD6C501969CC1400B259AE /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B54B66061950CBF400FF48DC /* TerrorTorch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerrorTorch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B54B660A1950CBF400FF48DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -125,7 +125,18 @@
 		31809728196CC8A70097E18C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9E12A477196EEA140018AD6F /* Foundation.framework */,
+				9E12A475196EEA0B0018AD6F /* UIKit.framework */,
+				9E12A473196EEA040018AD6F /* QuartzCore.framework */,
+				9E12A471196EE9FE0018AD6F /* CoreVideo.framework */,
+				9E12A46F196EE9F90018AD6F /* CoreMedia.framework */,
+				9E12A46D196EE9F50018AD6F /* CoreImage.framework */,
+				9E12A46B196EE9F20018AD6F /* CoreGraphics.framework */,
+				9E12A469196EE9E90018AD6F /* AssetsLibrary.framework */,
+				9E12A467196EE9E40018AD6F /* Accelerate.framework */,
+				9EDD6C501969CC1400B259AE /* MobileCoreServices.framework */,
 				47DE6AD2196123E90049C253 /* AVFoundation.framework */,
+				9EC9CF03196EE75D00EAF3D9 /* opencv2.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -194,17 +205,6 @@
 		B54B65FD1950CBF400FF48DC = {
 			isa = PBXGroup;
 			children = (
-				9E12A477196EEA140018AD6F /* Foundation.framework */,
-				9E12A475196EEA0B0018AD6F /* UIKit.framework */,
-				9E12A473196EEA040018AD6F /* QuartzCore.framework */,
-				9E12A471196EE9FE0018AD6F /* CoreVideo.framework */,
-				9E12A46F196EE9F90018AD6F /* CoreMedia.framework */,
-				9E12A46D196EE9F50018AD6F /* CoreImage.framework */,
-				9E12A46B196EE9F20018AD6F /* CoreGraphics.framework */,
-				9E12A469196EE9E90018AD6F /* AssetsLibrary.framework */,
-				9E12A467196EE9E40018AD6F /* Accelerate.framework */,
-				9EDD6C501969CC1400B259AE /* MobileCoreServices.framework */,
-				47DE6AD2196123E90049C253 /* AVFoundation.framework */,
 				B54B66081950CBF400FF48DC /* TerrorTorch */,
 				B54B661B1950CBF400FF48DC /* TerrorTorchTests */,
 				31809728196CC8A70097E18C /* Frameworks */,
@@ -224,7 +224,6 @@
 		B54B66081950CBF400FF48DC /* TerrorTorch */ = {
 			isa = PBXGroup;
 			children = (
-				9EC9CF03196EE75D00EAF3D9 /* opencv2.framework */,
 				31809729196CC9E70097E18C /* Extensions */,
 				47D20FE719654AF200BCB1D0 /* Scenes */,
 				47D20FF019654AF200BCB1D0 /* ViewControllers */,
