@@ -23,6 +23,18 @@
 		47D2100119654AF200BCB1D0 /* SoundBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D20FF419654AF200BCB1D0 /* SoundBoxViewController.swift */; };
 		47D2100219654AF200BCB1D0 /* TMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D20FF519654AF200BCB1D0 /* TMViewController.swift */; };
 		47DE6AD3196123E90049C253 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47DE6AD2196123E90049C253 /* AVFoundation.framework */; };
+		9E12A468196EE9E40018AD6F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A467196EE9E40018AD6F /* Accelerate.framework */; };
+		9E12A46A196EE9E90018AD6F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A469196EE9E90018AD6F /* AssetsLibrary.framework */; };
+		9E12A46C196EE9F20018AD6F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A46B196EE9F20018AD6F /* CoreGraphics.framework */; };
+		9E12A46E196EE9F50018AD6F /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A46D196EE9F50018AD6F /* CoreImage.framework */; };
+		9E12A470196EE9F90018AD6F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A46F196EE9F90018AD6F /* CoreMedia.framework */; };
+		9E12A472196EE9FE0018AD6F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A471196EE9FE0018AD6F /* CoreVideo.framework */; };
+		9E12A474196EEA040018AD6F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A473196EEA040018AD6F /* QuartzCore.framework */; };
+		9E12A476196EEA0B0018AD6F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A475196EEA0B0018AD6F /* UIKit.framework */; };
+		9E12A478196EEA140018AD6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A477196EEA140018AD6F /* Foundation.framework */; };
+		9E12A47B196EECE50018AD6F /* CVDetectorViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9E12A47A196EECE50018AD6F /* CVDetectorViewController.mm */; };
+		9EC9CF04196EE75D00EAF3D9 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EC9CF03196EE75D00EAF3D9 /* opencv2.framework */; };
+		9EDD6C511969CC1400B259AE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDD6C501969CC1400B259AE /* MobileCoreServices.framework */; };
 		B54B660C1950CBF400FF48DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54B660B1950CBF400FF48DC /* AppDelegate.swift */; };
 		B54B66111950CBF400FF48DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B54B660F1950CBF400FF48DC /* Main.storyboard */; };
 		B54B66131950CBF400FF48DC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54B66121950CBF400FF48DC /* Images.xcassets */; };
@@ -56,6 +68,20 @@
 		47D20FF419654AF200BCB1D0 /* SoundBoxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundBoxViewController.swift; sourceTree = "<group>"; };
 		47D20FF519654AF200BCB1D0 /* TMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMViewController.swift; sourceTree = "<group>"; };
 		47DE6AD2196123E90049C253 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9E12A463196EE91A0018AD6F /* TerrorTorch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TerrorTorch-Bridging-Header.h"; sourceTree = "<group>"; };
+		9E12A467196EE9E40018AD6F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		9E12A469196EE9E90018AD6F /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		9E12A46B196EE9F20018AD6F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9E12A46D196EE9F50018AD6F /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		9E12A46F196EE9F90018AD6F /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		9E12A471196EE9FE0018AD6F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		9E12A473196EEA040018AD6F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9E12A475196EEA0B0018AD6F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9E12A477196EEA140018AD6F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9E12A479196EECE50018AD6F /* CVDetectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVDetectorViewController.h; sourceTree = "<group>"; };
+		9E12A47A196EECE50018AD6F /* CVDetectorViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVDetectorViewController.mm; sourceTree = "<group>"; };
+		9EC9CF03196EE75D00EAF3D9 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = TerrorTorch/opencv2.framework; sourceTree = "<group>"; };
+		9EDD6C501969CC1400B259AE /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B54B66061950CBF400FF48DC /* TerrorTorch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerrorTorch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B54B660A1950CBF400FF48DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B54B660B1950CBF400FF48DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +97,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E12A478196EEA140018AD6F /* Foundation.framework in Frameworks */,
+				9E12A476196EEA0B0018AD6F /* UIKit.framework in Frameworks */,
+				9E12A474196EEA040018AD6F /* QuartzCore.framework in Frameworks */,
+				9E12A472196EE9FE0018AD6F /* CoreVideo.framework in Frameworks */,
+				9E12A470196EE9F90018AD6F /* CoreMedia.framework in Frameworks */,
+				9E12A46E196EE9F50018AD6F /* CoreImage.framework in Frameworks */,
+				9E12A46C196EE9F20018AD6F /* CoreGraphics.framework in Frameworks */,
+				9E12A46A196EE9E90018AD6F /* AssetsLibrary.framework in Frameworks */,
+				9E12A468196EE9E40018AD6F /* Accelerate.framework in Frameworks */,
+				9EC9CF04196EE75D00EAF3D9 /* opencv2.framework in Frameworks */,
+				9EDD6C511969CC1400B259AE /* MobileCoreServices.framework in Frameworks */,
 				47DE6AD3196123E90049C253 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,7 +125,18 @@
 		31809728196CC8A70097E18C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9E12A477196EEA140018AD6F /* Foundation.framework */,
+				9E12A475196EEA0B0018AD6F /* UIKit.framework */,
+				9E12A473196EEA040018AD6F /* QuartzCore.framework */,
+				9E12A471196EE9FE0018AD6F /* CoreVideo.framework */,
+				9E12A46F196EE9F90018AD6F /* CoreMedia.framework */,
+				9E12A46D196EE9F50018AD6F /* CoreImage.framework */,
+				9E12A46B196EE9F20018AD6F /* CoreGraphics.framework */,
+				9E12A469196EE9E90018AD6F /* AssetsLibrary.framework */,
+				9E12A467196EE9E40018AD6F /* Accelerate.framework */,
+				9EDD6C501969CC1400B259AE /* MobileCoreServices.framework */,
 				47DE6AD2196123E90049C253 /* AVFoundation.framework */,
+				9EC9CF03196EE75D00EAF3D9 /* opencv2.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -147,6 +195,9 @@
 				47D20FF319654AF200BCB1D0 /* ShopViewController.swift */,
 				47D20FF419654AF200BCB1D0 /* SoundBoxViewController.swift */,
 				47D20FF519654AF200BCB1D0 /* TMViewController.swift */,
+				9E12A479196EECE50018AD6F /* CVDetectorViewController.h */,
+				9E12A47A196EECE50018AD6F /* CVDetectorViewController.mm */,
+				9E12A463196EE91A0018AD6F /* TerrorTorch-Bridging-Header.h */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -317,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E12A47B196EECE50018AD6F /* CVDetectorViewController.mm in Sources */,
 				47D2100119654AF200BCB1D0 /* SoundBoxViewController.swift in Sources */,
 				470ECA11196E8ECC007DF618 /* Dollar.swift in Sources */,
 				3180972B196CCA0D0097E18C /* UIColorExtension.swift in Sources */,
@@ -443,9 +495,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TerrorTorch",
+				);
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = TerrorTorch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TerrorTorch/ViewControllers/TerrorTorch-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -454,9 +515,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TerrorTorch",
+				);
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = TerrorTorch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TerrorTorch/ViewControllers/TerrorTorch-Bridging-Header.h";
 			};
 			name = Release;
 		};
