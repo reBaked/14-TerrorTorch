@@ -61,10 +61,11 @@ class MainScreenController: UIViewController {
     }
     
     func toggleTorchLight(recognizer: UITapGestureRecognizer) {
-        if(recognizer.state == UIGestureRecognizerState.Ended){
+        if (recognizer.state == UIGestureRecognizerState.Ended) {
             if let dvc = _device{
                 dvc.lockForConfiguration(nil);
                 dvc.torchMode = (isTorchOn) ? AVCaptureTorchMode.Off : AVCaptureTorchMode.On;
+                isTorchOn = !isTorchOn;
                 dvc.unlockForConfiguration();
             }
         }
