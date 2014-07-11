@@ -3,3 +3,4 @@
 //
 
 #import "CVDetectorViewController.h"
+#import <UIKit/UIGestureRecognizerSubclass.h>

@@ -31,9 +31,15 @@ class MainScreenController: UIViewController {
         //Torch mode isn't supported on iOS simulator
         if let dvc = _device {
             if(!dvc.hasTorch) {
+                powerView.userInteractionEnabled = true;
+                
                 //Gesture recognizer for enabling torch mode
                 let singleTapRecognizer = UITapGestureRecognizer(target: self, action: Selector("toggleTorchLight:"));
                 powerView.addGestureRecognizer(singleTapRecognizer);
+                
+                // use circular gesture to adjust torch intensity
+                let circularRecognizer:UICircularGestureRecognizer = UICircularGestureRecognizer(target: self, action: "rotated:");
+                powerView.addGestureRecognizer(circularRecognizer);
             }
         }
     }
@@ -68,5 +74,13 @@ class MainScreenController: UIViewController {
         if let dvc = _device{
             dvc.setTorchModeOnWithLevel(sender.value, error: nil)
         }
+    }
+    
+    func rotated(recognizer: UICircularGestureRecognizer) {
+        NSLog("Degree: %f", recognizer.rotation);
+        UICircularGestureRecognizer.rotateView(recognizer);
+        
+        // TODO: calculate brightness based on rotation
+        // possibly limit rotation to a certain min/max degree
     }
 }
