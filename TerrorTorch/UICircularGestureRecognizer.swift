@@ -34,7 +34,7 @@ class UICircularGestureRecognizer: UIGestureRecognizer {
     override func touchesEnded(touches: NSSet!, withEvent event: UIEvent!) {
         if UIGestureRecognizerState.Changed == self.state {
             self.state = UIGestureRecognizerState.Ended;
-        } else {
+        } else {  
             self.state = UIGestureRecognizerState.Failed;
         }
     }
@@ -55,7 +55,7 @@ class UICircularGestureRecognizer: UIGestureRecognizer {
         let center = CGPointMake(CGRectGetMidX(view.bounds), CGRectGetMidY(view.bounds)); // rotation around center axis
         let current = touch.locationInView(view);
         let previous = touch.previousLocationInView(view);
-        self.rotation = atan2f(current.y - center.y, current.x - center.x) - atan2f(previous.y - center.y, previous.x - center.x);
+        self.rotation = CGFloat(atan2f(Float(current.y - center.y), Float(current.x - center.x)) - atan2f(Float(previous.y - center.y), Float(previous.x - center.x)));
     }
     
     //==========================================================================
@@ -65,5 +65,17 @@ class UICircularGestureRecognizer: UIGestureRecognizer {
     class func rotateView(circularRecognizer: UICircularGestureRecognizer!) {
         let view:UIView = circularRecognizer.view;
         view.transform = CGAffineTransformRotate(view.transform, circularRecognizer.rotation);
+    }
+    
+    class func rotateView(view: UIView!, degrees: CGFloat) {
+        view.transform = CGAffineTransformRotate(view.transform, UICircularGestureRecognizer.degreesToRadians(degrees));
+    }
+    
+    class func degreesToRadians(degrees: CGFloat) -> CGFloat {
+        return (degrees * CGFloat(M_PI) / 180);
+    }
+    
+    class func radiansToDegrees(radians: CGFloat) -> CGFloat {
+        return ((radians * 180) / CGFloat(M_PI));
     }
 }

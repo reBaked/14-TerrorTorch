@@ -29,6 +29,7 @@ class MainScreenController: UIViewController {
         //Don't add gesture recognizer to handle user interactions if device doesn't support torch mode
         //There should also be some kind of UI change to signify it's disabled.
         //Torch mode isn't supported on iOS simulator
+        UICircularGestureRecognizer.rotateView(powerView, degrees: -90.0);
         if let dvc = _device {
             if(dvc.hasTorch) {
                 powerView.userInteractionEnabled = true;
@@ -78,7 +79,7 @@ class MainScreenController: UIViewController {
     }
     
     func rotated(recognizer: UICircularGestureRecognizer) {
-        NSLog("Degree: %f", recognizer.rotation);
+        NSLog("Radian: %f", recognizer.rotation);
         UICircularGestureRecognizer.rotateView(recognizer);
         
         // TODO: calculate brightness based on rotation
