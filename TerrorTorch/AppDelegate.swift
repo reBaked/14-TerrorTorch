@@ -8,20 +8,26 @@
 
 import UIKit
 
+/**
+*  Appwide constants here:
+*/
+
+// SoundBox Sound Format
+let SOUNDFORMAT:String = ".wav";
+
+// Color Constants in HEX
+let COLOR_RED:UIColor = UIColor(hexColor:0xC11D25);
+let COLOR_BLACK:UIColor = UIColor(hexColor:0x040404);
+let COLOR_WHITE:UIColor = UIColor(hexColor:0xFFFAFA);
+let COLOR_GREY:UIColor = UIColor(hexColor:0x2C2E2D);
+
+// Logo Constants
+let FONT_TITLE:UIFont = UIFont(name: "HelveticaNeue", size: 20.0);
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
-    
-    // Color Constants in HEX
-    let COLOR_RED:UIColor = UIColor(hexColor:0xC11D25);
-    let COLOR_BLACK:UIColor = UIColor(hexColor:0x040404);
-    let COLOR_WHITE:UIColor = UIColor(hexColor:0xFFFAFA);
-    let COLOR_GREY:UIColor = UIColor(hexColor:0x2C2E2D);
-    
-    // Logo Constants
-    let FONT_TITLE:UIFont = UIFont(name: "HelveticaNeue", size: 20.0);
-
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         // Override point for customization after application launch.
@@ -50,7 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 
     func initStyles() {
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false);
