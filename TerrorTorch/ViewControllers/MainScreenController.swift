@@ -30,7 +30,7 @@ class MainScreenController: UIViewController {
         //There should also be some kind of UI change to signify it's disabled.
         //Torch mode isn't supported on iOS simulator
         if let dvc = _device {
-            if(!dvc.hasTorch) {
+            if(dvc.hasTorch) {
                 powerView.userInteractionEnabled = true;
                 
                 //Gesture recognizer for enabling torch mode
