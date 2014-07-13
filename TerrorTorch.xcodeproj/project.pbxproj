@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3180972B196CCA0D0097E18C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3180972A196CCA0D0097E18C /* UIColorExtension.swift */; };
-		470ECA11196E8ECC007DF618 /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470ECA10196E8ECC007DF618 /* Dollar.swift */; };
+		4742F5E8196FAF9100251092 /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742F5E7196FAF9100251092 /* Dollar.swift */; };
 		47D20FF619654AF200BCB1D0 /* dollhead.png in Resources */ = {isa = PBXBuildFile; fileRef = 47D20FE519654AF200BCB1D0 /* dollhead.png */; };
 		47D20FF719654AF200BCB1D0 /* mono-power-button-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = 47D20FE619654AF200BCB1D0 /* mono-power-button-hi.png */; };
 		47D20FF819654AF200BCB1D0 /* SoundBoxScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */; };
@@ -41,7 +41,7 @@
 
 /* Begin PBXFileReference section */
 		3180972A196CCA0D0097E18C /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		470ECA10196E8ECC007DF618 /* Dollar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dollar.swift; sourceTree = "<group>"; };
+		4742F5E7196FAF9100251092 /* Dollar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dollar.swift; path = TerrorTorch/Dollar.swift; sourceTree = "<group>"; };
 		47D20FE519654AF200BCB1D0 /* dollhead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dollhead.png; sourceTree = "<group>"; };
 		47D20FE619654AF200BCB1D0 /* mono-power-button-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mono-power-button-hi.png"; sourceTree = "<group>"; };
 		47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundBoxScene.swift; sourceTree = "<group>"; };
@@ -96,7 +96,6 @@
 		31809729196CC9E70097E18C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				470ECA10196E8ECC007DF618 /* Dollar.swift */,
 				3180972A196CCA0D0097E18C /* UIColorExtension.swift */,
 			);
 			name = Extensions;
@@ -154,6 +153,7 @@
 		B54B65FD1950CBF400FF48DC = {
 			isa = PBXGroup;
 			children = (
+				4742F5E7196FAF9100251092 /* Dollar.swift */,
 				B54B66081950CBF400FF48DC /* TerrorTorch */,
 				B54B661B1950CBF400FF48DC /* TerrorTorchTests */,
 				31809728196CC8A70097E18C /* Frameworks */,
@@ -318,7 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47D2100119654AF200BCB1D0 /* SoundBoxViewController.swift in Sources */,
-				470ECA11196E8ECC007DF618 /* Dollar.swift in Sources */,
+				4742F5E8196FAF9100251092 /* Dollar.swift in Sources */,
 				3180972B196CCA0D0097E18C /* UIColorExtension.swift in Sources */,
 				47D2100219654AF200BCB1D0 /* TMViewController.swift in Sources */,
 				47D2100019654AF200BCB1D0 /* ShopViewController.swift in Sources */,
@@ -443,6 +443,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TerrorTorch/Assets",
+				);
 				INFOPLIST_FILE = TerrorTorch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -454,6 +458,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TerrorTorch/Assets",
+				);
 				INFOPLIST_FILE = TerrorTorch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
