@@ -60,7 +60,7 @@ class UICircularGestureRecognizer: UIGestureRecognizer {
     */
     class func rotateView(circularRecognizer: UICircularGestureRecognizer!) {
         let view:UIView = circularRecognizer.view;
-        view.transform = CGAffineTransformRotate(view.transform, circularRecognizer.rotation);
+        view.transform = CGAffineTransformRotate(view.transform, CGFloat(circularRecognizer.rotation));
     }
     
     /**
@@ -69,7 +69,7 @@ class UICircularGestureRecognizer: UIGestureRecognizer {
     *   @param degrees:Float A degree value between -180.0 and 180.0
     */
     class func rotateView(view: UIView!, degrees: Float) {
-        view.transform = CGAffineTransformRotate(view.transform, UICircularGestureRecognizer.degreesToRadians(degrees));
+        view.transform = CGAffineTransformRotate(view.transform, CGFloat(UICircularGestureRecognizer.degreesToRadians(degrees)));
     }
     
     /**
