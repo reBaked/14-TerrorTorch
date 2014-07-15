@@ -9,10 +9,17 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    @IBOutlet strong var webView: UIWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("dismissThisController:"));
+        
+        let htmlFile = NSBundle.mainBundle().pathForResource("credits", ofType: "html");
+        let htmlString = NSString.stringWithContentsOfFile(htmlFile, encoding: NSUTF8StringEncoding, error: nil);
+        webView.loadHTMLString(htmlString, baseURL: nil);
+        
+        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("dismissController:"));
         swipeRecognizer.direction = UISwipeGestureRecognizerDirection.Right;
         self.view.addGestureRecognizer(swipeRecognizer);
     }
@@ -22,9 +29,12 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func dismissThisController(recognizer: UISwipeGestureRecognizer){
+    func dismissController(recognizer: UISwipeGestureRecognizer){
+        println("there")
         if(recognizer.state == UIGestureRecognizerState.Ended){
-            self.dismissViewControllerAnimated(true, completion: nil);
+            println("here");
+            self.navigationController.popViewControllerAnimated(true);
+            //self.dismissViewControllerAnimated(false, completion: nil);
         }
     }
 }

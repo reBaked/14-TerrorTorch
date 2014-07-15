@@ -94,7 +94,7 @@ class SoundBoxScene: SKScene {
     }
     
     /**
-    *  Evaluates any node that's present in scene based on its type and returns a default set of actions for that type
+    *  Evaluates any node that's present in scene based on its type and returns a default set of actions for that type based on stored attributes
     *
     *  @param node:SKNode Node to evalute, must have information available in childrenAttributes
     *
@@ -129,7 +129,7 @@ class SoundBoxScene: SKScene {
     /**
     *  Retrieves stored attribute information for a given node using the node's name.
     *
-    *  @param node:SKNode Must have a unique name that is stroed within the attributes dictionary
+    *  @param node:SKNode Must have a unique name that is stored within the attributes dictionary
     *
     *  @return Attribute information belonging to node.
     */
