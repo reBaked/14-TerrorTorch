@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		316DDAE119707911003BE2D6 /* UICircularGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316DDAE019707911003BE2D6 /* UICircularGestureRecognizer.swift */; };
 		3180972B196CCA0D0097E18C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3180972A196CCA0D0097E18C /* UIColorExtension.swift */; };
-		470ECA11196E8ECC007DF618 /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470ECA10196E8ECC007DF618 /* Dollar.swift */; };
+		4742F5E8196FAF9100251092 /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742F5E7196FAF9100251092 /* Dollar.swift */; };
+		47B2EDFA19750396005B9FA2 /* GKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B2EDF919750396005B9FA2 /* GKWebViewController.swift */; };
+		47B2EDFC1975151D005B9FA2 /* credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 47B2EDFB1975151D005B9FA2 /* credits.html */; };
 		47D20FF619654AF200BCB1D0 /* dollhead.png in Resources */ = {isa = PBXBuildFile; fileRef = 47D20FE519654AF200BCB1D0 /* dollhead.png */; };
 		47D20FF719654AF200BCB1D0 /* mono-power-button-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = 47D20FE619654AF200BCB1D0 /* mono-power-button-hi.png */; };
 		47D20FF819654AF200BCB1D0 /* SoundBoxScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */; };
@@ -55,7 +57,9 @@
 /* Begin PBXFileReference section */
 		316DDAE019707911003BE2D6 /* UICircularGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircularGestureRecognizer.swift; sourceTree = "<group>"; };
 		3180972A196CCA0D0097E18C /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		470ECA10196E8ECC007DF618 /* Dollar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dollar.swift; sourceTree = "<group>"; };
+		4742F5E7196FAF9100251092 /* Dollar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dollar.swift; path = TerrorTorch/Dollar.swift; sourceTree = "<group>"; };
+		47B2EDF919750396005B9FA2 /* GKWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GKWebViewController.swift; path = ../GKWebViewController.swift; sourceTree = "<group>"; };
+		47B2EDFB1975151D005B9FA2 /* credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = credits.html; sourceTree = "<group>"; };
 		47D20FE519654AF200BCB1D0 /* dollhead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dollhead.png; sourceTree = "<group>"; };
 		47D20FE619654AF200BCB1D0 /* mono-power-button-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mono-power-button-hi.png"; sourceTree = "<group>"; };
 		47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundBoxScene.swift; sourceTree = "<group>"; };
@@ -155,7 +159,6 @@
 		31809729196CC9E70097E18C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				470ECA10196E8ECC007DF618 /* Dollar.swift */,
 				3180972A196CCA0D0097E18C /* UIColorExtension.swift */,
 			);
 			name = Extensions;
@@ -208,6 +211,7 @@
 				47D20FF519654AF200BCB1D0 /* TMViewController.swift */,
 				9E12A479196EECE50018AD6F /* CVDetectorViewController.h */,
 				9E12A47A196EECE50018AD6F /* CVDetectorViewController.mm */,
+				47B2EDF919750396005B9FA2 /* GKWebViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -215,6 +219,7 @@
 		B54B65FD1950CBF400FF48DC = {
 			isa = PBXGroup;
 			children = (
+				4742F5E7196FAF9100251092 /* Dollar.swift */,
 				B54B66081950CBF400FF48DC /* TerrorTorch */,
 				B54B661B1950CBF400FF48DC /* TerrorTorchTests */,
 				31809728196CC8A70097E18C /* Frameworks */,
@@ -249,6 +254,7 @@
 		B54B66091950CBF400FF48DC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				47B2EDFB1975151D005B9FA2 /* credits.html */,
 				47D20FE419654AF200BCB1D0 /* Images */,
 				47D20FE919654AF200BCB1D0 /* Sounds */,
 				B54B660A1950CBF400FF48DC /* Info.plist */,
@@ -358,6 +364,7 @@
 				47D20FF619654AF200BCB1D0 /* dollhead.png in Resources */,
 				47D20FFD19654AF200BCB1D0 /* young-girl-scream.wav in Resources */,
 				47D20FF719654AF200BCB1D0 /* mono-power-button-hi.png in Resources */,
+				47B2EDFC1975151D005B9FA2 /* credits.html in Resources */,
 				B54B66111950CBF400FF48DC /* Main.storyboard in Resources */,
 				B54B66131950CBF400FF48DC /* Images.xcassets in Resources */,
 				47D20FFB19654AF200BCB1D0 /* its-behind-you-spoken.wav in Resources */,
@@ -382,10 +389,11 @@
 				316DDAE119707911003BE2D6 /* UICircularGestureRecognizer.swift in Sources */,
 				9E12A47B196EECE50018AD6F /* CVDetectorViewController.mm in Sources */,
 				47D2100119654AF200BCB1D0 /* SoundBoxViewController.swift in Sources */,
-				470ECA11196E8ECC007DF618 /* Dollar.swift in Sources */,
+				4742F5E8196FAF9100251092 /* Dollar.swift in Sources */,
 				3180972B196CCA0D0097E18C /* UIColorExtension.swift in Sources */,
 				47D2100219654AF200BCB1D0 /* TMViewController.swift in Sources */,
 				47D2100019654AF200BCB1D0 /* ShopViewController.swift in Sources */,
+				47B2EDFA19750396005B9FA2 /* GKWebViewController.swift in Sources */,
 				47D20FFE19654AF200BCB1D0 /* MainScreenController.swift in Sources */,
 				47D20FFF19654AF200BCB1D0 /* SettingsViewController.swift in Sources */,
 				B54B660C1950CBF400FF48DC /* AppDelegate.swift in Sources */,
