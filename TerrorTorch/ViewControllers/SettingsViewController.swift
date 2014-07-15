@@ -9,10 +9,15 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    @IBOutlet strong var webView: UIWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        let htmlFile = NSBundle.mainBundle().pathForResource("credits", ofType: "html");
+        let htmlString = NSString.stringWithContentsOfFile(htmlFile, encoding: NSUTF8StringEncoding, error: nil);
+        webView.loadHTMLString(htmlString, baseURL: nil);
         
         let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("dismissController:"));
         swipeRecognizer.direction = UISwipeGestureRecognizerDirection.Right;
