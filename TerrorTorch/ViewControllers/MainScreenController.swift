@@ -29,11 +29,18 @@ class MainScreenController: UIViewController {
         //Don't add gesture recognizer to handle user interactions if device doesn't support torch mode
         //There should also be some kind of UI change to signify it's disabled.
         //Torch mode isn't supported on iOS simulator
+        UICircularGestureRecognizer.rotateView(powerView, degrees: -90.0);
         if let dvc = _device {
-            if(!dvc.hasTorch) {
+            if(dvc.hasTorch) {
+                powerView.userInteractionEnabled = true;
+                
                 //Gesture recognizer for enabling torch mode
                 let singleTapRecognizer = UITapGestureRecognizer(target: self, action: Selector("toggleTorchLight:"));
                 powerView.addGestureRecognizer(singleTapRecognizer);
+                
+                // use circular gesture to adjust torch intensity
+                let circularRecognizer:UICircularGestureRecognizer = UICircularGestureRecognizer(target: self, action: "rotated:");
+                powerView.addGestureRecognizer(circularRecognizer);
             }
         }
     }
@@ -55,10 +62,11 @@ class MainScreenController: UIViewController {
     }
     
     func toggleTorchLight(recognizer: UITapGestureRecognizer) {
-        if(recognizer.state == UIGestureRecognizerState.Ended){
+        if (recognizer.state == UIGestureRecognizerState.Ended) {
             if let dvc = _device{
                 dvc.lockForConfiguration(nil);
                 dvc.torchMode = (isTorchOn) ? AVCaptureTorchMode.Off : AVCaptureTorchMode.On;
+                isTorchOn = !isTorchOn;
                 dvc.unlockForConfiguration();
             }
         }
@@ -68,5 +76,13 @@ class MainScreenController: UIViewController {
         if let dvc = _device{
             dvc.setTorchModeOnWithLevel(sender.value, error: nil)
         }
+    }
+    
+    func rotated(recognizer: UICircularGestureRecognizer) {
+        NSLog("Radian: %f", recognizer.rotation);
+        UICircularGestureRecognizer.rotateView(recognizer);
+        
+        // TODO: calculate brightness based on rotation
+        // possibly limit rotation to a certain min/max degree
     }
 }
