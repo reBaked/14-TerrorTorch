@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="uFg-jy-wQs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="uFg-jy-wQs">
     <dependencies>
         <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
@@ -98,19 +98,13 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQq-Wh-N9r">
-                                <rect key="frame" x="129" y="0.0" width="63" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeP-51-ycL">
                                 <rect key="frame" x="114" y="366" width="91" height="30"/>
                                 <state key="normal" title="GoldenViking">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Fb4-iH-5Uz" kind="modal" id="qia-Ni-T05"/>
+                                    <segue destination="m1u-Uk-H0j" kind="push" id="j13-Xk-XPS"/>
                                 </connections>
                             </button>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="81I-GM-AvB">
@@ -123,13 +117,11 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RQq-Wh-N9r" firstAttribute="top" secondItem="aN8-D8-9xf" secondAttribute="bottom" id="AZT-EX-4Qa"/>
                             <constraint firstItem="81I-GM-AvB" firstAttribute="leading" secondItem="RDj-fY-eD0" secondAttribute="leading" constant="20" id="HOs-OI-9fL"/>
                             <constraint firstAttribute="centerX" secondItem="81I-GM-AvB" secondAttribute="centerX" id="R4J-nV-dyx"/>
                             <constraint firstAttribute="bottom" secondItem="SeP-51-ycL" secondAttribute="bottom" constant="20" id="UC0-aT-rx2"/>
                             <constraint firstAttribute="centerX" secondItem="SeP-51-ycL" secondAttribute="centerX" id="aQ3-Zb-2Cz"/>
                             <constraint firstAttribute="bottom" secondItem="81I-GM-AvB" secondAttribute="bottom" constant="60" id="sdY-on-GBQ"/>
-                            <constraint firstAttribute="centerX" secondItem="RQq-Wh-N9r" secondAttribute="centerX" id="twC-Mj-fu1"/>
                             <constraint firstAttribute="trailing" secondItem="81I-GM-AvB" secondAttribute="trailing" constant="20" id="zff-4o-NvK"/>
                         </constraints>
                     </view>
@@ -140,64 +132,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fya-cN-kmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1426" y="431"/>
+            <point key="canvasLocation" x="1522" y="431"/>
         </scene>
         <!--Web View Controller-->
-        <scene sceneID="TJw-pb-U0b">
+        <scene sceneID="xzB-EV-bgq">
             <objects>
-                <viewController id="Fb4-iH-5Uz" customClass="GKWebViewController" customModule="TerrorTorch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="m1u-Uk-H0j" customClass="WebViewController" customModule="TerrorTorch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ome-XS-WVW"/>
-                        <viewControllerLayoutGuide type="bottom" id="IHL-1M-Q7k"/>
+                        <viewControllerLayoutGuide type="top" id="vAi-dt-FV1"/>
+                        <viewControllerLayoutGuide type="bottom" id="7EH-ya-cQq"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="a1B-Kd-g6Y">
+                    <view key="view" contentMode="scaleToFill" id="8gl-b4-6aF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Two-pm-5nc">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="GoldenViking" id="7H5-Yx-1XP">
-                                        <barButtonItem key="leftBarButtonItem" title="Exit" id="j02-LO-hFZ">
-                                            <connections>
-                                                <action selector="exitPressed:" destination="Fb4-iH-5Uz" id="KBf-Uo-MqI"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Back" id="FF0-AE-HuA">
-                                            <connections>
-                                                <action selector="goBack" destination="L1x-dI-nyZ" id="Mbz-xV-WH6"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1x-dI-nyZ">
-                                <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yej-nB-DzW">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="L1x-dI-nyZ" firstAttribute="top" secondItem="Two-pm-5nc" secondAttribute="bottom" id="8aY-mw-RWx"/>
-                            <constraint firstItem="L1x-dI-nyZ" firstAttribute="top" secondItem="Two-pm-5nc" secondAttribute="bottom" id="Big-Ai-k8o"/>
-                            <constraint firstAttribute="trailing" secondItem="L1x-dI-nyZ" secondAttribute="trailing" id="CE0-cN-Gc2"/>
-                            <constraint firstAttribute="centerX" secondItem="Two-pm-5nc" secondAttribute="centerX" id="FaJ-x4-pUi"/>
-                            <constraint firstAttribute="trailing" secondItem="Two-pm-5nc" secondAttribute="trailing" id="KcE-dJ-W8L"/>
-                            <constraint firstItem="L1x-dI-nyZ" firstAttribute="leading" secondItem="a1B-Kd-g6Y" secondAttribute="leading" id="RQR-Y3-Xui"/>
-                            <constraint firstItem="Two-pm-5nc" firstAttribute="top" secondItem="a1B-Kd-g6Y" secondAttribute="top" id="me5-tH-Jmb"/>
-                            <constraint firstItem="Two-pm-5nc" firstAttribute="leading" secondItem="a1B-Kd-g6Y" secondAttribute="leading" id="sak-Wj-arR"/>
-                            <constraint firstAttribute="bottom" secondItem="L1x-dI-nyZ" secondAttribute="bottom" id="tOD-8b-dWQ"/>
-                        </constraints>
                     </view>
-                    <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationItem key="navigationItem" id="maB-ze-gRK"/>
                     <connections>
-                        <outlet property="webView" destination="L1x-dI-nyZ" id="Xu1-Ug-1yC"/>
+                        <outlet property="webView" destination="Yej-nB-DzW" id="l7h-qs-L8u"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aNs-Il-ddy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6dE-OT-J14" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1903" y="431"/>
+            <point key="canvasLocation" x="2025" y="431"/>
         </scene>
         <!--Shop-->
         <scene sceneID="KEV-au-1sE">
@@ -248,8 +211,8 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Countdown" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9r-Nv-NtW">
-                                <rect key="frame" x="115.5" y="198" width="89.5" height="20.5"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Countdown" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9r-Nv-NtW">
+                                <rect key="frame" x="116" y="198" width="90" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>

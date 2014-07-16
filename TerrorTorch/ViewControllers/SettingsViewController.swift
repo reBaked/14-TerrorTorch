@@ -24,6 +24,12 @@ class SettingsViewController: UIViewController {
         self.view.addGestureRecognizer(swipeRecognizer);
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController.navigationBar.hidden = false;
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
