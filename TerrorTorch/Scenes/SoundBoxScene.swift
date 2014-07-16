@@ -14,7 +14,7 @@ enum SpriteAttribute:String{
     case Name = "name"
     case SoundName = "soundname"
     case SoundPath = "soundpath"
-    case Rotations = "rotations"
+    case Rotations = "rotations" //This needs to be changed to "Animation" with a value that accepts a closure
     case Duration = "duration"
 }
 
@@ -45,7 +45,7 @@ class SoundBoxScene: SKScene {
     func createSceneContents(){
         //Create Scene sprites
         let dollHead = createSprite("dollhead", imageName: "dollhead.png", size: CGSizeMake(200, 200));
-        let dollHeadAttributes = createSpriteAttr("dollhead", soundName: "young-girl-scream", rotations: 6, duration: 3.0);
+        let dollHeadAttributes = createSpriteActionAttributes("dollhead", soundName: "young-girl-scream", rotations: 6, duration: 3.0);
         
         //Add sprite to scene
         self.addChild(dollHead);
@@ -80,7 +80,7 @@ class SoundBoxScene: SKScene {
     *
     *  @return A dictionary storing key value pairs
     */
-    func createSpriteAttr(spriteName:String, soundName:String, rotations:Double, duration:Double) -> [String:AnyObject]{
+    func createSpriteActionAttributes(spriteName:String, soundName:String, rotations:Double, duration:Double) -> [String:AnyObject]{
         var result = [String:AnyObject]();
         let path = NSBundle.mainBundle().pathForResource(soundName, ofType: SOUNDFORMAT);
 

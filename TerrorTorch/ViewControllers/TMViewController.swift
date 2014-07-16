@@ -8,13 +8,14 @@
 
 import UIKit
 import MobileCoreServices
+import AVFoundation
 
 protocol Ticker {
     func Tick(timeLeft:Double)
     func Timeout()
 }
 
-class CountdownTimerModel :NSObject {
+class CountdownTimerModel:NSObject{
     var timeLeft:Double
     var timer:NSTimer?
     var delegate:AnyObject
@@ -38,12 +39,35 @@ class CountdownTimerModel :NSObject {
     }
 }
 
-class TMViewController: UIViewController, Ticker, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CVDetectorDelegate {
+class TMViewController: UIViewController, Ticker, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CVDetectorDelegate, AVCaptureFileOutputRecordingDelegate {
 
     @IBOutlet var labelCountdown:UILabel
-    var countdown: CountdownTimerModel?
+    var videoRecordLayer:AVCaptureVideoPreviewLayer?
+    
+    
+    var _captureManager:VideoCaptureManager?
+    var countdown: CountdownTimerModel!
     var detector: CVDetectorViewController?
+    var cameraPosition = AVCaptureDevicePosition.Front //Should be set by user
+    var recordDuration = 2.0 //Should be set by user user
 
+    var countdownTime:Double{
+        set {
+            self.countdown.timeLeft = newValue;
+        }
+        get {
+            return self.countdown.timeLeft;
+        }
+    }
+    
+    func captureManager() -> VideoCaptureManager{
+        if(!_captureManager){
+            _captureManager = VideoCaptureManager(position: self.cameraPosition, totalDuration: recordDuration, framesPerSecond: 30);
+            _captureManager!.delegate = self;
+        }
+        return _captureManager!;
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,7 +78,7 @@ class TMViewController: UIViewController, Ticker, UIImagePickerControllerDelegat
         self.labelCountdown.center = self.view.center
         self.labelCountdown.text = String(Int(totalTime))
         self.countdown = CountdownTimerModel(initialTime:totalTime, delegate:self)
-        self.countdown?.startCountdown()
+        self.countdown.startCountdown()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -98,12 +122,42 @@ class TMViewController: UIViewController, Ticker, UIImagePickerControllerDelegat
             NSLog("Must have camera-enabled device")
         }
     }
-
+    
     // delegate
     func motionTriggered() {
         self.dismissViewControllerAnimated(true, completion: { _ in
             self.labelCountdown.text = "Motion triggered!"
             self.detector = nil
+            
+            //Preview layer for video feed
+            self.videoRecordLayer = AVCaptureVideoPreviewLayer(session: self.captureManager().session);
+            //Configure layer
+            let layerRect = self.view.layer.bounds;
+            self.videoRecordLayer!.bounds = layerRect;
+            self.videoRecordLayer!.position = CGPointMake(CGRectGetMidX(layerRect), CGRectGetMidY(layerRect));
+            self.videoRecordLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill;
+            self.videoRecordLayer!.backgroundColor = COLOR_WHITE.CGColor;
+            
+            //Add layter to view, add view to contoller's view and send to back
+            let cameraView = UIView(frame: layerRect);
+            cameraView.layer.addSublayer(self.videoRecordLayer);
+            self.view.addSubview(cameraView);
+            self.view.sendSubviewToBack(cameraView);
+            
+            //Start recording
+            let outputPath = NSTemporaryDirectory() + NSDate(timeIntervalSinceNow: NSTimeInterval(0)).description; //NSDate will probaby need to be formated to something nice.
+            self.captureManager().startRecordingToPath(outputPath);
             })
     }
+
+    //AVCaptureFileOutputRecordingDelegate
+    func captureOutput(captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAtURL fileURL: NSURL!, fromConnections connections: [AnyObject]!) {
+        println("Camera recording");
+    }
+    
+    func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!) {
+        println("Camera done recording");
+    }
+    
+    
 }
