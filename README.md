@@ -30,14 +30,14 @@ https://www.reBaked.com/projects/14
     *  Names of all of the people that worked on this app
 
 5.  TerrorMode
-  *  A button which starts a 15 sec countdown to activating the mode.  This is to give the user enough time to place the device and get out of the view of the camera.
+  *  A button which starts a 15 sec countdown to activating the mode (the countown time value could be an app setting).  This is to give the user enough time to place the device and get out of the view of the camera.
   *  When activated...
     1.  App will turn-on video camera.
     2.  App will detect when a significant number of pixels have changed on the video feed (and just assume it's a person).
     3.  App will start recording video camera.
     4.  App will play sounds.  Hopefully getting a reaction from the person or animal who walked into the frame.
     5.  App will stop recording after 10 seconds.
-    6.  App will assist in uploading the video to YouTube.
+    6.  App will assist in uploading the video to YouTube.  Possibly supporting other platforms as time permits.
 
 ## Vision and Purpose
 
