@@ -42,8 +42,10 @@ class CountdownTimerModel:NSObject{
 class TMViewController: UIViewController, Ticker, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CVDetectorDelegate, AVCaptureFileOutputRecordingDelegate {
 
     @IBOutlet var labelCountdown:UILabel
-    var videoRecordLayer:AVCaptureVideoPreviewLayer?
+    @IBOutlet var videoFeedView: UIView
     
+    var videoRecordLayer:AVCaptureVideoPreviewLayer?
+    var hasPermissions = false;
     
     var _captureManager:VideoCaptureManager?
     var countdown: CountdownTimerModel!
@@ -73,14 +75,32 @@ class TMViewController: UIViewController, Ticker, UIImagePickerControllerDelegat
 
         // Do any additional setup after loading the view.
 
-        // start countdown
+        // Setup Countdown
+        self.configureCountdown()
+        
+        //Ask for permission to use capture devices before activating TerrorMode  
+        AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: {
+            if($0){
+                AVCaptureDevice.requestAccessForMediaType(AVMediaTypeAudio, completionHandler: {
+                    if($0){
+                        self.hasPermissions = true;
+                        self.addVideoPreviewLayer();
+                    } else {
+                        self.labelCountdown.text = "TerrorTorch needs permission to use microphone before activating TerrorMode";
+                    }
+                })
+            } else {
+                self.labelCountdown.text = "TerrorTorch needs permission to use camera before activating TerrorMode";
+            }
+        })
+    }
+    
+    func configureCountdown(){
         let totalTime:Double = 3
         self.labelCountdown.center = self.view.center
         self.labelCountdown.text = String(Int(totalTime))
         self.countdown = CountdownTimerModel(initialTime:totalTime, delegate:self)
-        self.countdown.startCountdown()
     }
-    
     override func viewWillAppear(animated: Bool) {
         self.navigationController.navigationBar.hidden = false;
     }
@@ -90,15 +110,48 @@ class TMViewController: UIViewController, Ticker, UIImagePickerControllerDelegat
         // Dispose of any resources that can be recreated.
     }
 
-    /*
-    // #pragma mark - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    func addVideoPreviewLayer(){
+        //Preview layer for video feed
+        self.videoRecordLayer = AVCaptureVideoPreviewLayer(session: self.captureManager().session);
+        
+        //Configure layer
+        let layerRect = self.videoFeedView.layer.bounds;
+        self.videoRecordLayer!.bounds = layerRect;
+        self.videoRecordLayer!.position = CGPointMake(CGRectGetMidX(layerRect), CGRectGetMidY(layerRect));
+        self.videoRecordLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        self.videoRecordLayer!.backgroundColor = COLOR_WHITE.CGColor;
+        
+        //Add layer to view
+        self.videoFeedView.layer.addSublayer(self.videoRecordLayer);
     }
-    */
+    
+    @IBAction func startPressed(sender: UIButton) {
+        if(hasPermissions){
+            sender.enabled = false;
+            sender.hidden = true;
+            self.countdown.startCountdown();
+        }
+    }
+
+    @IBAction func cameraPositionValueChanged(sender: UISegmentedControl) {
+        switch(sender.selectedSegmentIndex){
+            case 0:
+                detector!.cameraPosition = AVCaptureDevicePosition.Front
+                
+                break;
+            case 1:
+                detector!.cameraPosition = AVCaptureDevicePosition.Back
+                break;
+            default:
+                break;
+        }
+        
+    }
+    
+    func setCameraPosition(position:AVCaptureDevicePosition){
+        detector!.cameraPosition = position;
+        //captureManager().
+    }
 
     // Ticker delegate
     func Tick(timeLeft:Double) {
@@ -128,21 +181,6 @@ class TMViewController: UIViewController, Ticker, UIImagePickerControllerDelegat
         self.dismissViewControllerAnimated(true, completion: { _ in
             self.labelCountdown.text = "Motion triggered!"
             self.detector = nil
-            
-            //Preview layer for video feed
-            self.videoRecordLayer = AVCaptureVideoPreviewLayer(session: self.captureManager().session);
-            //Configure layer
-            let layerRect = self.view.layer.bounds;
-            self.videoRecordLayer!.bounds = layerRect;
-            self.videoRecordLayer!.position = CGPointMake(CGRectGetMidX(layerRect), CGRectGetMidY(layerRect));
-            self.videoRecordLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill;
-            self.videoRecordLayer!.backgroundColor = COLOR_WHITE.CGColor;
-            
-            //Add layter to view, add view to contoller's view and send to back
-            let cameraView = UIView(frame: layerRect);
-            cameraView.layer.addSublayer(self.videoRecordLayer);
-            self.view.addSubview(cameraView);
-            self.view.sendSubviewToBack(cameraView);
             
             //Start recording
             let outputPath = NSTemporaryDirectory() + NSDate(timeIntervalSinceNow: NSTimeInterval(0)).description; //NSDate will probaby need to be formated to something nice.

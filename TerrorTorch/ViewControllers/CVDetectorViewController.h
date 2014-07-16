@@ -32,6 +32,7 @@
     int frame;
 }
 
+@property (nonatomic) AVCaptureDevicePosition cameraPosition;
 @property (nonatomic, retain) CvVideoCamera* videoCamera;
 @property (nonatomic, weak) id delegate;
 @end

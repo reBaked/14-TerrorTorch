@@ -36,6 +36,7 @@ using namespace cv;
 @end
 
 @implementation CVDetectorViewController
+@synthesize cameraPosition;
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -74,13 +75,12 @@ using namespace cv;
 
 -(void)setupCamera {
     self.videoCamera = [[CvVideoCamera alloc] initWithParentView:imageView];
-    self.videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
+    self.videoCamera.defaultAVCaptureDevicePosition = cameraPosition;
     self.videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
     self.videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
     self.videoCamera.defaultFPS = 30;
     self.videoCamera.delegate = self;
     self.videoCamera.grayscaleMode = YES;
-
     [self.videoCamera start];
 }
 

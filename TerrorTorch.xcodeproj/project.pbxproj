@@ -142,8 +142,8 @@
 		2948993E1975BD58007D0D97 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				294899661975BE74007D0D97 /* CVDetectorViewController.h */,
 				294899671975BE74007D0D97 /* TerrorTorch-Bridging-Header.h */,
+				294899661975BE74007D0D97 /* CVDetectorViewController.h */,
 				2948993F1975BD58007D0D97 /* CVDetectorViewController.mm */,
 				294899401975BD58007D0D97 /* GKWebViewController.swift */,
 				294899411975BD58007D0D97 /* MainScreenController.swift */,
