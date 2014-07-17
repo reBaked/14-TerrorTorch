@@ -38,6 +38,7 @@
 		9E12A47B196EECE50018AD6F /* CVDetectorViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9E12A47A196EECE50018AD6F /* CVDetectorViewController.mm */; };
 		9EC9CF04196EE75D00EAF3D9 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EC9CF03196EE75D00EAF3D9 /* opencv2.framework */; };
 		9EDD6C511969CC1400B259AE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDD6C501969CC1400B259AE /* MobileCoreServices.framework */; };
+		A39EEE191976E6DD00775D53 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39EEE181976E6DD00775D53 /* WebViewController.swift */; };
 		B54B660C1950CBF400FF48DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54B660B1950CBF400FF48DC /* AppDelegate.swift */; };
 		B54B66111950CBF400FF48DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B54B660F1950CBF400FF48DC /* Main.storyboard */; };
 		B54B66131950CBF400FF48DC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54B66121950CBF400FF48DC /* Images.xcassets */; };
@@ -88,6 +89,7 @@
 		9E12A47A196EECE50018AD6F /* CVDetectorViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVDetectorViewController.mm; sourceTree = "<group>"; };
 		9EC9CF03196EE75D00EAF3D9 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = TerrorTorch/opencv2.framework; sourceTree = "<group>"; };
 		9EDD6C501969CC1400B259AE /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A39EEE181976E6DD00775D53 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		B54B66061950CBF400FF48DC /* TerrorTorch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerrorTorch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B54B660A1950CBF400FF48DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B54B660B1950CBF400FF48DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				9E12A479196EECE50018AD6F /* CVDetectorViewController.h */,
 				9E12A47A196EECE50018AD6F /* CVDetectorViewController.mm */,
 				47B2EDF919750396005B9FA2 /* GKWebViewController.swift */,
+				A39EEE181976E6DD00775D53 /* WebViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				47D20FFE19654AF200BCB1D0 /* MainScreenController.swift in Sources */,
 				47D20FFF19654AF200BCB1D0 /* SettingsViewController.swift in Sources */,
 				B54B660C1950CBF400FF48DC /* AppDelegate.swift in Sources */,
+				A39EEE191976E6DD00775D53 /* WebViewController.swift in Sources */,
 				47D20FF819654AF200BCB1D0 /* SoundBoxScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
