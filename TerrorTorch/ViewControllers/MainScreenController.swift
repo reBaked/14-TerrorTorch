@@ -86,8 +86,8 @@ class MainScreenController: UIViewController {
     func changeTorchIntensity(intensity:Float) {
         if let dvc = _device {
             if isTorchOn {
-                NSLog("Setting intesity to: %f", intensity);
-                self.torchLevel = (intensity >= 0.0 && intensity <= 1.0) ? intensity : 0.5;
+                self.torchLevel = (intensity > 0.0 && intensity <= 1.0) ? intensity : 0.5;
+                NSLog("Setting intesity level to: %f", self.torchLevel);
                 dvc.lockForConfiguration(nil);
                 dvc.setTorchModeOnWithLevel(self.torchLevel, error: nil)
                 dvc.unlockForConfiguration();
@@ -114,8 +114,9 @@ class MainScreenController: UIViewController {
     */
     func calculateIntensity(currentAngle:Float) -> Float {
         // this method assumes a range of -90 to 90, otherwise math needs to be tweaked
-        assert((currentAngle >= -90 && currentAngle <= 90), "Expects a value between -90 and 90");
-        let angle:Float = (currentAngle + 90); // produces 0 - 180
+        assert((Int(currentAngle) >= -90 && Int(currentAngle) <= 90), "Expects a value between -90 and 90");
+        
+        let angle:Float = (((currentAngle < 0) ? floorf(currentAngle) : ceilf(currentAngle)) + 90); // produces 0 - 180
         if angle > 0 {
             let intensity:Float = (angle / 1.8) / 100.0;
             return ceilf(intensity * 100) / 100;
@@ -136,8 +137,8 @@ class MainScreenController: UIViewController {
         let degrees = UICircularGestureRecognizer.radiansToDegrees(currentRadians);
         currentAngle = self.knobAngle + degrees;
         let newAngle:Float = fmodf(currentAngle, 360.0);
-        var shouldRotate = false;
         
+        var shouldRotate = false;
         if minAngle <= maxAngle {
             shouldRotate = (newAngle >= minAngle && newAngle <= maxAngle) ? true : false;
         } else if minAngle > maxAngle {
@@ -145,7 +146,7 @@ class MainScreenController: UIViewController {
         }
         
         if shouldRotate {
-            self.knobAngle = currentAngle;
+            self.knobAngle = newAngle;
         }
         return shouldRotate;
     }
