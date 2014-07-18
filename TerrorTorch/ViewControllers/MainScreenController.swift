@@ -113,15 +113,36 @@ class MainScreenController: UIViewController {
     *  @return Float - Returns a float value between 0.1 and 1.0
     */
     func calculateIntensity(currentAngle:Float) -> Float {
-        // this method assumes a range of -90 to 90, otherwise math needs to be tweaked
-        assert((Int(currentAngle) >= -90 && Int(currentAngle) <= 90), "Expects a value between -90 and 90");
+        let boundedCurrentAngle:Float = governFloat(currentAngle);
         
-        let angle:Float = (((currentAngle < 0) ? floorf(currentAngle) : ceilf(currentAngle)) + 90); // produces 0 - 180
+        // this method assumes a range of -90 to 90, otherwise math needs to be tweaked
+        assert((Int(boundedCurrentAngle) >= -90 && Int(boundedCurrentAngle) <= 90), "Expects a value between -90 and 90");
+        
+        let angle:Float = (((boundedCurrentAngle < 0) ? floorf(boundedCurrentAngle) : ceilf(boundedCurrentAngle)) + 90); // produces 0 - 180
         if angle > 0 {
             let intensity:Float = (angle / 1.8) / 100.0;
             return ceilf(intensity * 100) / 100;
         }
         return 0.1; // 0.0 causes error even though docs say between 0.0 and 1.0
+    }
+    
+    /**
+    *  Correct erroneous float values by limiting it to a desired range.
+    *
+    *  @param currentFloat:Float The float that requires potential correcting
+    *  @param max:Float [optional] Defaults to -90.0
+    *  @param min:Float [optional] Defaults to 90.0
+    *  @return Float Returns currentFloat if within range, max if above range, min if below range.
+    */
+    func governFloat(currentFloat:Float, min:Float = -90.0, max:Float = 90.0) -> Float {
+        switch currentFloat {
+        case let x where x < min:
+            return min;
+        case let x where x > max:
+            return max;
+        default:
+            return currentFloat;
+        }
     }
     
     /**
