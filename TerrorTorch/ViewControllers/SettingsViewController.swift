@@ -30,11 +30,8 @@ class SettingsViewController: UIViewController {
     }
     
     func dismissController(recognizer: UISwipeGestureRecognizer){
-        println("there")
         if(recognizer.state == UIGestureRecognizerState.Ended){
-            println("here");
-            self.navigationController.popViewControllerAnimated(true);
-            //self.dismissViewControllerAnimated(false, completion: nil);
+            self.dismissViewControllerAnimated(false, completion: nil);
         }
     }
 }

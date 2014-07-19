@@ -42,13 +42,17 @@ class TMViewController: UIViewController{
             if($0){
                 println("Setting up initial configuration for capture session");
                 self.setInitialConfigurationForSession();
-                println("Starting capture session");
-                self._session.startRunning();
+                
             } else{
                 println("Inadequate AV permissions");
                 self.startButton.enabled = false;
             }
         });
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        println("Starting capture session");
+        self._session.startRunning();
     }
     
     override func viewDidAppear(animated: Bool) {

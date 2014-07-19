@@ -34,7 +34,7 @@ class VideoCaptureManager{
             }
         }
             
-        if let device = VideoCaptureManager.getDevice(AVMediaTypeVideo, position: position){
+        if let device = VideoCaptureManager.getDevice(AVMediaTypeAudio, position: position){
             if let input = VideoCaptureManager.addInputTo(session, usingDevice: device){
                 self.audioInput = input;
             } else {

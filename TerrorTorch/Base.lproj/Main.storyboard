@@ -100,7 +100,7 @@
                     <navigationItem key="navigationItem" id="Ner-aO-5FE"/>
                     <connections>
                         <outlet property="powerView" destination="hKa-mJ-yjV" id="vcj-mc-ZWr"/>
-                        <segue destination="M2o-U6-1h2" kind="push" identifier="mainToSettings" id="bEM-ai-3gO"/>
+                        <segue destination="M2o-U6-1h2" kind="modal" identifier="mainToSettings" id="bEM-ai-3gO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -143,17 +143,17 @@
                         <viewControllerLayoutGuide type="bottom" id="z2S-eC-sx0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="RDj-fY-eD0">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQq-Wh-N9r">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQq-Wh-N9r">
                                 <rect key="frame" x="129" y="0.0" width="63" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeP-51-ycL">
-                                <rect key="frame" x="114" y="366" width="91" height="30"/>
+                                <rect key="frame" x="114" y="430" width="91" height="30"/>
                                 <state key="normal" title="GoldenViking">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -162,7 +162,7 @@
                                 </connections>
                             </button>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="81I-GM-AvB">
-                                <rect key="frame" x="20" y="216" width="280" height="140"/>
+                                <rect key="frame" x="20" y="280" width="280" height="140"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="IqY-yw-XjC"/>
@@ -380,14 +380,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9r-Nv-NtW">
-                                <rect key="frame" x="116" y="229" width="89.5" height="20.5"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9r-Nv-NtW">
+                                <rect key="frame" x="115" y="230" width="90.5" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="w9r-Nv-NtW" firstAttribute="top" secondItem="07i-7L-NCW" secondAttribute="top" constant="230" id="5x7-dQ-DAE"/>
+                            <constraint firstItem="w9r-Nv-NtW" firstAttribute="leading" secondItem="07i-7L-NCW" secondAttribute="leading" constant="115" id="D6n-bA-7kF"/>
+                            <constraint firstAttribute="trailing" secondItem="w9r-Nv-NtW" secondAttribute="trailing" constant="114.5" id="Lwd-i0-v2b"/>
+                            <constraint firstAttribute="bottom" secondItem="w9r-Nv-NtW" secondAttribute="bottom" constant="230" id="oDS-xv-Hb2"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4Lp-cu-rGD"/>
                     <connections>

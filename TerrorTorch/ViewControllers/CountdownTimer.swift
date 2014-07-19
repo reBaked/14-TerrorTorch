@@ -29,10 +29,10 @@ class CountdownTimerModel:NSObject{
     
     func tick() {
         timeLeft -= 1
-        self.delegate!.Tick(timeLeft)
-        if (timeLeft == 0) {
+        self.delegate?.Tick(timeLeft)
+        if (timeLeft <= 0) {
             self.timer?.invalidate()
-            self.delegate!.Timeout()
+            self.delegate?.Timeout()
         }
     }
 }

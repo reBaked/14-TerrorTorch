@@ -18,22 +18,32 @@ class CaptureViewController: UIViewController, Ticker, CVDetectorDelegate, AVCap
     var recordDuration = 10.0;
 
     var _captureManager:VideoCaptureManager!
-    let _timer = CountdownTimerModel(initialTime: 3, delegate: nil);
+    var _timer:CountdownTimerModel!
     let _motionDetector = CVDetectorViewController();
     
+    init(coder aDecoder: NSCoder!) {
+        
+        super.init(coder: aDecoder);
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        
-        _timer.delegate = self;
+        _timer = CountdownTimerModel(initialTime: timerCountdown, delegate: self);
         _motionDetector.delegate = self;
-        _motionDetector.cameraPosition = self.cameraPosition;
+        _motionDetector.cameraPosition = cameraPosition;
         
-        
+        self.labelCountdown.text = String(Int(timerCountdown));
+        _timer.startCountdown();
     }
+
     
     func startRecording(){
         let outputPath = NSTemporaryDirectory() + NSDate(timeIntervalSinceNow: 0).description + ".mov"; //NSDate will probaby need to be formated to something nice.
+        
+        if(!_captureManager){
+            _captureManager = VideoCaptureManager(position: cameraPosition);
+            _captureManager.delegate = self;
+        }
         
         self._captureManager.startRecordingToPath(outputPath)
         
@@ -43,7 +53,8 @@ class CaptureViewController: UIViewController, Ticker, CVDetectorDelegate, AVCap
 
     func endRecording(){
         _captureManager.endRecording();
-        self.navigationController.popViewControllerAnimated(false);
+
+        self.dismissViewControllerAnimated(false, completion: nil);
     }
     
     //MARK: Ticker Delegate
@@ -60,12 +71,11 @@ class CaptureViewController: UIViewController, Ticker, CVDetectorDelegate, AVCap
     
     //MARK: CVDetectorDelegate
     func motionTriggered() {
-        
+        println("Motion Triggered");
+        self.labelCountdown.text = "Motion triggered!";
         self.dismissViewControllerAnimated(true, completion: { //Dismiss motion detector
-            self.labelCountdown.text = "Motion triggered!"
             self.startRecording();
-            });
-        
+        });
     }
     
     //MARK: AVCaptureFileOutputRecording Delegate
