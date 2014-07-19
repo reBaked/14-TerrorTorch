@@ -9,6 +9,7 @@
 import UIKit
 import MobileCoreServices
 import AVFoundation
+import AssetsLibrary
 
 protocol Ticker {
     func Tick(timeLeft:Double)
@@ -64,7 +65,7 @@ class TMViewController: UIViewController, Ticker, UIImagePickerControllerDelegat
     
     func captureManager() -> VideoCaptureManager{
         if(!_captureManager){
-            _captureManager = VideoCaptureManager(position: self.cameraPosition, totalDuration: recordDuration, framesPerSecond: 30);
+            _captureManager = VideoCaptureManager(position: self.cameraPosition);
             _captureManager!.delegate = self;
         }
         return _captureManager!;
@@ -183,9 +184,14 @@ class TMViewController: UIViewController, Ticker, UIImagePickerControllerDelegat
             self.detector = nil
             
             //Start recording
-            let outputPath = NSTemporaryDirectory() + NSDate(timeIntervalSinceNow: NSTimeInterval(0)).description; //NSDate will probaby need to be formated to something nice.
+            let outputPath = NSTemporaryDirectory() + NSDate(timeIntervalSinceNow: 0).description + ".mov"; //NSDate will probaby need to be formated to something nice.
             self.captureManager().startRecordingToPath(outputPath);
+            NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: Selector("endRecording"), userInfo: nil, repeats: false);
             })
+    }
+    
+    func endRecording(){
+        self.captureManager().endRecording();
     }
 
     //AVCaptureFileOutputRecordingDelegate
@@ -196,6 +202,6 @@ class TMViewController: UIViewController, Ticker, UIImagePickerControllerDelegat
     func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!) {
         println("Camera done recording");
     }
-    
-    
+
+
 }

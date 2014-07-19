@@ -85,4 +85,17 @@ class MainScreenController: UIViewController {
         // TODO: calculate brightness based on rotation
         // possibly limit rotation to a certain min/max degree
     }
+    
+    @IBAction func clearCachePressed(sender: UIButton) {
+        
+        let tmpDirectory = NSFileManager.defaultManager().contentsOfDirectoryAtPath(NSTemporaryDirectory(), error: nil);
+        
+        for file in tmpDirectory as [String]{
+            NSFileManager.defaultManager().removeItemAtPath(NSTemporaryDirectory() + file, error: nil);
+        }
+/*NSArray* tmpDirectory = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:NSTemporaryDirectory() error:NULL];
+for (NSString *file in tmpDirectory) {
+[[NSFileManager defaultManager] removeItemAtPath:[NSString stringWithFormat:@"%@%@", NSTemporaryDirectory(), file] error:NULL];
+}*/
+    }
 }
