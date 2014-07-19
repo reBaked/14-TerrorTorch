@@ -28,6 +28,7 @@
 		2948996A1975BE95007D0D97 /* UICircularGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899691975BE95007D0D97 /* UICircularGestureRecognizer.swift */; };
 		47D20FF819654AF200BCB1D0 /* SoundBoxScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */; };
 		47DE6AD3196123E90049C253 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47DE6AD2196123E90049C253 /* AVFoundation.framework */; };
+		47EFE8391977485400AC952D /* TempDirBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EFE8381977485400AC952D /* TempDirBrowseViewController.swift */; };
 		9E12A468196EE9E40018AD6F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A467196EE9E40018AD6F /* Accelerate.framework */; };
 		9E12A46A196EE9E90018AD6F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A469196EE9E90018AD6F /* AssetsLibrary.framework */; };
 		9E12A46C196EE9F20018AD6F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A46B196EE9F20018AD6F /* CoreGraphics.framework */; };
@@ -79,6 +80,7 @@
 		294899691975BE95007D0D97 /* UICircularGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircularGestureRecognizer.swift; sourceTree = "<group>"; };
 		47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundBoxScene.swift; sourceTree = "<group>"; };
 		47DE6AD2196123E90049C253 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		47EFE8381977485400AC952D /* TempDirBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempDirBrowseViewController.swift; sourceTree = "<group>"; };
 		9E12A467196EE9E40018AD6F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		9E12A469196EE9E90018AD6F /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		9E12A46B196EE9F20018AD6F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -151,6 +153,7 @@
 				294899431975BD58007D0D97 /* ShopViewController.swift */,
 				294899441975BD58007D0D97 /* SoundBoxViewController.swift */,
 				294899451975BD58007D0D97 /* TMViewController.swift */,
+				47EFE8381977485400AC952D /* TempDirBrowseViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47EFE8391977485400AC952D /* TempDirBrowseViewController.swift in Sources */,
 				2948994B1975BD58007D0D97 /* SoundBoxViewController.swift in Sources */,
 				2948994C1975BD58007D0D97 /* TMViewController.swift in Sources */,
 				294899461975BD58007D0D97 /* CVDetectorViewController.mm in Sources */,

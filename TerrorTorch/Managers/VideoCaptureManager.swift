@@ -20,7 +20,7 @@ class VideoCaptureManager{
     var delegate:AVCaptureFileOutputRecordingDelegate? //Notified of when recording starts and stops
     var isRecording = false;
     
-    init(position:AVCaptureDevicePosition, totalDuration:Double, framesPerSecond:Int){
+    init(position:AVCaptureDevicePosition){
         
         //Obtain proper device and configure capture session
         for device in AVCaptureDevice.devices() as [AVCaptureDevice]{ //Iterate through avaiable capture devices
@@ -28,14 +28,10 @@ class VideoCaptureManager{
                 camera = device;
                 var error:NSError?
                 
-                if let videoInput = AVCaptureDeviceInput.deviceInputWithDevice(device, error: &error) as? AVCaptureDeviceInput{ //Attempt to create input for camera
+                if let input = AVCaptureDeviceInput.deviceInputWithDevice(device, error: &error) as? AVCaptureDeviceInput{ //Attempt to create input for camera
+                    self.videoInput = input;
                     (session.canAddInput(videoInput)) ? session.addInput(videoInput) : println("Cannot add video input"); //Attempt to add to capture session
-                    
-                    //Configure then add output
-                    let maxDuration = CMTimeMakeWithSeconds(Float64(totalDuration), Int32(framesPerSecond));
-                    output.maxRecordedDuration = maxDuration;
-                    output.minFreeDiskSpaceLimit = 1024*1024 //This should be set to some limit on our cache
-                    (session.canAddOutput(output)) ? session.addOutput(output) : println("Cannot add video output");
+                    (session.canAddOutput(output)) ? session.addOutput(output) : println("Cannot add AV output");
                     
                 } else {
                     println("Error setting up input for video: \(error!)");
@@ -45,7 +41,8 @@ class VideoCaptureManager{
             else if(device.hasMediaType(AVMediaTypeAudio)){
                 var error:NSError?
                 
-                if let audioInput = AVCaptureDeviceInput.deviceInputWithDevice(device, error: &error) as? AVCaptureDeviceInput{
+                if let input = AVCaptureDeviceInput.deviceInputWithDevice(device, error: &error) as? AVCaptureDeviceInput{
+                    self.audioInput = input;
                     (session.canAddInput(audioInput)) ? session.addInput(audioInput) : println("Cannot add audio input");
                 }
             }

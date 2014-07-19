@@ -62,17 +62,39 @@
                                     <segue destination="ihU-Vv-kGC" kind="push" id="qB5-g3-NZ9"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LsN-dM-wnq">
+                                <rect key="frame" x="207" y="386" width="93" height="30"/>
+                                <state key="normal" title="Clear Cache">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearCachePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bLy-mW-CAT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2aG-IA-EU0">
+                                <rect key="frame" x="20" y="386" width="47" height="30"/>
+                                <state key="normal" title="Videos">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="k4d-X7-I1d" kind="push" id="dFZ-i9-UPn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Tx8-ZW-Dmp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="0Y6-DY-2Qo"/>
                             <constraint firstAttribute="trailing" secondItem="bV1-2O-4Pg" secondAttribute="trailing" constant="20" id="BkQ-5O-vkx"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LsN-dM-wnq" secondAttribute="bottom" id="DUj-Td-36x"/>
                             <constraint firstItem="bV1-2O-4Pg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="H2A-BF-9Hg"/>
                             <constraint firstAttribute="centerX" secondItem="hKa-mJ-yjV" secondAttribute="centerX" id="Hpz-ve-9eu"/>
                             <constraint firstAttribute="centerX" secondItem="Tx8-ZW-Dmp" secondAttribute="centerX" id="PhU-dc-oQn"/>
                             <constraint firstAttribute="centerX" secondItem="YPu-k8-tFM" secondAttribute="centerX" id="Pl3-IC-I9k"/>
+                            <constraint firstItem="2aG-IA-EU0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="QOI-Sp-wrw"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2aG-IA-EU0" secondAttribute="bottom" id="Xu9-Hg-q0F"/>
                             <constraint firstItem="YPu-k8-tFM" firstAttribute="top" secondItem="Tx8-ZW-Dmp" secondAttribute="bottom" constant="8" id="YyZ-Xl-kwN"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hKa-mJ-yjV" secondAttribute="bottom" constant="50" id="gsJ-Lx-woi"/>
+                            <constraint firstAttribute="trailing" secondItem="LsN-dM-wnq" secondAttribute="trailing" constant="20" id="q5Y-cY-ZAa"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -85,6 +107,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="832" y="142"/>
+        </scene>
+        <!--Temp Dir Browse View Controller-->
+        <scene sceneID="96T-HS-ylH">
+            <objects>
+                <tableViewController id="k4d-X7-I1d" customClass="TempDirBrowseViewController" customModule="TerrorTorch" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="wqU-8e-BXQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" id="MPc-X6-gCO">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MPc-X6-gCO" id="MuL-Jg-dna">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="k4d-X7-I1d" id="VNJ-pg-PEV"/>
+                            <outlet property="delegate" destination="k4d-X7-I1d" id="npA-Mi-r3H"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="gRv-IA-Dix"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mYC-2L-Lte" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="529" y="844"/>
         </scene>
         <!--Settings-->
         <scene sceneID="8x5-sA-7iJ">
