@@ -13,8 +13,9 @@ class MainScreenController: UIViewController {
                             
     @IBOutlet var powerView: UIImageView = nil;
     
-    var _device : AVCaptureDevice?
+    var _torchDevice:AVCaptureDevice?;
     var isTorchOn = false;
+    var defaultScreenBrightness:CGFloat!;
     
     var knobAngle:Float = 0.0;
     var torchLevel:Float = 0.5;
@@ -22,7 +23,7 @@ class MainScreenController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        _device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo);
+        defaultScreenBrightness = UIScreen.mainScreen().brightness;
         
         //Gesture recognizer for transition to settings page
         let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("presentSettingsScreen:"));
@@ -32,19 +33,23 @@ class MainScreenController: UIViewController {
         //Don't add gesture recognizer to handle user interactions if device doesn't support torch mode
         //There should also be some kind of UI change to signify it's disabled.
         //Torch mode isn't supported on iOS simulator
-        if let dvc = _device {
-            if(dvc.hasTorch) {
-                powerView.userInteractionEnabled = true;
-                
-                //Gesture recognizer for enabling torch mode
-                let singleTapRecognizer = UITapGestureRecognizer(target: self, action: Selector("toggleTorchLight:"));
-                powerView.addGestureRecognizer(singleTapRecognizer);
-                
-                // use circular gesture to adjust torch intensity
-                let circularRecognizer:UICircularGestureRecognizer = UICircularGestureRecognizer(target: self, action: "rotated:");
-                powerView.addGestureRecognizer(circularRecognizer);
+        
+        for device in AVCaptureDevice.devices() as [AVCaptureDevice]{
+            if(device.hasTorch){
+                _torchDevice = device;
+                break;
             }
         }
+        
+        powerView.userInteractionEnabled = true;
+        
+        //Gesture recognizer for enabling torch mode
+        let singleTapRecognizer = UITapGestureRecognizer(target: self, action: Selector("toggleTorchLight:"));
+        powerView.addGestureRecognizer(singleTapRecognizer);
+        
+        // use circular gesture to adjust torch intensity
+        let circularRecognizer:UICircularGestureRecognizer = UICircularGestureRecognizer(target: self, action: "rotated:");
+        powerView.addGestureRecognizer(circularRecognizer);
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -64,32 +69,42 @@ class MainScreenController: UIViewController {
     
     func toggleTorchLight(recognizer: UITapGestureRecognizer) {
         if (recognizer.state == UIGestureRecognizerState.Ended) {
-            if let dvc = _device {
+            if let dvc = _torchDevice{
                 dvc.lockForConfiguration(nil);
                 dvc.torchMode = (isTorchOn) ? AVCaptureTorchMode.Off : AVCaptureTorchMode.On;
-                isTorchOn = !isTorchOn;
-                
-                if isTorchOn {
-                    dvc.setTorchModeOnWithLevel(self.torchLevel, error: nil); // restore previous level (if any)
-                }
                 dvc.unlockForConfiguration()
+            } else {
+                if(isTorchOn){
+                    self.view.backgroundColor = UIColor.blackColor();
+                    UIScreen.mainScreen().brightness = defaultScreenBrightness;
+                } else {
+                    self.view.backgroundColor = UIColor.whiteColor();
+                }
             }
+            isTorchOn = !isTorchOn;
+        }
+    
+        if(isTorchOn) {
+            self.changeTorchIntensity(self.torchLevel);
         }
     }
-    
+
     /**
     *  Changes the torch level/intensity
     *
     *  @param intensity:Float A float value between 0.1 and 1.0
     */
     func changeTorchIntensity(intensity:Float) {
-        if let dvc = _device {
-            if isTorchOn {
-                self.torchLevel = (intensity > 0.0 && intensity <= 1.0) ? intensity : 0.5;
-                NSLog("Setting intesity level to: %f", self.torchLevel);
+        if(isTorchOn){
+            self.torchLevel = (intensity > 0.0 && intensity <= 1.0) ? intensity : 0.05;
+            NSLog("Setting intesity level to: %f", self.torchLevel);
+            
+            if let dvc = _torchDevice{
                 dvc.lockForConfiguration(nil);
                 dvc.setTorchModeOnWithLevel(self.torchLevel, error: nil)
                 dvc.unlockForConfiguration();
+            } else {
+                UIScreen.mainScreen().brightness = self.torchLevel;
             }
         }
     }
