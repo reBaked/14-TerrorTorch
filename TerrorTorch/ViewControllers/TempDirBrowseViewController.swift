@@ -27,7 +27,6 @@ class TempDirBrowseViewController: UITableViewController {
         let tmpDirectory = NSFileManager.defaultManager().contentsOfDirectoryAtPath(NSTemporaryDirectory(), error: nil);
         
         for file in tmpDirectory as [String]{
-            println(file);
             let url = NSURL(fileURLWithPath: NSTemporaryDirectory() + file)
             let item = AVAsset.assetWithURL(url) as AVAsset;
 
@@ -106,8 +105,6 @@ class TempDirBrowseViewController: UITableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("itemDidFinishPlaying:"), name: AVPlayerItemDidPlayToEndTimeNotification, object: item);
         self.player.seekToTime(kCMTimeZero);
         self.videoView.hidden = false;
-        println(self.player.currentItem.duration.value);
-        println(self.player.currentItem);
         self.player.play();
     }
     
