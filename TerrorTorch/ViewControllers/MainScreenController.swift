@@ -47,7 +47,6 @@ class MainScreenController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
-        self.navigationController.navigationBar.hidden = true;
     }
     
     override func didReceiveMemoryWarning() {

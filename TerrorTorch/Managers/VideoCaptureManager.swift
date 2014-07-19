@@ -22,31 +22,28 @@ class VideoCaptureManager{
     
     init(position:AVCaptureDevicePosition){
         
-        //Obtain proper device and configure capture session
-        for device in AVCaptureDevice.devices() as [AVCaptureDevice]{ //Iterate through avaiable capture devices
-            if(device.hasMediaType(AVMediaTypeVideo) && device.position == position){ //Must be video and match the position  of CVDetection
-                camera = device;
-                var error:NSError?
-                
-                if let input = AVCaptureDeviceInput.deviceInputWithDevice(device, error: &error) as? AVCaptureDeviceInput{ //Attempt to create input for camera
-                    self.videoInput = input;
-                    (session.canAddInput(videoInput)) ? session.addInput(videoInput) : println("Cannot add video input"); //Attempt to add to capture session
-                    (session.canAddOutput(output)) ? session.addOutput(output) : println("Cannot add AV output");
-                    
-                } else {
-                    println("Error setting up input for video: \(error!)");
-                }
-            }
+        //Obtain proper device and configure capture session//Iterate through avaiable capture devices
             
-            else if(device.hasMediaType(AVMediaTypeAudio)){
-                var error:NSError?
-                
-                if let input = AVCaptureDeviceInput.deviceInputWithDevice(device, error: &error) as? AVCaptureDeviceInput{
-                    self.audioInput = input;
-                    (session.canAddInput(audioInput)) ? session.addInput(audioInput) : println("Cannot add audio input");
-                }
+        if let device = VideoCaptureManager.getDevice(AVMediaTypeVideo, position: position){
+            camera = device;
+            
+            if let input = VideoCaptureManager.addInputTo(session, usingDevice: device){
+                self.videoInput = input;
+            } else {
+                println("Failed to add video input");
             }
         }
+            
+        if let device = VideoCaptureManager.getDevice(AVMediaTypeVideo, position: position){
+            if let input = VideoCaptureManager.addInputTo(session, usingDevice: device){
+                self.audioInput = input;
+            } else {
+                println("Failed to add audio input");
+            }
+        }
+        
+        
+        (session.canAddOutput(output)) ? session.addOutput(output) : println("Cannot add AV output");
         
         //AVCaptureSession Configuration
         session.sessionPreset = AVCaptureSessionPresetMedium;
@@ -70,6 +67,7 @@ class VideoCaptureManager{
         
         //Start session, then start recording
         session.startRunning()
+    
         output.startRecordingToOutputFileURL(url, recordingDelegate: delegate);
         println("Started recording to: \(url)");
         self.isRecording = true;
@@ -83,5 +81,35 @@ class VideoCaptureManager{
             session.stopRunning()
             println("Stopped recording camera feed");
         }
+    }
+    
+    class func addInputTo(session:AVCaptureSession, usingDevice device:AVCaptureDevice) -> AVCaptureDeviceInput?{
+        var error:NSError?
+        
+        if let input = AVCaptureDeviceInput.deviceInputWithDevice(device, error: &error) as? AVCaptureDeviceInput{ //Attempt to create input for camera
+            //self.videoInput = input;
+            if(session.canAddInput(input)){
+                session.addInput(input);
+                return input;
+            } else {
+                println("Session is unable to add that kind of input");
+            }
+            
+            
+        } else {
+            println("Error setting up input for session: \(error!)");
+        }
+        
+        return nil;
+    }
+    
+    class func getDevice(type:String, position:AVCaptureDevicePosition) -> AVCaptureDevice?{
+        println("Searching for compatible AV device of type \(type)");
+        for device in AVCaptureDevice.devices() as [AVCaptureDevice]{ //Iterate through avaiable capture devices
+            if(device.hasMediaType(type) && device.position == position){
+                return device;
+            }
+        }
+        return nil;
     }
 }

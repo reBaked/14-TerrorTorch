@@ -82,17 +82,17 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Tx8-ZW-Dmp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="0Y6-DY-2Qo"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hKa-mJ-yjV" secondAttribute="bottom" constant="50" id="8sJ-hQ-ZIj"/>
+                            <constraint firstItem="Tx8-ZW-Dmp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="B2V-xj-f2U"/>
                             <constraint firstAttribute="trailing" secondItem="bV1-2O-4Pg" secondAttribute="trailing" constant="20" id="BkQ-5O-vkx"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LsN-dM-wnq" secondAttribute="bottom" id="DUj-Td-36x"/>
-                            <constraint firstItem="bV1-2O-4Pg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="H2A-BF-9Hg"/>
                             <constraint firstAttribute="centerX" secondItem="hKa-mJ-yjV" secondAttribute="centerX" id="Hpz-ve-9eu"/>
                             <constraint firstAttribute="centerX" secondItem="Tx8-ZW-Dmp" secondAttribute="centerX" id="PhU-dc-oQn"/>
                             <constraint firstAttribute="centerX" secondItem="YPu-k8-tFM" secondAttribute="centerX" id="Pl3-IC-I9k"/>
                             <constraint firstItem="2aG-IA-EU0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="QOI-Sp-wrw"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2aG-IA-EU0" secondAttribute="bottom" id="Xu9-Hg-q0F"/>
                             <constraint firstItem="YPu-k8-tFM" firstAttribute="top" secondItem="Tx8-ZW-Dmp" secondAttribute="bottom" constant="8" id="YyZ-Xl-kwN"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hKa-mJ-yjV" secondAttribute="bottom" constant="50" id="gsJ-Lx-woi"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2aG-IA-EU0" secondAttribute="bottom" id="bVB-wx-HgW"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LsN-dM-wnq" secondAttribute="bottom" id="lDO-Pg-XFU"/>
+                            <constraint firstItem="bV1-2O-4Pg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ncK-YB-gGK"/>
                             <constraint firstAttribute="trailing" secondItem="LsN-dM-wnq" secondAttribute="trailing" constant="20" id="q5Y-cY-ZAa"/>
                         </constraints>
                     </view>
@@ -296,75 +296,107 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9r-Nv-NtW">
-                                <rect key="frame" x="115.5" y="198" width="89.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXs-Di-W8x">
-                                <rect key="frame" x="137" y="366" width="33" height="30"/>
-                                <state key="normal" title="Start">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwW-ED-A9Q">
-                                <rect key="frame" x="137" y="366" width="33" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwW-ED-A9Q">
+                                <rect key="frame" x="143" y="366" width="33" height="30"/>
                                 <state key="normal" title="Start">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="startPressed:" destination="iOa-Fz-k1s" eventType="touchUpInside" id="sIb-8u-xSR"/>
+                                    <segue destination="iT8-EV-F12" kind="modal" id="b6v-tc-dKu"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Lk8-dd-v3a">
-                                <rect key="frame" x="92" y="20" width="123" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Lk8-dd-v3a">
+                                <rect key="frame" x="99" y="20" width="123" height="29"/>
                                 <segments>
                                     <segment title="Front"/>
                                     <segment title="Back"/>
                                 </segments>
                                 <connections>
-                                    <action selector="cameraPositionValueChanged:" destination="iOa-Fz-k1s" eventType="valueChanged" id="h2d-87-iwd"/>
+                                    <action selector="cameraPositionChanged:" destination="iOa-Fz-k1s" eventType="valueChanged" id="ZEO-dC-wHg"/>
                                 </connections>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LW9-Ck-FvM">
-                                <rect key="frame" x="20" y="70" width="280" height="148"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Countdown Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIx-wu-i7U">
-                                <rect key="frame" x="92" y="226" width="137" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Countdown Time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIx-wu-i7U">
+                                <rect key="frame" x="91" y="226" width="138" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ie6-v4-GIA">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ie6-v4-GIA">
                                 <rect key="frame" x="20" y="255" width="280" height="29"/>
                                 <segments>
+                                    <segment title="3s"/>
                                     <segment title="15s"/>
                                     <segment title="30s"/>
                                     <segment title="60s"/>
                                     <segment title="3m"/>
-                                    <segment title="5m"/>
                                 </segments>
                             </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LW9-Ck-FvM" userLabel="videoFeedView">
+                                <rect key="frame" x="20" y="70" width="280" height="146"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ie6-v4-GIA" firstAttribute="top" secondItem="pIx-wu-i7U" secondAttribute="bottom" constant="8.5" id="0dE-od-saw"/>
                             <constraint firstAttribute="bottom" secondItem="fwW-ED-A9Q" secondAttribute="bottom" constant="20" id="68S-BQ-LTX"/>
+                            <constraint firstItem="pIx-wu-i7U" firstAttribute="top" secondItem="LW9-Ck-FvM" secondAttribute="bottom" constant="10" id="7Ja-Zb-IBR"/>
+                            <constraint firstAttribute="trailing" secondItem="pIx-wu-i7U" secondAttribute="trailing" constant="91" id="7qp-NS-9qf"/>
+                            <constraint firstItem="pIx-wu-i7U" firstAttribute="leading" secondItem="yPl-6v-JMX" secondAttribute="leading" constant="91" id="8ui-Bx-AiG"/>
+                            <constraint firstItem="LW9-Ck-FvM" firstAttribute="leading" secondItem="yPl-6v-JMX" secondAttribute="leading" constant="20" id="9Ut-kU-kzG"/>
+                            <constraint firstItem="ie6-v4-GIA" firstAttribute="leading" secondItem="yPl-6v-JMX" secondAttribute="leading" constant="20" id="Ai4-SB-Bvl"/>
+                            <constraint firstAttribute="bottom" secondItem="LW9-Ck-FvM" secondAttribute="bottom" priority="750" constant="200" id="BUK-YX-4rz"/>
+                            <constraint firstItem="Lk8-dd-v3a" firstAttribute="leading" secondItem="yPl-6v-JMX" secondAttribute="leading" constant="99" id="KhA-Ay-dTv"/>
+                            <constraint firstItem="Lk8-dd-v3a" firstAttribute="top" secondItem="yPl-6v-JMX" secondAttribute="top" constant="20" id="MLZ-og-Ec8"/>
                             <constraint firstAttribute="centerX" secondItem="fwW-ED-A9Q" secondAttribute="centerX" id="QJ5-Mx-Sf8"/>
-                            <constraint firstAttribute="centerX" secondItem="w9r-Nv-NtW" secondAttribute="centerX" id="ace-Wv-DZi"/>
-                            <constraint firstAttribute="centerY" secondItem="w9r-Nv-NtW" secondAttribute="centerY" id="vX4-in-Edx"/>
+                            <constraint firstItem="LW9-Ck-FvM" firstAttribute="top" secondItem="Lk8-dd-v3a" secondAttribute="bottom" constant="22" id="SQn-Hi-H3n"/>
+                            <constraint firstAttribute="trailing" secondItem="ie6-v4-GIA" secondAttribute="trailing" constant="20" id="gJV-n4-TPN"/>
+                            <constraint firstAttribute="trailing" secondItem="Lk8-dd-v3a" secondAttribute="trailing" constant="98" id="pi5-cw-8qm"/>
+                            <constraint firstAttribute="trailing" secondItem="LW9-Ck-FvM" secondAttribute="trailing" constant="20" id="rAJ-Gi-jRl"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
                         <outlet property="labelCountdown" destination="w9r-Nv-NtW" id="c8o-CD-GPN"/>
+                        <outlet property="sgmtCameraPosition" destination="Lk8-dd-v3a" id="GC8-sZ-2dU"/>
+                        <outlet property="sgmtCountdownTime" destination="ie6-v4-GIA" id="JYb-o2-s1d"/>
+                        <outlet property="startButton" destination="fwW-ED-A9Q" id="p0Y-Rq-hfe"/>
                         <outlet property="videoFeedView" destination="LW9-Ck-FvM" id="GUh-do-qql"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UNk-hn-EWi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1490" y="-186"/>
+        </scene>
+        <!--Capture View Controller-->
+        <scene sceneID="xas-wu-7eo">
+            <objects>
+                <viewController id="iT8-EV-F12" customClass="CaptureViewController" customModule="TerrorTorch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="huJ-D1-W8x"/>
+                        <viewControllerLayoutGuide type="bottom" id="t6g-PU-ebf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="07i-7L-NCW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9r-Nv-NtW">
+                                <rect key="frame" x="116" y="229" width="89.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4Lp-cu-rGD"/>
+                    <connections>
+                        <outlet property="labelCountdown" destination="w9r-Nv-NtW" id="akB-47-XUI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Uk-Zn-8O9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1914" y="-186"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0Pz-kK-5l1">

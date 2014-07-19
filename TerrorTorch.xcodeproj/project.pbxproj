@@ -29,6 +29,9 @@
 		47D20FF819654AF200BCB1D0 /* SoundBoxScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */; };
 		47DE6AD3196123E90049C253 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47DE6AD2196123E90049C253 /* AVFoundation.framework */; };
 		47EFE8391977485400AC952D /* TempDirBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EFE8381977485400AC952D /* TempDirBrowseViewController.swift */; };
+		47EFE83B197A1A1A00AC952D /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EFE83A197A1A1A00AC952D /* CountdownTimer.swift */; };
+		47EFE83E197A1C0600AC952D /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EFE83D197A1C0600AC952D /* CaptureViewController.swift */; };
+		47EFE840197A3D0A00AC952D /* AVCaptureSessionExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EFE83F197A3D0A00AC952D /* AVCaptureSessionExt.swift */; };
 		9E12A468196EE9E40018AD6F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A467196EE9E40018AD6F /* Accelerate.framework */; };
 		9E12A46A196EE9E90018AD6F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A469196EE9E90018AD6F /* AssetsLibrary.framework */; };
 		9E12A46C196EE9F20018AD6F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A46B196EE9F20018AD6F /* CoreGraphics.framework */; };
@@ -81,6 +84,9 @@
 		47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundBoxScene.swift; sourceTree = "<group>"; };
 		47DE6AD2196123E90049C253 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		47EFE8381977485400AC952D /* TempDirBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempDirBrowseViewController.swift; sourceTree = "<group>"; };
+		47EFE83A197A1A1A00AC952D /* CountdownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountdownTimer.swift; path = ../ViewControllers/CountdownTimer.swift; sourceTree = "<group>"; };
+		47EFE83D197A1C0600AC952D /* CaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
+		47EFE83F197A3D0A00AC952D /* AVCaptureSessionExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCaptureSessionExt.swift; sourceTree = "<group>"; };
 		9E12A467196EE9E40018AD6F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		9E12A469196EE9E90018AD6F /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		9E12A46B196EE9F20018AD6F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -137,6 +143,7 @@
 			children = (
 				2948993A1975BD2A007D0D97 /* Dollar.swift */,
 				2948993B1975BD2A007D0D97 /* UIColorExtension.swift */,
+				47EFE83F197A3D0A00AC952D /* AVCaptureSessionExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -153,6 +160,7 @@
 				294899431975BD58007D0D97 /* ShopViewController.swift */,
 				294899441975BD58007D0D97 /* SoundBoxViewController.swift */,
 				294899451975BD58007D0D97 /* TMViewController.swift */,
+				47EFE83D197A1C0600AC952D /* CaptureViewController.swift */,
 				47EFE8381977485400AC952D /* TempDirBrowseViewController.swift */,
 			);
 			path = ViewControllers;
@@ -232,6 +240,14 @@
 			path = Scenes;
 			sourceTree = "<group>";
 		};
+		47EFE83C197A1A4500AC952D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				47EFE83A197A1A1A00AC952D /* CountdownTimer.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		B54B65FD1950CBF400FF48DC = {
 			isa = PBXGroup;
 			children = (
@@ -254,6 +270,7 @@
 		B54B66081950CBF400FF48DC /* TerrorTorch */ = {
 			isa = PBXGroup;
 			children = (
+				47EFE83C197A1A4500AC952D /* Models */,
 				294899681975BE95007D0D97 /* Controls */,
 				294899631975BD98007D0D97 /* Managers */,
 				2948993E1975BD58007D0D97 /* ViewControllers */,
@@ -407,10 +424,13 @@
 				294899461975BD58007D0D97 /* CVDetectorViewController.mm in Sources */,
 				2948994A1975BD58007D0D97 /* ShopViewController.swift in Sources */,
 				2948996A1975BE95007D0D97 /* UICircularGestureRecognizer.swift in Sources */,
+				47EFE840197A3D0A00AC952D /* AVCaptureSessionExt.swift in Sources */,
 				294899481975BD58007D0D97 /* MainScreenController.swift in Sources */,
 				294899491975BD58007D0D97 /* SettingsViewController.swift in Sources */,
 				2948993D1975BD2A007D0D97 /* UIColorExtension.swift in Sources */,
+				47EFE83E197A1C0600AC952D /* CaptureViewController.swift in Sources */,
 				294899651975BD98007D0D97 /* VideoCaptureManager.swift in Sources */,
+				47EFE83B197A1A1A00AC952D /* CountdownTimer.swift in Sources */,
 				294899471975BD58007D0D97 /* GKWebViewController.swift in Sources */,
 				2948993C1975BD2A007D0D97 /* Dollar.swift in Sources */,
 				B54B660C1950CBF400FF48DC /* AppDelegate.swift in Sources */,
