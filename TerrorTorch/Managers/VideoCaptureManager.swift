@@ -14,30 +14,20 @@ class VideoCaptureManager{
     
     let session = AVCaptureSession(); //Manages data between input and output
     let output = AVCaptureMovieFileOutput(); //Manages output of video feed data
-    let videoInput:AVCaptureDeviceInput! //Manages camera ports
-    let audioInput:AVCaptureDeviceInput! //Manages audio ports///
-    let camera:AVCaptureDevice! //MAnaged camera device
     var delegate:AVCaptureFileOutputRecordingDelegate? //Notified of when recording starts and stops
-    var isRecording = false;
     
     init(position:AVCaptureDevicePosition){
         
         //Obtain proper device and configure capture session//Iterate through avaiable capture devices
             
         if let device = VideoCaptureManager.getDevice(AVMediaTypeVideo, position: position){
-            camera = device;
-            
-            if let input = VideoCaptureManager.addInputTo(session, usingDevice: device){
-                self.videoInput = input;
-            } else {
-                println("Failed to add video input");
+            if(VideoCaptureManager.addInputTo(session, usingDevice: device) == false){
+                println("Faled to add video input");
             }
         }
             
         if let device = VideoCaptureManager.getDevice(AVMediaTypeAudio, position: position){
-            if let input = VideoCaptureManager.addInputTo(session, usingDevice: device){
-                self.audioInput = input;
-            } else {
+            if(VideoCaptureManager.addInputTo(session, usingDevice: device) == false){
                 println("Failed to add audio input");
             }
         }
@@ -50,36 +40,35 @@ class VideoCaptureManager{
     }
     
     func startRecordingToPath(path:String){
-        let url = NSURL(fileURLWithPath: path);
-        let manager = NSFileManager.defaultManager();
+        if(!session.running){
+            let url = NSURL(fileURLWithPath: path);
+            let manager = NSFileManager.defaultManager();
         
-        //Attempt to delete file if file by that name already exists
-        if(manager.fileExistsAtPath(path)){
-            var error:NSError?
-            if(manager.removeItemAtPath(path, error: &error)){
-                println("Deleted file \(url.lastPathComponent)");
+            //Attempt to delete file if file by that name already exists
+            if(manager.fileExistsAtPath(path)){
+                var error:NSError?
+                if(manager.removeItemAtPath(path, error: &error)){
+                    println("Deleted file \(url.lastPathComponent)");
                 
-            } else {
-                println("Unable to delete \(url.lastPathComponent): \(error)");
-                return;
+                } else {
+                    println("Unable to delete \(url.lastPathComponent): \(error)");
+                    return;
+                }
             }
-        }
         
-        //Start session, then start recording
-        session.startRunning()
-    
-        output.startRecordingToOutputFileURL(url, recordingDelegate: delegate);
-        println("Started recording to: \(url)");
-        self.isRecording = true;
+            //Start session, then start recording
+            session.startRunning();
+            output.startRecordingToOutputFileURL(url, recordingDelegate: delegate);
+            println("Started recording to: \(url)");
+        }
     }
     
     func endRecording(){
-        if(isRecording){
-            //End session, then stop recording
+        if(session.running){
             output.stopRecording();
-            self.isRecording = false;
             session.stopRunning()
             println("Stopped recording camera feed");
+            
         }
     }
     
