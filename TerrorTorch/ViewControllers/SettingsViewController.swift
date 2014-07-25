@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIBaseViewController {
     @IBOutlet strong var webView: UIWebView!
     
     override func viewDidLoad() {

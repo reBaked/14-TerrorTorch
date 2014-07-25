@@ -26,6 +26,7 @@
 		2948995F1975BD6F007D0D97 /* young-girl-scream.wav in Resources */ = {isa = PBXBuildFile; fileRef = 294899571975BD6F007D0D97 /* young-girl-scream.wav */; };
 		294899651975BD98007D0D97 /* VideoCaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899641975BD98007D0D97 /* VideoCaptureManager.swift */; };
 		2948996A1975BE95007D0D97 /* UICircularGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899691975BE95007D0D97 /* UICircularGestureRecognizer.swift */; };
+		4700C00A19822D8D007F0279 /* UIBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4700C00919822D8D007F0279 /* UIBaseViewController.swift */; };
 		47D20FF819654AF200BCB1D0 /* SoundBoxScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */; };
 		47DE6AD3196123E90049C253 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47DE6AD2196123E90049C253 /* AVFoundation.framework */; };
 		47EFE8391977485400AC952D /* TempDirBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EFE8381977485400AC952D /* TempDirBrowseViewController.swift */; };
@@ -81,6 +82,7 @@
 		294899661975BE74007D0D97 /* CVDetectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVDetectorViewController.h; sourceTree = "<group>"; };
 		294899671975BE74007D0D97 /* TerrorTorch-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TerrorTorch-Bridging-Header.h"; sourceTree = "<group>"; };
 		294899691975BE95007D0D97 /* UICircularGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircularGestureRecognizer.swift; sourceTree = "<group>"; };
+		4700C00919822D8D007F0279 /* UIBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBaseViewController.swift; sourceTree = "<group>"; };
 		47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundBoxScene.swift; sourceTree = "<group>"; };
 		47DE6AD2196123E90049C253 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		47EFE8381977485400AC952D /* TempDirBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempDirBrowseViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				294899671975BE74007D0D97 /* TerrorTorch-Bridging-Header.h */,
 				294899661975BE74007D0D97 /* CVDetectorViewController.h */,
 				2948993F1975BD58007D0D97 /* CVDetectorViewController.mm */,
+				4700C00919822D8D007F0279 /* UIBaseViewController.swift */,
 				294899401975BD58007D0D97 /* GKWebViewController.swift */,
 				294899411975BD58007D0D97 /* MainScreenController.swift */,
 				294899421975BD58007D0D97 /* SettingsViewController.swift */,
@@ -431,6 +434,7 @@
 				47EFE83E197A1C0600AC952D /* CaptureViewController.swift in Sources */,
 				294899651975BD98007D0D97 /* VideoCaptureManager.swift in Sources */,
 				47EFE83B197A1A1A00AC952D /* CountdownTimer.swift in Sources */,
+				4700C00A19822D8D007F0279 /* UIBaseViewController.swift in Sources */,
 				294899471975BD58007D0D97 /* GKWebViewController.swift in Sources */,
 				2948993C1975BD2A007D0D97 /* Dollar.swift in Sources */,
 				B54B660C1950CBF400FF48DC /* AppDelegate.swift in Sources */,

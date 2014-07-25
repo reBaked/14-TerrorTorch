@@ -9,9 +9,9 @@
 import UIKit
 import AVFoundation
 
-class MainScreenController: UIViewController {
+class MainScreenController: UIBaseViewController {
                             
-    @IBOutlet var powerView: UIImageView = nil;
+    @IBOutlet var powerView: UIImageView! = nil;
     
     var _torchDevice:AVCaptureDevice?;
     var isTorchOn = false;
@@ -23,7 +23,7 @@ class MainScreenController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        defaultScreenBrightness = UIScreen.mainScreen().brightness;
+        defaultScreenBrightness = UIScreen.mainScreen().brightness; //Used to restore original user defined brightness settings
         
         //Gesture recognizer for transition to settings page
         let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("presentSettingsScreen:"));
@@ -50,10 +50,7 @@ class MainScreenController: UIViewController {
         // use circular gesture to adjust torch intensity
         let circularRecognizer:UICircularGestureRecognizer = UICircularGestureRecognizer(target: self, action: "rotated:");
         powerView.addGestureRecognizer(circularRecognizer);
-    }
-
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated);
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -69,24 +66,30 @@ class MainScreenController: UIViewController {
     
     func toggleTorchLight(recognizer: UITapGestureRecognizer) {
         if (recognizer.state == UIGestureRecognizerState.Ended) {
-            if let dvc = _torchDevice{
-                dvc.lockForConfiguration(nil);
-                dvc.torchMode = (isTorchOn) ? AVCaptureTorchMode.Off : AVCaptureTorchMode.On;
-                dvc.unlockForConfiguration()
-            } else {
-                if(isTorchOn){
-                    self.view.backgroundColor = UIColor.blackColor();
-                    UIScreen.mainScreen().brightness = defaultScreenBrightness;
-                } else {
-                    self.view.backgroundColor = UIColor.whiteColor();
-                }
-            }
-            isTorchOn = !isTorchOn;
+            turnTorchLightOn(!isTorchOn);
         }
     
         if(isTorchOn) {
             self.changeTorchIntensity(self.torchLevel);
         }
+    }
+    
+    func turnTorchLightOn(turnOn:Bool){
+        if(isTorchOn == turnOn) { return; }
+        if let dvc = _torchDevice{
+            dvc.lockForConfiguration(nil);
+            dvc.torchMode = (turnOn) ? AVCaptureTorchMode.On : AVCaptureTorchMode.Off;
+            dvc.unlockForConfiguration();
+        } else {
+            if(turnOn){
+                self.view.backgroundColor = UIColor.whiteColor();
+            } else {
+                self.view.backgroundColor = UIColor.blackColor();
+                UIScreen.mainScreen().brightness = defaultScreenBrightness;
+            }
+        }
+        
+        isTorchOn = turnOn;
     }
 
     /**
@@ -96,7 +99,7 @@ class MainScreenController: UIViewController {
     */
     func changeTorchIntensity(intensity:Float) {
         if(isTorchOn){
-            self.torchLevel = (intensity > 0.0 && intensity <= 1.0) ? intensity : 0.05;
+            self.torchLevel = (intensity > 0.0 && intensity <= 1.0) ? intensity : 0.01;
             NSLog("Setting intesity level to: %f", self.torchLevel);
             
             if let dvc = _torchDevice{
@@ -104,7 +107,7 @@ class MainScreenController: UIViewController {
                 dvc.setTorchModeOnWithLevel(self.torchLevel, error: nil)
                 dvc.unlockForConfiguration();
             } else {
-                UIScreen.mainScreen().brightness = self.torchLevel;
+                UIScreen.mainScreen().brightness = CGFloat(self.torchLevel);
             }
         }
     }
@@ -133,11 +136,8 @@ class MainScreenController: UIViewController {
         assert((Int(boundedCurrentAngle) >= -90 && Int(boundedCurrentAngle) <= 90), "Expects a value between -90 and 90");
         
         let angle:Float = (((boundedCurrentAngle < 0) ? floorf(boundedCurrentAngle) : ceilf(boundedCurrentAngle)) + 90); // produces 0 - 180
-        if angle > 0 {
-            let intensity:Float = (angle / 1.8) / 100.0;
-            return ceilf(intensity * 100) / 100;
-        }
-        return 0.1; // 0.0 causes error even though docs say between 0.0 and 1.0
+        let intensity:Float = (angle / 1.8) / 100.0;
+        return ceilf(intensity * 100) / 100;
     }
     
     /**

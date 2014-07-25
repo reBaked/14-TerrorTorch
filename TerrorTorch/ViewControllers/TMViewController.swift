@@ -9,15 +9,14 @@
 import UIKit
 import MobileCoreServices
 import AVFoundation
-import AssetsLibrary
 
 
-class TMViewController: UIViewController{
+class TMViewController: UIBaseViewController{
     
-    @IBOutlet var videoFeedView: UIView
-    @IBOutlet var sgmtCameraPosition: UISegmentedControl
-    @IBOutlet var sgmtCountdownTime: UISegmentedControl
-    @IBOutlet var startButton: UIButton
+    @IBOutlet var videoFeedView: UIView!
+    @IBOutlet var sgmtCameraPosition: UISegmentedControl!
+    @IBOutlet var sgmtCountdownTime: UISegmentedControl!
+    @IBOutlet var startButton: UIButton!
 
     
     var _hasPermissions = false;
@@ -29,6 +28,8 @@ class TMViewController: UIViewController{
         _previewLayer = AVCaptureVideoPreviewLayer(session: _session);
         super.init(coder: aDecoder);
     }
+    
+    //MARK: UIViewController Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,17 +52,13 @@ class TMViewController: UIViewController{
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated);
         println("Starting capture session");
         self._session.startRunning();
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        self.navigationController.navigationBar.hidden = false;
         println("Configuring preview layer");
         self.configurePreviewLayer();
-        println("Finished setting up preview layer");
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -77,6 +74,7 @@ class TMViewController: UIViewController{
         }
     }
     
+    //MARK: IBActions
     @IBAction func cameraPositionChanged(sender: UISegmentedControl) {
         _session.beginConfiguration();
         
@@ -93,11 +91,18 @@ class TMViewController: UIViewController{
             } else {
                 println("Failed to change positon of camera");
             }
+        } else {
+            println("Device does not support that camera position");
         }
         
         _session.commitConfiguration();
     }
     
+    //MARK: Queries
+    
+    /**
+    *  Retrieves then converts value of sgmCameraPosition
+    */
     func getCameraPosition() -> AVCaptureDevicePosition{
         switch(sgmtCameraPosition.selectedSegmentIndex){
             case 1:
@@ -107,6 +112,9 @@ class TMViewController: UIViewController{
         }
     }
     
+    /**
+    *  Retrieves then convers value of sgmtCountdownTime
+    */
     func getCountdownTime() -> Double{
         switch(sgmtCountdownTime.selectedSegmentIndex){
             case 1:
@@ -124,6 +132,11 @@ class TMViewController: UIViewController{
         }
     }
     
+    //MARK: Configurations
+    
+    /**
+    *  Changes frame of preview layer to match and fill outlet view
+    */
     func configurePreviewLayer(){
         let layerRect = self.videoFeedView.layer.bounds;
         _previewLayer.bounds = layerRect;
@@ -131,7 +144,9 @@ class TMViewController: UIViewController{
         _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     }
 
-    
+    /**
+    *   Adds video input to capture session and defaults to front camera
+    */
     func setInitialConfigurationForSession(){
         if let device = VideoCaptureManager.getDevice(AVMediaTypeVideo, position: AVCaptureDevicePosition.Front){
             
@@ -140,6 +155,8 @@ class TMViewController: UIViewController{
             }
         }
     }
+    
+    //MARK: User Settings
     
     /**
     *   Checks to see if app has been given permission to microphone and camera

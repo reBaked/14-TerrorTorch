@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import SpriteKit
 
-class SoundBoxViewController: UIViewController {
+class SoundBoxViewController: UIBaseViewController {
 
     var presentedScene:SKScene? = nil
     
@@ -26,7 +26,7 @@ class SoundBoxViewController: UIViewController {
     }
 
     override func viewWillAppear(animated: Bool) {
-        self.navigationController.navigationBar.hidden = false;
+        super.viewWillAppear(animated);
         
         //Create scene
         let scene = SoundBoxScene(size: CGSizeMake(768, 1024));
@@ -43,6 +43,7 @@ class SoundBoxViewController: UIViewController {
     }
     
 
+    
     /*
     // #pragma mark - Navigation
 

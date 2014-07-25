@@ -59,10 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func initStyles() {
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false);
-        let navBar:UINavigationBar = UINavigationBar.appearance();
-        let regBtn:UIButton = UIButton.appearance();
-        let barBtn:UIBarButtonItem = UIBarButtonItem.appearance();
-        
+        let navBar = UINavigationBar.appearance();
+        let regBtn = UIButton.appearance();
+        let barBtn = UIBarButtonItem.appearance();
+    
         navBar.titleTextAttributes = [ NSFontAttributeName: FONT_TITLE, NSForegroundColorAttributeName: COLOR_WHITE ];
         navBar.setBackgroundImage(UIImage(named: "bar-bg"), forBarPosition: UIBarPosition.Any, barMetrics: UIBarMetrics.Default);
         navBar.tintColor = COLOR_RED;

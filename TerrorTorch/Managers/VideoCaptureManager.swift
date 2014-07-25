@@ -39,6 +39,12 @@ class VideoCaptureManager{
         session.sessionPreset = AVCaptureSessionPresetMedium;
     }
     
+    /**
+    *   Attempts to delete previous file at path
+    *   Starts session and writes data from inputs to path
+    *   
+    *   @param path:String Path to write output
+    */
     func startRecordingToPath(path:String){
         if(!session.running){
             let url = NSURL(fileURLWithPath: path);
@@ -63,6 +69,10 @@ class VideoCaptureManager{
         }
     }
     
+    /**
+    *  Stop writing data to output and stop capture session
+    */
+    
     func endRecording(){
         if(session.running){
             output.stopRecording();
@@ -72,6 +82,14 @@ class VideoCaptureManager{
         }
     }
     
+    /**
+    *  Safely attempts to add input of device to capture session
+    *
+    *  @param session:AVCaptureSession Should not already have an input from given device
+    *  @param device:AVCaptureDevice
+    *
+    *  @return Input object that was added to session
+    */
     class func addInputTo(session:AVCaptureSession, usingDevice device:AVCaptureDevice) -> AVCaptureDeviceInput?{
         var error:NSError?
         
@@ -92,6 +110,13 @@ class VideoCaptureManager{
         return nil;
     }
     
+    /**
+    *  Iterates through all available devices looking for a match
+    *
+    *  @param type:String                      AVMediaVideo, AVMediaAudio or AVMediaMux
+    *  @param position:AVCaptureDevicePosition
+    *  @return Will return nil if not devices match parameters. 
+    */
     class func getDevice(type:String, position:AVCaptureDevicePosition) -> AVCaptureDevice?{
         println("Searching for compatible AV device of type \(type)");
         for device in AVCaptureDevice.devices() as [AVCaptureDevice]{ //Iterate through avaiable capture devices
