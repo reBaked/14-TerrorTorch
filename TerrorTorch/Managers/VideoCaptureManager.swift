@@ -12,31 +12,45 @@ import CoreMedia
 
 class VideoCaptureManager{
     
-    let session = AVCaptureSession(); //Manages data between input and output
-    let output = AVCaptureMovieFileOutput(); //Manages output of video feed data
+    private var _session:AVCaptureSession!   //Manages data between input and output
+    private let _output:AVCaptureMovieFileOutput //Manages output of video feed data
+    
+    
+    var captureSession:AVCaptureSession?{
+        get {
+            return _session;
+        }
+    }
+    
+    var isReady:Bool{
+        get{
+            return VideoCaptureManager.isValidSession(_session) && _session.outputs.isEmpty == false;
+        }
+    }
+    
     var delegate:AVCaptureFileOutputRecordingDelegate? //Notified of when recording starts and stops
     
-    init(position:AVCaptureDevicePosition){
+    /**
+    *  Will default to creating a session using devices found at the front of the gadget
+    *  If a full session with video and audio capabilities cannot be made, then trying to
+    *  record the capture session will cause the app to crash
+    */
+    init(aPosition:AVCaptureDevicePosition?, aSession:AVCaptureSession?){
+        let position = (aPosition) ? aPosition! : AVCaptureDevicePosition.Front;
         
         //Obtain proper device and configure capture session//Iterate through avaiable capture devices
-            
-        if let device = VideoCaptureManager.getDevice(AVMediaTypeVideo, position: position){
-            if(VideoCaptureManager.addInputTo(session, usingDevice: device) == false){
-                println("Faled to add video input");
+        if(!aSession || VideoCaptureManager.isValidSession(aSession) == false){
+            if let newSession = VideoCaptureManager.getFullAVCaptureSession(position){
+                _session = newSession;
+            } else {
+                println("Was unable to create a valid session at position: \(position)");
             }
-        }
-            
-        if let device = VideoCaptureManager.getDevice(AVMediaTypeAudio, position: position){
-            if(VideoCaptureManager.addInputTo(session, usingDevice: device) == false){
-                println("Failed to add audio input");
-            }
+        } else {
+            _session = aSession!;
         }
         
-        
-        (session.canAddOutput(output)) ? session.addOutput(output) : println("Cannot add AV output");
-        
-        //AVCaptureSession Configuration
-        session.sessionPreset = AVCaptureSessionPresetMedium;
+        _output = AVCaptureMovieFileOutput();
+        (_session.canAddOutput(_output)) ? _session.addOutput(_output) : println("Cannot add AV output");
     }
     
     /**
@@ -46,7 +60,13 @@ class VideoCaptureManager{
     *   @param path:String Path to write output
     */
     func startRecordingToPath(path:String){
-        if(!session.running){
+        if(!isReady){
+            println("Unabled to start recording either because of an invalid session or output device");
+            return;
+        }
+        
+        if(!_session!.running){
+            
             let url = NSURL(fileURLWithPath: path);
             let manager = NSFileManager.defaultManager();
         
@@ -63,9 +83,10 @@ class VideoCaptureManager{
             }
         
             //Start session, then start recording
-            session.startRunning();
-            output.startRecordingToOutputFileURL(url, recordingDelegate: delegate);
-            println("Started recording to: \(url)");
+            _session.startRunning();
+            println("Started capture session");
+            _output.startRecordingToOutputFileURL(url, recordingDelegate: delegate);
+            println("Started recording session to: \(url)");
         }
     }
     
@@ -74,10 +95,11 @@ class VideoCaptureManager{
     */
     
     func endRecording(){
-        if(session.running){
-            output.stopRecording();
-            session.stopRunning()
-            println("Stopped recording camera feed");
+        if(_session.running){
+            _output.stopRecording();
+            println("Stopped recording session");
+            _session.stopRunning()
+            println("Stopped capture session");
             
         }
     }
@@ -111,19 +133,77 @@ class VideoCaptureManager{
     }
     
     /**
+    *  Returns a session that contains a valid video and audio input for the given position
+    *
+    *  @param position:AVCaptureDevicePosition Position of device
+    *
+    *  @return Nil if unable to create a session.
+    */
+    class func getFullAVCaptureSession(position:AVCaptureDevicePosition) -> AVCaptureSession?{
+        let session = AVCaptureSession();
+    
+        if let device = VideoCaptureManager.getDevice(AVMediaTypeVideo, position: position){
+            if(VideoCaptureManager.addInputTo(session, usingDevice: device) == false){
+                println("Failed to add video input");
+            }
+        } else {
+            println("Unable to obtain a valid video input");
+        }
+        
+        if let device = VideoCaptureManager.getDevice(AVMediaTypeAudio, position: position){
+            if(VideoCaptureManager.addInputTo(session, usingDevice: device) == false){
+                println("Failed to add audio input");
+            }
+        } else {
+            println("Unable obtain a valid audio input");
+        }
+        
+        //AVCaptureSession Configuration
+        session.sessionPreset = AVCaptureSessionPresetMedium;
+        if(VideoCaptureManager.isValidSession(session) == false){
+            return nil;
+        }
+        
+        return session;
+    }
+    
+    /**
     *  Iterates through all available devices looking for a match
     *
-    *  @param type:String                      AVMediaVideo, AVMediaAudio or AVMediaMux
+    *  @param type:String AVMediaVideo, AVMediaAudio or AVMediaMux
     *  @param position:AVCaptureDevicePosition
     *  @return Will return nil if not devices match parameters. 
     */
     class func getDevice(type:String, position:AVCaptureDevicePosition) -> AVCaptureDevice?{
-        println("Searching for compatible AV device of type \(type)");
         for device in AVCaptureDevice.devices() as [AVCaptureDevice]{ //Iterate through avaiable capture devices
             if(device.hasMediaType(type) && device.position == position){
                 return device;
             }
         }
         return nil;
+    }
+    
+    /**
+    *  Determines if given session has minimum requirements for VideoCaptureManager
+    *
+    *  @param session:AVCaptureSession Can be obtained by calling getFullAVCaptureSession
+    *
+    *  @return Return true only if session has a valid audio and video input.
+    */
+    class func isValidSession(aSession:AVCaptureSession?) -> Bool{
+        if let session = aSession{
+            var hasVideo = false;
+            var hasAudio = false;
+            for input in session.inputs as [AVCaptureDeviceInput]{
+                if(input.device.hasMediaType(AVMediaTypeVideo)){
+                    hasVideo = true;
+                } else if(input.device.hasMediaType(AVMediaTypeAudio)){
+                    hasAudio = true;
+                }
+            }
+            return hasVideo && hasAudio;
+        } else {
+            return false;
+        }
     }
 }

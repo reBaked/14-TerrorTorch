@@ -19,7 +19,7 @@
 // Simple openCV motion detection
 // http://blog.cedric.ws/opencv-simple-motion-detection
 
-#define TESTING 0
+#define TESTING 1
 
 #import "CVDetectorViewController.h"
 using namespace cv;

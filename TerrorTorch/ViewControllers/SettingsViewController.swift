@@ -11,8 +11,8 @@ import UIKit
 class SettingsViewController: UIBaseViewController {
     @IBOutlet strong var webView: UIWebView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillLayoutSubviews()  {
+        super.viewWillLayoutSubviews()
         // Do any additional setup after loading the view, typically from a nib.
         
         let htmlFile = NSBundle.mainBundle().pathForResource("credits", ofType: "html");

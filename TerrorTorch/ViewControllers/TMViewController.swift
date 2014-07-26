@@ -19,21 +19,14 @@ class TMViewController: UIBaseViewController{
     @IBOutlet var startButton: UIButton!
 
     
-    var _hasPermissions = false;
-    let _session:AVCaptureSession
-    let _previewLayer:AVCaptureVideoPreviewLayer
-    
-    init(coder aDecoder: NSCoder!) {
-        _session = AVCaptureSession();
-        _previewLayer = AVCaptureVideoPreviewLayer(session: _session);
-        super.init(coder: aDecoder);
-    }
+    private var _hasPermissions = false;
+    private var _session:AVCaptureSession!
+    private var _previewLayer:AVCaptureVideoPreviewLayer!
     
     //MARK: UIViewController Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        println("Adding preview layer");
+        
         self.videoFeedView.layer.addSublayer(self._previewLayer);
         
         // Do any additional setup after loading the view.
@@ -51,12 +44,13 @@ class TMViewController: UIBaseViewController{
         });
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated);
-        println("Starting capture session");
-        self._session.startRunning();
+    
+    override func viewDidAppear(animated: Bool){
+        super.viewDidAppear(animated);
         println("Configuring preview layer");
         self.configurePreviewLayer();
+        println("Starting capture session");
+        self._session.startRunning();
     }
     
     override func didReceiveMemoryWarning() {
@@ -148,11 +142,13 @@ class TMViewController: UIBaseViewController{
     *   Adds video input to capture session and defaults to front camera
     */
     func setInitialConfigurationForSession(){
-        if let device = VideoCaptureManager.getDevice(AVMediaTypeVideo, position: AVCaptureDevicePosition.Front){
-            
-            if(!VideoCaptureManager.addInputTo(_session, usingDevice: device)){
-                println("Failed to add video input to preview session")
-            }
+        
+        if let aSession = VideoCaptureManager.getFullAVCaptureSession(AVCaptureDevicePosition.Front){
+            _session = aSession;
+            _previewLayer = AVCaptureVideoPreviewLayer(session: _session);
+        } else {
+            println("Failed to create a valid session to preview capture session. Will not be able to record");
+            startButton.enabled = false;
         }
     }
     

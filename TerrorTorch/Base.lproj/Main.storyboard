@@ -120,7 +120,6 @@
         <!--Settings-->
         <scene sceneID="8x5-sA-7iJ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fya-cN-kmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="settingsViewController" title="Settings" id="M2o-U6-1h2" customClass="SettingsViewController" customModule="TerrorTorch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aN8-D8-9xf"/>
@@ -163,6 +162,7 @@
                         <outlet property="webView" destination="81I-GM-AvB" id="x4E-KU-5fd"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fya-cN-kmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1426" y="431"/>
         </scene>
