@@ -42,17 +42,15 @@ class TMViewController: UIBaseViewController{
                 println("Inadequate AV permissions");
                 self.startButton.enabled = false;
             }
+            
+            dispatch_sync(dispatch_get_main_queue()){
+                if(self._hasValidSession == false){
+                    let alertView = UIAlertView(title: "Invalid device", message: "This device does not meet the minimum requirements to run TerrorTorch mode", delegate: nil, cancelButtonTitle: "Ok");
+                    alertView.show();
+                    self.videoFeedView.alpha = 0.0;
+                }
+            }
         });
-        
-        NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("checkSession"), userInfo: nil, repeats: false);
-    }
-    
-    func checkSession(){
-        if(self._hasValidSession == false){
-            let alertView = UIAlertView(title: "Invalid device", message: "This device does not meet the minimum requirements to run TerrorTorch mode", delegate: nil, cancelButtonTitle: "Ok");
-            alertView.show();
-            self.videoFeedView.alpha = 0.0;
-        }
     }
 
     override func viewDidAppear(animated: Bool){
