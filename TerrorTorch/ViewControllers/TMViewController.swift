@@ -20,6 +20,7 @@ class TMViewController: UIBaseViewController{
 
     
     private var _hasPermissions = false;
+    private var _hasValidSession = false;
     private var _session:AVCaptureSession!
     private var _previewLayer:AVCaptureVideoPreviewLayer!
     
@@ -31,26 +32,37 @@ class TMViewController: UIBaseViewController{
         
         // Do any additional setup after loading the view.
         println("Requesting permission to use AV devices");
+        
         self.requestAVPermissions(completion: {
             println("AV permissions have been set");
             if($0){
                 println("Setting up initial configuration for capture session");
                 self.setInitialConfigurationForSession();
-                
             } else{
                 println("Inadequate AV permissions");
                 self.startButton.enabled = false;
             }
         });
+        
+        NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("checkSession"), userInfo: nil, repeats: false);
     }
     
-    
+    func checkSession(){
+        if(self._hasValidSession == false){
+            let alertView = UIAlertView(title: "Invalid device", message: "This device does not meet the minimum requirements to run TerrorTorch mode", delegate: nil, cancelButtonTitle: "Ok");
+            alertView.show();
+            self.videoFeedView.alpha = 0.0;
+        }
+    }
+
     override func viewDidAppear(animated: Bool){
         super.viewDidAppear(animated);
-        println("Configuring preview layer");
-        self.configurePreviewLayer();
-        println("Starting capture session");
-        self._session.startRunning();
+        if(_session){
+            println("Configuring preview layer");
+            self.configurePreviewLayer();
+            println("Starting capture session");
+            self._session.startRunning();
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -70,26 +82,26 @@ class TMViewController: UIBaseViewController{
     
     //MARK: IBActions
     @IBAction func cameraPositionChanged(sender: UISegmentedControl) {
-        _session.beginConfiguration();
-        
-        if let device = VideoCaptureManager.getDevice(AVMediaTypeVideo, position: self.getCameraPosition()){
+        if(_session){
+            _session.beginConfiguration();
+            if let device = VideoCaptureManager.getDevice(AVMediaTypeVideo, position: self.getCameraPosition()){
             
-            if let currentInput = _session.getInput(AVMediaTypeVideo){
-                _session.removeInput(currentInput);
-            } else {
-                println("No video input found in session while changing camera position");
-            }
+                if let currentInput = _session.getInput(AVMediaTypeVideo){
+                    _session.removeInput(currentInput);
+                } else {
+                    println("No video input found in session while changing camera position");
+                }
             
-            if let input = VideoCaptureManager.addInputTo(_session, usingDevice: device){
-                println("Successfully changed position of camera");
+                if let input = VideoCaptureManager.addInputTo(_session, usingDevice: device){
+                    println("Successfully changed position of camera");
+                } else {
+                    println("Failed to change positon of camera");
+                }
             } else {
-                println("Failed to change positon of camera");
+                println("Device does not support that camera position");
             }
-        } else {
-            println("Device does not support that camera position");
+            _session.commitConfiguration();
         }
-        
-        _session.commitConfiguration();
     }
     
     //MARK: Queries
@@ -132,10 +144,12 @@ class TMViewController: UIBaseViewController{
     *  Changes frame of preview layer to match and fill outlet view
     */
     func configurePreviewLayer(){
-        let layerRect = self.videoFeedView.layer.bounds;
-        _previewLayer.bounds = layerRect;
-        _previewLayer.position = CGPointMake(CGRectGetMidX(layerRect), CGRectGetMidY(layerRect));
-        _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        if(_previewLayer){
+            let layerRect = self.videoFeedView.layer.bounds;
+            _previewLayer.bounds = layerRect;
+            _previewLayer.position = CGPointMake(CGRectGetMidX(layerRect), CGRectGetMidY(layerRect));
+            _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        }
     }
 
     /**
@@ -146,6 +160,7 @@ class TMViewController: UIBaseViewController{
         if let aSession = VideoCaptureManager.getFullAVCaptureSession(AVCaptureDevicePosition.Front){
             _session = aSession;
             _previewLayer = AVCaptureVideoPreviewLayer(session: _session);
+            _hasValidSession = true;
         } else {
             println("Failed to create a valid session to preview capture session. Will not be able to record");
             startButton.enabled = false;

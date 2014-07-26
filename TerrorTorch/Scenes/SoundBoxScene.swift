@@ -21,7 +21,7 @@ enum SpriteAttribute:String{
 class SoundBoxScene: SKScene {
     
     //Information on actions expected by a SKNode
-    var childActionAttributes:[[String:AnyObject]] = []
+    var actionAttributes:[[String:AnyObject]] = [];
     
     override func didMoveToView(view: SKView!) {
         self.createSceneContents();
@@ -41,17 +41,39 @@ class SoundBoxScene: SKScene {
     
     /**
     *   Creates nodes to be used in scene.
+    *   Everything is hard coded at the moment, this needs to change to something better.
     */
     func createSceneContents(){
         //Create Scene sprites
-        let dollHead = createSprite("dollhead", imageName: "dollhead.png", size: CGSizeMake(200, 200));
+        let dollHead = createSprite("dollhead", imageName: "dollhead", size: CGSizeMake(200, 200));
         let dollHeadAttributes = createSpriteActionAttributes("dollhead", soundName: "young-girl-scream", rotations: 6, duration: 3.0);
+        
+        let knife = createSprite("knife", imageName: "knife", size: CGSizeMake(200,200));
+        let knifeAttributes = createSpriteActionAttributes("knife", soundName: "knife-stab-splatter", rotations: 0.0, duration: 0.0);
+        
+        let pitchFork = createSprite("pitchfork", imageName: "pitchfork", size: CGSizeMake(200, 200));
+        let pitchForkAttributes = createSpriteActionAttributes("pitchfork", soundName: "devil-laugh", rotations: 0.0, duration: 0.0);
+        
+        let anubis = createSprite("anubis", imageName: "anubis", size: CGSizeMake(200, 200));
+        let anubisAttributes = createSpriteActionAttributes("anubis", soundName: "ghost-egyptian-phantom", rotations: 6, duration: 3.0);
         
         //Add sprite to scene
         self.addChild(dollHead);
-
+        self.addChild(knife);
+        self.addChild(pitchFork);
+        self.addChild(anubis);
+        
         //Store attribute information
-        childActionAttributes.append(dollHeadAttributes);
+        actionAttributes.append(dollHeadAttributes);
+        actionAttributes.append(knifeAttributes);
+        actionAttributes.append(pitchForkAttributes);
+        actionAttributes.append(anubisAttributes);
+        
+        //Position nodes
+        positionNode("dollhead", point: CGPointMake(0, 0), duration: 0.0);
+        positionNode("knife", point: CGPointMake(0,200), duration: 0.0);
+        positionNode("pitchfork", point: CGPointMake(200, 0), duration: 0.0);
+        positionNode("anubis", point: CGPointMake(200,200), duration: 0.0);
     }
     
     /**
@@ -67,7 +89,28 @@ class SoundBoxScene: SKScene {
         var sprite = SKSpriteNode(texture: SKTexture(imageNamed: imageName), color: UIColor.whiteColor(), size: size);
         sprite.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         sprite.name = name;
+    
         return sprite;
+    }
+    
+    /**
+    *  Positions sprite at node
+    *
+    *  @param name:String       Name of sprite
+    *  @param point:CGPoint     Final position of sprite
+    *  @param duration:Double   Animates to final position over duration. 0 will not animate.
+    */
+    
+    func positionNode(name:String, point:CGPoint, duration:Double){
+        
+        if let node = self.childNodeWithName(name) as? SKSpriteNode{
+            node.anchorPoint = CGPointMake(0, 0);
+            let action = SKAction.moveTo(point, duration: duration);
+            node.runAction(action);
+            node.anchorPoint = CGPointMake(0.5, 0.5);
+        } else {
+            println("Could not find sprite with the name \(name)");
+        }
     }
     
     /**
@@ -135,16 +178,23 @@ class SoundBoxScene: SKScene {
     */
     func getAttributesForNode(node:SKNode) -> [String:AnyObject]?{
         if let nodeName = node.name{
-            let attributes = $.find(childActionAttributes, iterator: {
+            let attributes = $.find(actionAttributes, iterator: {
                 if let attributeName = ($0 as [String:AnyObject])["name"]! as? String{
                     return attributeName == nodeName;
                 }
                 return false;
-                })
-        
-            return attributes as [String:AnyObject];
+            })
+            
+            if let result = attributes as? [String:AnyObject]{
+                return result;
+            } else {
+                println("Couldn't find a action attributes for node named \(nodeName)");
+                return nil;
+            }
+        } else {
+            println("Node must have a name in order to find action attributes");
+            return nil;
         }
-        return nil;
     }
     
     func performActions(actions:[SKAction], onNode node:SKNode){

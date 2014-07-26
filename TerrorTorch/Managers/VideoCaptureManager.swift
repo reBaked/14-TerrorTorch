@@ -155,7 +155,7 @@ class VideoCaptureManager{
                 println("Failed to add audio input");
             }
         } else {
-            println("Unable obtain a valid audio input");
+            println("Unable to obtain a valid audio input");
         }
         
         //AVCaptureSession Configuration
