@@ -56,9 +56,6 @@ class SoundBoxScene: SKScene {
     */
     func createSceneContents(){
         //Create Scene sprites
-        let width = self.frame.width/2;
-        let height = self.frame.height/2;
-        
         var i = 0;
         while(i < spriteAssets.count){
             let name = spriteAssets[i++];
@@ -73,30 +70,31 @@ class SoundBoxScene: SKScene {
             }
             
         
-            let sprite = createSprite(name, imageName: name, size: CGSizeMake(width, height));
+            let sprite = createSprite(name, imageName: name);
             let attributes = createSpriteActionAttributes(name, soundName: soundName, rotations: rotations, duration: duration);
             
             self.addChild(sprite);
             actionAttributes.append(attributes);
             
-            let byX = width * (3/4);
-            let byY = height * (3/4);
+            let quarterWidth = self.frame.width/4;
+            let quarterHeight = self.frame.height/4;
             var moveBy:CGPoint;
             switch(i){
-            case 2:
-                moveBy = CGPointMake(-width/2, height/2);
-            case 4:
-                moveBy = CGPointMake(width/2, height/2);
-                break;
-            case 6:
-                moveBy = CGPointMake(-width/2,-height/2);
-                break;
-            case 8:
-                moveBy = CGPointMake(width/2,-height/2);
-                break;
-            default:
-                moveBy = CGPointMake(0,0);
-                break;
+                case 2:
+                    moveBy = CGPointMake(-quarterWidth, quarterHeight);
+                    break;
+                case 4:
+                    moveBy = CGPointMake(quarterWidth, quarterHeight);
+                    break;
+                case 6:
+                    moveBy = CGPointMake(-quarterWidth, -quarterHeight);
+                    break;
+                case 8:
+                    moveBy = CGPointMake(quarterWidth, -quarterHeight);
+                    break;
+                default:
+                    moveBy = CGPointMake(0,0);
+                    break;
             }
             
             moveNode(name, point: moveBy, duration: 3.0);
@@ -112,9 +110,9 @@ class SoundBoxScene: SKScene {
     *
     *  @return Sprite object
     */
-    func createSprite(name:String, imageName:String, size:CGSize) -> SKSpriteNode{
+    func createSprite(name:String, imageName:String) -> SKSpriteNode{
         
-        var sprite = SKSpriteNode(texture: SKTexture(imageNamed: imageName), color: UIColor.whiteColor(), size: size);
+        let sprite = SKSpriteNode(imageNamed: imageName);
         sprite.name = name;
         sprite.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         return sprite;
