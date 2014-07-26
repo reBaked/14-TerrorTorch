@@ -29,7 +29,7 @@ class SoundBoxViewController: UIBaseViewController {
         super.viewWillAppear(animated);
         
         //Create scene
-        let scene = SoundBoxScene(size: CGSizeMake(768, 1024));
+        let scene = SoundBoxScene(size: self.view.frame.size);
         let spriteView = self.view as SKView;
         
         //Present it

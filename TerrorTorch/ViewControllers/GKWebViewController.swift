@@ -8,13 +8,15 @@
 
 import UIKit
 
-class GKWebViewController: UIViewController {
+class GKWebViewController: UIViewController, UIWebViewDelegate {
 
-    @IBOutlet strong var webView: UIWebView!
+    @IBOutlet var webView: UIWebView!
+    @IBOutlet var backButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        webView.delegate = self;
         let url = NSURL(string: "http://www.goldenviking.org/");
         webView.loadRequest(NSURLRequest(URL:url));
     }
@@ -27,7 +29,9 @@ class GKWebViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func webViewDidFinishLoad(webView: UIWebView!) {
+        backButton.enabled = webView.canGoBack;
+    }
     /*
     // #pragma mark - Navigation
 

@@ -17,7 +17,6 @@
 		2948994B1975BD58007D0D97 /* SoundBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899441975BD58007D0D97 /* SoundBoxViewController.swift */; };
 		2948994C1975BD58007D0D97 /* TMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899451975BD58007D0D97 /* TMViewController.swift */; };
 		294899581975BD6F007D0D97 /* credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 2948994E1975BD6F007D0D97 /* credits.html */; };
-		294899591975BD6F007D0D97 /* dollhead.png in Resources */ = {isa = PBXBuildFile; fileRef = 294899501975BD6F007D0D97 /* dollhead.png */; };
 		2948995A1975BD6F007D0D97 /* mono-power-button-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = 294899511975BD6F007D0D97 /* mono-power-button-hi.png */; };
 		2948995B1975BD6F007D0D97 /* devil-laugh.wav in Resources */ = {isa = PBXBuildFile; fileRef = 294899531975BD6F007D0D97 /* devil-laugh.wav */; };
 		2948995C1975BD6F007D0D97 /* ghost-egyptian-phantom.wav in Resources */ = {isa = PBXBuildFile; fileRef = 294899541975BD6F007D0D97 /* ghost-egyptian-phantom.wav */; };
@@ -71,7 +70,6 @@
 		294899441975BD58007D0D97 /* SoundBoxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundBoxViewController.swift; sourceTree = "<group>"; };
 		294899451975BD58007D0D97 /* TMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMViewController.swift; sourceTree = "<group>"; };
 		2948994E1975BD6F007D0D97 /* credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = credits.html; sourceTree = "<group>"; };
-		294899501975BD6F007D0D97 /* dollhead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dollhead.png; sourceTree = "<group>"; };
 		294899511975BD6F007D0D97 /* mono-power-button-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mono-power-button-hi.png"; sourceTree = "<group>"; };
 		294899531975BD6F007D0D97 /* devil-laugh.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "devil-laugh.wav"; sourceTree = "<group>"; };
 		294899541975BD6F007D0D97 /* ghost-egyptian-phantom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "ghost-egyptian-phantom.wav"; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 		2948994F1975BD6F007D0D97 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				294899501975BD6F007D0D97 /* dollhead.png */,
 				294899511975BD6F007D0D97 /* mono-power-button-hi.png */,
 			);
 			path = Images;
@@ -390,7 +387,6 @@
 				2948995E1975BD6F007D0D97 /* knife-stab-splatter.wav in Resources */,
 				2948995D1975BD6F007D0D97 /* its-behind-you-spoken.wav in Resources */,
 				2948995B1975BD6F007D0D97 /* devil-laugh.wav in Resources */,
-				294899591975BD6F007D0D97 /* dollhead.png in Resources */,
 				294899581975BD6F007D0D97 /* credits.html in Resources */,
 				2948995A1975BD6F007D0D97 /* mono-power-button-hi.png in Resources */,
 				2948995C1975BD6F007D0D97 /* ghost-egyptian-phantom.wav in Resources */,

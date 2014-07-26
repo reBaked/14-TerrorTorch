@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="uFg-jy-wQs">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Main Screen Controller-->
+        <!--Main Menu-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainScreenController" customModule="TerrorTorch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Main Menu" id="BYZ-38-t0r" customClass="MainScreenController" customModule="TerrorTorch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -183,14 +182,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
                                     <navigationItem title="GoldenViking" id="7H5-Yx-1XP">
-                                        <barButtonItem key="leftBarButtonItem" title="Exit" id="j02-LO-hFZ">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="lid-BA-cm0">
                                             <connections>
-                                                <action selector="exitPressed:" destination="Fb4-iH-5Uz" id="KBf-Uo-MqI"/>
+                                                <action selector="goBack" destination="L1x-dI-nyZ" id="VRb-r2-Beo"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Back" id="FF0-AE-HuA">
+                                        <barButtonItem key="rightBarButtonItem" title="Exit" id="j02-LO-hFZ">
                                             <connections>
-                                                <action selector="goBack" destination="L1x-dI-nyZ" id="Mbz-xV-WH6"/>
+                                                <action selector="exitPressed:" destination="Fb4-iH-5Uz" id="KBf-Uo-MqI"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -217,6 +216,7 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="backButton" destination="lid-BA-cm0" id="OFz-sy-8Rg"/>
                         <outlet property="webView" destination="L1x-dI-nyZ" id="Xu1-Ug-1yC"/>
                     </connections>
                 </viewController>
@@ -265,10 +265,10 @@
             </objects>
             <point key="canvasLocation" x="1490" y="-839"/>
         </scene>
-        <!--Torch Mode-->
+        <!--Terror Mode-->
         <scene sceneID="G5v-a6-eng">
             <objects>
-                <viewController title="Torch Mode" id="iOa-Fz-k1s" customClass="TMViewController" customModule="TerrorTorch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Terror Mode" id="iOa-Fz-k1s" customClass="TMViewController" customModule="TerrorTorch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XUH-OL-CoF"/>
                         <viewControllerLayoutGuide type="bottom" id="bPD-mX-ZDZ"/>

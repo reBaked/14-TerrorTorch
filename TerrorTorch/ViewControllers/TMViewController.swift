@@ -160,7 +160,7 @@ class TMViewController: UIBaseViewController{
             _previewLayer = AVCaptureVideoPreviewLayer(session: _session);
             _hasValidSession = true;
         } else {
-            println("Failed to create a valid session to preview capture session. Will not be able to record");
+            println("Failed to create a valid session to preview camera feed. Will not be able to record");
             startButton.enabled = false;
         }
     }
