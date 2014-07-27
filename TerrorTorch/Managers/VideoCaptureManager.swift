@@ -193,15 +193,15 @@ class VideoCaptureManager{
     class func isValidSession(aSession:AVCaptureSession?) -> Bool{
         if let session = aSession{
             var hasVideo = false;
-            var hasAudio = false;
+            //var hasAudio = false;
             for input in session.inputs as [AVCaptureDeviceInput]{
                 if(input.device.hasMediaType(AVMediaTypeVideo)){
                     hasVideo = true;
-                } else if(input.device.hasMediaType(AVMediaTypeAudio)){
+                }/* else if(input.device.hasMediaType(AVMediaTypeAudio)){
                     hasAudio = true;
-                }
+                }*/
             }
-            return hasVideo && hasAudio;
+            return hasVideo;
         } else {
             return false;
         }
