@@ -86,28 +86,8 @@ class CaptureViewController: UIViewController, Ticker, CVDetectorDelegate, AVCap
         super.viewDidLoad();
         
         labelCountdown.text = String(Int(timerCountdown));
+        println("Starting countdown...");
         timer.startCountdown();
-    }
-    
-    //MARK: Ticker Delegate
-    func Tick(timeLeft:Double) {
-        println("Tick: \(timeLeft)");
-        labelCountdown.text = String(Int(timeLeft))
-    }
-    
-    func Timeout() {
-        println("Countdown complete");
-        labelCountdown.text = "Starting camera..."
-        self.presentViewController(motionDetector, animated: false, completion: nil);
-    }
-    
-    //MARK: CVDetectorDelegate
-    func motionTriggered() {
-        println("Motion Triggered");
-        labelCountdown.text = "Motion triggered!";
-        self.dismissViewControllerAnimated(true, completion: { //Dismiss motion detector
-            self.startRecording();
-        });
     }
     
     //MARK: VideoCaptureManager Actions
@@ -118,9 +98,31 @@ class CaptureViewController: UIViewController, Ticker, CVDetectorDelegate, AVCap
         NSTimer.scheduledTimerWithTimeInterval(_duration, target: self, selector: Selector("endRecording"), userInfo: nil, repeats: false);//Schedule when to end recording
     }
     
+    //Called when NSTimer:_duration ends
     func endRecording(){
         captureManager.endRecording();
         self.dismissViewControllerAnimated(false, completion: nil);
+    }
+    
+    //MARK: Ticker Delegate
+    func Tick(timeLeft:Double) {
+        labelCountdown.text = String(Int(timeLeft))
+    }
+    
+    func Timeout() {
+        println("Countdown complete, starting motion detector");
+        labelCountdown.text = "Starting camera..."
+        self.presentViewController(motionDetector, animated: false, completion: nil);
+    }
+    
+    //MARK: CVDetectorDelegate
+    func motionTriggered() {
+        println("Motion captured, dismissing motion detector");
+        labelCountdown.text = "Motion triggered!";
+        self.dismissViewControllerAnimated(true, completion: { //Dismiss motion detector
+            println("Start recording camera feed");
+            self.startRecording();
+        });
     }
     
     //MARK: AVCaptureFileOutputRecording Delegate

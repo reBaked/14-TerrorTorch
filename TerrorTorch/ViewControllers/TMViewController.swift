@@ -20,7 +20,6 @@ class TMViewController: UIBaseViewController{
 
     
     private var _hasPermissions = false;
-    private var _hasValidSession = false;
     private var _session:AVCaptureSession!
     private var _previewLayer:AVCaptureVideoPreviewLayer!
     
@@ -28,23 +27,30 @@ class TMViewController: UIBaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.videoFeedView.layer.addSublayer(self._previewLayer);
-        
         // Do any additional setup after loading the view.
-        println("Requesting permission to use AV devices");
+        print("Requesting permission to use audio devices: ");
+        AVCaptureDevice.requestAccessForMediaType(AVMediaTypeAudio, completionHandler: {
+            if($0){ print("Granted\n"); }
+            else {  print("Denied\n");  }
+        });
         
-        self.requestAVPermissions(completion: {
-            println("AV permissions have been set");
+        print("Requesting permission to use video devices: ")
+        AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: {
             if($0){
-                println("Setting up initial configuration for capture session");
-                self.setInitialConfigurationForSession();
-            } else{
-                println("Inadequate AV permissions");
+                print("Granted\n");
+                self._hasPermissions = true;
+            } else {
+                print("Denied\n");
                 self.startButton.enabled = false;
             }
             
             dispatch_sync(dispatch_get_main_queue()){
-                if(self._hasValidSession == false){
+                println("Setting up default capture session");
+                self.setInitialConfigurationForSession();
+                if(VideoCaptureManager.isValidSession(self._session)){
+                    println("Configuring preview layer");
+                    self.configurePreviewLayer();
+                } else {
                     let alertView = UIAlertView(title: "Invalid device", message: "This device does not meet the minimum requirements to run TerrorTorch mode", delegate: nil, cancelButtonTitle: "Ok");
                     alertView.show();
                     self.videoFeedView.alpha = 0.0;
@@ -56,10 +62,15 @@ class TMViewController: UIBaseViewController{
     override func viewDidAppear(animated: Bool){
         super.viewDidAppear(animated);
         if(_session){
-            println("Configuring preview layer");
-            self.configurePreviewLayer();
             println("Starting capture session");
             self._session.startRunning();
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        if(_session){ //&& _session.running){
+            println("Stopping capture session");
+            self._session.stopRunning();
         }
     }
     
@@ -69,8 +80,6 @@ class TMViewController: UIBaseViewController{
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        _session.stopRunning();
-        
         if let controller = segue.destinationViewController as? CaptureViewController{
             controller.cameraPosition = self.getCameraPosition();
             controller.timerCountdown = self.getCountdownTime();
@@ -142,11 +151,13 @@ class TMViewController: UIBaseViewController{
     *  Changes frame of preview layer to match and fill outlet view
     */
     func configurePreviewLayer(){
-        if(_previewLayer){
+        if(VideoCaptureManager.isValidSession(_session)){
             let layerRect = self.videoFeedView.layer.bounds;
             _previewLayer.bounds = layerRect;
             _previewLayer.position = CGPointMake(CGRectGetMidX(layerRect), CGRectGetMidY(layerRect));
             _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+            _previewLayer = AVCaptureVideoPreviewLayer(session: _session);
+            self.videoFeedView.layer.addSublayer(self._previewLayer);
         }
     }
 
@@ -157,35 +168,9 @@ class TMViewController: UIBaseViewController{
         
         if let aSession = VideoCaptureManager.getFullAVCaptureSession(AVCaptureDevicePosition.Front){
             _session = aSession;
-            _previewLayer = AVCaptureVideoPreviewLayer(session: _session);
-            _hasValidSession = true;
         } else {
-            println("Failed to create a valid session to preview camera feed. Will not be able to record");
+            println("Failed to create a valid capture session. Disabling TerrorMode");
             startButton.enabled = false;
         }
     }
-    
-    //MARK: User Settings
-    
-    /**
-    *   Checks to see if app has been given permission to microphone and camera
-    *   If not, ask for permission.
-    */
-    func requestAVPermissions(completion callback: (Bool) -> ()){
-        AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: {
-            if($0){
-                AVCaptureDevice.requestAccessForMediaType(AVMediaTypeAudio, completionHandler: {
-                    if($0){
-                        self._hasPermissions = true;
-                    } else {
-                        println("Denied use of Microphone");
-                    }
-                    callback(self._hasPermissions);
-                })
-            } else {
-                println("Denied use of camera");
-            }
-        });
-    }
-    
 }
