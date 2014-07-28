@@ -26,10 +26,18 @@ class CaptureViewController: UIViewController, Ticker, CVDetectorDelegate, AVCap
         _captureManager = VideoCaptureManager(aPosition: cameraPosition, aSession: nil);
         _motionDetector = CVDetectorViewController();
         super.init(coder: aDecoder);
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad();
         
         _timer.delegate = self;
         _motionDetector.delegate = self;
         _captureManager.delegate = self;
+        
+        labelCountdown.text = String(Int(timerCountdown));
+        println("Starting countdown...");
+        timer.startCountdown();
     }
     
     /**
@@ -82,13 +90,7 @@ class CaptureViewController: UIViewController, Ticker, CVDetectorDelegate, AVCap
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad();
-        
-        labelCountdown.text = String(Int(timerCountdown));
-        println("Starting countdown...");
-        timer.startCountdown();
-    }
+    
     
     //MARK: VideoCaptureManager Actions
     func startRecording(){

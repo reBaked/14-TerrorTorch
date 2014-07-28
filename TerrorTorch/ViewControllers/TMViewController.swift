@@ -26,36 +26,36 @@ class TMViewController: UIBaseViewController{
     //MARK: UIViewController Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
-        print("Requesting permission to use audio devices: ");
-        AVCaptureDevice.requestAccessForMediaType(AVMediaTypeAudio, completionHandler: {
-            if($0){ print("Granted\n"); }
-            else {  print("Denied\n");  }
-        });
         
-        print("Requesting permission to use video devices: ")
-        AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: {
-            if($0){
-                print("Granted\n");
-                self._hasPermissions = true;
-            } else {
-                print("Denied\n");
-                self.startButton.enabled = false;
-            }
+        print("Requesting permission to use audio devices: ");
+        AVCaptureDevice.requestAccessForMediaType(AVMediaTypeAudio, completionHandler: { (audioGranted) in
+            if(audioGranted){ print("Granted\n"); }
+            else {  print("Denied\n");  }
             
-            dispatch_sync(dispatch_get_main_queue()){
+            print("Requesting permission to use video devices: ")
+            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { (videoGranted) in
+                if(videoGranted){
+                    print("Granted\n");
+                    self._hasPermissions = true;
+                } else {
+                    print("Denied\n");
+                    self.startButton.enabled = false;
+                }
+                
                 println("Setting up default capture session");
                 self.setInitialConfigurationForSession();
                 if(VideoCaptureManager.isValidSession(self._session)){
                     println("Configuring preview layer");
-                    self.configurePreviewLayer();
+                    self._previewLayer = AVCaptureVideoPreviewLayer(session: self._session);
+                    self.videoFeedView.layer.addSublayer(self._previewLayer);
                 } else {
                     let alertView = UIAlertView(title: "Invalid device", message: "This device does not meet the minimum requirements to run TerrorTorch mode", delegate: nil, cancelButtonTitle: "Ok");
                     alertView.show();
                     self.videoFeedView.alpha = 0.0;
                 }
-            }
+
+            });
         });
     }
 
@@ -63,6 +63,7 @@ class TMViewController: UIBaseViewController{
         super.viewDidAppear(animated);
         if(_session){
             println("Starting capture session");
+            self.configurePreviewLayer();
             self._session.startRunning();
         }
     }
@@ -156,8 +157,6 @@ class TMViewController: UIBaseViewController{
             _previewLayer.bounds = layerRect;
             _previewLayer.position = CGPointMake(CGRectGetMidX(layerRect), CGRectGetMidY(layerRect));
             _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-            _previewLayer = AVCaptureVideoPreviewLayer(session: _session);
-            self.videoFeedView.layer.addSublayer(self._previewLayer);
         }
     }
 

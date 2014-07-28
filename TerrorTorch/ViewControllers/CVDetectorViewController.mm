@@ -117,7 +117,7 @@ using namespace cv;
         Scalar total = sum(hasPixel);
         double value = total[0];
 
-        if (value > 5000) { // this threshold seems ok
+        if (value > 3000) { // this threshold seems ok
             [self triggerThreshold];
         }
     }
