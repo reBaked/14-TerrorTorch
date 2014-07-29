@@ -85,11 +85,7 @@ class TempDirBrowseViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell? {
-        var cell = self.tableView.dequeueReusableCellWithIdentifier("MyCell") as? UITableViewCell;
-        
-        if(!cell){
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "MyCell");
-        }
+        var cell = self.tableView.dequeueReusableCellWithIdentifier("myCell") as? UITableViewCell;
         
         cell!.textLabel.text = fileNames[indexPath.row];
         // Configure the cell...

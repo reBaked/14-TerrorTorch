@@ -79,7 +79,7 @@ class MainScreenController: UIBaseViewController {
     }
     
     /**
-    *  Enables/Disables torch mode or mimics torch mode by increasing screen brightness
+    *  Enables/Disables torch mode or mimics by increasing screen brightness
     */
     func turnTorchLightOn(turnOn:Bool){
         if(_isTorchOn == turnOn) { return; }

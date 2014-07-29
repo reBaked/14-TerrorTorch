@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 /**
 *  Appwide constants here:

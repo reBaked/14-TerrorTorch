@@ -23,9 +23,11 @@ class SoundBoxViewController: UIBaseViewController {
         spriteView.showsFPS = true;
         
         //Create scene
+        println("Creating SoundBox scene");
         let scene = SoundBoxScene(size: self.view.frame.size);
         
         //Present it
+        println("Presenting SoundBox scene");
         spriteView.presentScene(scene);
     }
     

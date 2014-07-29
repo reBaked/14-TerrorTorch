@@ -29,7 +29,9 @@ class SoundBoxScene: SKScene {
                         "Anubis", "ghost-egyptian-phantom"];
     
     override func didMoveToView(view: SKView!) {
+        println("Configuring scene");
         self.configureScene();
+        println("Creating scene content");
         self.createSceneContents();
     
         //Initialize gesture recognizers
@@ -64,13 +66,16 @@ class SoundBoxScene: SKScene {
             var rotations = 0.0;
             var duration = 0.0;
             
+            
+            
             if(name == "dollhead" || name == "anubis"){
                 rotations = 6.0
                 duration = 3.0;
             }
             
-        
+            println("Creating \(name) with sound \(soundName)");
             let sprite = createSprite(name, imageName: name);
+            println("Creating action attributes for \(name)");
             let attributes = createSpriteActionAttributes(name, soundName: soundName, rotations: rotations, duration: duration);
             
             self.addChild(sprite);
@@ -97,7 +102,8 @@ class SoundBoxScene: SKScene {
                     break;
             }
             
-            moveNode(name, point: moveBy, duration: 3.0);
+            println("Moving \(name) to final position in scene");
+            self.moveNode(name, point: moveBy, duration: 3.0);
         }
     }
     
@@ -218,7 +224,7 @@ class SoundBoxScene: SKScene {
             return nil;
         }
     }
-    
+
     func performActions(actions:[SKAction], onNode node:SKSpriteNode){
         for action in actions{
             node.runAction(action);
@@ -226,7 +232,7 @@ class SoundBoxScene: SKScene {
     }
     
     /**
-    *  Handle user tap gestures
+    *  If user taps on a valid sprite node, will play sound and perform actions if there are any.
     */
     
     func handleSingleTap(recognizer:UITapGestureRecognizer){

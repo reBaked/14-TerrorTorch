@@ -40,22 +40,22 @@ class UIBaseViewController : UIViewController{
         label.textAlignment = NSTextAlignment.Center;
         
         if(self.title == "Main Menu"){
-            let result = NSMutableAttributedString(string: "Main", attributes: [NSForegroundColorAttributeName:COLOR_RED]);
-            result.appendAttributedString(NSAttributedString(string: "Menu", attributes: [NSForegroundColorAttributeName:COLOR_WHITE]));
-            label.attributedText = NSAttributedString(attributedString: result);
+            label.attributedText = NSAttributedString(attributedString: self.getNavTitle("Main", second: "Menu"));
         } else if(self.title == "Terror Mode"){
-            let result = NSMutableAttributedString(string: "Terror", attributes: [NSForegroundColorAttributeName:COLOR_RED]);
-            result.appendAttributedString(NSAttributedString(string: "Mode", attributes: [NSForegroundColorAttributeName:COLOR_WHITE]));
-            label.attributedText = NSAttributedString(attributedString: result);
+            label.attributedText = NSAttributedString(attributedString: self.getNavTitle("Terror", second: "Mode"));
         } else if(self.title == "Sound Box"){
-            let result = NSMutableAttributedString(string: "Sound", attributes: [NSForegroundColorAttributeName:COLOR_RED]);
-            result.appendAttributedString(NSAttributedString(string: "Box", attributes: [NSForegroundColorAttributeName:COLOR_WHITE]));
-            label.attributedText = NSAttributedString(attributedString: result);
+            label.attributedText = NSAttributedString(attributedString: self.getNavTitle("Sound", second: "Box"));
         } else {
             return nil;
         }
         
         return label;
+    }
+    
+    func getNavTitle(first:String, second:String) -> NSAttributedString{
+        var result = NSMutableAttributedString(string: first, attributes: [NSForegroundColorAttributeName:COLOR_RED]);
+        result.appendAttributedString(NSAttributedString(string: second, attributes: [NSForegroundColorAttributeName:COLOR_WHITE]));
+        return NSAttributedString(attributedString: result);
     }
     
     func popCurrentController(){
