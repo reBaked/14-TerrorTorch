@@ -42,17 +42,20 @@ class TMViewController: UIBaseViewController{
                     print("Denied\n");
                     self.startButton.enabled = false;
                 }
-                
-                println("Setting up default capture session");
-                self.setInitialConfigurationForSession();
-                if(VideoCaptureManager.isValidSession(self._session)){
-                    println("Configuring preview layer");
-                    self._previewLayer = AVCaptureVideoPreviewLayer(session: self._session);
-                    self.videoFeedView.layer.addSublayer(self._previewLayer);
-                } else {
-                    let alertView = UIAlertView(title: "Invalid device", message: "This device does not meet the minimum requirements to run TerrorTorch mode", delegate: nil, cancelButtonTitle: "Ok");
-                    alertView.show();
-                    self.videoFeedView.alpha = 0.0;
+                dispatch_sync(dispatch_get_main_queue()){
+                    println("Setting up default capture session");
+                    self.setInitialConfigurationForSession();
+                    if(VideoCaptureManager.isValidSession(self._session)){
+                        println("Configuring preview layer");
+                        self._previewLayer = AVCaptureVideoPreviewLayer(session: self._session);
+                        self.videoFeedView.layer.addSublayer(self._previewLayer);
+                        self.configurePreviewLayer();
+                        self._session.startRunning();
+                    } else {
+                        let alertView = UIAlertView(title: "Invalid device", message: "This device does not meet the minimum requirements to run TerrorTorch mode", delegate: nil, cancelButtonTitle: "Ok");
+                        alertView.show();
+                        self.videoFeedView.alpha = 0.0;
+                    }
                 }
 
             });
@@ -63,7 +66,6 @@ class TMViewController: UIBaseViewController{
         super.viewDidAppear(animated);
         if(_session){
             println("Starting capture session");
-            self.configurePreviewLayer();
             self._session.startRunning();
         }
     }
