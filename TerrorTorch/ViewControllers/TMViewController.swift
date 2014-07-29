@@ -8,102 +8,170 @@
 
 import UIKit
 import MobileCoreServices
+import AVFoundation
 
-protocol Ticker {
-    func Tick(timeLeft:Double)
-    func Timeout()
-}
 
-class CountdownTimerModel :NSObject {
-    var timeLeft:Double
-    var timer:NSTimer?
-    var delegate:AnyObject
+class TMViewController: UIBaseViewController{
+    
+    @IBOutlet var videoFeedView: UIView!
+    @IBOutlet var sgmtCameraPosition: UISegmentedControl!
+    @IBOutlet var sgmtCountdownTime: UISegmentedControl!
+    @IBOutlet var startButton: UIButton!
 
-    init(initialTime:Double, delegate:AnyObject) {
-        timeLeft = initialTime
-        self.delegate = delegate
-    }
-
-    func startCountdown() {
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "tick", userInfo: nil, repeats: true)
-    }
-
-    func tick() {
-        timeLeft -= 1
-        self.delegate.Tick(timeLeft)
-        if (timeLeft == 0) {
-            self.timer?.invalidate()
-            self.delegate.Timeout()
-        }
-    }
-}
-
-class TMViewController: UIViewController, Ticker, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CVDetectorDelegate {
-
-    @IBOutlet var labelCountdown:UILabel
-    var countdown: CountdownTimerModel?
-    var detector: CVDetectorViewController?
-
+    
+    private var _hasPermissions = false;
+    private var _session:AVCaptureSession!
+    private var _previewLayer:AVCaptureVideoPreviewLayer!
+    
+    //MARK: UIViewController Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        
+        print("Requesting permission to use audio devices: ");
+        AVCaptureDevice.requestAccessForMediaType(AVMediaTypeAudio, completionHandler: { (audioGranted) in
+            if(audioGranted){ print("Granted\n"); }
+            else {  print("Denied\n");  }
+            
+            print("Requesting permission to use video devices: ")
+            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { (videoGranted) in
+                if(videoGranted){
+                    print("Granted\n");
+                    self._hasPermissions = true;
+                } else {
+                    print("Denied\n");
+                    self.startButton.enabled = false;
+                }
+                dispatch_sync(dispatch_get_main_queue()){
+                    println("Setting up default capture session");
+                    self.setInitialConfigurationForSession();
+                    if(VideoCaptureManager.isValidSession(self._session)){
+                        println("Configuring preview layer");
+                        self._previewLayer = AVCaptureVideoPreviewLayer(session: self._session);
+                        self.videoFeedView.layer.addSublayer(self._previewLayer);
+                        self.configurePreviewLayer();
+                        self._session.startRunning();
+                    } else {
+                        let alertView = UIAlertView(title: "Invalid device", message: "This device does not meet the minimum requirements to run TerrorTorch mode", delegate: nil, cancelButtonTitle: "Ok");
+                        alertView.show();
+                        self.videoFeedView.alpha = 0.0;
+                    }
+                }
 
-        // start countdown
-        let totalTime:Double = 3
-        self.labelCountdown.center = self.view.center
-        self.labelCountdown.text = String(Int(totalTime))
-        self.countdown = CountdownTimerModel(initialTime:totalTime, delegate:self)
-        self.countdown?.startCountdown()
+            });
+        });
+    }
+
+    override func viewDidAppear(animated: Bool){
+        super.viewDidAppear(animated);
+        if(_session){
+            println("Starting capture session");
+            self._session.startRunning();
+        }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController.navigationBar.hidden = false;
+    override func viewWillDisappear(animated: Bool) {
+        if(_session){ //&& _session.running){
+            println("Stopping capture session");
+            self._session.stopRunning();
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // #pragma mark - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    
+    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+        if let controller = segue.destinationViewController as? CaptureViewController{
+            controller.cameraPosition = self.getCameraPosition();
+            controller.timerCountdown = self.getCountdownTime();
+            controller.recordDuration = 4;
+        }
     }
+    
+    //MARK: IBActions
+    @IBAction func cameraPositionChanged(sender: UISegmentedControl) {
+        if(_session){
+            _session.beginConfiguration();
+            if let device = VideoCaptureManager.getDevice(AVMediaTypeVideo, position: self.getCameraPosition()){
+            
+                if let currentInput = _session.getInput(AVMediaTypeVideo){
+                    _session.removeInput(currentInput);
+                } else {
+                    println("No video input found in session while changing camera position");
+                }
+            
+                if let input = VideoCaptureManager.addInputTo(_session, usingDevice: device){
+                    println("Successfully changed position of camera");
+                } else {
+                    println("Failed to change positon of camera");
+                }
+            } else {
+                println("Device does not support that camera position");
+            }
+            _session.commitConfiguration();
+        }
+    }
+    
+    //MARK: Queries
+    
+    /**
+    *  Retrieves then converts value of sgmCameraPosition
     */
-
-    // Ticker delegate
-    func Tick(timeLeft:Double) {
-        NSLog("Tick: \(timeLeft)")
-        self.labelCountdown.text = String(Int(timeLeft))
-    }
-
-    func Timeout() {
-        NSLog("Done")
-        self.labelCountdown.text = "Starting camera..."
-
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-        {
-            var detector = CVDetectorViewController()
-            detector.delegate = self
-            self.detector = detector
-            self.presentViewController(detector, animated: true, completion: { _ in
-            })
-        }
-        else {
-            NSLog("Must have camera-enabled device")
+    func getCameraPosition() -> AVCaptureDevicePosition{
+        switch(sgmtCameraPosition.selectedSegmentIndex){
+            case 1:
+                return AVCaptureDevicePosition.Back;
+            default:
+                return AVCaptureDevicePosition.Front;
         }
     }
+    
+    /**
+    *  Retrieves then convers value of sgmtCountdownTime
+    */
+    func getCountdownTime() -> Double{
+        switch(sgmtCountdownTime.selectedSegmentIndex){
+            case 1:
+                return 15.0;
+            case 2:
+                return 30.0;
+            case 3:
+                return 60.0;
+            case 4:
+                return 180.0;
+            case 5:
+                return 300.0;
+            default:
+                return 3.0;
+        }
+    }
+    
+    //MARK: Configurations
+    
+    /**
+    *  Changes frame of preview layer to match and fill outlet view
+    */
+    func configurePreviewLayer(){
+        if(VideoCaptureManager.isValidSession(_session)){
+            let layerRect = self.videoFeedView.layer.bounds;
+            _previewLayer.bounds = layerRect;
+            _previewLayer.position = CGPointMake(CGRectGetMidX(layerRect), CGRectGetMidY(layerRect));
+            _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        }
+    }
 
-    // delegate
-    func motionTriggered() {
-        self.dismissViewControllerAnimated(true, completion: { _ in
-            self.labelCountdown.text = "Motion triggered!"
-            self.detector = nil
-            })
+    /**
+    *   Adds video input to capture session and defaults to front camera
+    */
+    func setInitialConfigurationForSession(){
+        
+        if let aSession = VideoCaptureManager.getFullAVCaptureSession(AVCaptureDevicePosition.Front){
+            _session = aSession;
+        } else {
+            println("Failed to create a valid capture session. Disabling TerrorMode");
+            startButton.enabled = false;
+        }
     }
 }

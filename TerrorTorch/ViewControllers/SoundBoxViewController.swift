@@ -10,9 +10,7 @@ import UIKit
 import AVFoundation
 import SpriteKit
 
-class SoundBoxViewController: UIViewController {
-
-    var presentedScene:SKScene? = nil
+class SoundBoxViewController: UIBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,34 +21,19 @@ class SoundBoxViewController: UIViewController {
         spriteView.showsDrawCount = true;
         spriteView.showsNodeCount = true;
         spriteView.showsFPS = true;
-    }
-
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController.navigationBar.hidden = false;
         
         //Create scene
-        let scene = SoundBoxScene(size: CGSizeMake(768, 1024));
-        let spriteView = self.view as SKView;
+        println("Creating SoundBox scene");
+        let scene = SoundBoxScene(size: self.view.frame.size);
         
         //Present it
+        println("Presenting SoundBox scene");
         spriteView.presentScene(scene);
-        presentedScene = scene;
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // #pragma mark - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

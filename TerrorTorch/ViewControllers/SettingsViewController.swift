@@ -8,11 +8,11 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIBaseViewController {
     @IBOutlet strong var webView: UIWebView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillLayoutSubviews()  {
+        super.viewWillLayoutSubviews()
         // Do any additional setup after loading the view, typically from a nib.
         
         let htmlFile = NSBundle.mainBundle().pathForResource("credits", ofType: "html");
@@ -30,11 +30,8 @@ class SettingsViewController: UIViewController {
     }
     
     func dismissController(recognizer: UISwipeGestureRecognizer){
-        println("there")
         if(recognizer.state == UIGestureRecognizerState.Ended){
-            println("here");
-            self.navigationController.popViewControllerAnimated(true);
-            //self.dismissViewControllerAnimated(false, completion: nil);
+            self.dismissViewControllerAnimated(false, completion: nil);
         }
     }
 }

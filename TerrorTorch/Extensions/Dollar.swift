@@ -980,7 +980,7 @@ class Dollar {
     /// :param n The number of elements in each partition.
     /// :param step The number of elements to progress between each partition. Set to n if not supplied.
     /// :return Array partitioned into n element arrays, starting step elements apart.
-    class func partition<T>(array: Array<T>, var n: Int, var step: Int? = nil) -> Array<Array<T>> {
+/*    class func partition<T>(array: Array<T>, var n: Int, var step: Int? = nil) -> Array<Array<T>> {
         var result = Array<Array<T>>()
         if !step?   { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
@@ -993,7 +993,7 @@ class Dollar {
         return result
     }
     
-    /// Produces an array of arrays, each containing n elements, each offset by step.
+ */   /// Produces an array of arrays, each containing n elements, each offset by step.
     ///
     /// :param array The array to partition.
     /// :param n The number of elements in each partition.
@@ -1002,7 +1002,7 @@ class Dollar {
     ///            contain n elements. If nil is passed or there are not enough pad elements
     ///            the last partition may less than n elements long.
     /// :return Array partitioned into n element arrays, starting step elements apart.
-    class func partition<T>(var array: Array<T>, var n: Int, var step: Int? = nil, pad: [T]?) -> Array<Array<T>> {
+/*    class func partition<T>(var array: Array<T>, var n: Int, var step: Int? = nil, pad: [T]?) -> Array<Array<T>> {
         var result = Array<Array<T>>()
         if !step?   { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
@@ -1022,14 +1022,14 @@ class Dollar {
         }
         return result
     }
-    
+*/
     /// Produces an array of arrays, each containing n elements, each offset by step.
     ///
     /// :param array The array to partition.
     /// :param n The number of elements in each partition.
     /// :param step The number of elements to progress between each partition. Set to n if not supplied.
     /// :return Array partitioned into n element arrays, starting step elements apart.
-    class func partitionAll<T>(array: Array<T>, var n: Int, var step: Int? = nil) -> Array<Array<T>> {
+/*    class func partitionAll<T>(array: Array<T>, var n: Int, var step: Int? = nil) -> Array<Array<T>> {
         var result = Array<Array<T>>()
         if !step?   { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
@@ -1042,7 +1042,7 @@ class Dollar {
         }
         return result
     }
-    
+*/
     /// Applies function to each element in array, splitting it each time function returns a new value.
     ///
     /// :param array The array to partition.
@@ -1114,18 +1114,18 @@ class Dollar {
     ///
     /// :param endVal End value of range.
     /// :return Array of elements based on the sequence starting from 0 to endVal and incremented by 1.
-    class func range<T : ForwardIndex where T : IntegerLiteralConvertible>(endVal: T) -> [T] {
+ /*   class func range<T : ForwardIndex where T : IntegerLiteralConvertible>(endVal: T) -> [T] {
         return self.range(0, endVal: endVal)
-    }
+    }*/
     
     /// Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.
     ///
     /// :param startVal Start value of range
     /// :param endVal End value of range
     /// :return Array of elements based on the sequence that is incremented by 1
-    class func range<T : ForwardIndex where T.DistanceType : IntegerLiteralConvertible>(startVal: T, endVal: T) -> [T] {
+  /*  class func range<T : ForwardIndex where T.DistanceType : IntegerLiteralConvertible>(startVal: T, endVal: T) -> [T] {
         return self.range(startVal, endVal: endVal, incrementBy: 1)
-    }
+    }*/
     
     /// Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.
     ///
@@ -1133,10 +1133,10 @@ class Dollar {
     /// :param endVal End value of range.
     /// :param incrementBy Increment sequence by.
     /// :return Array of elements based on the sequence.
-    class func range<T : ForwardIndex>(startVal: T, endVal: T, incrementBy: T.DistanceType) -> [T] {
-        let range = (startVal...endVal).by(incrementBy)
+/*    class func range<T : ForwardIndex>(startVal: T, endVal: T, incrementBy: T.DistanceType) -> [T] {
+        let range = (startVal...endVal)
         return self.sequence(range)
-    }
+    }*/
     
     /// Reduce function that will resolve to one value after performing combine function on all elements
     ///

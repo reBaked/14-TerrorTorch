@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 /**
 *  Appwide constants here:
@@ -59,11 +60,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func initStyles() {
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false);
-        let navBar:UINavigationBar = UINavigationBar.appearance();
-        let regBtn:UIButton = UIButton.appearance();
-        let barBtn:UIBarButtonItem = UIBarButtonItem.appearance();
-        
-        navBar.titleTextAttributes = [ NSFontAttributeName: FONT_TITLE, NSForegroundColorAttributeName: COLOR_WHITE ];
+        let navBar = UINavigationBar.appearance();
+        let regBtn = UIButton.appearance();
+        let barBtn = UIBarButtonItem.appearance();
+    
+        navBar.titleTextAttributes = [ NSFontAttributeName: FONT_TITLE, NSForegroundColorAttributeName: COLOR_RED ];
         navBar.setBackgroundImage(UIImage(named: "bar-bg"), forBarPosition: UIBarPosition.Any, barMetrics: UIBarMetrics.Default);
         navBar.tintColor = COLOR_RED;
         regBtn.tintColor = COLOR_RED;
