@@ -11,7 +11,7 @@ import MobileCoreServices
 import AVFoundation
 
 
-class TMViewController: UIBaseViewController{
+class TMViewController: UIBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     
     @IBOutlet var videoFeedView: UIView!
     @IBOutlet var sgmtCameraPosition: UISegmentedControl!
@@ -28,25 +28,25 @@ class TMViewController: UIBaseViewController{
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        print("Requesting permission to use audio devices: ");
+        //print("Requesting permission to use audio devices: ");
         AVCaptureDevice.requestAccessForMediaType(AVMediaTypeAudio, completionHandler: { (audioGranted) in
             if(audioGranted){ print("Granted\n"); }
             else {  print("Denied\n");  }
             
-            print("Requesting permission to use video devices: ")
+            //print("Requesting permission to use video devices: ")
             AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { (videoGranted) in
                 if(videoGranted){
-                    print("Granted\n");
+                    //print("Granted\n");
                     self._hasPermissions = true;
                 } else {
-                    print("Denied\n");
+                    //print("Denied\n");
                     self.startButton.enabled = false;
                 }
                 dispatch_sync(dispatch_get_main_queue()){
-                    println("Setting up default capture session");
+                    //println("Setting up default capture session");
                     self.setInitialConfigurationForSession();
                     if(VideoCaptureManager.isValidSession(self._session)){
-                        println("Configuring preview layer");
+                        //println("Configuring preview layer");
                         self._previewLayer = AVCaptureVideoPreviewLayer(session: self._session);
                         self.videoFeedView.layer.addSublayer(self._previewLayer);
                         self.configurePreviewLayer();
@@ -174,4 +174,45 @@ class TMViewController: UIBaseViewController{
             startButton.enabled = false;
         }
     }
+    
+   // func createSoundAssets() -> [SystemSoundID]{
+        
+   // }
+    //MARK: UICollectionView Delegate
+    func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
+        let soundName = appAssets[indexPath.row]["soundName"]!;
+        println(soundName);
+        let soundPath = NSBundle.mainBundle().pathForResource(soundName, ofType: "wav");
+        let soundURL = NSURL(fileURLWithPath: soundPath);
+        var sound:SystemSoundID = 0;
+        AudioServicesCreateSystemSoundID(soundURL, &sound);
+        AudioServicesPlaySystemSound(sound);
+        //AudioServicesDisposeSystemSoundID(sound);
+        
+    }
+    
+
+    //MARK: UICollectionView Datasource
+    func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectionCell", forIndexPath: indexPath) as UICollectionViewCellStyleImage;
+        let height = collectionView.frame.height - 40;
+        
+        //cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, height, height);
+        
+        let imageName = appAssets[indexPath.row]["imageName"]!;
+        cell.imageView.image = UIImage(named: imageName);
+        if(indexPath.item == 0){
+            cell.highlighted = true;
+        }
+        return cell;
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
+        return 1;
+    }
+    
+    func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
+        return appAssets.count;
+    }
+    
 }

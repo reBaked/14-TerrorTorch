@@ -25,6 +25,14 @@ let COLOR_GREY:UIColor = UIColor(hexColor:0x2C2E2D);
 // Logo Constants
 let FONT_TITLE:UIFont = UIFont(name: "HelveticaNeue", size: 20.0);
 
+//An array of dictionaries containing information about the assets used in SoundBox and TerrorMode
+let appAssets = [
+                    ["name":"Dollhead",     "imageName":"dollhead",     "soundName":"young-girl-scream"],
+                    ["name":"Knife",        "imageName":"knife",        "soundName":"knife-stab-splatter"],
+                    ["name":"Pitchfork",    "imageName":"pitchfork",    "soundName":"devil-laugh"],
+                    ["name":"Anubis",       "imageName":"Anubis",       "soundName":"ghost-egyptian-phantom"]
+                ];
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             

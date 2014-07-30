@@ -23,11 +23,6 @@ class SoundBoxScene: SKScene {
     //Information on actions expected by a SKNode
     var actionAttributes:[[String:AnyObject]] = [];
     
-    let spriteAssets = ["dollhead", "young-girl-scream",
-                        "knife", "knife-stab-splatter",
-                        "pitchfork", "devil-laugh",
-                        "Anubis", "ghost-egyptian-phantom"];
-    
     override func didMoveToView(view: SKView!) {
         println("Configuring scene");
         self.configureScene();
@@ -59,22 +54,24 @@ class SoundBoxScene: SKScene {
     func createSceneContents(){
         //Create Scene sprites
         var i = 0;
-        while(i < spriteAssets.count){
-            let name = spriteAssets[i++];
-            let soundName = spriteAssets[i++];
+        
+        for asset in appAssets{
+            let name = asset["name"]!
+            let imageName = asset["imageName"]!
+            let soundName = asset["soundName"]!
     
             var rotations = 0.0;
             var duration = 0.0;
             
             
             
-            if(name == "dollhead" || name == "anubis"){
+            if(name == "Dollhead" || name == "Anubis"){
                 rotations = 6.0
                 duration = 3.0;
             }
             
             println("Creating \(name) with sound \(soundName)");
-            let sprite = createSprite(name, imageName: name);
+            let sprite = createSprite(name, imageName: imageName);
             println("Creating action attributes for \(name)");
             let attributes = createSpriteActionAttributes(name, soundName: soundName, rotations: rotations, duration: duration);
             
