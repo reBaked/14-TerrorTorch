@@ -21,37 +21,87 @@ enum SpriteAttribute:String{
 class SoundBoxScene: SKScene {
     
     //Information on actions expected by a SKNode
-    var childActionAttributes:[[String:AnyObject]] = []
+    var actionAttributes:[[String:AnyObject]] = [];
     
     override func didMoveToView(view: SKView!) {
+        println("Configuring scene");
+        self.configureScene();
+        println("Creating scene content");
         self.createSceneContents();
-        
+    
         //Initialize gesture recognizers
         let singleTapRecognizer = UITapGestureRecognizer(target: self, action: Selector("handleSingleTap:"));
         self.view.addGestureRecognizer(singleTapRecognizer);
+
     }
     
     /**
     *  Initial scene configurations
     */
     func configureScene(){
-        self.backgroundColor = UIColor.blackColor();
+        self.backgroundColor = UIColor.clearColor();
         self.scaleMode = SKSceneScaleMode.AspectFit;
+
+        let background = SKSpriteNode(texture: SKTexture(imageNamed: "woodbgrnd"), size: self.frame.size);
+        background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+        self.addChild(background);
     }
     
     /**
     *   Creates nodes to be used in scene.
+    *   Everything is hard coded at the moment, this needs to change to something better.
     */
     func createSceneContents(){
         //Create Scene sprites
-        let dollHead = createSprite("dollhead", imageName: "dollhead.png", size: CGSizeMake(200, 200));
-        let dollHeadAttributes = createSpriteActionAttributes("dollhead", soundName: "young-girl-scream", rotations: 6, duration: 3.0);
+        var i = 0;
         
-        //Add sprite to scene
-        self.addChild(dollHead);
-
-        //Store attribute information
-        childActionAttributes.append(dollHeadAttributes);
+        for asset in appAssets{
+            let name = asset["name"]!
+            let imageName = asset["imageName"]!
+            let soundName = asset["soundName"]!
+    
+            var rotations = 0.0;
+            var duration = 0.0;
+            
+            
+            
+            if(name == "Dollhead" || name == "Anubis"){
+                rotations = 6.0
+                duration = 3.0;
+            }
+            
+            println("Creating \(name) with sound \(soundName)");
+            let sprite = createSprite(name, imageName: imageName);
+            println("Creating action attributes for \(name)");
+            let attributes = createSpriteActionAttributes(name, soundName: soundName, rotations: rotations, duration: duration);
+            
+            self.addChild(sprite);
+            actionAttributes.append(attributes);
+            
+            let quarterWidth = self.frame.width/4;
+            let quarterHeight = self.frame.height/4;
+            var moveBy:CGPoint;
+            switch(i){
+                case 2:
+                    moveBy = CGPointMake(-quarterWidth, quarterHeight);
+                    break;
+                case 4:
+                    moveBy = CGPointMake(quarterWidth, quarterHeight);
+                    break;
+                case 6:
+                    moveBy = CGPointMake(-quarterWidth, -quarterHeight);
+                    break;
+                case 8:
+                    moveBy = CGPointMake(quarterWidth, -quarterHeight);
+                    break;
+                default:
+                    moveBy = CGPointMake(0,0);
+                    break;
+            }
+            
+            println("Moving \(name) to final position in scene");
+            self.moveNode(name, point: moveBy, duration: 3.0);
+        }
     }
     
     /**
@@ -63,11 +113,31 @@ class SoundBoxScene: SKScene {
     *
     *  @return Sprite object
     */
-    func createSprite(name:String, imageName:String, size:CGSize) -> SKSpriteNode{
-        var sprite = SKSpriteNode(texture: SKTexture(imageNamed: imageName), color: UIColor.whiteColor(), size: size);
-        sprite.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+    func createSprite(name:String, imageName:String) -> SKSpriteNode{
+        
+        let sprite = SKSpriteNode(imageNamed: imageName);
         sprite.name = name;
+        sprite.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         return sprite;
+    }
+    
+    /**
+    *  Positions sprite at node
+    *
+    *  @param name:String       Name of sprite
+    *  @param point:CGPoint     Final position of sprite
+    *  @param duration:Double   Animates to final position over duration. 0 will not animate.
+    */
+    
+    func moveNode(name:String, point:CGPoint, duration:Double){
+        
+        if let node = self.childNodeWithName(name) as? SKSpriteNode{
+            //let action = SKAction.moveTo(point, duration: duration);
+            let action = SKAction.moveByX(point.x, y: point.y, duration: duration);
+            node.runAction(action);
+        } else {
+            println("Could not find sprite with the name \(name)");
+        }
     }
     
     /**
@@ -83,7 +153,6 @@ class SoundBoxScene: SKScene {
     func createSpriteActionAttributes(spriteName:String, soundName:String, rotations:Double, duration:Double) -> [String:AnyObject]{
         var result = [String:AnyObject]();
         let path = NSBundle.mainBundle().pathForResource(soundName, ofType: SOUNDFORMAT);
-
         result.updateValue(spriteName, forKey: SpriteAttribute.Name.toRaw());
         result.updateValue(soundName, forKey: SpriteAttribute.SoundName.toRaw());
         result.updateValue(path, forKey: SpriteAttribute.SoundPath.toRaw());
@@ -120,7 +189,6 @@ class SoundBoxScene: SKScene {
             
         } else {
             println("Unable to find attribute information for node: (\(node.name))");
-            //println(node);
             return nil;
         }
         return nil;
@@ -135,33 +203,40 @@ class SoundBoxScene: SKScene {
     */
     func getAttributesForNode(node:SKNode) -> [String:AnyObject]?{
         if let nodeName = node.name{
-            let attributes = $.find(childActionAttributes, iterator: {
+            let attributes = $.find(actionAttributes, iterator: {
                 if let attributeName = ($0 as [String:AnyObject])["name"]! as? String{
                     return attributeName == nodeName;
                 }
                 return false;
-                })
-        
-            return attributes as [String:AnyObject];
+            })
+            
+            if let result = attributes as? [String:AnyObject]{
+                return result;
+            } else {
+                println("Couldn't find a action attributes for node named \(nodeName)");
+                return nil;
+            }
+        } else {
+            println("Node must have a name in order to find action attributes");
+            return nil;
         }
-        return nil;
     }
-    
-    func performActions(actions:[SKAction], onNode node:SKNode){
+
+    func performActions(actions:[SKAction], onNode node:SKSpriteNode){
         for action in actions{
             node.runAction(action);
         }
     }
     
     /**
-    *  Handle user tap gestures
+    *  If user taps on a valid sprite node, will play sound and perform actions if there are any.
     */
     
     func handleSingleTap(recognizer:UITapGestureRecognizer){
         if(recognizer.state == UIGestureRecognizerState.Ended){
             //Get location in scene and convert point, then get node
             let location = self.convertPointFromView(recognizer.locationInView(recognizer.view));
-            if let node = self.nodeAtPoint(location){
+            if let node = self.nodeAtPoint(location) as? SKSpriteNode{
                 //Retrieve actions for that node
                 if let actions = evaluateNode(node){
                     self.performActions(actions, onNode: node);

@@ -19,7 +19,7 @@
 // Simple openCV motion detection
 // http://blog.cedric.ws/opencv-simple-motion-detection
 
-#define TESTING 0
+#define TESTING 1
 
 #import "CVDetectorViewController.h"
 using namespace cv;
@@ -117,7 +117,7 @@ using namespace cv;
         Scalar total = sum(hasPixel);
         double value = total[0];
 
-        if (value > 5000) { // this threshold seems ok
+        if (value > 3000) { // this threshold seems ok
             [self triggerThreshold];
         }
     }

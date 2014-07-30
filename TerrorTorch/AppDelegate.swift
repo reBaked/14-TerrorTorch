@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 /**
 *  Appwide constants here:
@@ -23,6 +24,14 @@ let COLOR_GREY:UIColor = UIColor(hexColor:0x2C2E2D);
 
 // Logo Constants
 let FONT_TITLE:UIFont = UIFont(name: "HelveticaNeue", size: 20.0);
+
+//An array of dictionaries containing information about the assets used in SoundBox and TerrorMode
+let appAssets = [
+                    ["name":"Dollhead",     "imageName":"dollhead",     "soundName":"young-girl-scream"],
+                    ["name":"Knife",        "imageName":"knife",        "soundName":"knife-stab-splatter"],
+                    ["name":"Pitchfork",    "imageName":"pitchfork",    "soundName":"devil-laugh"],
+                    ["name":"Anubis",       "imageName":"Anubis",       "soundName":"ghost-egyptian-phantom"]
+                ];
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -63,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let regBtn = UIButton.appearance();
         let barBtn = UIBarButtonItem.appearance();
     
-        navBar.titleTextAttributes = [ NSFontAttributeName: FONT_TITLE, NSForegroundColorAttributeName: COLOR_WHITE ];
+        navBar.titleTextAttributes = [ NSFontAttributeName: FONT_TITLE, NSForegroundColorAttributeName: COLOR_RED ];
         navBar.setBackgroundImage(UIImage(named: "bar-bg"), forBarPosition: UIBarPosition.Any, barMetrics: UIBarMetrics.Default);
         navBar.tintColor = COLOR_RED;
         regBtn.tintColor = COLOR_RED;

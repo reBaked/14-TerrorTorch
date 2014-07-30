@@ -11,7 +11,7 @@ import MobileCoreServices
 import AVFoundation
 
 
-class TMViewController: UIBaseViewController{
+class TMViewController: UIBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     
     @IBOutlet var videoFeedView: UIView!
     @IBOutlet var sgmtCameraPosition: UISegmentedControl!
@@ -19,44 +19,62 @@ class TMViewController: UIBaseViewController{
     @IBOutlet var startButton: UIButton!
 
     
-    var _hasPermissions = false;
-    let _session:AVCaptureSession
-    let _previewLayer:AVCaptureVideoPreviewLayer
-    
-    init(coder aDecoder: NSCoder!) {
-        _session = AVCaptureSession();
-        _previewLayer = AVCaptureVideoPreviewLayer(session: _session);
-        super.init(coder: aDecoder);
-    }
+    private var _hasPermissions = false;
+    private var _session:AVCaptureSession!
+    private var _previewLayer:AVCaptureVideoPreviewLayer!
     
     //MARK: UIViewController Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        println("Adding preview layer");
-        self.videoFeedView.layer.addSublayer(self._previewLayer);
-        
         // Do any additional setup after loading the view.
-        println("Requesting permission to use AV devices");
-        self.requestAVPermissions(completion: {
-            println("AV permissions have been set");
-            if($0){
-                println("Setting up initial configuration for capture session");
-                self.setInitialConfigurationForSession();
-                
-            } else{
-                println("Inadequate AV permissions");
-                self.startButton.enabled = false;
-            }
+        
+        //print("Requesting permission to use audio devices: ");
+        AVCaptureDevice.requestAccessForMediaType(AVMediaTypeAudio, completionHandler: { (audioGranted) in
+            if(audioGranted){ print("Granted\n"); }
+            else {  print("Denied\n");  }
+            
+            //print("Requesting permission to use video devices: ")
+            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { (videoGranted) in
+                if(videoGranted){
+                    //print("Granted\n");
+                    self._hasPermissions = true;
+                } else {
+                    //print("Denied\n");
+                    self.startButton.enabled = false;
+                }
+                dispatch_sync(dispatch_get_main_queue()){
+                    //println("Setting up default capture session");
+                    self.setInitialConfigurationForSession();
+                    if(VideoCaptureManager.isValidSession(self._session)){
+                        //println("Configuring preview layer");
+                        self._previewLayer = AVCaptureVideoPreviewLayer(session: self._session);
+                        self.videoFeedView.layer.addSublayer(self._previewLayer);
+                        self.configurePreviewLayer();
+                        self._session.startRunning();
+                    } else {
+                        let alertView = UIAlertView(title: "Invalid device", message: "This device does not meet the minimum requirements to run TerrorTorch mode", delegate: nil, cancelButtonTitle: "Ok");
+                        alertView.show();
+                        self.videoFeedView.alpha = 0.0;
+                    }
+                }
+
+            });
         });
     }
+
+    override func viewDidAppear(animated: Bool){
+        super.viewDidAppear(animated);
+        if(_session){
+            println("Starting capture session");
+            self._session.startRunning();
+        }
+    }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated);
-        println("Starting capture session");
-        self._session.startRunning();
-        println("Configuring preview layer");
-        self.configurePreviewLayer();
+    override func viewWillDisappear(animated: Bool) {
+        if(_session){ //&& _session.running){
+            println("Stopping capture session");
+            self._session.stopRunning();
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,8 +83,6 @@ class TMViewController: UIBaseViewController{
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        _session.stopRunning();
-        
         if let controller = segue.destinationViewController as? CaptureViewController{
             controller.cameraPosition = self.getCameraPosition();
             controller.timerCountdown = self.getCountdownTime();
@@ -76,26 +92,26 @@ class TMViewController: UIBaseViewController{
     
     //MARK: IBActions
     @IBAction func cameraPositionChanged(sender: UISegmentedControl) {
-        _session.beginConfiguration();
-        
-        if let device = VideoCaptureManager.getDevice(AVMediaTypeVideo, position: self.getCameraPosition()){
+        if(_session){
+            _session.beginConfiguration();
+            if let device = VideoCaptureManager.getDevice(AVMediaTypeVideo, position: self.getCameraPosition()){
             
-            if let currentInput = _session.getInput(AVMediaTypeVideo){
-                _session.removeInput(currentInput);
-            } else {
-                println("No video input found in session while changing camera position");
-            }
+                if let currentInput = _session.getInput(AVMediaTypeVideo){
+                    _session.removeInput(currentInput);
+                } else {
+                    println("No video input found in session while changing camera position");
+                }
             
-            if let input = VideoCaptureManager.addInputTo(_session, usingDevice: device){
-                println("Successfully changed position of camera");
+                if let input = VideoCaptureManager.addInputTo(_session, usingDevice: device){
+                    println("Successfully changed position of camera");
+                } else {
+                    println("Failed to change positon of camera");
+                }
             } else {
-                println("Failed to change positon of camera");
+                println("Device does not support that camera position");
             }
-        } else {
-            println("Device does not support that camera position");
+            _session.commitConfiguration();
         }
-        
-        _session.commitConfiguration();
     }
     
     //MARK: Queries
@@ -138,45 +154,65 @@ class TMViewController: UIBaseViewController{
     *  Changes frame of preview layer to match and fill outlet view
     */
     func configurePreviewLayer(){
-        let layerRect = self.videoFeedView.layer.bounds;
-        _previewLayer.bounds = layerRect;
-        _previewLayer.position = CGPointMake(CGRectGetMidX(layerRect), CGRectGetMidY(layerRect));
-        _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        if(VideoCaptureManager.isValidSession(_session)){
+            let layerRect = self.videoFeedView.layer.bounds;
+            _previewLayer.bounds = layerRect;
+            _previewLayer.position = CGPointMake(CGRectGetMidX(layerRect), CGRectGetMidY(layerRect));
+            _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        }
     }
 
     /**
     *   Adds video input to capture session and defaults to front camera
     */
     func setInitialConfigurationForSession(){
-        if let device = VideoCaptureManager.getDevice(AVMediaTypeVideo, position: AVCaptureDevicePosition.Front){
-            
-            if(!VideoCaptureManager.addInputTo(_session, usingDevice: device)){
-                println("Failed to add video input to preview session")
-            }
+        
+        if let aSession = VideoCaptureManager.getFullAVCaptureSession(AVCaptureDevicePosition.Front){
+            _session = aSession;
+        } else {
+            println("Failed to create a valid capture session. Disabling TerrorMode");
+            startButton.enabled = false;
         }
     }
     
-    //MARK: User Settings
+   // func createSoundAssets() -> [SystemSoundID]{
+        
+   // }
+    //MARK: UICollectionView Delegate
+    func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
+        let soundName = appAssets[indexPath.row]["soundName"]!;
+        println(soundName);
+        let soundPath = NSBundle.mainBundle().pathForResource(soundName, ofType: "wav");
+        let soundURL = NSURL(fileURLWithPath: soundPath);
+        var sound:SystemSoundID = 0;
+        AudioServicesCreateSystemSoundID(soundURL, &sound);
+        AudioServicesPlaySystemSound(sound);
+        //AudioServicesDisposeSystemSoundID(sound);
+        
+    }
     
-    /**
-    *   Checks to see if app has been given permission to microphone and camera
-    *   If not, ask for permission.
-    */
-    func requestAVPermissions(completion callback: (Bool) -> ()){
-        AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: {
-            if($0){
-                AVCaptureDevice.requestAccessForMediaType(AVMediaTypeAudio, completionHandler: {
-                    if($0){
-                        self._hasPermissions = true;
-                    } else {
-                        println("Denied use of Microphone");
-                    }
-                    callback(self._hasPermissions);
-                })
-            } else {
-                println("Denied use of camera");
-            }
-        });
+
+    //MARK: UICollectionView Datasource
+    func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectionCell", forIndexPath: indexPath) as UICollectionViewCellStyleImage;
+        let height = collectionView.frame.height - 40;
+        
+        //cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, height, height);
+        
+        let imageName = appAssets[indexPath.row]["imageName"]!;
+        cell.imageView.image = UIImage(named: imageName);
+        if(indexPath.item == 0){
+            cell.highlighted = true;
+        }
+        return cell;
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
+        return 1;
+    }
+    
+    func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
+        return appAssets.count;
     }
     
 }

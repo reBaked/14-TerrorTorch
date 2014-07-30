@@ -18,9 +18,8 @@ class CountdownTimerModel:NSObject{
     var timer:NSTimer?
     var delegate:Ticker?
     
-    init(initialTime:Double, delegate:Ticker?) {
+    init(initialTime:Double) {
         timeLeft = initialTime
-        self.delegate = delegate
     }
     
     func startCountdown() {
