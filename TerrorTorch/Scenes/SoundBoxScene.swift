@@ -53,8 +53,6 @@ class SoundBoxScene: SKScene {
     */
     func createSceneContents(){
         //Create Scene sprites
-        var i = 0;
-        
         for asset in appAssets{
             let name = asset["name"]!
             let imageName = asset["imageName"]!
@@ -70,9 +68,8 @@ class SoundBoxScene: SKScene {
                 duration = 3.0;
             }
             
-            println("Creating \(name) with sound \(soundName)");
+            println("SpriteNode name: \(name) imageName: \(imageName) soundName: \(soundName)");
             let sprite = createSprite(name, imageName: imageName);
-            println("Creating action attributes for \(name)");
             let attributes = createSpriteActionAttributes(name, soundName: soundName, rotations: rotations, duration: duration);
             
             self.addChild(sprite);
@@ -81,17 +78,17 @@ class SoundBoxScene: SKScene {
             let quarterWidth = self.frame.width/4;
             let quarterHeight = self.frame.height/4;
             var moveBy:CGPoint;
-            switch(i){
-                case 2:
+            switch(name){
+                case "Dollhead":
                     moveBy = CGPointMake(-quarterWidth, quarterHeight);
                     break;
-                case 4:
+                case "Anubis":
                     moveBy = CGPointMake(quarterWidth, quarterHeight);
                     break;
-                case 6:
+                case "Pitchfork":
                     moveBy = CGPointMake(-quarterWidth, -quarterHeight);
                     break;
-                case 8:
+                case "Knife":
                     moveBy = CGPointMake(quarterWidth, -quarterHeight);
                     break;
                 default:
@@ -99,7 +96,7 @@ class SoundBoxScene: SKScene {
                     break;
             }
             
-            println("Moving \(name) to final position in scene");
+            println("Moving \(name) to final position");
             self.moveNode(name, point: moveBy, duration: 3.0);
         }
     }
@@ -203,12 +200,12 @@ class SoundBoxScene: SKScene {
     */
     func getAttributesForNode(node:SKNode) -> [String:AnyObject]?{
         if let nodeName = node.name{
-            let attributes = $.find(actionAttributes, iterator: {
+            let attributes = find(actionAttributes) {
                 if let attributeName = ($0 as [String:AnyObject])["name"]! as? String{
                     return attributeName == nodeName;
                 }
                 return false;
-            })
+            }
             
             if let result = attributes as? [String:AnyObject]{
                 return result;
@@ -246,4 +243,14 @@ class SoundBoxScene: SKScene {
             }
         }
     }
+}
+
+func find<T: Equatable>(array: [T], iterator: (T) -> Bool) -> T? {
+    for elem in array {
+        let result = iterator(elem)
+        if result {
+            return elem
+        }
+    }
+    return nil
 }

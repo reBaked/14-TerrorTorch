@@ -19,7 +19,7 @@
 // Simple openCV motion detection
 // http://blog.cedric.ws/opencv-simple-motion-detection
 
-#define TESTING 1
+#define TESTING 0
 
 #import "CVDetectorViewController.h"
 using namespace cv;
@@ -75,7 +75,8 @@ using namespace cv;
 
 -(void)setupCamera {
     self.videoCamera = [[CvVideoCamera alloc] initWithParentView:imageView];
-    self.videoCamera.defaultAVCaptureDevicePosition = cameraPosition;
+    NSLog(@"%d",self.cameraPosition);
+    self.videoCamera.defaultAVCaptureDevicePosition = self.cameraPosition;
     self.videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
     self.videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
     self.videoCamera.defaultFPS = 30;

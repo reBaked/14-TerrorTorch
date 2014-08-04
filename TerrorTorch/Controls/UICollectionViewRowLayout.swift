@@ -10,6 +10,13 @@ class UICollectionViewRowLayout: UICollectionViewLayout {
     var leftInset:CGFloat!
     var rightInset:CGFloat!;
     var itemSize:CGSize!
+    private var _currentItem = 0;
+    
+    var currentItem:Int{
+        get{
+            return _currentItem;
+        }
+    }
     
     private var numItems:Int{
         get{
@@ -56,7 +63,7 @@ class UICollectionViewRowLayout: UICollectionViewLayout {
         println("UICVRowLayout rect dump - minX: \(rect.minX) maxX: \(rect.maxX) elementWidth: \(elementWidth) firstItem: \(firstItem) lastItem: \(lastItem)");
         var result = [UICollectionViewLayoutAttributes]();
         for index in firstItem...lastItem{
-            result += self.layoutAttributesForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0));
+            result.append(self.layoutAttributesForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0)));
         }
         
         return result;
@@ -65,9 +72,21 @@ class UICollectionViewRowLayout: UICollectionViewLayout {
     override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         let offsetX = proposedContentOffset.x + leftInset;
         let elementWidth = itemSize.width + minimumCellSpacing;
-        let item = Int(offsetX/elementWidth);
+        _currentItem = Int(offsetX/elementWidth);
         
-        let attributes = self.layoutAttributesForItemAtIndexPath(NSIndexPath(forItem: item, inSection: 0));
+        let attributes = self.layoutAttributesForItemAtIndexPath(NSIndexPath(forItem: _currentItem, inSection: 0));
         return CGPointMake(attributes.frame.minX - leftInset, 0);
+    }
+}
+
+extension UICollectionView{
+    var selectedItem:Int?{
+        get{
+            if let layout = self.collectionViewLayout as? UICollectionViewRowLayout{
+                return layout.currentItem;
+            } else {
+                return nil;
+            }
+        }
     }
 }

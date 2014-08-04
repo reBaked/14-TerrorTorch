@@ -9,7 +9,7 @@
 import UIKit
 
 class SettingsViewController: UIBaseViewController {
-    @IBOutlet strong var webView: UIWebView!
+    @IBOutlet var webView: UIWebView!
     
     override func viewWillLayoutSubviews()  {
         super.viewWillLayoutSubviews()

@@ -30,8 +30,6 @@ class MainScreenController: UIBaseViewController {
         swipeRecognizer.direction = UISwipeGestureRecognizerDirection.Left;
         self.view.addGestureRecognizer(swipeRecognizer);
         
-
-        
         //Get all devices that support torch mode
         for device in AVCaptureDevice.devices() as [AVCaptureDevice]{
             if(device.hasTorch){
@@ -39,6 +37,8 @@ class MainScreenController: UIBaseViewController {
                 break;
             }
         }
+        
+        
         
         //Gesture recognizer for enabling torch mode
         let singleTapRecognizer = UITapGestureRecognizer(target: self, action: Selector("toggleTorchLight:"));

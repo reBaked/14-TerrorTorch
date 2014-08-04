@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="uFg-jy-wQs">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -397,6 +396,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="aAw-iD-rUC"/>
                     <connections>
+                        <outlet property="collectionView" destination="4Wz-3d-Aiu" id="qAd-ee-CBJ"/>
                         <outlet property="labelCountdown" destination="w9r-Nv-NtW" id="c8o-CD-GPN"/>
                         <outlet property="sgmtCameraPosition" destination="Lk8-dd-v3a" id="GC8-sZ-2dU"/>
                         <outlet property="sgmtCountdownTime" destination="ie6-v4-GIA" id="JYb-o2-s1d"/>

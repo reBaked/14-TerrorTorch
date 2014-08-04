@@ -107,7 +107,7 @@ class TempDirBrowseViewController: UITableViewController {
         self.videoView.hidden = true;
     }
     
-    override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafePointer<()>) {
+    override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<()>) {
         
         if(player.status == AVPlayerStatus.Failed){
             let error = player.error;
