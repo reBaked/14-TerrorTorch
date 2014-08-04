@@ -124,7 +124,7 @@ class MainScreenController: UIBaseViewController {
     */
     func rotated(recognizer: UICircularGestureRecognizer) {
         var currentAngle:Float = 0.0;
-        if self.shouldAllowRotation(recognizer.rotation, currentAngle:&currentAngle, minAngle:-90, maxAngle:90) {
+        if _isTorchOn && self.shouldAllowRotation(recognizer.rotation, currentAngle:&currentAngle, minAngle:-90, maxAngle:90) {
             UICircularGestureRecognizer.rotateView(recognizer);
             self.changeTorchIntensity(self.calculateIntensity(currentAngle));
         }
