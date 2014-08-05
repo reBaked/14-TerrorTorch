@@ -14,30 +14,31 @@ class CaptureViewController: UIViewController, Ticker, CVDetectorDelegate, AVCap
     @IBOutlet var labelCountdown: UILabel!
     
     var cameraPosition = AVCaptureDevicePosition.Front;
+    var soundID:SystemSoundID = 0;
     
     private var _countdown = 3.0
     private var _duration = 10.0
-    private var _timer:CountdownTimerModel
-    private var _captureManager:VideoCaptureManager
-    private var _motionDetector:CVDetectorViewController
+    private var _firstAppearance = true;
+    private var _timer = CountdownTimerModel(initialTime: 3.0);
+    private var _recordingTimer:NSTimer!
+    private var _captureManager:VideoCaptureManager!
     
-    init(coder aDecoder: NSCoder!) {
-        _timer = CountdownTimerModel(initialTime: _countdown);
-        _captureManager = VideoCaptureManager(aPosition: cameraPosition, aSession: nil);
-        _motionDetector = CVDetectorViewController();
+    required init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder);
+        _timer.delegate = self;
     }
     
     override func viewDidLoad() {
         super.viewDidLoad();
         
-        _timer.delegate = self;
-        _motionDetector.delegate = self;
-        _captureManager.delegate = self;
-        
         labelCountdown.text = String(Int(timerCountdown));
-        println("Starting countdown...");
-        timer.startCountdown();
+    }
+    override func viewDidAppear(animated: Bool) {
+        if(self._firstAppearance){
+            println("Starting countdown...");
+            self.timer.startCountdown();
+            self._firstAppearance = false;
+        }
     }
     
     /**
@@ -83,29 +84,6 @@ class CaptureViewController: UIViewController, Ticker, CVDetectorDelegate, AVCap
         }
     }
     
-    
-    var motionDetector:CVDetectorViewController{
-        get{
-            return _motionDetector;
-        }
-    }
-    
-    
-    
-    //MARK: VideoCaptureManager Actions
-    func startRecording(){
-        let outputPath = NSTemporaryDirectory() + NSDate(timeIntervalSinceNow: 0).description + ".mov"; //NSDate will probaby need to be formated to something nice.
-        
-        captureManager.startRecordingToPath(outputPath)
-        NSTimer.scheduledTimerWithTimeInterval(_duration, target: self, selector: Selector("endRecording"), userInfo: nil, repeats: false);//Schedule when to end recording
-    }
-    
-    //Called when NSTimer:_duration ends
-    func endRecording(){
-        captureManager.endRecording();
-        self.dismissViewControllerAnimated(false, completion: nil);
-    }
-    
     //MARK: Ticker Delegate
     func Tick(timeLeft:Double) {
         labelCountdown.text = String(Int(timeLeft))
@@ -114,6 +92,9 @@ class CaptureViewController: UIViewController, Ticker, CVDetectorDelegate, AVCap
     func Timeout() {
         println("Countdown complete, starting motion detector");
         labelCountdown.text = "Starting camera..."
+        let motionDetector = CVDetectorViewController();
+        motionDetector.cameraPosition = self.cameraPosition;
+        motionDetector.delegate = self;
         self.presentViewController(motionDetector, animated: false, completion: nil);
     }
     
@@ -122,9 +103,31 @@ class CaptureViewController: UIViewController, Ticker, CVDetectorDelegate, AVCap
         println("Motion captured, dismissing motion detector");
         labelCountdown.text = "Motion triggered!";
         self.dismissViewControllerAnimated(true, completion: { //Dismiss motion detector
-            println("Start recording camera feed");
-            self.startRecording();
+            dispatch_async(dispatch_get_main_queue()){
+                self._captureManager = VideoCaptureManager(aPosition: self.cameraPosition);
+                self._captureManager.delegate = self;
+                self.startRecording();
+                println("Started recording camera feed");
+
+            }
         });
+        
+        AudioServicesPlaySystemSound(self.soundID);
+    }
+    
+    //MARK: VideoCaptureManager Actions
+    func startRecording(){
+        let outputPath = NSTemporaryDirectory() + NSDate(timeIntervalSinceNow: 0).description + ".mov"; //NSDate will probaby need to be formated to something nice.
+        
+        _captureManager.startRecordingToPath(outputPath)
+        //_recordingTimer = NSTimer(timeInterval: 4.0, target: self, selector: Selector("endRecording"), userInfo: nil, repeats: true);
+        NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: Selector("endRecording"), userInfo: nil, repeats: false);
+    }
+    
+    //Called when NSTimer:_duration ends
+    func endRecording(){
+        _captureManager.endRecording();
+        self.dismissViewControllerAnimated(false, completion: nil);
     }
     
     //MARK: AVCaptureFileOutputRecording Delegate

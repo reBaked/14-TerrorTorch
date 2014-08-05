@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2948993C1975BD2A007D0D97 /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2948993A1975BD2A007D0D97 /* Dollar.swift */; };
 		2948993D1975BD2A007D0D97 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2948993B1975BD2A007D0D97 /* UIColorExtension.swift */; };
 		294899461975BD58007D0D97 /* CVDetectorViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2948993F1975BD58007D0D97 /* CVDetectorViewController.mm */; };
 		294899471975BD58007D0D97 /* GKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899401975BD58007D0D97 /* GKWebViewController.swift */; };
@@ -27,6 +26,8 @@
 		2948996A1975BE95007D0D97 /* UICircularGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899691975BE95007D0D97 /* UICircularGestureRecognizer.swift */; };
 		29F78D0A19836E9600F4C457 /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F78D0919836E9600F4C457 /* CountdownTimer.swift */; };
 		4700C00A19822D8D007F0279 /* UIBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4700C00919822D8D007F0279 /* UIBaseViewController.swift */; };
+		47C9E9831988414700FE794D /* UICollectionViewCellStyleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C9E9821988414700FE794D /* UICollectionViewCellStyleImage.swift */; };
+		47C9E985198883D000FE794D /* UICollectionViewRowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C9E984198883D000FE794D /* UICollectionViewRowLayout.swift */; };
 		47D20FF819654AF200BCB1D0 /* SoundBoxScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */; };
 		47DE6AD3196123E90049C253 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47DE6AD2196123E90049C253 /* AVFoundation.framework */; };
 		47EFE8391977485400AC952D /* TempDirBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EFE8381977485400AC952D /* TempDirBrowseViewController.swift */; };
@@ -60,7 +61,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2948993A1975BD2A007D0D97 /* Dollar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dollar.swift; sourceTree = "<group>"; };
 		2948993B1975BD2A007D0D97 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		2948993F1975BD58007D0D97 /* CVDetectorViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVDetectorViewController.mm; sourceTree = "<group>"; };
 		294899401975BD58007D0D97 /* GKWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKWebViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +82,8 @@
 		294899691975BE95007D0D97 /* UICircularGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircularGestureRecognizer.swift; sourceTree = "<group>"; };
 		29F78D0919836E9600F4C457 /* CountdownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
 		4700C00919822D8D007F0279 /* UIBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBaseViewController.swift; sourceTree = "<group>"; };
+		47C9E9821988414700FE794D /* UICollectionViewCellStyleImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellStyleImage.swift; sourceTree = "<group>"; };
+		47C9E984198883D000FE794D /* UICollectionViewRowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewRowLayout.swift; sourceTree = "<group>"; };
 		47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SoundBoxScene.swift; path = ../Scenes/SoundBoxScene.swift; sourceTree = "<group>"; };
 		47DE6AD2196123E90049C253 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		47EFE8381977485400AC952D /* TempDirBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempDirBrowseViewController.swift; sourceTree = "<group>"; };
@@ -141,7 +143,6 @@
 		294899391975BD2A007D0D97 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				2948993A1975BD2A007D0D97 /* Dollar.swift */,
 				2948993B1975BD2A007D0D97 /* UIColorExtension.swift */,
 				47EFE83F197A3D0A00AC952D /* AVCaptureSessionExt.swift */,
 			);
@@ -212,6 +213,8 @@
 			isa = PBXGroup;
 			children = (
 				294899691975BE95007D0D97 /* UICircularGestureRecognizer.swift */,
+				47C9E9821988414700FE794D /* UICollectionViewCellStyleImage.swift */,
+				47C9E984198883D000FE794D /* UICollectionViewRowLayout.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -411,14 +414,15 @@
 				47EFE840197A3D0A00AC952D /* AVCaptureSessionExt.swift in Sources */,
 				29F78D0A19836E9600F4C457 /* CountdownTimer.swift in Sources */,
 				294899481975BD58007D0D97 /* MainScreenController.swift in Sources */,
+				47C9E985198883D000FE794D /* UICollectionViewRowLayout.swift in Sources */,
 				294899491975BD58007D0D97 /* SettingsViewController.swift in Sources */,
 				2948993D1975BD2A007D0D97 /* UIColorExtension.swift in Sources */,
 				47EFE83E197A1C0600AC952D /* CaptureViewController.swift in Sources */,
 				294899651975BD98007D0D97 /* VideoCaptureManager.swift in Sources */,
 				4700C00A19822D8D007F0279 /* UIBaseViewController.swift in Sources */,
 				294899471975BD58007D0D97 /* GKWebViewController.swift in Sources */,
-				2948993C1975BD2A007D0D97 /* Dollar.swift in Sources */,
 				B54B660C1950CBF400FF48DC /* AppDelegate.swift in Sources */,
+				47C9E9831988414700FE794D /* UICollectionViewCellStyleImage.swift in Sources */,
 				47D20FF819654AF200BCB1D0 /* SoundBoxScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
