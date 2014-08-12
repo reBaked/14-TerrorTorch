@@ -6,11 +6,6 @@
 //  Copyright (c) 2014 reBaked. All rights reserved.
 //
 
-import UIKit
-import MobileCoreServices
-import AVFoundation
-
-
 class TMViewController: UIBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     
     @IBOutlet var videoFeedView: UIView!
@@ -19,14 +14,16 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
     @IBOutlet var sgmtCountdownTime: UISegmentedControl!
     @IBOutlet var startButton: UIButton!
     
+    let soundPlayer = AVPlayer();
+    
     private var _hasPermissions = false;
     private var _session:AVCaptureSession!
     private var _previewLayer:AVCaptureVideoPreviewLayer!
-    private var _soundIDs = [SystemSoundID]();
     
-    var soundID_ofSelectedItem:SystemSoundID{
+    var soundPlayer_ofSelectedItem:AVPlayer{
         get{
-            return _soundIDs[collectionView.selectedItem!];
+            self.updateSoundPlayer(collectionView.selectedItem!);
+            return soundPlayer;
         }
     }
     
@@ -64,56 +61,79 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        //print("Requesting permission to use audio devices: ");
-        AVCaptureDevice.requestAccessForMediaType(AVMediaTypeAudio, completionHandler: { (audioGranted) in
-            if(audioGranted){ print("Granted\n"); }
-            else {  print("Denied\n");  }
-            
-            //print("Requesting permission to use video devices: ")
-            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { (videoGranted) in
-                if(videoGranted){
-                    //print("Granted\n");
-                    self._hasPermissions = true;
-                } else {
-                    //print("Denied\n");
-                    self.startButton.enabled = false;
-                }
-                dispatch_sync(dispatch_get_main_queue()){
-                    //println("Setting up default capture session");
-                    self.setInitialConfigurationForSession();
-                    if(VideoCaptureManager.isValidSession(self._session)){
-                        //println("Configuring preview layer");
-                        self._previewLayer = AVCaptureVideoPreviewLayer(session: self._session);
-                        self.videoFeedView.layer.addSublayer(self._previewLayer);
-                        self.configurePreviewLayer();
-                        self._session.startRunning();
-                    } else {
-                        let alertView = UIAlertView(title: "Invalid device", message: "This device does not meet the minimum requirements to run TerrorTorch mode", delegate: nil, cancelButtonTitle: "Ok");
-                        alertView.show();
-                        self.videoFeedView.alpha = 0.0;
+        dispatch_async(dispatch_get_main_queue()){
+            print("Requesting permission to use audio devices: ");
+            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeAudio, completionHandler: {
+                if($0) { print("Granted\n"); }
+                else { print("Denied\n"); }
+                
+                print("Requesting permission to use video devices: ")
+                AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: {
+                    if($0) {
+                        self._hasPermissions = true;
+                        print("Granted\n");
                     }
-                }
-
+                    else {
+                        print("Denied\n");
+                    }
+                    
+                    dispatch_sync(dispatch_get_main_queue()){
+                        if(self._hasPermissions){
+                            println("Setting up capture session for preview");
+                            self.setInitialConfigurationForSession();
+                            if(VideoCaptureManager.isValidSession(self._session)){
+                                println("Configuring preview layer for camera feed");
+                                self._previewLayer = AVCaptureVideoPreviewLayer(session: self._session);
+                                self.videoFeedView.layer.addSublayer(self._previewLayer);
+                                self.configurePreviewLayer();
+                                self._session.startRunning();
+                            } else {
+                                let alertView = UIAlertView(title: "Invalid device", message: "This device does not meet the minimum requirements to run TerrorTorch mode", delegate: nil, cancelButtonTitle: "Ok");
+                                alertView.show();
+                                self.disableTerrorMode()
+                            }
+                        } else {
+                            let alertView = UIAlertView(title: "Invalid permissions", message: "Terror Mode must have access to your camera in order to be enabled", delegate: nil, cancelButtonTitle: "Ok");
+                            alertView.show();
+                            self.disableTerrorMode()
+                        }
+                    }
+                });
             });
-        });
-        
-        
+        }
     }
 
+    func disableTerrorMode(){
+        videoFeedView.hidden = true;
+        startButton.enabled = false;
+        sgmtCameraPosition.enabled = false;
+        sgmtCountdownTime.enabled = false;
+        println("Terror mode disabled");
+    }
     override func viewDidAppear(animated: Bool){
         super.viewDidAppear(animated);
         if(_session){
-            println("Starting capture session");
+            println("Starting capture session for preview");
             self._session.startRunning();
+            self.configurePreviewLayer();
         }
     }
     
     override func viewWillDisappear(animated: Bool) {
-        if(_session){ //&& _session.running){
-            println("Stopping capture session");
+        super.viewWillDisappear(animated);
+        if(_session){
+            println("Stopping capture session for preview");
             self._session.stopRunning();
         }
     }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        super.didRotateFromInterfaceOrientation(fromInterfaceOrientation);
+        if(_session){
+            self.configurePreviewLayer();
+        }
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -121,24 +141,18 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+        super.prepareForSegue(segue, sender: sender);
         if let controller = segue.destinationViewController as? CaptureViewController{
             controller.cameraPosition = self.cameraPosition;
             controller.timerCountdown = self.countdownTime;
-            controller.soundID = self.soundID_ofSelectedItem;
-            
-            controller.recordDuration = 4;
-        }
-    }
-    
-    deinit{
-        for soundID in _soundIDs{
-            AudioServicesDisposeSystemSoundID(soundID);
+            controller.soundPlayer = self.soundPlayer_ofSelectedItem;
+            controller.recordDuration = 5;
         }
     }
     
     //MARK: IBActions
     @IBAction func cameraPositionChanged(sender: UISegmentedControl) {
-        if(_session){
+        if((_session) != nil){
             _session.beginConfiguration();
             if let device = VideoCaptureManager.getDevice(AVMediaTypeVideo, position: self.cameraPosition){
             
@@ -173,6 +187,7 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
             _previewLayer.bounds = layerRect;
             _previewLayer.position = CGPointMake(CGRectGetMidX(layerRect), CGRectGetMidY(layerRect));
             _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+            _previewLayer.connection.videoOrientation = VideoCaptureManager.videoOrientationFromDeviceOrientation();
         }
     }
 
@@ -189,25 +204,23 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
         }
     }
     
-   // func createSoundAssets() -> [SystemSoundID]{
+    func updateSoundPlayer(indexPath:NSIndexPath){
+        let soundName = appAssets[indexPath.item]["soundName"];
+        let path = NSBundle.mainBundle().pathForResource(soundName, ofType: SOUNDFORMAT)
+        let url = NSURL(fileURLWithPath: path);
         
-   // }
+        soundPlayer.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: url));
+    }
+
     //MARK: UICollectionView Delegate
-    func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {    
-        let soundID = _soundIDs[indexPath.item];
-        AudioServicesPlaySystemSound(soundID);
+    func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
+        self.updateSoundPlayer(indexPath);
+        soundPlayer.play();
     }
 
     //MARK: UICollectionView Datasource
     func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectionCell", forIndexPath: indexPath) as UICollectionViewCellStyleImage;
-        
-       
-        let soundURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(appAssets[indexPath.row]["soundName"]!, ofType: "wav"));
-        var soundID:SystemSoundID = 0;
-        AudioServicesCreateSystemSoundID(soundURL, &soundID);
-         _soundIDs.append(soundID);
-
         
         cell.imageView.image = UIImage(named: appAssets[indexPath.row]["imageName"]!);
         return cell;

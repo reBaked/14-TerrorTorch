@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 reBaked. All rights reserved.
 //
 
-import UIKit
-
 class SettingsViewController: UIBaseViewController {
     @IBOutlet var webView: UIWebView!
     

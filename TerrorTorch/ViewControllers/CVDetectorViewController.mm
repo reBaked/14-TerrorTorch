@@ -75,7 +75,6 @@ using namespace cv;
 
 -(void)setupCamera {
     self.videoCamera = [[CvVideoCamera alloc] initWithParentView:imageView];
-    NSLog(@"%d",self.cameraPosition);
     self.videoCamera.defaultAVCaptureDevicePosition = self.cameraPosition;
     self.videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
     self.videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;

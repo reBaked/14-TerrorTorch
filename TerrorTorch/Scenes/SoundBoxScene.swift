@@ -7,8 +7,6 @@
 //
 
 import SpriteKit
-import AVFoundation
-import CoreMedia
 
 enum SpriteAttribute:String{
     case Name = "name"
@@ -173,7 +171,7 @@ class SoundBoxScene: SKScene {
             //Attempt to cast as Sprite
             if let sprite = node as? SKSpriteNode{
                 //Cast sprite attributes
-                let soundFilename = (attributes[SpriteAttribute.SoundName.toRaw()]! as String) + SOUNDFORMAT;
+                let soundFilename = (attributes[SpriteAttribute.SoundName.toRaw()]! as String) + "." + SOUNDFORMAT;
                 let rotations = (attributes[SpriteAttribute.Rotations.toRaw()]! as Double);
                 let duration = (attributes[SpriteAttribute.Duration.toRaw()]! as Double);
                 
@@ -243,14 +241,4 @@ class SoundBoxScene: SKScene {
             }
         }
     }
-}
-
-func find<T: Equatable>(array: [T], iterator: (T) -> Bool) -> T? {
-    for elem in array {
-        let result = iterator(elem)
-        if result {
-            return elem
-        }
-    }
-    return nil
 }

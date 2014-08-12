@@ -6,10 +6,7 @@
 //  Copyright (c) 2014 reBaked. All rights reserved.
 //
 
-import Foundation
-import UIKit
-
-class UICircularGestureRecognizer: UIGestureRecognizer {
+class UICircularGestureRecognizer: UITapGestureRecognizer {
     
     /**
     *   Tracks current rotation value

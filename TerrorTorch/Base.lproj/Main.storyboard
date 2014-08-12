@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="uFg-jy-wQs">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -31,6 +30,7 @@
                             </button>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mono-power-button-hi.png" translatesAutoresizingMaskIntoConstraints="NO" id="hKa-mJ-yjV">
                                 <rect key="frame" x="52" y="150" width="216" height="216"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hKa-mJ-yjV" secondAttribute="height" multiplier="1:1" id="2wE-5S-Vx6"/>
                                 </constraints>
@@ -65,6 +65,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Tx8-ZW-Dmp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="18i-vB-oOx"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LsN-dM-wnq" secondAttribute="bottom" id="4Dj-kw-REa"/>
@@ -80,6 +81,10 @@
                             <constraint firstAttribute="trailing" secondItem="YPu-k8-tFM" secondAttribute="trailing" constant="90" id="fxE-XU-p5m"/>
                             <constraint firstItem="YPu-k8-tFM" firstAttribute="top" secondItem="Tx8-ZW-Dmp" secondAttribute="bottom" constant="8" id="hwv-Lx-TWl"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="bvE-KK-HxU" appends="YES" id="Ee0-PU-Ads"/>
+                            <outletCollection property="gestureRecognizers" destination="tem-h2-F5f" appends="YES" id="28y-ay-Ise"/>
+                        </connections>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="Ner-aO-5FE"/>
@@ -89,6 +94,21 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="bvE-KK-HxU">
+                    <connections>
+                        <action selector="toggleTorchLight:" destination="BYZ-38-t0r" id="UZd-Hd-y7f"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="tem-h2-F5f">
+                    <connections>
+                        <action selector="presentSettingsScreen:" destination="BYZ-38-t0r" id="XH6-RM-4WD"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <tapGestureRecognizer id="HuH-1s-yBj" customClass="UICircularGestureRecognizer" customModule="TerrorTorch" customModuleProvider="target">
+                    <connections>
+                        <action selector="rotated:" destination="BYZ-38-t0r" id="UTu-6q-311"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="832" y="142"/>
         </scene>
@@ -140,10 +160,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeP-51-ycL">
-                                <rect key="frame" x="114" y="366" width="91" height="30"/>
-                                <state key="normal" title="GoldenViking">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <rect key="frame" x="112" y="366" width="95" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="GoldenViking"/>
                                 <connections>
                                     <segue destination="Fb4-iH-5Uz" kind="modal" id="qia-Ni-T05"/>
                                 </connections>
@@ -174,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fya-cN-kmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1276" y="780"/>
+            <point key="canvasLocation" x="1282" y="780"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="TJw-pb-U0b">
@@ -306,14 +325,14 @@
                                     <action selector="cameraPositionChanged:" destination="iOa-Fz-k1s" eventType="valueChanged" id="ZEO-dC-wHg"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Countdown Time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIx-wu-i7U">
-                                <rect key="frame" x="91" y="228" width="138" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Countdown Time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIx-wu-i7U">
+                                <rect key="frame" x="90" y="193.5" width="140" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ie6-v4-GIA">
-                                <rect key="frame" x="20" y="257" width="280" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ie6-v4-GIA">
+                                <rect key="frame" x="20" y="222" width="280" height="29"/>
                                 <segments>
                                     <segment title="3s"/>
                                     <segment title="15s"/>
@@ -322,14 +341,14 @@
                                     <segment title="3m"/>
                                 </segments>
                             </segmentedControl>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Preview disabled" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m42-c8-PcU">
-                                <rect key="frame" x="94" y="128" width="131" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Preview disabled" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m42-c8-PcU">
+                                <rect key="frame" x="20" y="108" width="280" height="25.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LW9-Ck-FvM" userLabel="videoFeedView">
-                                <rect key="frame" x="20" y="70" width="280" height="149"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LW9-Ck-FvM" userLabel="videoFeedView">
+                                <rect key="frame" x="20" y="56" width="280" height="129.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4Wz-3d-Aiu">

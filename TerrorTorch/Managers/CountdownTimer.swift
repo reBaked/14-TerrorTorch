@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 reBaked. All rights reserved.
 //
 
-import Foundation
-
 protocol Ticker {
     func Tick(timeLeft:Double)
     func Timeout()
