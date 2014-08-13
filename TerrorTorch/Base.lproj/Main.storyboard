@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="uFg-jy-wQs">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -326,13 +327,13 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Countdown Time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIx-wu-i7U">
-                                <rect key="frame" x="90" y="193.5" width="140" height="20.5"/>
+                                <rect key="frame" x="90" y="209.5" width="140" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ie6-v4-GIA">
-                                <rect key="frame" x="20" y="222" width="280" height="29"/>
+                                <rect key="frame" x="20" y="238" width="280" height="29"/>
                                 <segments>
                                     <segment title="3s"/>
                                     <segment title="15s"/>
@@ -342,17 +343,17 @@
                                 </segments>
                             </segmentedControl>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Preview disabled" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m42-c8-PcU">
-                                <rect key="frame" x="20" y="108" width="280" height="25.5"/>
+                                <rect key="frame" x="20" y="108" width="280" height="41.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LW9-Ck-FvM" userLabel="videoFeedView">
-                                <rect key="frame" x="20" y="56" width="280" height="129.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="20" y="56" width="280" height="145.5"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4Wz-3d-Aiu">
-                                <rect key="frame" x="20" y="260" width="280" height="97.5"/>
+                                <rect key="frame" x="20" y="276" width="280" height="81.5"/>
                                 <collectionViewLayout key="collectionViewLayout" id="m7g-5f-Azj" customClass="UICollectionViewRowLayout" customModule="TerrorTorch"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="1Ii-BJ-uTS" customClass="UICollectionViewCellStyleImage" customModule="TerrorTorch" customModuleProvider="target">
@@ -403,7 +404,7 @@
                             <constraint firstAttribute="trailing" secondItem="ie6-v4-GIA" secondAttribute="trailing" constant="20" id="ckm-wI-hfV"/>
                             <constraint firstItem="LW9-Ck-FvM" firstAttribute="leading" secondItem="yPl-6v-JMX" secondAttribute="leading" constant="20" id="fax-hn-WVw"/>
                             <constraint firstItem="Lk8-dd-v3a" firstAttribute="top" secondItem="yPl-6v-JMX" secondAttribute="top" constant="20" id="jTO-qM-2qa"/>
-                            <constraint firstItem="LW9-Ck-FvM" firstAttribute="height" secondItem="4Wz-3d-Aiu" secondAttribute="height" multiplier="4:3" id="l8I-70-mBD"/>
+                            <constraint firstItem="LW9-Ck-FvM" firstAttribute="height" secondItem="4Wz-3d-Aiu" secondAttribute="height" multiplier="16:9" id="l8I-70-mBD"/>
                             <constraint firstItem="Lk8-dd-v3a" firstAttribute="leading" secondItem="yPl-6v-JMX" secondAttribute="leading" constant="98" id="lZz-WV-hot"/>
                             <constraint firstItem="fwW-ED-A9Q" firstAttribute="leading" secondItem="yPl-6v-JMX" secondAttribute="leading" constant="140" id="nvj-r0-s5S"/>
                             <constraint firstItem="pIx-wu-i7U" firstAttribute="top" secondItem="m42-c8-PcU" secondAttribute="bottom" constant="60" id="pUp-TS-5tk"/>

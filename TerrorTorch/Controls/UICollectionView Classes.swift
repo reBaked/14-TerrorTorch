@@ -18,6 +18,7 @@ class UICollectionViewRowLayout: UICollectionViewLayout {
     var rightInset:CGFloat!;                    //Default spacing places center of last cell at center of collection view
     var itemSize:CGSize!                        //Default square dimensions with height equal to height of collection view
     private var _currentItem = 0;               //Index of item within center of collection view
+    private var _contentAttributes:[UICollectionViewLayoutAttributes] = []
     
     var currentItem:NSIndexPath{                //Indexpath of item within center of collection view
         get{
@@ -30,22 +31,16 @@ class UICollectionViewRowLayout: UICollectionViewLayout {
             return self.collectionView.numberOfItemsInSection(0);
         }
     }
-    
+
     //All calculations are done once and shouldn't be changed after
     override func prepareLayout() {
+        super.prepareLayout();
+        
         let bounds = self.collectionView.bounds;
-        itemSize = CGSizeMake(bounds.height, bounds.height);
-        leftInset = bounds.width/2 - (itemSize.width/2);
-        rightInset = leftInset;                                             //Alfred likes symmetry
-        minimumCellSpacing = (bounds.width - itemSize.width*2) * 0.5;
+        self.updateToBounds(self.collectionView.bounds);
+        self.updateLayoutAttributes();
         
-        if(minimumCellSpacing < 0) {                                        //Sometimes cells are too big to make atleast 2 cells visible at a time
-            minimumCellSpacing = (bounds.width - itemSize.width) * 0.5;     //Make sure atleast one cell is always visible
-        }
-        
-        println("UICVRowLayout config dump - leftInset: \(leftInset) rightInset: \(rightInset) minimumCellSpacing: \(minimumCellSpacing) itemSizeWidth: \(itemSize.width) numItems: \(_numItems)");
     }
-    
     
     override func collectionViewContentSize() -> CGSize {
         let contentWidth = leftInset + itemSize.width * CGFloat(_numItems) + minimumCellSpacing * CGFloat(_numItems - 1) + rightInset;
@@ -56,37 +51,18 @@ class UICollectionViewRowLayout: UICollectionViewLayout {
     
     //Only worried about positioning cells along the x axis. Spaces cells according to properties of layout
     override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath!) -> UICollectionViewLayoutAttributes! {
-        
-        let result = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath);
-        var x = (indexPath.item == 0) ? leftInset : leftInset + itemSize.width * CGFloat(indexPath.item) + minimumCellSpacing * CGFloat(indexPath.item);    // Position cell
-        result.frame = CGRectMake(x, 0, itemSize.width, itemSize.height);
-        return result;
+        return _contentAttributes[indexPath.item];
     }
     
     //Dynamically retrieves attributes of cells in rectangle by dividing rectangle into indexes
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]! {
         
-        let elementWidth = itemSize.width + minimumCellSpacing;
-        
-        //Start point for comparison is after left inset spacing
-        let offsetMinX = rect.minX + leftInset;
-        let offsetMaxX = rect.maxX + leftInset;
-        
-        //Divide offsets by elementWidth to split the rectangle into section representing our indexes
-        let firstIndex = Int(offsetMinX/elementWidth);
-        let lastIndex = Int(offsetMaxX/elementWidth)-1;
-        
-        //Corrections if rectangle bounces past bounds of our layout
-        let firstItem = (firstIndex < 0) ? 0 : firstIndex;
-        let lastItem = (lastIndex > _numItems-1) ? _numItems-1 : lastIndex;
-    
-        //Final result of calculations
-        println("UICVRowLayout rect dump - minX: \(rect.minX) maxX: \(rect.maxX) elementWidth: \(elementWidth) firstItem: \(firstItem) lastItem: \(lastItem)");
-        
-        //Retrieve attributes for cells appearing within rectangle
         var result = [UICollectionViewLayoutAttributes]();
-        for index in firstItem...lastItem{
-            result.append(self.layoutAttributesForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0)));
+        
+        for attribute in _contentAttributes{
+            if(CGRectContainsRect(rect, attribute.frame)){
+                result.append(attribute);
+            }
         }
         
         return result;
@@ -94,13 +70,49 @@ class UICollectionViewRowLayout: UICollectionViewLayout {
     
     //Snaps content to position the center of the nearest cell at the center of the view
     override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
-        let elementWidth = itemSize.width + minimumCellSpacing;
         let offsetX = proposedContentOffset.x + leftInset;                  //Start point for comparison is after left inset spacing
         
-        _currentItem = Int(offsetX/elementWidth);                           //Calculate nearest item and make it the current item
+        for (i, attribute) in enumerate(_contentAttributes){
+            if(attribute.frame.contains(CGPointMake(offsetX, 0))){
+                _currentItem = i;
+                return CGPointMake(attribute.frame.minX - leftInset, 0);
+            }
+        }
         
-        let attributes = self.layoutAttributesForItemAtIndexPath(NSIndexPath(forItem: _currentItem, inSection: 0));
-        return CGPointMake(attributes.frame.minX - leftInset, 0);           //Return center of current item to reposition content offset
+        return proposedContentOffset;
+    }
+    
+    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+        if(newBounds.height != itemSize.height){
+            return true;
+        }
+        
+        return false;
+    }
+    
+    func updateToBounds(bounds:CGRect){
+        itemSize = CGSizeMake(bounds.height, bounds.height);
+        leftInset = bounds.width/2 - (itemSize.width/2);
+        rightInset = leftInset;
+        minimumCellSpacing = (bounds.width - itemSize.width*2) * 0.5;
+        
+        if(minimumCellSpacing < 0) {                                        //Sometimes cells are too big to make atleast 2 cells visible at a time
+            minimumCellSpacing = (bounds.width - itemSize.width) * 0.5;     //Make sure atleast one cell is always visible
+        } else if(minimumCellSpacing > itemSize.width){
+            minimumCellSpacing = itemSize.width;
+        }
+        
+        println("UICVRowLayout layout update dump - leftInset: \(leftInset) rightInset: \(rightInset) minimumCellSpacing: \(minimumCellSpacing) itemSizeWidth: \(itemSize.width) numItems: \(_numItems)");
+    }
+    
+    func updateLayoutAttributes(){
+        _contentAttributes.removeAll(keepCapacity: false);
+        for item in 0..<_numItems{
+            let result = UICollectionViewLayoutAttributes(forCellWithIndexPath: NSIndexPath(forItem: item, inSection: 0));
+            let x = (item == 0) ? leftInset : leftInset + itemSize.width * CGFloat(item) + minimumCellSpacing * CGFloat(item);
+            result.frame = CGRectMake(x, 0, itemSize.width, itemSize.height);
+            _contentAttributes.append(result);
+        }
     }
 }
 

@@ -40,6 +40,12 @@ class MainScreenController: UIBaseViewController {
         super.didReceiveMemoryWarning()
        // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        if(_isTorchOn){
+            turnTorchLightOn(false);
+        }
+    }
 
     /**
     *  Called when user swipes to the right
