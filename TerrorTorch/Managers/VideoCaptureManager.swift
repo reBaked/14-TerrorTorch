@@ -6,42 +6,25 @@
 //  Copyright (c) 2014 reBaked. All rights reserved.
 //
 
-import Foundation
-import AVFoundation
-import CoreMedia
-
 class VideoCaptureManager{
     
     private var _session    = VideoCaptureManager.getFullAVCaptureSession(AVCaptureDevicePosition.Front)!;   //Manages data between input and output
-    private let _output     = AVCaptureMovieFileOutput();
-    private var _position   = AVCaptureDevicePosition.Front;
-    
-    var cameraPosition:AVCaptureDevicePosition{
-        set{
-            _position = newValue;
-        }
-        get{
-            return _position;
-        }
-    }
-    
-    var captureSession:AVCaptureSession?{
-        get {
-            return _session;
-        }
-    }
+    private let _output     = AVCaptureMovieFileOutput();                   //Writes data to file
+    private var _position   = AVCaptureDevicePosition.Front;                //Position of camera used to capture feed
     
     var delegate:AVCaptureFileOutputRecordingDelegate? //Notified of when recording starts and stops
     
     /**
     *  Will default to creating a session using devices found at the front of the gadget
-    *  If a full session with video and audio capabilities cannot be made, then trying to
+    *  If a session with a video input cannot be made, then trying to
     *  record the capture session will cause the app to crash
     */
     init(aPosition:AVCaptureDevicePosition?){
-        if(aPosition != nil){
-            cameraPosition = aPosition!;
+        if let position = aPosition{
+            _position = position;
         }
+        
+        _session.addOutput(_output);
     }
     
     /**
@@ -64,21 +47,27 @@ class VideoCaptureManager{
                 
                 } else {
                     println("Unable to delete \(url.lastPathComponent): \(error)");
+                    println("Cannot record to that path");
                     return;
                 }
             }
             
-            //Create session, then start recording
-            if let aSession = VideoCaptureManager.getFullAVCaptureSession(_position){
-                _session = aSession;
-                _session.addOutput(_output);
-                _session.startRunning();
-                println("Started capture session for recording");
-                _output.startRecordingToOutputFileURL(url, recordingDelegate: delegate);
-                
-            } else {
-                println("Critical Error: Was unable to create a valid capture session");
+            //Check if there's a valid session. If not, try to create a new one
+            if(!VideoCaptureManager.isValidSession(_session)){
+                println("Invalid capture session, attempting to create new one");
+                if let aSession = VideoCaptureManager.getFullAVCaptureSession(_position){
+                    _session = aSession;
+                } else {
+                    println("Error: Was unable to create a valid capture session");
+                    return;
+                }
             }
+            
+            println("Configuring output of capture session");
+            self.configureOutput();
+            println("Starting capture session and will begin recording");
+            _session.startRunning();
+            _output.startRecordingToOutputFileURL(url, recordingDelegate: delegate);
         }
     }
     
@@ -88,11 +77,14 @@ class VideoCaptureManager{
     
     func endRecording(){
         if(_session.running){
+            println("Stopping capture session and will end recording");
             _output.stopRecording();
             _session.stopRunning()
-            println("Stopped capture session for recording");
-            
         }
+    }
+    
+    func configureOutput(){
+        _output.connectionWithMediaType(AVMediaTypeVideo).videoOrientation = VideoCaptureManager.videoOrientationFromDeviceOrientation();
     }
     
     /**
@@ -107,7 +99,6 @@ class VideoCaptureManager{
         var error:NSError?
         
         if let input = AVCaptureDeviceInput.deviceInputWithDevice(device, error: &error) as? AVCaptureDeviceInput{ //Attempt to create input for camera
-            //self.videoInput = input;
             if(session.canAddInput(input)){
                 session.addInput(input);
                 return input;
@@ -188,13 +179,26 @@ class VideoCaptureManager{
             for input in session.inputs as [AVCaptureDeviceInput]{
                 if(input.device.hasMediaType(AVMediaTypeVideo)){
                     hasVideo = true;
-                }/* else if(input.device.hasMediaType(AVMediaTypeAudio)){
-                    hasAudio = true;
-                }*/
+                }
             }
             return hasVideo;
         } else {
             return false;
         }
     }
+    
+    class func videoOrientationFromDeviceOrientation() -> AVCaptureVideoOrientation{
+        switch(UIDevice.currentDevice().orientation){
+            case UIDeviceOrientation.LandscapeLeft:
+                return AVCaptureVideoOrientation.LandscapeRight;
+            case UIDeviceOrientation.LandscapeRight:
+                return AVCaptureVideoOrientation.LandscapeLeft;
+            case UIDeviceOrientation.Portrait:
+                return AVCaptureVideoOrientation.Portrait;
+            case UIDeviceOrientation.PortraitUpsideDown:
+                return AVCaptureVideoOrientation.PortraitUpsideDown;
+            default:
+                return AVCaptureVideoOrientation.Portrait;
+        }
+    }   
 }

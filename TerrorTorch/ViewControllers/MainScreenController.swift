@@ -6,9 +6,6 @@
 //  Copyright (c) 2014 reBaked. All rights reserved.
 //
 
-import UIKit
-import AVFoundation
-
 class MainScreenController: UIBaseViewController {
                             
     @IBOutlet var powerView: UIImageView! = nil;
@@ -25,11 +22,6 @@ class MainScreenController: UIBaseViewController {
         // Do any additional setup after loading the view, typically from a nib.
         _defaultScreenBrightness = UIScreen.mainScreen().brightness; //Used to restore original user defined brightness settings
         
-        //Gesture recognizer for transition to settings page
-        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("presentSettingsScreen:"));
-        swipeRecognizer.direction = UISwipeGestureRecognizerDirection.Left;
-        self.view.addGestureRecognizer(swipeRecognizer);
-        
         //Get all devices that support torch mode
         for device in AVCaptureDevice.devices() as [AVCaptureDevice]{
             if(device.hasTorch){
@@ -37,12 +29,6 @@ class MainScreenController: UIBaseViewController {
                 break;
             }
         }
-        
-        
-        
-        //Gesture recognizer for enabling torch mode
-        let singleTapRecognizer = UITapGestureRecognizer(target: self, action: Selector("toggleTorchLight:"));
-        powerView.addGestureRecognizer(singleTapRecognizer);
         
         //User circular gesture to adjust torch intensity
         let circularRecognizer:UICircularGestureRecognizer = UICircularGestureRecognizer(target: self, action: "rotated:");
@@ -54,25 +40,31 @@ class MainScreenController: UIBaseViewController {
         super.didReceiveMemoryWarning()
        // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        if(_isTorchOn){
+            turnTorchLightOn(false);
+        }
+    }
 
     /**
     *  Called when user swipes to the right
-    */
-    func presentSettingsScreen(recognizer: UISwipeGestureRecognizer){
-        if(recognizer.state == UIGestureRecognizerState.Ended){ //Had to cast to raw because equality wasn't working
+    */    
+    @IBAction func presentSettingsScreen(sender: UISwipeGestureRecognizer) {
+        if(sender.state == UIGestureRecognizerState.Ended){ //Had to cast to raw because equality wasn't working
             self.performSegueWithIdentifier("mainToSettings", sender: self);
         }
+
     }
-    
     /**
     *  Called when user taps on power view
     *  Toggles torch light and set's intesity to previous intesity level
     */
-    func toggleTorchLight(recognizer: UITapGestureRecognizer) {
-        if (recognizer.state == UIGestureRecognizerState.Ended) {
+    @IBAction func toggleTorchLight(sender: UITapGestureRecognizer) {
+        if (sender.state == UIGestureRecognizerState.Ended) {
             turnTorchLightOn(!_isTorchOn);
         }
-    
+        
         if(_isTorchOn) {
             self.changeTorchIntensity(self.torchLevel);
         }

@@ -31,6 +31,7 @@
                             </button>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mono-power-button-hi.png" translatesAutoresizingMaskIntoConstraints="NO" id="hKa-mJ-yjV">
                                 <rect key="frame" x="52" y="150" width="216" height="216"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hKa-mJ-yjV" secondAttribute="height" multiplier="1:1" id="2wE-5S-Vx6"/>
                                 </constraints>
@@ -65,6 +66,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Tx8-ZW-Dmp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="18i-vB-oOx"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LsN-dM-wnq" secondAttribute="bottom" id="4Dj-kw-REa"/>
@@ -80,6 +82,10 @@
                             <constraint firstAttribute="trailing" secondItem="YPu-k8-tFM" secondAttribute="trailing" constant="90" id="fxE-XU-p5m"/>
                             <constraint firstItem="YPu-k8-tFM" firstAttribute="top" secondItem="Tx8-ZW-Dmp" secondAttribute="bottom" constant="8" id="hwv-Lx-TWl"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="bvE-KK-HxU" appends="YES" id="Ee0-PU-Ads"/>
+                            <outletCollection property="gestureRecognizers" destination="tem-h2-F5f" appends="YES" id="28y-ay-Ise"/>
+                        </connections>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="Ner-aO-5FE"/>
@@ -89,6 +95,21 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="bvE-KK-HxU">
+                    <connections>
+                        <action selector="toggleTorchLight:" destination="BYZ-38-t0r" id="UZd-Hd-y7f"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="tem-h2-F5f">
+                    <connections>
+                        <action selector="presentSettingsScreen:" destination="BYZ-38-t0r" id="XH6-RM-4WD"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <tapGestureRecognizer id="HuH-1s-yBj" customClass="UICircularGestureRecognizer" customModule="TerrorTorch" customModuleProvider="target">
+                    <connections>
+                        <action selector="rotated:" destination="BYZ-38-t0r" id="UTu-6q-311"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="832" y="142"/>
         </scene>
@@ -140,10 +161,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeP-51-ycL">
-                                <rect key="frame" x="114" y="366" width="91" height="30"/>
-                                <state key="normal" title="GoldenViking">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <rect key="frame" x="112" y="366" width="95" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="GoldenViking"/>
                                 <connections>
                                     <segue destination="Fb4-iH-5Uz" kind="modal" id="qia-Ni-T05"/>
                                 </connections>
@@ -174,7 +194,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fya-cN-kmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1276" y="780"/>
+            <point key="canvasLocation" x="1282" y="780"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="TJw-pb-U0b">
@@ -234,25 +254,6 @@
             </objects>
             <point key="canvasLocation" x="1721" y="780"/>
         </scene>
-        <!--Shop-->
-        <scene sceneID="KEV-au-1sE">
-            <objects>
-                <viewController storyboardIdentifier="ShopScene" title="Shop" id="B7h-sM-YJS" customClass="ShopViewController" customModule="TerrorTorch" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="J67-Ho-uOn"/>
-                        <viewControllerLayoutGuide type="bottom" id="FgT-Lh-f3L"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="STD-Ys-jM1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="K7x-hn-kj5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1721" y="-492"/>
-        </scene>
         <!--Sound Box-->
         <scene sceneID="pdv-TL-FM3">
             <objects>
@@ -306,14 +307,14 @@
                                     <action selector="cameraPositionChanged:" destination="iOa-Fz-k1s" eventType="valueChanged" id="ZEO-dC-wHg"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Countdown Time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIx-wu-i7U">
-                                <rect key="frame" x="91" y="228" width="138" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Countdown Time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIx-wu-i7U">
+                                <rect key="frame" x="90" y="209.5" width="140" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ie6-v4-GIA">
-                                <rect key="frame" x="20" y="257" width="280" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ie6-v4-GIA">
+                                <rect key="frame" x="20" y="238" width="280" height="29"/>
                                 <segments>
                                     <segment title="3s"/>
                                     <segment title="15s"/>
@@ -322,18 +323,18 @@
                                     <segment title="3m"/>
                                 </segments>
                             </segmentedControl>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Preview disabled" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m42-c8-PcU">
-                                <rect key="frame" x="94" y="128" width="131" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Preview disabled" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m42-c8-PcU">
+                                <rect key="frame" x="20" y="108" width="280" height="41.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LW9-Ck-FvM" userLabel="videoFeedView">
-                                <rect key="frame" x="20" y="70" width="280" height="149"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LW9-Ck-FvM" userLabel="videoFeedView">
+                                <rect key="frame" x="20" y="56" width="280" height="145.5"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4Wz-3d-Aiu">
-                                <rect key="frame" x="20" y="260" width="280" height="97.5"/>
+                                <rect key="frame" x="20" y="276" width="280" height="81.5"/>
                                 <collectionViewLayout key="collectionViewLayout" id="m7g-5f-Azj" customClass="UICollectionViewRowLayout" customModule="TerrorTorch"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="1Ii-BJ-uTS" customClass="UICollectionViewCellStyleImage" customModule="TerrorTorch" customModuleProvider="target">
@@ -384,7 +385,7 @@
                             <constraint firstAttribute="trailing" secondItem="ie6-v4-GIA" secondAttribute="trailing" constant="20" id="ckm-wI-hfV"/>
                             <constraint firstItem="LW9-Ck-FvM" firstAttribute="leading" secondItem="yPl-6v-JMX" secondAttribute="leading" constant="20" id="fax-hn-WVw"/>
                             <constraint firstItem="Lk8-dd-v3a" firstAttribute="top" secondItem="yPl-6v-JMX" secondAttribute="top" constant="20" id="jTO-qM-2qa"/>
-                            <constraint firstItem="LW9-Ck-FvM" firstAttribute="height" secondItem="4Wz-3d-Aiu" secondAttribute="height" multiplier="4:3" id="l8I-70-mBD"/>
+                            <constraint firstItem="LW9-Ck-FvM" firstAttribute="height" secondItem="4Wz-3d-Aiu" secondAttribute="height" multiplier="16:9" id="l8I-70-mBD"/>
                             <constraint firstItem="Lk8-dd-v3a" firstAttribute="leading" secondItem="yPl-6v-JMX" secondAttribute="leading" constant="98" id="lZz-WV-hot"/>
                             <constraint firstItem="fwW-ED-A9Q" firstAttribute="leading" secondItem="yPl-6v-JMX" secondAttribute="leading" constant="140" id="nvj-r0-s5S"/>
                             <constraint firstItem="pIx-wu-i7U" firstAttribute="top" secondItem="m42-c8-PcU" secondAttribute="bottom" constant="60" id="pUp-TS-5tk"/>
