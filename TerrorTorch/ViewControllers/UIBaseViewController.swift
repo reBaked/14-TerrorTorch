@@ -17,24 +17,12 @@ class UIBaseViewController : UIViewController{
         } else {                                            //Otherwise just set the current title to default App appearance
             self.navigationItem.title = self.title;
         }
-
-        //Add shop button to navigation bar unless already on shop scene
-        if(self.title != "Shop"){
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "shopbtn"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("presentShopScene"));
-        }
         
         //Add back button to navigation bar unless already at main menu scene
         if(self.title != "Main Menu")
         {
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "logo"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("popCurrentController"));
         }
-    }
-    
-    //All subcless will transition to shop scene when the shop button is pressed
-    func presentShopScene(){
-        let storyboard = UIStoryboard(name:"Main", bundle: nil);
-        let shopVC = storyboard.instantiateViewControllerWithIdentifier("ShopScene") as UIViewController;
-        self.navigationController.pushViewController(shopVC, animated: true);
     }
     
     //Returns Red/White attributed text of specified scenes

@@ -254,25 +254,6 @@
             </objects>
             <point key="canvasLocation" x="1721" y="780"/>
         </scene>
-        <!--Shop-->
-        <scene sceneID="KEV-au-1sE">
-            <objects>
-                <viewController storyboardIdentifier="ShopScene" title="Shop" id="B7h-sM-YJS" customClass="ShopViewController" customModule="TerrorTorch" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="J67-Ho-uOn"/>
-                        <viewControllerLayoutGuide type="bottom" id="FgT-Lh-f3L"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="STD-Ys-jM1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="K7x-hn-kj5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1721" y="-492"/>
-        </scene>
         <!--Sound Box-->
         <scene sceneID="pdv-TL-FM3">
             <objects>

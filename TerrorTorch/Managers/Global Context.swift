@@ -32,14 +32,10 @@ let appAssets = [
 func initStyles() {
     UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false);
     let navBar = UINavigationBar.appearance();
-    let regBtn = UIButton.appearance();
-    let barBtn = UIBarButtonItem.appearance();
     
     navBar.titleTextAttributes = [ NSFontAttributeName: FONT_TITLE, NSForegroundColorAttributeName: COLOR_RED ];
     navBar.setBackgroundImage(UIImage(named: "bar-bg"), forBarPosition: UIBarPosition.Any, barMetrics: UIBarMetrics.Default);
     navBar.tintColor = COLOR_RED;
-    regBtn.tintColor = COLOR_RED;
-    barBtn.tintColor = COLOR_RED;
 }
 
 // Dollar Swift's function for finding matches in an array
