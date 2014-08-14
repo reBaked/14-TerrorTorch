@@ -84,8 +84,10 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
                             if(VideoCaptureManager.isValidSession(self._session)){
                                 println("Configuring preview layer for camera feed");
                                 self._previewLayer = AVCaptureVideoPreviewLayer(session: self._session);
+                                self._previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
                                 self.videoFeedView.layer.addSublayer(self._previewLayer);
-                                self.configurePreviewLayer();
+                                self.updatePreviewLayer();
+                                self.videoFeedView.addObserver(self, forKeyPath: "bounds", options: NSKeyValueObservingOptions.New, context: nil);
                                 self._session.startRunning();
                             } else {
                                 let alertView = UIAlertView(title: "Invalid device", message: "This device does not meet the minimum requirements to run TerrorTorch mode", delegate: nil, cancelButtonTitle: "Ok");
@@ -103,19 +105,17 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
         }
     }
 
-    func disableTerrorMode(){
-        videoFeedView.hidden = true;
-        startButton.enabled = false;
-        sgmtCameraPosition.enabled = false;
-        sgmtCountdownTime.enabled = false;
-        println("Terror mode disabled");
+    override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<()>) {
+        if(keyPath == "bounds"){
+            self.updatePreviewLayer();
+        }
     }
+    
     override func viewDidAppear(animated: Bool){
         super.viewDidAppear(animated);
         if(_session){
             println("Starting capture session for preview");
             self._session.startRunning();
-            self.configurePreviewLayer();
         }
     }
     
@@ -126,14 +126,6 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
             self._session.stopRunning();
         }
     }
-    
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        super.didRotateFromInterfaceOrientation(fromInterfaceOrientation);
-        if(_session){
-            self.configurePreviewLayer();
-        }
-    }
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -181,12 +173,12 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
     /**
     *  Changes frame of preview layer to match and fill outlet view
     */
-    func configurePreviewLayer(){
+    func updatePreviewLayer(){
         if(VideoCaptureManager.isValidSession(_session)){
+            
             let layerRect = self.videoFeedView.layer.bounds;
             _previewLayer.bounds = layerRect;
             _previewLayer.position = CGPointMake(CGRectGetMidX(layerRect), CGRectGetMidY(layerRect));
-            _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
             _previewLayer.connection.videoOrientation = VideoCaptureManager.videoOrientationFromDeviceOrientation();
         }
     }
@@ -211,6 +203,14 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
         
         soundPlayer.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: url));
     }
+    
+    func disableTerrorMode(){
+        videoFeedView.hidden = true;
+        startButton.enabled = false;
+        sgmtCameraPosition.enabled = false;
+        sgmtCountdownTime.enabled = false;
+        println("Terror mode disabled");
+    }
 
     //MARK: UICollectionView Delegate
     func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
@@ -234,4 +234,9 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
         return appAssets.count;
     }
     
+    deinit{
+        if(_session){
+            self.videoFeedView.removeObserver(self, forKeyPath: "bounds");
+        }
+    }
 }
