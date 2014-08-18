@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2948993D1975BD2A007D0D97 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2948993B1975BD2A007D0D97 /* UIColorExtension.swift */; };
 		294899461975BD58007D0D97 /* CVDetectorViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2948993F1975BD58007D0D97 /* CVDetectorViewController.mm */; };
-		294899471975BD58007D0D97 /* GKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899401975BD58007D0D97 /* GKWebViewController.swift */; };
+		294899471975BD58007D0D97 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899401975BD58007D0D97 /* WebViewController.swift */; };
 		294899481975BD58007D0D97 /* MainScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899411975BD58007D0D97 /* MainScreenController.swift */; };
 		294899491975BD58007D0D97 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899421975BD58007D0D97 /* SettingsViewController.swift */; };
 		2948994A1975BD58007D0D97 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899431975BD58007D0D97 /* ShopViewController.swift */; };
@@ -23,10 +23,13 @@
 		2948995E1975BD6F007D0D97 /* knife-stab-splatter.wav in Resources */ = {isa = PBXBuildFile; fileRef = 294899561975BD6F007D0D97 /* knife-stab-splatter.wav */; };
 		2948995F1975BD6F007D0D97 /* young-girl-scream.wav in Resources */ = {isa = PBXBuildFile; fileRef = 294899571975BD6F007D0D97 /* young-girl-scream.wav */; };
 		294899651975BD98007D0D97 /* VideoCaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899641975BD98007D0D97 /* VideoCaptureManager.swift */; };
-		2948996A1975BE95007D0D97 /* UICircularGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899691975BE95007D0D97 /* UICircularGestureRecognizer.swift */; };
 		29F78D0A19836E9600F4C457 /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F78D0919836E9600F4C457 /* CountdownTimer.swift */; };
 		4700C00A19822D8D007F0279 /* UIBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4700C00919822D8D007F0279 /* UIBaseViewController.swift */; };
 		47117E5719916A5A0001A5A1 /* Global Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47117E5619916A5A0001A5A1 /* Global Context.swift */; };
+		478D9B99199F223D00BDAC79 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 478D9B98199F223D00BDAC79 /* Parse.framework */; };
+		478D9B9B199F226000BDAC79 /* twitterLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 478D9B9A199F226000BDAC79 /* twitterLogin.png */; };
+		478D9B9D199F227900BDAC79 /* facebookLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 478D9B9C199F227900BDAC79 /* facebookLogin.png */; };
+		478D9B9F19A0255700BDAC79 /* YoutubeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478D9B9E19A0255700BDAC79 /* YoutubeManager.swift */; };
 		47C9E985198883D000FE794D /* UICollectionView Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C9E984198883D000FE794D /* UICollectionView Classes.swift */; };
 		47D20FF819654AF200BCB1D0 /* SoundBoxScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */; };
 		47DE6AD3196123E90049C253 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47DE6AD2196123E90049C253 /* AVFoundation.framework */; };
@@ -63,7 +66,7 @@
 /* Begin PBXFileReference section */
 		2948993B1975BD2A007D0D97 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		2948993F1975BD58007D0D97 /* CVDetectorViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVDetectorViewController.mm; sourceTree = "<group>"; };
-		294899401975BD58007D0D97 /* GKWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKWebViewController.swift; sourceTree = "<group>"; };
+		294899401975BD58007D0D97 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		294899411975BD58007D0D97 /* MainScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenController.swift; sourceTree = "<group>"; };
 		294899421975BD58007D0D97 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		294899431975BD58007D0D97 /* ShopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
@@ -78,11 +81,14 @@
 		294899571975BD6F007D0D97 /* young-girl-scream.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "young-girl-scream.wav"; sourceTree = "<group>"; };
 		294899641975BD98007D0D97 /* VideoCaptureManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCaptureManager.swift; sourceTree = "<group>"; };
 		294899661975BE74007D0D97 /* CVDetectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVDetectorViewController.h; sourceTree = "<group>"; };
-		294899671975BE74007D0D97 /* TerrorTorch-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TerrorTorch-Bridging-Header.h"; sourceTree = "<group>"; };
-		294899691975BE95007D0D97 /* UICircularGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircularGestureRecognizer.swift; sourceTree = "<group>"; };
+		294899671975BE74007D0D97 /* TerrorTorch-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TerrorTorch-Bridging-Header.h"; path = "ViewControllers/TerrorTorch-Bridging-Header.h"; sourceTree = "<group>"; };
 		29F78D0919836E9600F4C457 /* CountdownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
-		4700C00919822D8D007F0279 /* UIBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBaseViewController.swift; sourceTree = "<group>"; };
+		4700C00919822D8D007F0279 /* UIBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBaseViewController.swift; path = ../ViewControllers/UIBaseViewController.swift; sourceTree = "<group>"; };
 		47117E5619916A5A0001A5A1 /* Global Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Global Context.swift"; sourceTree = "<group>"; };
+		478D9B98199F223D00BDAC79 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		478D9B9A199F226000BDAC79 /* twitterLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitterLogin.png; sourceTree = "<group>"; };
+		478D9B9C199F227900BDAC79 /* facebookLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookLogin.png; sourceTree = "<group>"; };
+		478D9B9E19A0255700BDAC79 /* YoutubeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeManager.swift; sourceTree = "<group>"; };
 		47C9E984198883D000FE794D /* UICollectionView Classes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView Classes.swift"; sourceTree = "<group>"; };
 		47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SoundBoxScene.swift; path = ../Scenes/SoundBoxScene.swift; sourceTree = "<group>"; };
 		47DE6AD2196123E90049C253 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -121,6 +127,7 @@
 				9E12A472196EE9FE0018AD6F /* CoreVideo.framework in Frameworks */,
 				9E12A470196EE9F90018AD6F /* CoreMedia.framework in Frameworks */,
 				9E12A46E196EE9F50018AD6F /* CoreImage.framework in Frameworks */,
+				478D9B99199F223D00BDAC79 /* Parse.framework in Frameworks */,
 				9E12A46C196EE9F20018AD6F /* CoreGraphics.framework in Frameworks */,
 				9E12A46A196EE9E90018AD6F /* AssetsLibrary.framework in Frameworks */,
 				9E12A468196EE9E40018AD6F /* Accelerate.framework in Frameworks */,
@@ -143,6 +150,7 @@
 		294899391975BD2A007D0D97 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4700C00919822D8D007F0279 /* UIBaseViewController.swift */,
 				2948993B1975BD2A007D0D97 /* UIColorExtension.swift */,
 				47EFE83F197A3D0A00AC952D /* AVCaptureSessionExt.swift */,
 			);
@@ -152,18 +160,12 @@
 		2948993E1975BD58007D0D97 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				294899671975BE74007D0D97 /* TerrorTorch-Bridging-Header.h */,
-				294899661975BE74007D0D97 /* CVDetectorViewController.h */,
-				2948993F1975BD58007D0D97 /* CVDetectorViewController.mm */,
-				4700C00919822D8D007F0279 /* UIBaseViewController.swift */,
-				294899401975BD58007D0D97 /* GKWebViewController.swift */,
+				294899401975BD58007D0D97 /* WebViewController.swift */,
 				294899411975BD58007D0D97 /* MainScreenController.swift */,
 				294899421975BD58007D0D97 /* SettingsViewController.swift */,
 				294899431975BD58007D0D97 /* ShopViewController.swift */,
 				294899441975BD58007D0D97 /* SoundBoxViewController.swift */,
-				294899451975BD58007D0D97 /* TMViewController.swift */,
-				47EFE83D197A1C0600AC952D /* CaptureViewController.swift */,
-				47EFE8381977485400AC952D /* TempDirBrowseViewController.swift */,
+				47CEDEAB19A28C8300A8B8F7 /* TerrorMode */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -203,6 +205,7 @@
 			children = (
 				29F78D0919836E9600F4C457 /* CountdownTimer.swift */,
 				294899641975BD98007D0D97 /* VideoCaptureManager.swift */,
+				478D9B9E19A0255700BDAC79 /* YoutubeManager.swift */,
 				47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */,
 				47117E5619916A5A0001A5A1 /* Global Context.swift */,
 			);
@@ -213,7 +216,6 @@
 		294899681975BE95007D0D97 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				294899691975BE95007D0D97 /* UICircularGestureRecognizer.swift */,
 				47C9E984198883D000FE794D /* UICollectionView Classes.swift */,
 			);
 			path = Controls;
@@ -222,6 +224,7 @@
 		31809728196CC8A70097E18C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				478D9B98199F223D00BDAC79 /* Parse.framework */,
 				9E12A477196EEA140018AD6F /* Foundation.framework */,
 				9E12A475196EEA0B0018AD6F /* UIKit.framework */,
 				9E12A473196EEA040018AD6F /* QuartzCore.framework */,
@@ -236,6 +239,18 @@
 				9EC9CF03196EE75D00EAF3D9 /* opencv2.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		47CEDEAB19A28C8300A8B8F7 /* TerrorMode */ = {
+			isa = PBXGroup;
+			children = (
+				294899661975BE74007D0D97 /* CVDetectorViewController.h */,
+				2948993F1975BD58007D0D97 /* CVDetectorViewController.mm */,
+				294899451975BD58007D0D97 /* TMViewController.swift */,
+				47EFE83D197A1C0600AC952D /* CaptureViewController.swift */,
+				47EFE8381977485400AC952D /* TempDirBrowseViewController.swift */,
+			);
+			name = TerrorMode;
 			sourceTree = "<group>";
 		};
 		B54B65FD1950CBF400FF48DC = {
@@ -265,6 +280,7 @@
 				2948993E1975BD58007D0D97 /* ViewControllers */,
 				294899391975BD2A007D0D97 /* Extensions */,
 				B54B660B1950CBF400FF48DC /* AppDelegate.swift */,
+				294899671975BE74007D0D97 /* TerrorTorch-Bridging-Header.h */,
 				B54B660F1950CBF400FF48DC /* Main.storyboard */,
 				B54B66121950CBF400FF48DC /* Images.xcassets */,
 				2948994D1975BD6F007D0D97 /* Assets */,
@@ -276,6 +292,8 @@
 		B54B66091950CBF400FF48DC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				478D9B9C199F227900BDAC79 /* facebookLogin.png */,
+				478D9B9A199F226000BDAC79 /* twitterLogin.png */,
 				B54B660A1950CBF400FF48DC /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -386,8 +404,10 @@
 				294899581975BD6F007D0D97 /* credits.html in Resources */,
 				2948995A1975BD6F007D0D97 /* mono-power-button-hi.png in Resources */,
 				2948995C1975BD6F007D0D97 /* ghost-egyptian-phantom.wav in Resources */,
+				478D9B9B199F226000BDAC79 /* twitterLogin.png in Resources */,
 				B54B66111950CBF400FF48DC /* Main.storyboard in Resources */,
 				B54B66131950CBF400FF48DC /* Images.xcassets in Resources */,
+				478D9B9D199F227900BDAC79 /* facebookLogin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,18 +430,18 @@
 				2948994C1975BD58007D0D97 /* TMViewController.swift in Sources */,
 				294899461975BD58007D0D97 /* CVDetectorViewController.mm in Sources */,
 				2948994A1975BD58007D0D97 /* ShopViewController.swift in Sources */,
-				2948996A1975BE95007D0D97 /* UICircularGestureRecognizer.swift in Sources */,
 				47EFE840197A3D0A00AC952D /* AVCaptureSessionExt.swift in Sources */,
 				29F78D0A19836E9600F4C457 /* CountdownTimer.swift in Sources */,
 				294899481975BD58007D0D97 /* MainScreenController.swift in Sources */,
 				47C9E985198883D000FE794D /* UICollectionView Classes.swift in Sources */,
 				294899491975BD58007D0D97 /* SettingsViewController.swift in Sources */,
+				478D9B9F19A0255700BDAC79 /* YoutubeManager.swift in Sources */,
 				2948993D1975BD2A007D0D97 /* UIColorExtension.swift in Sources */,
 				47EFE83E197A1C0600AC952D /* CaptureViewController.swift in Sources */,
 				47117E5719916A5A0001A5A1 /* Global Context.swift in Sources */,
 				294899651975BD98007D0D97 /* VideoCaptureManager.swift in Sources */,
 				4700C00A19822D8D007F0279 /* UIBaseViewController.swift in Sources */,
-				294899471975BD58007D0D97 /* GKWebViewController.swift in Sources */,
+				294899471975BD58007D0D97 /* WebViewController.swift in Sources */,
 				B54B660C1950CBF400FF48DC /* AppDelegate.swift in Sources */,
 				47D20FF819654AF200BCB1D0 /* SoundBoxScene.swift in Sources */,
 			);
@@ -546,6 +566,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TerrorTorch",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = TerrorTorch/Info.plist;
@@ -567,6 +588,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TerrorTorch",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = TerrorTorch/Info.plist;

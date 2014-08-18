@@ -31,7 +31,7 @@ class UIBaseViewController : UIViewController{
         label.textAlignment = NSTextAlignment.Center;
         
         if(self.title == "Main Menu"){
-            label.attributedText = NSAttributedString(attributedString: self.getNavTitle("Main", second: "Menu"));
+            label.attributedText = NSAttributedString(attributedString: self.getNavTitle("Terror", second: "Gallery"));
         } else if(self.title == "Terror Mode"){
             label.attributedText = NSAttributedString(attributedString: self.getNavTitle("Terror", second: "Mode"));
         } else if(self.title == "Sound Box"){

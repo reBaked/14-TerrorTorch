@@ -16,10 +16,6 @@ class SettingsViewController: UIBaseViewController {
         let htmlFile = NSBundle.mainBundle().pathForResource("credits", ofType: "html");
         let htmlString = NSString.stringWithContentsOfFile(htmlFile, encoding: NSUTF8StringEncoding, error: nil);
         webView.loadHTMLString(htmlString, baseURL: nil);
-        
-        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("dismissController:"));
-        swipeRecognizer.direction = UISwipeGestureRecognizerDirection.Right;
-        self.view.addGestureRecognizer(swipeRecognizer);
     }
     
     override func didReceiveMemoryWarning() {
@@ -27,8 +23,11 @@ class SettingsViewController: UIBaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func dismissController(recognizer: UISwipeGestureRecognizer){
-        if(recognizer.state == UIGestureRecognizerState.Ended){
+    @IBAction func presentWebView(sender: UIButton) {
+        WebViewController.presentWebViewController("http://www.goldenviking.org/", owner: self);
+    }
+    @IBAction func dismissController(sender: UISwipeGestureRecognizer) {
+        if(sender.state == UIGestureRecognizerState.Ended){
             self.dismissViewControllerAnimated(false, completion: nil);
         }
     }
