@@ -22,7 +22,7 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
     
     var soundPlayer_ofSelectedItem:AVPlayer{
         get{
-            self.updateSoundPlayer(collectionView.selectedItem!);
+            //self.updateSoundPlayer(collectionView.selectedItem!);
             return soundPlayer;
         }
     }
@@ -113,7 +113,7 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
     
     override func viewDidAppear(animated: Bool){
         super.viewDidAppear(animated);
-        if(_session){
+        if(_session != nil){
             println("Starting capture session for preview");
             self._session.startRunning();
         }
@@ -121,7 +121,7 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated);
-        if(_session){
+        if(_session != nil){
             println("Stopping capture session for preview");
             self._session.stopRunning();
         }
@@ -199,7 +199,7 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
     func updateSoundPlayer(indexPath:NSIndexPath){
         let soundName = appAssets[indexPath.item]["soundName"];
         let path = NSBundle.mainBundle().pathForResource(soundName, ofType: SOUNDFORMAT)
-        let url = NSURL(fileURLWithPath: path);
+        let url = NSURL(fileURLWithPath: path!);
         
         soundPlayer.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: url));
     }
@@ -235,7 +235,7 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
     }
     
     deinit{
-        if(_session){
+        if(_session != nil){
             self.videoFeedView.removeObserver(self, forKeyPath: "bounds");
         }
     }

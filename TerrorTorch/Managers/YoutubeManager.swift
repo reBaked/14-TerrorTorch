@@ -51,7 +51,7 @@ struct YoutubeManager{
                 let data = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: &error)
                 
                 if(error == nil){
-                    let JSON = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as [String:AnyObject];
+                    let JSON = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: nil) as [String:AnyObject];
                     for item in JSON["items"]! as [[String:AnyObject]]{
                         let videoId = (item["id"]!)["videoId"]! as String;
 

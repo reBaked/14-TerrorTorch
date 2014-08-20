@@ -14,7 +14,7 @@ class SettingsViewController: UIBaseViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         let htmlFile = NSBundle.mainBundle().pathForResource("credits", ofType: "html");
-        let htmlString = NSString.stringWithContentsOfFile(htmlFile, encoding: NSUTF8StringEncoding, error: nil);
+        let htmlString = NSString.stringWithContentsOfFile(htmlFile!, encoding: NSUTF8StringEncoding, error: nil);
         webView.loadHTMLString(htmlString, baseURL: nil);
     }
     

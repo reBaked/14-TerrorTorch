@@ -27,10 +27,16 @@
 		4700C00A19822D8D007F0279 /* UIBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4700C00919822D8D007F0279 /* UIBaseViewController.swift */; };
 		47117E5719916A5A0001A5A1 /* Global Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47117E5619916A5A0001A5A1 /* Global Context.swift */; };
 		478D9B99199F223D00BDAC79 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 478D9B98199F223D00BDAC79 /* Parse.framework */; };
-		478D9B9B199F226000BDAC79 /* twitterLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 478D9B9A199F226000BDAC79 /* twitterLogin.png */; };
-		478D9B9D199F227900BDAC79 /* facebookLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 478D9B9C199F227900BDAC79 /* facebookLogin.png */; };
 		478D9B9F19A0255700BDAC79 /* YoutubeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478D9B9E19A0255700BDAC79 /* YoutubeManager.swift */; };
 		47C9E985198883D000FE794D /* UICollectionView Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C9E984198883D000FE794D /* UICollectionView Classes.swift */; };
+		47CEDEB419A2F3BF00A8B8F7 /* PFManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CEDEB319A2F3BF00A8B8F7 /* PFManager.swift */; };
+		47CEDEB619A2F44D00A8B8F7 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CEDEB519A2F44D00A8B8F7 /* FacebookSDK.framework */; };
+		47CEDEB819A2F48F00A8B8F7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CEDEB719A2F48F00A8B8F7 /* SystemConfiguration.framework */; };
+		47CEDEBA19A2F49C00A8B8F7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CEDEB919A2F49C00A8B8F7 /* StoreKit.framework */; };
+		47CEDEBC19A2F4A800A8B8F7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CEDEBB19A2F4A800A8B8F7 /* Security.framework */; };
+		47CEDEBE19A2F4BF00A8B8F7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CEDEBD19A2F4BF00A8B8F7 /* CoreLocation.framework */; };
+		47CEDEC019A2F4CE00A8B8F7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CEDEBF19A2F4CE00A8B8F7 /* CFNetwork.framework */; };
+		47CEDEC219A2F4DB00A8B8F7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CEDEC119A2F4DB00A8B8F7 /* AudioToolbox.framework */; };
 		47D20FF819654AF200BCB1D0 /* SoundBoxScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */; };
 		47DE6AD3196123E90049C253 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47DE6AD2196123E90049C253 /* AVFoundation.framework */; };
 		47EFE8391977485400AC952D /* TempDirBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EFE8381977485400AC952D /* TempDirBrowseViewController.swift */; };
@@ -86,10 +92,16 @@
 		4700C00919822D8D007F0279 /* UIBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBaseViewController.swift; path = ../ViewControllers/UIBaseViewController.swift; sourceTree = "<group>"; };
 		47117E5619916A5A0001A5A1 /* Global Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Global Context.swift"; sourceTree = "<group>"; };
 		478D9B98199F223D00BDAC79 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		478D9B9A199F226000BDAC79 /* twitterLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitterLogin.png; sourceTree = "<group>"; };
-		478D9B9C199F227900BDAC79 /* facebookLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookLogin.png; sourceTree = "<group>"; };
 		478D9B9E19A0255700BDAC79 /* YoutubeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeManager.swift; sourceTree = "<group>"; };
 		47C9E984198883D000FE794D /* UICollectionView Classes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView Classes.swift"; sourceTree = "<group>"; };
+		47CEDEB319A2F3BF00A8B8F7 /* PFManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PFManager.swift; path = ../../PFManager.swift; sourceTree = "<group>"; };
+		47CEDEB519A2F44D00A8B8F7 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = TerrorTorch/Managers/FacebookSDK.framework; sourceTree = "<group>"; };
+		47CEDEB719A2F48F00A8B8F7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		47CEDEB919A2F49C00A8B8F7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		47CEDEBB19A2F4A800A8B8F7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		47CEDEBD19A2F4BF00A8B8F7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		47CEDEBF19A2F4CE00A8B8F7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		47CEDEC119A2F4DB00A8B8F7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SoundBoxScene.swift; path = ../Scenes/SoundBoxScene.swift; sourceTree = "<group>"; };
 		47DE6AD2196123E90049C253 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		47EFE8381977485400AC952D /* TempDirBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempDirBrowseViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +133,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47CEDEC219A2F4DB00A8B8F7 /* AudioToolbox.framework in Frameworks */,
+				47CEDEC019A2F4CE00A8B8F7 /* CFNetwork.framework in Frameworks */,
+				47CEDEBE19A2F4BF00A8B8F7 /* CoreLocation.framework in Frameworks */,
+				47CEDEBC19A2F4A800A8B8F7 /* Security.framework in Frameworks */,
+				47CEDEBA19A2F49C00A8B8F7 /* StoreKit.framework in Frameworks */,
+				47CEDEB819A2F48F00A8B8F7 /* SystemConfiguration.framework in Frameworks */,
 				9E12A478196EEA140018AD6F /* Foundation.framework in Frameworks */,
 				9E12A476196EEA0B0018AD6F /* UIKit.framework in Frameworks */,
 				9E12A474196EEA040018AD6F /* QuartzCore.framework in Frameworks */,
@@ -134,6 +152,7 @@
 				9EC9CF04196EE75D00EAF3D9 /* opencv2.framework in Frameworks */,
 				9EDD6C511969CC1400B259AE /* MobileCoreServices.framework in Frameworks */,
 				47DE6AD3196123E90049C253 /* AVFoundation.framework in Frameworks */,
+				47CEDEB619A2F44D00A8B8F7 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +225,7 @@
 				29F78D0919836E9600F4C457 /* CountdownTimer.swift */,
 				294899641975BD98007D0D97 /* VideoCaptureManager.swift */,
 				478D9B9E19A0255700BDAC79 /* YoutubeManager.swift */,
+				47CEDEB319A2F3BF00A8B8F7 /* PFManager.swift */,
 				47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */,
 				47117E5619916A5A0001A5A1 /* Global Context.swift */,
 			);
@@ -224,6 +244,13 @@
 		31809728196CC8A70097E18C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				47CEDEC119A2F4DB00A8B8F7 /* AudioToolbox.framework */,
+				47CEDEBF19A2F4CE00A8B8F7 /* CFNetwork.framework */,
+				47CEDEBD19A2F4BF00A8B8F7 /* CoreLocation.framework */,
+				47CEDEBB19A2F4A800A8B8F7 /* Security.framework */,
+				47CEDEB919A2F49C00A8B8F7 /* StoreKit.framework */,
+				47CEDEB719A2F48F00A8B8F7 /* SystemConfiguration.framework */,
+				47CEDEB519A2F44D00A8B8F7 /* FacebookSDK.framework */,
 				478D9B98199F223D00BDAC79 /* Parse.framework */,
 				9E12A477196EEA140018AD6F /* Foundation.framework */,
 				9E12A475196EEA0B0018AD6F /* UIKit.framework */,
@@ -292,8 +319,6 @@
 		B54B66091950CBF400FF48DC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				478D9B9C199F227900BDAC79 /* facebookLogin.png */,
-				478D9B9A199F226000BDAC79 /* twitterLogin.png */,
 				B54B660A1950CBF400FF48DC /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -365,7 +390,6 @@
 				TargetAttributes = {
 					B54B66051950CBF400FF48DC = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = N298UBNUF6;
 					};
 					B54B66171950CBF400FF48DC = {
 						CreatedOnToolsVersion = 6.0;
@@ -404,10 +428,8 @@
 				294899581975BD6F007D0D97 /* credits.html in Resources */,
 				2948995A1975BD6F007D0D97 /* mono-power-button-hi.png in Resources */,
 				2948995C1975BD6F007D0D97 /* ghost-egyptian-phantom.wav in Resources */,
-				478D9B9B199F226000BDAC79 /* twitterLogin.png in Resources */,
 				B54B66111950CBF400FF48DC /* Main.storyboard in Resources */,
 				B54B66131950CBF400FF48DC /* Images.xcassets in Resources */,
-				478D9B9D199F227900BDAC79 /* facebookLogin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +462,7 @@
 				47EFE83E197A1C0600AC952D /* CaptureViewController.swift in Sources */,
 				47117E5719916A5A0001A5A1 /* Global Context.swift in Sources */,
 				294899651975BD98007D0D97 /* VideoCaptureManager.swift in Sources */,
+				47CEDEB419A2F3BF00A8B8F7 /* PFManager.swift in Sources */,
 				4700C00A19822D8D007F0279 /* UIBaseViewController.swift in Sources */,
 				294899471975BD58007D0D97 /* WebViewController.swift in Sources */,
 				B54B660C1950CBF400FF48DC /* AppDelegate.swift in Sources */,
@@ -567,10 +590,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TerrorTorch",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/TerrorTorch/Managers",
 				);
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = TerrorTorch/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TerrorTorch/ViewControllers/TerrorTorch-Bridging-Header.h";
@@ -589,10 +613,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TerrorTorch",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/TerrorTorch/Managers",
 				);
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = TerrorTorch/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TerrorTorch/ViewControllers/TerrorTorch-Bridging-Header.h";

@@ -150,7 +150,7 @@ class SoundBoxScene: SKScene {
         let path = NSBundle.mainBundle().pathForResource(soundName, ofType: SOUNDFORMAT);
         result.updateValue(spriteName, forKey: SpriteAttribute.Name.toRaw());
         result.updateValue(soundName, forKey: SpriteAttribute.SoundName.toRaw());
-        result.updateValue(path, forKey: SpriteAttribute.SoundPath.toRaw());
+        result.updateValue(path!, forKey: SpriteAttribute.SoundPath.toRaw());
         result.updateValue(rotations, forKey: SpriteAttribute.Rotations.toRaw());
         result.updateValue(duration, forKey: SpriteAttribute.Duration.toRaw())
         
