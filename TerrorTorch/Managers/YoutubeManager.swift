@@ -52,13 +52,21 @@ struct YoutubeManager{
                 
                 if(error == nil){
                     let JSON = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: nil) as [String:AnyObject];
-                    for item in JSON["items"]! as [[String:AnyObject]]{
-                        let videoId = (item["id"]!)["videoId"]! as String;
+                    
+                    if let responseError:AnyObject = JSON["error"]{
+                        print("Failed with error: ");
+                        print(responseError["code"]!);
+                        print(" ");
+                        print(responseError["message"]!);
+                    } else {
+                        for item in JSON["items"]! as [[String:AnyObject]]{
+                            let videoId = (item["id"]!)["videoId"]! as String;
 
-                        let thumbnails = (item["snippet"]!)["thumbnails"]! as [String:AnyObject];
-                        let imageURL = (thumbnails["high"]!)["url"]! as String;
-                        resultVideoIDs.append(videoId);
-                        resultImageURLs.append(imageURL)
+                            let thumbnails = (item["snippet"]!)["thumbnails"]! as [String:AnyObject];
+                            let imageURL = (thumbnails["high"]!)["url"]! as String;
+                            resultVideoIDs.append(videoId);
+                            resultImageURLs.append(imageURL);
+                        }
                     }
                     print("Success")
                 } else {
