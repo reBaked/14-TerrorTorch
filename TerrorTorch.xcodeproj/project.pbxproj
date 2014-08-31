@@ -16,7 +16,6 @@
 		2948994B1975BD58007D0D97 /* SoundBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899441975BD58007D0D97 /* SoundBoxViewController.swift */; };
 		2948994C1975BD58007D0D97 /* TMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899451975BD58007D0D97 /* TMViewController.swift */; };
 		294899581975BD6F007D0D97 /* credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 2948994E1975BD6F007D0D97 /* credits.html */; };
-		2948995A1975BD6F007D0D97 /* mono-power-button-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = 294899511975BD6F007D0D97 /* mono-power-button-hi.png */; };
 		2948995B1975BD6F007D0D97 /* devil-laugh.wav in Resources */ = {isa = PBXBuildFile; fileRef = 294899531975BD6F007D0D97 /* devil-laugh.wav */; };
 		2948995C1975BD6F007D0D97 /* ghost-egyptian-phantom.wav in Resources */ = {isa = PBXBuildFile; fileRef = 294899541975BD6F007D0D97 /* ghost-egyptian-phantom.wav */; };
 		2948995D1975BD6F007D0D97 /* its-behind-you-spoken.wav in Resources */ = {isa = PBXBuildFile; fileRef = 294899551975BD6F007D0D97 /* its-behind-you-spoken.wav */; };
@@ -26,10 +25,8 @@
 		29F78D0A19836E9600F4C457 /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F78D0919836E9600F4C457 /* CountdownTimer.swift */; };
 		4700C00A19822D8D007F0279 /* UIBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4700C00919822D8D007F0279 /* UIBaseViewController.swift */; };
 		47117E5719916A5A0001A5A1 /* Global Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47117E5619916A5A0001A5A1 /* Global Context.swift */; };
-		478D9B99199F223D00BDAC79 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 478D9B98199F223D00BDAC79 /* Parse.framework */; };
 		478D9B9F19A0255700BDAC79 /* YoutubeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478D9B9E19A0255700BDAC79 /* YoutubeManager.swift */; };
 		47C9E985198883D000FE794D /* UICollectionView Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C9E984198883D000FE794D /* UICollectionView Classes.swift */; };
-		47CEDEB419A2F3BF00A8B8F7 /* PFManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CEDEB319A2F3BF00A8B8F7 /* PFManager.swift */; };
 		47CEDEB619A2F44D00A8B8F7 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CEDEB519A2F44D00A8B8F7 /* FacebookSDK.framework */; };
 		47CEDEB819A2F48F00A8B8F7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CEDEB719A2F48F00A8B8F7 /* SystemConfiguration.framework */; };
 		47CEDEBA19A2F49C00A8B8F7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CEDEB919A2F49C00A8B8F7 /* StoreKit.framework */; };
@@ -42,6 +39,8 @@
 		47EFE8391977485400AC952D /* TempDirBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EFE8381977485400AC952D /* TempDirBrowseViewController.swift */; };
 		47EFE83E197A1C0600AC952D /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EFE83D197A1C0600AC952D /* CaptureViewController.swift */; };
 		47EFE840197A3D0A00AC952D /* AVCaptureSessionExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EFE83F197A3D0A00AC952D /* AVCaptureSessionExt.swift */; };
+		47F5A98D19B3E86D00D4C231 /* PFManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F5A98C19B3E86D00D4C231 /* PFManager.swift */; };
+		47F5A98F19B3E89800D4C231 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F5A98E19B3E89800D4C231 /* Parse.framework */; };
 		9E12A468196EE9E40018AD6F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A467196EE9E40018AD6F /* Accelerate.framework */; };
 		9E12A46A196EE9E90018AD6F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A469196EE9E90018AD6F /* AssetsLibrary.framework */; };
 		9E12A46C196EE9F20018AD6F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A46B196EE9F20018AD6F /* CoreGraphics.framework */; };
@@ -79,7 +78,6 @@
 		294899441975BD58007D0D97 /* SoundBoxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundBoxViewController.swift; sourceTree = "<group>"; };
 		294899451975BD58007D0D97 /* TMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMViewController.swift; sourceTree = "<group>"; };
 		2948994E1975BD6F007D0D97 /* credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = credits.html; sourceTree = "<group>"; };
-		294899511975BD6F007D0D97 /* mono-power-button-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mono-power-button-hi.png"; sourceTree = "<group>"; };
 		294899531975BD6F007D0D97 /* devil-laugh.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "devil-laugh.wav"; sourceTree = "<group>"; };
 		294899541975BD6F007D0D97 /* ghost-egyptian-phantom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "ghost-egyptian-phantom.wav"; sourceTree = "<group>"; };
 		294899551975BD6F007D0D97 /* its-behind-you-spoken.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "its-behind-you-spoken.wav"; sourceTree = "<group>"; };
@@ -91,10 +89,8 @@
 		29F78D0919836E9600F4C457 /* CountdownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
 		4700C00919822D8D007F0279 /* UIBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBaseViewController.swift; path = ../ViewControllers/UIBaseViewController.swift; sourceTree = "<group>"; };
 		47117E5619916A5A0001A5A1 /* Global Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Global Context.swift"; sourceTree = "<group>"; };
-		478D9B98199F223D00BDAC79 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		478D9B9E19A0255700BDAC79 /* YoutubeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeManager.swift; sourceTree = "<group>"; };
 		47C9E984198883D000FE794D /* UICollectionView Classes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView Classes.swift"; sourceTree = "<group>"; };
-		47CEDEB319A2F3BF00A8B8F7 /* PFManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PFManager.swift; path = ../../PFManager.swift; sourceTree = "<group>"; };
 		47CEDEB519A2F44D00A8B8F7 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = TerrorTorch/Managers/FacebookSDK.framework; sourceTree = "<group>"; };
 		47CEDEB719A2F48F00A8B8F7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		47CEDEB919A2F49C00A8B8F7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -107,6 +103,8 @@
 		47EFE8381977485400AC952D /* TempDirBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempDirBrowseViewController.swift; sourceTree = "<group>"; };
 		47EFE83D197A1C0600AC952D /* CaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
 		47EFE83F197A3D0A00AC952D /* AVCaptureSessionExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCaptureSessionExt.swift; sourceTree = "<group>"; };
+		47F5A98C19B3E86D00D4C231 /* PFManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PFManager.swift; path = TerrorTorch/Models/PFManager.swift; sourceTree = SOURCE_ROOT; };
+		47F5A98E19B3E89800D4C231 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = TerrorTorch/Parse.framework; sourceTree = "<group>"; };
 		9E12A467196EE9E40018AD6F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		9E12A469196EE9E90018AD6F /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		9E12A46B196EE9F20018AD6F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -143,9 +141,9 @@
 				9E12A476196EEA0B0018AD6F /* UIKit.framework in Frameworks */,
 				9E12A474196EEA040018AD6F /* QuartzCore.framework in Frameworks */,
 				9E12A472196EE9FE0018AD6F /* CoreVideo.framework in Frameworks */,
+				47F5A98F19B3E89800D4C231 /* Parse.framework in Frameworks */,
 				9E12A470196EE9F90018AD6F /* CoreMedia.framework in Frameworks */,
 				9E12A46E196EE9F50018AD6F /* CoreImage.framework in Frameworks */,
-				478D9B99199F223D00BDAC79 /* Parse.framework in Frameworks */,
 				9E12A46C196EE9F20018AD6F /* CoreGraphics.framework in Frameworks */,
 				9E12A46A196EE9E90018AD6F /* AssetsLibrary.framework in Frameworks */,
 				9E12A468196EE9E40018AD6F /* Accelerate.framework in Frameworks */,
@@ -193,18 +191,9 @@
 			isa = PBXGroup;
 			children = (
 				2948994E1975BD6F007D0D97 /* credits.html */,
-				2948994F1975BD6F007D0D97 /* Images */,
 				294899521975BD6F007D0D97 /* Sounds */,
 			);
 			path = Assets;
-			sourceTree = "<group>";
-		};
-		2948994F1975BD6F007D0D97 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				294899511975BD6F007D0D97 /* mono-power-button-hi.png */,
-			);
-			path = Images;
 			sourceTree = "<group>";
 		};
 		294899521975BD6F007D0D97 /* Sounds */ = {
@@ -222,10 +211,10 @@
 		294899631975BD98007D0D97 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				47F5A98C19B3E86D00D4C231 /* PFManager.swift */,
 				29F78D0919836E9600F4C457 /* CountdownTimer.swift */,
 				294899641975BD98007D0D97 /* VideoCaptureManager.swift */,
 				478D9B9E19A0255700BDAC79 /* YoutubeManager.swift */,
-				47CEDEB319A2F3BF00A8B8F7 /* PFManager.swift */,
 				47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */,
 				47117E5619916A5A0001A5A1 /* Global Context.swift */,
 			);
@@ -244,6 +233,7 @@
 		31809728196CC8A70097E18C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				47F5A98E19B3E89800D4C231 /* Parse.framework */,
 				47CEDEC119A2F4DB00A8B8F7 /* AudioToolbox.framework */,
 				47CEDEBF19A2F4CE00A8B8F7 /* CFNetwork.framework */,
 				47CEDEBD19A2F4BF00A8B8F7 /* CoreLocation.framework */,
@@ -251,7 +241,6 @@
 				47CEDEB919A2F49C00A8B8F7 /* StoreKit.framework */,
 				47CEDEB719A2F48F00A8B8F7 /* SystemConfiguration.framework */,
 				47CEDEB519A2F44D00A8B8F7 /* FacebookSDK.framework */,
-				478D9B98199F223D00BDAC79 /* Parse.framework */,
 				9E12A477196EEA140018AD6F /* Foundation.framework */,
 				9E12A475196EEA0B0018AD6F /* UIKit.framework */,
 				9E12A473196EEA040018AD6F /* QuartzCore.framework */,
@@ -426,7 +415,6 @@
 				2948995D1975BD6F007D0D97 /* its-behind-you-spoken.wav in Resources */,
 				2948995B1975BD6F007D0D97 /* devil-laugh.wav in Resources */,
 				294899581975BD6F007D0D97 /* credits.html in Resources */,
-				2948995A1975BD6F007D0D97 /* mono-power-button-hi.png in Resources */,
 				2948995C1975BD6F007D0D97 /* ghost-egyptian-phantom.wav in Resources */,
 				B54B66111950CBF400FF48DC /* Main.storyboard in Resources */,
 				B54B66131950CBF400FF48DC /* Images.xcassets in Resources */,
@@ -460,9 +448,9 @@
 				478D9B9F19A0255700BDAC79 /* YoutubeManager.swift in Sources */,
 				2948993D1975BD2A007D0D97 /* UIColorExtension.swift in Sources */,
 				47EFE83E197A1C0600AC952D /* CaptureViewController.swift in Sources */,
+				47F5A98D19B3E86D00D4C231 /* PFManager.swift in Sources */,
 				47117E5719916A5A0001A5A1 /* Global Context.swift in Sources */,
 				294899651975BD98007D0D97 /* VideoCaptureManager.swift in Sources */,
-				47CEDEB419A2F3BF00A8B8F7 /* PFManager.swift in Sources */,
 				4700C00A19822D8D007F0279 /* UIBaseViewController.swift in Sources */,
 				294899471975BD58007D0D97 /* WebViewController.swift in Sources */,
 				B54B660C1950CBF400FF48DC /* AppDelegate.swift in Sources */,

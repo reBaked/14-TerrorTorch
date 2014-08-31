@@ -53,6 +53,7 @@ struct YoutubeManager{
                 if(error == nil){
                     let JSON = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: nil) as [String:AnyObject];
                     
+            
                     if let responseError:AnyObject = JSON["error"]{
                         print("Failed with error: ");
                         print(responseError["code"]!);
