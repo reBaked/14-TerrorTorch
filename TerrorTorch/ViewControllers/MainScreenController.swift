@@ -17,7 +17,8 @@ class MainScreenController: UIBaseViewController, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        YoutubeManager.getVideoSnippets(20){ (videoIDs, imageURLs) in
+        
+        /*YoutubeManager.getVideoSnippets(20){ (videoIDs, imageURLs) in
             if(videoIDs != nil){
                 YoutubeManager.fetchImagesFromURLs(){ (images) in
                     if(images != nil){
@@ -25,7 +26,7 @@ class MainScreenController: UIBaseViewController, UICollectionViewDataSource, UI
                     }
                 }
             }
-        }
+        }*/
     }
     
     override func didReceiveMemoryWarning() {
