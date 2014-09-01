@@ -48,27 +48,28 @@ https://www.reBaked.com/projects/14
 
 parsecloud.sh - Bash script for sending a simple command to our backend. Must be able to see and run utility.sh in order to execute correctly.
 
-1.  Current Commands
+1.  Bash commands
   * setParseEnviroonment [appname]
-   * Short - spe
-   * Can be configured to use different apps
+    * spe
+    * Can be configured to use different apps
   * parseFunction [function] [[key] [value]...]
-   * Short - pf
-   * Currently supports String, boolean and numbers
+    * pf
+    * Currently supports String, boolean and numbers
+
+2. Cloud functions
+  * hello()
+    * firstname(String)
+    * lastname(String)
 
 Example of use (in terminal):
-    ```bash
-    . ~/bash/parsecloud.sh
-    spe terrortorch
-        TerrorTorch environment set
-    pf hello firstname Alfred lastname Cepeda
-        Sending data: {"firstname":"Alfred","lastname":"Cepeda"}
-        {"result":"Hello Alfred Cepeda, congratulations on sending a request to our TerrorTorch backend."}
-    ```
-2. Current Cloud Functions
-  * hello()
-   * firstname(String)
-   * lastname(String)
+```bash
+ . ~/bash/parsecloud.sh
+ spe terrortorch
+   -> TerrorTorch environment set
+ pf hello firstname Alfred lastname Cepeda
+   -> Sending data: {"firstname":"Alfred","lastname":"Cepeda"}
+   -> {"result":"Hello Alfred Cepeda, congratulations on sending a request to our TerrorTorch backend."}
+```
 
 ## Vision and Purpose
 
