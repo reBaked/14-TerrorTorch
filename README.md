@@ -60,6 +60,11 @@ parsecloud.sh - Bash script for sending a simple command to our backend. Must be
   * hello()
     * firstname(String)
     * lastname(String)
+  * createUser()
+    * username(String)
+    * password(String)
+    * email(String)
+    * vendorId(String) - Will later be used to authenticate user's device
 
 Example of use (in terminal):
 ```bash
