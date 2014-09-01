@@ -1,6 +1,36 @@
 // Use Parse.Cloud.define to define as many cloud functions as you want.
 // For example:
- 
+function isDefined(arg){
+	return (typeof arg !== 'undefined');
+}
+
+function setOptionals(object, params, fields){
+	for(var i = 0; i < fields.length; i++){
+		if(isDefined(params[fields[i]])){
+			object.set(fields[i], params[fields[i]]);
+		}
+	}
+}
+
+function hasRequired(params, fields){
+	var error = "Missing"
+	var failed = false;
+	for(var i = 0; i < fields.length; i++){
+		if(!isDefined(params[fields[i]])){
+			error = error + " " + fields[i];
+			failed = true;
+		}	
+	}
+
+	if(failed){
+		var result = false;
+		result.error = error;
+		return result;
+	} else {
+		return true;
+	}
+}
+
 Parse.Cloud.define("hello", function(request, response){
 	var firstname = request.params['firstname'];
 	var lastname = request.params['lastname'];
@@ -12,41 +42,17 @@ Parse.Cloud.define("hello", function(request, response){
 });
 
 Parse.Cloud.define("createUser", function(request, response){
-	var username = request.params['username'];
-	var email = request.params['email'];
-	var password = request.params['password'];
-	var vendorID = request.params['vendorID'];
+	var meetsRequired = hasRequired(request.params, ['username', 'email', 'password', 'vendorID']);
 
-	var missingFields = "Missing"
-	var failed = false;
-	if(typeof username === 'undefined'){
-		missingFields = missingFields + " username";
-		failed = true;
-	}
-
-	if(typeof email === 'undefined') {
-		missingFields = missingFields + " email";
-		failed = true;
-	}
-
-	if(typeof password === 'undefined'){
-		missingFields = missingFields + " password";
-		failed = true;
-	}
-
-	if(typeof password === 'undefined'){
-		missingFields = missingFields + " vendorId";
-		failed = true;
-	}
-
-	if(failed){
-		response.error(missingFields);
-	} else {
+	if(meetsRequired){
 		var user = new Parse.User();
-		user.setUsername(username);
-		user.setPassword(password);
-		user.setEmail(email);
-		user.set("vendorID",vendorID);
+		user.setUsername(request.params['username']);
+		user.setPassword(request.params['password']);
+		user.setEmail(request.params['email']);
+		user.set("vendorID",request.params['vendorID']);
+
+		setOptionals(user, request.params, ['firstname', 'lastname']);
+
 		user.signUp(null, {
 			success: function(user) {
    				response.success();
@@ -55,8 +61,34 @@ Parse.Cloud.define("createUser", function(request, response){
     			response.error(error.code + " " + error.message);
  			}
 		});
+	} else {
+		response.error(meetsRequired.error);
 	}
 });
+
+Parse.Cloud.define("loginUser", function(request, response){
+	var username = request.params['username'];
+	var password = request.params['password'];
+
+	var meetsRequired = hasRequired(request.params, ['username', 'password']);
+	if(meetsRequired){
+		Parse.User.logIn(request.params['username'], request.params['password'], {
+			success: function(user){
+				response.success({
+					firstname:user.get('firstname'),
+					lastname:user.get('lastname')
+				});
+			},
+			error: function(user, error){
+				response.error(error.code + " " + error.message);
+			}
+		})
+	} else {
+		response.error(meetsRequired.error);
+	}
+});
+
+
 
 Parse.Cloud.beforeSave(Parse.User, function(request, response) {
 	if(!request.object.get("vendorID")){
