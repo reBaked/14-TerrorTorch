@@ -5,8 +5,8 @@ spe(){
 	setParseEnvironment $@
 }
 
-pc(){
-	parseCommand $@
+pf(){
+	parseFunction $@
 }
 
 setParseEnvironment(){
@@ -18,9 +18,9 @@ setParseEnvironment(){
 }
 
 
-parseCommand(){
+parseFunction(){
 	JSON ${@:2:$(($#-1))};
-	echo 'Sending data: '$json
+	echo 'Sending data: '$json' to cloud function '$1'()'
 	curl -X POST \
 	-H "X-Parse-Application-Id: $parseappid" \
 	-H "X-Parse-REST-API-Key: $parserestkey" \
