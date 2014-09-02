@@ -82,7 +82,7 @@ Parse.Cloud.define('hello', function(request, response){
 	if(typeof firstname !== 'undefined' && typeof lastname !== 'undefined'){
 		response.success('Hello ' + firstname + ' ' + lastname + ', congratulations on sending a request to our TerrorTorch backend.' );
 	} else {
-		response.error("I'm sorry I don't talk to strangers");
+		response.error('I\'m sorry I don\'t talk to strangers');
 	}
 });
 
@@ -100,10 +100,10 @@ Parse.Cloud.define('createUser', function(request, response){
 
 		user.signUp(null, {
 			success: function(user) {
-   				response.success("Successfully created new user: " + user.getUsername());
+   				response.success('Successfully created new user: ' + user.getUsername());
   			},
   			error: function(user, error) {
-    			response.error(error.code + " " + error.message);
+    			response.error(error.code + ' ' + error.message);
  			}
 		});
 	} else {
@@ -153,7 +153,7 @@ Parse.Cloud.define('createVideo', function(request, response){
 
 		setOptionals(video, request.params, ['description', 'videoData']);
 
-		return video.save({
+		video.save({
 			success: function(video){
 				response.success('Video was successfully saved');
 			},
@@ -179,17 +179,17 @@ Parse.Cloud.beforeSave('Video', function(request, response){
 		return;
 	}
 
-	if(!request.object.get("title")){
-		response.error("Video must have a title");
+	if(!request.object.get('title')){
+		response.error('Video must have a title');
 	} else {
-		request.object.set("createdBy", request.user);
+		request.object.set('createdBy', request.user);
 		response.success();
 	}
 })
 
 Parse.Cloud.beforeSave(Parse.User, function(request, response) {
 	if(!request.object.get('vendorid')){
-		response.error("User's vendorID is required for signup");
+		response.error('User\'s vendorID is required for signup');
 	} else {
 		response.success();
 	}
