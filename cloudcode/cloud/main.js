@@ -100,7 +100,7 @@ Parse.Cloud.define('createUser', function(request, response){
 
 		user.signUp(null, {
 			success: function(user) {
-   				response.success();
+   				response.success("Successfully created new user: " + user.getUsername());
   			},
   			error: function(user, error) {
     			response.error(error.code + " " + error.message);
@@ -120,7 +120,7 @@ Parse.Cloud.define('loginUser', function(request, response){
 				response.success({
 					firstname:user.get('firstname'),
 					lastname:user.get('lastname'),
-					sessionToken:user.getSessionToken()
+					sessiontoken:user.getSessionToken()
 				});
 			}, 
 			error: function(user, error){
