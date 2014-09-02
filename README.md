@@ -58,8 +58,18 @@ parsecloud.sh - Bash script for sending a simple command to our backend. Must be
 
 2. Cloud functions
   * hello()
-    * firstname(String)
-    * lastname(String)
+    * **Required**
+      * firstname(String)
+      * lastname(String)
+  * createUser()
+    * **Required**
+      * username(String)
+      * password(String)
+      * email(String)
+      * vendorID(String) //Will later be used to authenticate user's device
+    * **Optional**
+      * firstname(String)
+      * lastname(String)
 
 Example of use (in terminal):
 ```bash
