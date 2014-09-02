@@ -63,22 +63,48 @@ parsecloud.sh - Bash script for sending a simple command to our backend. Must be
       * lastname(String)
   * createUser()
     * **Required**
-      * username(String)
-      * password(String)
-      * email(String)
-      * vendorID(String) //Will later be used to authenticate user's device
+      * username
+      * password
+      * email
+      * vendorID //Will later be used to authenticate user's device
     * **Optional**
-      * firstname(String)
-      * lastname(String)
+      * firstname
+      * lastname
+  * loginUser()
+    * **Required**
+      * username OR email
+      * password
+    * **Return**
+      * sessiontoken
+  * createVideo()
+    * **Required**
+      * Authenticated User
+      * title
+      * length
+    * **Optional**
+      * description
+      * videodata //Will later be required
 
-Example of use (in terminal):
+## Hello World:
 ```bash
  . ~/bash/parsecloud.sh
  spe terrortorch
-   -> TerrorTorch environment set
+   => TerrorTorch environment set
  pf hello firstname Alfred lastname Cepeda
-   -> Sending data: {"firstname":"Alfred","lastname":"Cepeda"}
-   -> {"result":"Hello Alfred Cepeda, congratulations on sending a request to our TerrorTorch backend."}
+   => Sending data: {"firstname":"Alfred","lastname":"Cepeda"}
+   => {"result":"Hello Alfred Cepeda, congratulations on sending a request to our TerrorTorch backend."}
+```
+
+## Simple Workflow:
+```bash
+ pf createUser username Alfredosauce password Password email Alfred@rebaked.com vendorid 123456789A
+   =>{"result":"Successfully created new user: Alfredosauce"}
+ pf loginUser username Alfredosauce password Password
+   =>{"result":{"sessiontoken":"jZBqCLhWMKzmZzi7AKu7jFRed"}}
+ pf createVideo title TestVideo length 100 sessiontoken jZBqCLhWMKzmZzi7AKu7jFRed
+OR
+ pf createVideo title TestVideo length 100 username Alfredosauce password Password
+   =>{"result":"Video was successfully saved"}
 ```
 
 ## Vision and Purpose
