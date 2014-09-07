@@ -28,7 +28,7 @@ class UICollectionViewRowLayout: UICollectionViewLayout {
     
     private var _numItems:Int{
         get{
-            return self.collectionView.numberOfItemsInSection(0);
+            return self.collectionView!.numberOfItemsInSection(0);
         }
     }
 
@@ -36,26 +36,26 @@ class UICollectionViewRowLayout: UICollectionViewLayout {
     override func prepareLayout() {
         super.prepareLayout();
         
-        let bounds = self.collectionView.bounds;
-        self.updateToBounds(self.collectionView.bounds);
+        let bounds = self.collectionView!.bounds;
+        self.updateToBounds(self.collectionView!.bounds);
         self.updateLayoutAttributes();
         
     }
     
     override func collectionViewContentSize() -> CGSize {
         let contentWidth = leftInset + itemSize.width * CGFloat(_numItems) + minimumCellSpacing * CGFloat(_numItems - 1) + rightInset;
-        let contentHeight = self.collectionView.bounds.height;
+        let contentHeight = self.collectionView!.bounds.height;
         
         return CGSizeMake(contentWidth, contentHeight);
     }
     
     //Only worried about positioning cells along the x axis. Spaces cells according to properties of layout
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath!) -> UICollectionViewLayoutAttributes! {
+    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
         return _contentAttributes[indexPath.item];
     }
     
     //Dynamically retrieves attributes of cells in rectangle by dividing rectangle into indexes
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]! {
+    override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]?{
         
         var result = [UICollectionViewLayoutAttributes]();
         

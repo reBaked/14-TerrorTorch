@@ -98,7 +98,7 @@ struct YoutubeManager{
                 let data = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: &error);
                 
                 if(error == nil){
-                    let image = UIImage(data: data);
+                    let image = UIImage(data: data!);
                     resultImages.append(image);
                 } else {
                     println("Download image \(index) failed with error: \(error)");

@@ -132,7 +132,7 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         super.prepareForSegue(segue, sender: sender);
         if let controller = segue.destinationViewController as? CaptureViewController{
             controller.cameraPosition = self.cameraPosition;
@@ -213,26 +213,28 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
     }
 
     //MARK: UICollectionView Delegate
-    func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         self.updateSoundPlayer(indexPath);
         soundPlayer.play();
     }
 
     //MARK: UICollectionView Datasource
-    func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectionCell", forIndexPath: indexPath) as UICollectionViewCellStyleImage;
         
         cell.imageView.image = UIImage(named: appAssets[indexPath.row]["imageName"]!);
         return cell;
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1;
     }
     
-    func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return appAssets.count;
     }
+    
+
     
     deinit{
         if(_session != nil){

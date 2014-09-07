@@ -21,7 +21,7 @@ class SoundBoxScene: SKScene {
     //Information on actions expected by a SKNode
     var actionAttributes:[[String:AnyObject]] = [];
     
-    override func didMoveToView(view: SKView!) {
+    override func didMoveToView(view: SKView) {
         println("Configuring scene");
         self.configureScene();
         println("Creating scene content");
@@ -29,7 +29,7 @@ class SoundBoxScene: SKScene {
     
         //Initialize gesture recognizers
         let singleTapRecognizer = UITapGestureRecognizer(target: self, action: Selector("handleSingleTap:"));
-        self.view.addGestureRecognizer(singleTapRecognizer);
+        self.view!.addGestureRecognizer(singleTapRecognizer);
 
     }
     

@@ -18,7 +18,7 @@ class MainScreenController: UIBaseViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        /*YoutubeManager.getVideoSnippets(20){ (videoIDs, imageURLs) in
+        YoutubeManager.getVideoSnippets(20){ (videoIDs, imageURLs) in
             if(videoIDs != nil){
                 YoutubeManager.fetchImagesFromURLs(){ (images) in
                     if(images != nil){
@@ -26,7 +26,7 @@ class MainScreenController: UIBaseViewController, UICollectionViewDataSource, UI
                     }
                 }
             }
-        }*/
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,11 +52,11 @@ class MainScreenController: UIBaseViewController, UICollectionViewDataSource, UI
         
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1;
     }
     
-    func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let videoIDs = YoutubeManager.videoIDs{
             return videoIDs.count
         } else {
@@ -64,18 +64,18 @@ class MainScreenController: UIBaseViewController, UICollectionViewDataSource, UI
         }
     }
     
-    func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("youtubeCell", forIndexPath: indexPath) as UICollectionViewCellStyleImage;
 
         cell.imageView.image = YoutubeManager.images![indexPath.item];
         return cell;
     }
     
-    func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         WebViewController.presentWebViewController(YoutubeManager.getVideoURLForIndexPath(indexPath), owner: self);
     }
     
-    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         var width = collectionView.bounds.width/4;
         width = width + (width * 1/4);
         return CGSizeMake(width, width);

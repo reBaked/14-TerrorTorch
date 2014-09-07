@@ -52,7 +52,7 @@ class UIBaseViewController : UIViewController{
     
     //Called when back button on navigation bar is pressed
     func popCurrentController(){
-        self.navigationController.popViewControllerAnimated(true);
+        self.navigationController!.popViewControllerAnimated(true);
     }
     
     
