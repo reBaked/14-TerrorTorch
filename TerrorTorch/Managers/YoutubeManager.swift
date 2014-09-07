@@ -55,12 +55,12 @@ struct YoutubeManager{
                     
             
                     if let responseError:AnyObject = JSON["error"]{
-                        print("Failed with error: ");
-                        print(responseError["code"]!);
-                        print(" ");
-                        print(responseError["message"]!);
-                    } else {
-                        for item in JSON["items"]! as [[String:AnyObject]]{
+                        let code = responseError["code"] as? String ?? "##";
+                        let message = responseError["message"] as? String ?? "No error message";
+                        print("Failed with status: \(code) - \(message)");
+                    } else  if let items:AnyObject = JSON["items"]{
+                        
+                        for item in items as [[String:AnyObject]]{
                             let videoId = (item["id"]!)["videoId"]! as String;
 
                             let thumbnails = (item["snippet"]!)["thumbnails"]! as [String:AnyObject];
@@ -68,16 +68,20 @@ struct YoutubeManager{
                             resultVideoIDs.append(videoId);
                             resultImageURLs.append(imageURL);
                         }
+                        
+                        print("Success")
+                    } else {
+                        print("Unknown error occurred. Check to ensure there are valid videos on youtube channel");
                     }
-                    print("Success")
+                    
                 } else {
                     print("Failed with error: \(error!.localizedDescription)");
                 }
                 print("\n");
             }
             
-            self.videoIDs = (resultVideoIDs.isEmpty) ? nil : resultVideoIDs;
-            self.imageURLs = (resultImageURLs.isEmpty) ? nil : resultImageURLs;
+            self.videoIDs = resultVideoIDs;
+            self.imageURLs = resultImageURLs;
             dispatch_sync(dispatch_get_main_queue()){
                 if let handler = completionHandler{
                     handler(videoIDs: self.videoIDs, imageURLs: self.imageURLs);
@@ -98,14 +102,15 @@ struct YoutubeManager{
                 let data = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: &error);
                 
                 if(error == nil){
-                    let image = UIImage(data: data!);
-                    resultImages.append(image);
+                    if let imageData = data{
+                        resultImages.append(UIImage(data: imageData));
+                    }
                 } else {
                     println("Download image \(index) failed with error: \(error)");
                 }
             }
             println("Finished downloading images");
-            self.images = (resultImages.isEmpty) ? nil : resultImages;
+            self.images = resultImages;
             dispatch_sync(dispatch_get_main_queue()){
                 if let handler = completionHandler{
                     handler(images: self.images);
@@ -114,8 +119,12 @@ struct YoutubeManager{
         }
     }
     
-    static func playVideoAtIndexPath(indexPath:NSIndexPath){
-        println(indexPath);
-        UIApplication.sharedApplication().openURL(NSURL(string:"" + self.videoIDs[indexPath.item]));
+    static func playVideoAtIndexPath(indexPath:NSIndexPath, presentingViewController owner:UIViewController){
+        if let videoURL = self.getVideoURLForIndexPath(indexPath){
+            println("Playing youtube video: \(videoURL)");
+            WebViewController.presentWebViewController(videoURL, owner: owner);
+        } else {
+            println("No video found for indexpath: \(indexPath)");
+        }
     }
 }

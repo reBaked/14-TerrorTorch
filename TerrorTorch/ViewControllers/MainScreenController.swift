@@ -12,16 +12,14 @@ class MainScreenController: UIBaseViewController, UICollectionViewDataSource, UI
     @IBOutlet var btnFacebook: UIButton!
     @IBOutlet var btnTwitter: UIButton!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         YoutubeManager.getVideoSnippets(20){ (videoIDs, imageURLs) in
-            if(videoIDs != nil){
+            if(!videoIDs.isEmpty){
                 YoutubeManager.fetchImagesFromURLs(){ (images) in
-                    if(images != nil){
+                    if(!images.isEmpty){
                         self.viewYoutubeVideos.reloadData();
                     }
                 }
@@ -72,7 +70,7 @@ class MainScreenController: UIBaseViewController, UICollectionViewDataSource, UI
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        WebViewController.presentWebViewController(YoutubeManager.getVideoURLForIndexPath(indexPath), owner: self);
+        YoutubeManager.playVideoAtIndexPath(indexPath, presentingViewController: self);
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
