@@ -43,6 +43,70 @@ https://www.reBaked.com/projects/14
     5.  App will stop recording after 10 seconds.
     6.  App will assist in uploading the video to YouTube.  Possibly supporting other platforms as time permits.
 
+========
+## Parse Cloud Code
+
+parsecloud.sh - Bash script for sending a simple command to our backend. Must be able to see and run utility.sh in order to execute correctly.
+
+1.  Bash commands
+  * setParseEnviroonment [appname]
+    * spe
+    * Can be configured to use different apps
+  * parseFunction [function] [[key] [value]...]
+    * pf
+    * Currently supports String, boolean and numbers
+
+2. Cloud functions
+  * hello()
+    * **Required**
+      * firstname(String)
+      * lastname(String)
+  * createUser()
+    * **Required**
+      * username
+      * password
+      * email
+      * vendorID //Will later be used to authenticate user's device
+    * **Optional**
+      * firstname
+      * lastname
+  * loginUser()
+    * **Required**
+      * username OR email
+      * password
+    * **Return**
+      * sessiontoken
+  * createVideo()
+    * **Required**
+      * Authenticated User
+      * title
+      * length
+    * **Optional**
+      * description
+      * videodata //Will later be required
+
+## Hello World:
+```bash
+ . ~/bash/parsecloud.sh
+ spe terrortorch
+   => TerrorTorch environment set
+ pf hello firstname Alfred lastname Cepeda
+   => Sending data: {"firstname":"Alfred","lastname":"Cepeda"}
+   => {"result":"Hello Alfred Cepeda, congratulations on sending a request to our TerrorTorch backend."}
+```
+
+## Simple Workflow:
+```bash
+ pf createUser username Alfredosauce password Password email Alfred@rebaked.com vendorid 123456789A
+   =>{"result":"Successfully created new user: Alfredosauce"}
+ pf loginUser username Alfredosauce password Password
+   =>{"result":{"sessiontoken":"jZBqCLhWMKzmZzi7AKu7jFRed"}}
+ pf createVideo title TestVideo length 100 sessiontoken jZBqCLhWMKzmZzi7AKu7jFRed
+OR
+ pf createVideo title TestVideo length 100 username Alfredosauce password Password
+   =>{"result":"Video was successfully saved"}
+```
+
 ## Vision and Purpose
 
 **TerrorTorch's main draw is its TerrorMode.**  It is intended to be a single IAP to unlock the feature.

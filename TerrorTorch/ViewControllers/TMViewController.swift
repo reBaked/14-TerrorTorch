@@ -22,7 +22,7 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
     
     var soundPlayer_ofSelectedItem:AVPlayer{
         get{
-            self.updateSoundPlayer(collectionView.selectedItem!);
+            //self.updateSoundPlayer(collectionView.selectedItem!);
             return soundPlayer;
         }
     }
@@ -113,7 +113,7 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
     
     override func viewDidAppear(animated: Bool){
         super.viewDidAppear(animated);
-        if(_session){
+        if(_session != nil){
             println("Starting capture session for preview");
             self._session.startRunning();
         }
@@ -121,7 +121,7 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated);
-        if(_session){
+        if(_session != nil){
             println("Stopping capture session for preview");
             self._session.stopRunning();
         }
@@ -132,7 +132,7 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         super.prepareForSegue(segue, sender: sender);
         if let controller = segue.destinationViewController as? CaptureViewController{
             controller.cameraPosition = self.cameraPosition;
@@ -199,7 +199,7 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
     func updateSoundPlayer(indexPath:NSIndexPath){
         let soundName = appAssets[indexPath.item]["soundName"];
         let path = NSBundle.mainBundle().pathForResource(soundName, ofType: SOUNDFORMAT)
-        let url = NSURL(fileURLWithPath: path);
+        let url = NSURL(fileURLWithPath: path!);
         
         soundPlayer.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: url));
     }
@@ -213,29 +213,31 @@ class TMViewController: UIBaseViewController, UICollectionViewDataSource, UIColl
     }
 
     //MARK: UICollectionView Delegate
-    func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         self.updateSoundPlayer(indexPath);
         soundPlayer.play();
     }
 
     //MARK: UICollectionView Datasource
-    func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectionCell", forIndexPath: indexPath) as UICollectionViewCellStyleImage;
         
         cell.imageView.image = UIImage(named: appAssets[indexPath.row]["imageName"]!);
         return cell;
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1;
     }
     
-    func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return appAssets.count;
     }
     
+
+    
     deinit{
-        if(_session){
+        if(_session != nil){
             self.videoFeedView.removeObserver(self, forKeyPath: "bounds");
         }
     }

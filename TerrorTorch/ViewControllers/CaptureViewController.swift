@@ -19,7 +19,7 @@ class CaptureViewController: UIViewController, Ticker, CVDetectorDelegate, AVCap
     private var _recordingTimer:NSTimer!
     private var _captureManager:VideoCaptureManager!
     
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
         _timer.delegate = self;
     }
@@ -146,7 +146,7 @@ class CaptureViewController: UIViewController, Ticker, CVDetectorDelegate, AVCap
     
     func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!) {
         println("Camera stopped recording too file: \(outputFileURL.lastPathComponent)");
-        if(error){
+        if(error != nil){
             println("Error recording: \(error.localizedDescription)");
         }
     }

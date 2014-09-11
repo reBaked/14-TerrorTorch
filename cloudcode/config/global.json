@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "TerrorTorch": {
+            "applicationId": "93L9AEs5A7syGYf8xNB3NlGQfN3dtzoQfg5UnG1k", 
+            "masterKey": "DoRTZXUMZhyT20C2qrL6XyPuAWRwKu9Xvyshkb3X"
+        }, 
+        "_default": {
+            "link": "TerrorTorch"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.19"
+    }
+}

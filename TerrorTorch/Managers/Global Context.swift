@@ -48,3 +48,9 @@ func find<T: Equatable>(array: [T], iterator: (T) -> Bool) -> T? {
     }
     return nil
 }
+
+infix operator  =- { }
+
+func =- (inout lhs:Int, rhs:Int){
+    lhs = lhs - rhs;
+}

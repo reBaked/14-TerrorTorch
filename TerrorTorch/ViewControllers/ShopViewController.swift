@@ -15,7 +15,7 @@ class ShopViewController: UIBaseViewController {
     }
 
     override func viewWillAppear(animated: Bool) {
-        self.navigationController.navigationBar.hidden = false;
+        self.navigationController!.navigationBar.hidden = false;
     }
     
     override func didReceiveMemoryWarning() {

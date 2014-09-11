@@ -69,29 +69,29 @@ class TempDirBrowseViewController: UITableViewController {
 
     // #pragma mark - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return (fileNames.isEmpty) ? 0 : 1;
     }
 
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return fileNames.count;
     }
 
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell? {
-        var cell = self.tableView.dequeueReusableCellWithIdentifier("myCell") as? UITableViewCell;
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = self.tableView.dequeueReusableCellWithIdentifier("myCell") as UITableViewCell;
         
-        cell!.textLabel.text = fileNames[indexPath.row];
+        cell.textLabel!.text = fileNames[indexPath.row];
         // Configure the cell...
 
         return cell;
     }
     
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let item = AVPlayerItem(asset: videoAssets[indexPath.row]);
         
         self.player.replaceCurrentItemWithPlayerItem(item);
