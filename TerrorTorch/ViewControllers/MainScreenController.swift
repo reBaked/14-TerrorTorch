@@ -25,6 +25,13 @@ class MainScreenController: UIBaseViewController, UICollectionViewDataSource, UI
                 }
             }
         }
+        
+        if(User.isLoggedIn){
+            if(User.isFacebookUser){
+                btnFacebook.enabled = false;
+                btnFacebook.hidden = true;
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -47,7 +54,18 @@ class MainScreenController: UIBaseViewController, UICollectionViewDataSource, UI
     }
     
     @IBAction func socialBtnTouchUpInside(sender: UIButton) {
-        
+        if(sender == btnFacebook){
+            self.btnFacebook.enabled = false;
+            User.loginLinkFacebook(){
+                if($0){
+                    self.btnFacebook.hidden = true;
+                } else {
+                    self.btnFacebook.enabled = true;
+                }
+            }
+        } else if(sender == btnTwitter){
+            
+        }
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

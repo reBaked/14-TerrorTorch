@@ -15,7 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         // Override point for customization after application launch.
         initStyles();
-        return true
+        Parse.setApplicationId("93L9AEs5A7syGYf8xNB3NlGQfN3dtzoQfg5UnG1k", clieapplication: UIApplication, openURL url: NSURL, sourceApplication: String, annotation: AnyObject?) -> Bool {
+        return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication, withSession:PFFacebookUtils.session());
+    }
+    
+    func applicationDidBecomeActive(applicationntKey: "50WkvlEQiCqcAx4ivYO6wbRrEUzcw70VFvgb5WEz");
+        PFFacebookUtils.initializeFacebook();
+        return true;
+    }
+    
+    func application(: UIApplication) {
+        FBAppCall.handleDidBecomeActiveWithSession(PFFacebookUtils.session())
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -30,10 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
     func applicationWillTerminate(application: UIApplication) {

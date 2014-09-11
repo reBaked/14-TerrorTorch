@@ -8,10 +8,8 @@
 
 import Foundation
 
-
-
 struct User{
-    private static var _user:PFUser!
+    private static var _user:PFUser?
     private static var _userID:String!
     private static let queue = dispatch_queue_create("com.reBaked.Parse", nil);
     static let FBReadPermissions = ["public_profile", "user_friends"];
@@ -20,20 +18,33 @@ struct User{
         return FBReadPermissions + FBPublishPermissions;
     }
     
+    static var user:PFUser?{
+        set{
+            _user = newValue;
+        }
+        get{
+            if(_user == nil){
+                _user = PFUser.currentUser();
+            }
+            
+            return _user;
+        }
+    }
+    
     static var isLoggedIn:Bool{
         get{
-            return (_user != nil)
+            return user != nil;
         }
     }
     
     static var isFacebookUser:Bool{
         get{
-            return PFFacebookUtils.isLinkedWithUser(_user);
+            return PFFacebookUtils.isLinkedWithUser(PFUser.currentUser());
         }
     }
     
-    static func loginLink_facebook(completionHandler:(Bool) -> ()){
-        if(_user == nil){
+    static func loginLinkFacebook(completionHandler:((Bool) -> ())?){
+        if(user == nil){
             println("Will attempt to login to facebook with default permissions");
             PFFacebookUtils.logInWithPermissions(FBDefaultPermissions){ (newUser, error) in
                 if(newUser != nil){
@@ -43,22 +54,20 @@ struct User{
                 } else {
                     (error == nil) ? println("User cancelled login") : println("FBLogin request failed with error: \(error)");
                 }
-                completionHandler(self.isFacebookUser);
             }
-        } else if(!PFFacebookUtils.isLinkedWithUser(_user)){
+        } else if(!isFacebookUser){
             println("Will attempt to link to facebook with default permissions");
-            PFFacebookUtils.linkUser(_user, permissions: FBDefaultPermissions){ (success, error) in
+            PFFacebookUtils.linkUser(user, permissions: FBDefaultPermissions){ (success, error) in
                 if(success){
                     println("User successfully linked to facebook");
                 } else {
                     (error == nil) ? println("User did not link account") : println("FBLink request failed with error: \(error)");
                 }
-                completionHandler(self.isFacebookUser);
             }
         }
-    }
-    
-    static func postToFacebook(message: String!){
         
+        if let handler = completionHandler{
+            handler(isLoggedIn);
+        }
     }
 }
