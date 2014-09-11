@@ -15,16 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         // Override point for customization after application launch.
         initStyles();
-        Parse.setApplicationId("93L9AEs5A7syGYf8xNB3NlGQfN3dtzoQfg5UnG1k", clieapplication: UIApplication, openURL url: NSURL, sourceApplication: String, annotation: AnyObject?) -> Bool {
-        return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication, withSession:PFFacebookUtils.session());
-    }
-    
-    func applicationDidBecomeActive(applicationntKey: "50WkvlEQiCqcAx4ivYO6wbRrEUzcw70VFvgb5WEz");
+        Parse.setApplicationId("93L9AEs5A7syGYf8xNB3NlGQfN3dtzoQfg5UnG1k", clientKey: "50WkvlEQiCqcAx4ivYO6wbRrEUzcw70VFvgb5WEz");
         PFFacebookUtils.initializeFacebook();
         return true;
     }
     
-    func application(: UIApplication) {
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String, annotation: AnyObject?) -> Bool {
+        return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication, withSession:PFFacebookUtils.session());
+    }
+    
+    func applicationDidBecomeActive(application: UIApplication) {
         FBAppCall.handleDidBecomeActiveWithSession(PFFacebookUtils.session())
     }
 
