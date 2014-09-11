@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 reBaked. All rights reserved.
 //
 
-class MainScreenController: UIBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class MainScreenController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet var viewYoutubeVideos: UICollectionView!
     @IBOutlet var btnFacebook: UIButton!

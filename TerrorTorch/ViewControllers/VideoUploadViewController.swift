@@ -8,12 +8,11 @@
 import CoreMedia
 
 
-class VideoUploadViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class VideoUploadViewController: UICollectionViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var fileURLs:[NSURL] = [];
     var images:[UIImage] = [];
     
-    @IBOutlet var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad();
         
@@ -23,6 +22,9 @@ class VideoUploadViewController: UIViewController, UICollectionViewDataSource, U
         
         let queue = dispatch_queue_create("com.reBaked.ImageGenerator", nil);
         for file in tmpDirectory as [String]{
+            if(file == "MediaCache"){
+                continue;
+            }
             let fileURL = NSURL(fileURLWithPath: NSTemporaryDirectory() + file)
             let asset = AVURLAsset(URL: fileURL, options: nil);
             let generator = AVAssetImageGenerator(asset: asset);
@@ -46,20 +48,20 @@ class VideoUploadViewController: UIViewController, UICollectionViewDataSource, U
         
         dispatch_async(queue){
             dispatch_sync(dispatch_get_main_queue()){
-                self.collectionView.reloadData();
+                self.collectionView!.reloadData();
             }
         }
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count;
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1;
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("videoCell", forIndexPath: indexPath) as UICollectionViewCellStyleImage;
         
         cell.imageView.image = images[indexPath.item];
