@@ -56,9 +56,7 @@ struct YoutubeManager{
             
                     if let responseError:AnyObject = JSON["error"]{
                         print("Failed with error: ");
-                        print(responseError["code"]!);
-                        print(" ");
-                        print(responseError["message"]!);
+                        print(responseError);
                     } else {
                         for item in JSON["items"]! as [[String:AnyObject]]{
                             let videoId = (item["id"]!)["videoId"]! as String;
