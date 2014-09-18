@@ -188,9 +188,5 @@ Parse.Cloud.beforeSave('Video', function(request, response){
 })
 
 Parse.Cloud.beforeSave(Parse.User, function(request, response) {
-	if(!request.object.get('vendorid')){
-		response.error('User\'s vendorID is required for signup');
-	} else {
-		response.success();
-	}
+	response.success();
 });

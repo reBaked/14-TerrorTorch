@@ -6,25 +6,30 @@
 //  Copyright (c) 2014 reBaked. All rights reserved.
 //
 
-class MainScreenController: UIBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class MainScreenController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet var viewYoutubeVideos: UICollectionView!
     @IBOutlet var btnFacebook: UIButton!
     @IBOutlet var btnTwitter: UIButton!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         YoutubeManager.getVideoSnippets(20){ (videoIDs, imageURLs) in
-            if(videoIDs != nil){
+            if(!videoIDs.isEmpty){
                 YoutubeManager.fetchImagesFromURLs(){ (images) in
-                    if(images != nil){
+                    if(!images.isEmpty){
                         self.viewYoutubeVideos.reloadData();
                     }
                 }
+            }
+        }
+        
+        if(User.isLoggedIn){
+            if(User.isFacebookUser){
+                btnFacebook.enabled = false;
+                btnFacebook.hidden = true;
             }
         }
     }
@@ -49,7 +54,18 @@ class MainScreenController: UIBaseViewController, UICollectionViewDataSource, UI
     }
     
     @IBAction func socialBtnTouchUpInside(sender: UIButton) {
-        
+        if(sender == btnFacebook){
+            self.btnFacebook.enabled = false;
+            User.loginLinkFacebook(){
+                if($0){
+                    self.btnFacebook.hidden = true;
+                } else {
+                    self.btnFacebook.enabled = true;
+                }
+            }
+        } else if(sender == btnTwitter){
+            
+        }
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -72,7 +88,7 @@ class MainScreenController: UIBaseViewController, UICollectionViewDataSource, UI
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        WebViewController.presentWebViewController(YoutubeManager.getVideoURLForIndexPath(indexPath), owner: self);
+        YoutubeManager.playVideoAtIndexPath(indexPath, presentingViewController: self);
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

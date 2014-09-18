@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 reBaked. All rights reserved.
 //
 
-class TMViewController: UIBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+class TMViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     
     @IBOutlet var videoFeedView: UIView!
     @IBOutlet var collectionView: UICollectionView!

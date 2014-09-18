@@ -6,10 +6,9 @@
 //  Copyright (c) 2014 reBaked. All rights reserved.
 //
 
-class UIBaseViewController : UIViewController{
+extension UIViewController {
 
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews();
+    func viewWillLayoutSubviews() {
 
         //Set navigation title to title specified in IB
         if let title = self.getTitle(){                     //Try to get the Red/White attributed text if able
@@ -19,9 +18,13 @@ class UIBaseViewController : UIViewController{
         }
         
         //Add back button to navigation bar unless already at main menu scene
-        if(self.title != "Main Menu")
-        {
+        if(self.title != "Main Menu"){
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "logo"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("popCurrentController"));
+            
+        }
+        
+        if(self.title != "Video Upload"){
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Upload", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("pushVideoUploadController"));
         }
     }
     
@@ -36,6 +39,8 @@ class UIBaseViewController : UIViewController{
             label.attributedText = NSAttributedString(attributedString: self.getNavTitle("Terror", second: "Mode"));
         } else if(self.title == "Sound Box"){
             label.attributedText = NSAttributedString(attributedString: self.getNavTitle("Sound", second: "Box"));
+        } else if(self.title == "Video Upload"){
+            label.attributedText = NSAttributedString(attributedString: self.getNavTitle("Video", second: "Upload"));
         } else {
             return nil;
         }
@@ -48,6 +53,12 @@ class UIBaseViewController : UIViewController{
         var result = NSMutableAttributedString(string: first, attributes: [NSForegroundColorAttributeName:COLOR_RED]);
         result.appendAttributedString(NSAttributedString(string: second, attributes: [NSForegroundColorAttributeName:COLOR_WHITE]));
         return NSAttributedString(attributedString: result);
+    }
+    
+    func pushVideoUploadController(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil);
+        let vc = storyboard.instantiateViewControllerWithIdentifier("videoUpload") as VideoUploadViewController;
+        self.navigationController?.pushViewController(vc, animated: true);
     }
     
     //Called when back button on navigation bar is pressed

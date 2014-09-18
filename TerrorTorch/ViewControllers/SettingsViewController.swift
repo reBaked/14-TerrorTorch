@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 reBaked. All rights reserved.
 //
 
-class SettingsViewController: UIBaseViewController {
+class SettingsViewController: UIViewController {
     @IBOutlet var webView: UIWebView!
     
     override func viewWillLayoutSubviews()  {
