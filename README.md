@@ -14,11 +14,7 @@ https://www.reBaked.com/projects/14
   *  Present the main screen
 
 2.  Main screen
-  * Light controls
-    *  On / Off toggle
-    *  Brightness
   *  Present button (or similar) to enter Sound boxes
-  *  Present button (or similar) to enter Shop
   *  Present button (or similar) to enter Settings
   *  Present button (or similar) to enter TerrorMode
 
@@ -109,8 +105,6 @@ OR
 
 ## Vision and Purpose
 
-**TerrorTorch's main draw is its TerrorMode.**  It is intended to be a single IAP to unlock the feature.
+**TerrorTorch's main draw is its TerrorMode.**
 
 When in TerrorMode, the user will select a sound and prop the phone to point its camera where an unsuspecting victim will walk by the camera.  The camera will detect a person walking into the frame, start recording video, then play the configured sound.  The intention is to startle the person walking into the frame and capture the experience.  Ideally then making it easy to post the video capture to YouTube.
-
-The soundboard and lighting features are meant to be the freebies.  Hoping the free features are enough to tempt the frugal users to at least install the app.
