@@ -10,8 +10,8 @@ import CoreMedia
 
 class VideoUploadViewController: UICollectionViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var fileURLs:[NSURL] = [];
-    var images:[UIImage] = [];
+    var fileURLs:[NSURL] = []
+    var images:[UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -38,8 +38,9 @@ class VideoUploadViewController: UICollectionViewController, UICollectionViewDat
                     if(result != AVAssetImageGeneratorResult.Succeeded){
                         println("Couldn't generate thumbnail for file: \(file)");
                     } else {
-                        self.images.append(UIImage(CGImage: im));
-                        
+                        dispatch_async(dispatch_get_main_queue()){
+                            self.images.append(UIImage(CGImage: im))
+                        }
                     }
                 }
             }
@@ -62,10 +63,10 @@ class VideoUploadViewController: UICollectionViewController, UICollectionViewDat
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("videoCell", forIndexPath: indexPath) as UICollectionViewCellStyleImage;
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("videoCell", forIndexPath: indexPath) as UICollectionViewCellStyleImage
         
-        cell.imageView.image = images[indexPath.item];
-        return cell;
+        cell.imageView.image = images[indexPath.item]
+        return cell
     }
     
     @IBAction func cancelPressed(sender: UIButton) {
