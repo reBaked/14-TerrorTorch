@@ -1,5 +1,9 @@
 // Use Parse.Cloud.define to define as many cloud functions as you want.
 // For example:
+
+const DEFAULTTAGS = [ 'Terror', 'Torch', 'TerrorTorch', 'GoldenViking', 'reBaked' ];
+var Buffer = require('buffer').Buffer;
+
 function isDefined(arg){
 	return (typeof arg !== 'undefined');
 }
@@ -168,6 +172,50 @@ Parse.Cloud.define('createVideo', function(request, response){
 	});	
 });
 
+Parse.Cloud.define('getChannelInfo', function(request, response){
+	Parse.Cloud.httpRequest({
+		method:'GET',
+		url: 'https://www.googleapis.com/youtube/v3/search',
+		headers:{
+			'Content-Type': 'application/json; charset=UTF-8'
+		},
+		params: {
+			part: 'id, snippet',
+			type: 'video',
+			channelId: 'UCg-Hnkjq8eVT9CSSoot01uw',
+			key: 'AIzaSyDU_5S6VMcAWdOmlq039dNAK2LYvA38WhA'
+		},
+
+		success: function(httpResponse){
+			var items = httpResponse.data.items;
+			response.success('Youtube channel has ' + items.length + ' videos.');
+		},
+		error: function(httpResponse){
+			response.error(httpResponse.text);
+		}
+	});
+});
+
+var oauthRequest = {
+	method: 'GET',
+	url: 'https://accounts.google.com/o/oauth2/auth',
+	params: {
+		client_id: '925132976135-sue10lp4hf4httfgoakov3ic3dnqas4b.apps.googleusercontent.com',
+		scope: 'https://www.googleapis.com/auth/youtube',
+		response_type: 'code',
+		redirect_uri: 'urn:ietf:wg:oauth:2.0:oob'
+	}
+}
+
+Parse.Cloud.define('login_oAuth', function(request, response){
+	Parse.Cloud.httpRequest(oauthRequest)
+	.then(function(httpResponse){
+		response.success(httpResponse.text);
+	},function(httpResponse){
+		response.error(httpResponse.text);
+	});
+});
+
 Parse.Cloud.beforeSave('Video', function(request, response){
 	if(request.master){
 		response.success();
@@ -183,10 +231,85 @@ Parse.Cloud.beforeSave('Video', function(request, response){
 		response.error('Video must have a title');
 	} else {
 		request.object.set('createdBy', request.user);
+		request.object.set('isUploaded', false);
 		response.success();
 	}
-})
+});
 
 Parse.Cloud.beforeSave(Parse.User, function(request, response) {
 	response.success();
+});
+
+function youtubeVideoRequest(params, buffer) {
+	return {
+		method:'POST',
+		url: 'https://www.googleapis.com/upload/youtube/v3/videos',
+		headers:{
+			'Content-Type': 'application/octet-stream'
+		},
+		params: {
+			part: 'id%2C+snippet',
+			channelID: 'UCg-Hnkjq8eVT9CSSoot01uw',
+			key: 'AIzaSyDU_5S6VMcAWdOmlq039dNAK2LYvA38WhA'
+		},
+		body: JSON.stringify({
+			kind: 'youtube#video',
+			snippet: {
+				title: params['title'],
+				description: params['description'],
+				tags: DEFAULTTAGS
+			},
+			status: {
+				privacyStatuse: 'public',
+				embeddable: true,
+				license: 'creativeCommon'
+			}
+		}),
+		media_body: buffer
+	};
+}
+
+Parse.Cloud.job('youtubeUpload', function(request, status) {
+	var query = new Parse.Query('Video');
+
+	query.equalTo('isUploaded', false);
+	query.find().then(function(videos){
+		var promises = [];
+
+		videos.forEach(function(video){
+			promises.push(Parse.Cloud.httpRequest({
+					method:'GET',
+					url: video.get('videoData').url(),
+				}).then(function(httpResponse){
+					var data = httpResponse.text;
+					var buffer = new Buffer(data, 'base64');
+					var params = { title: video.get('title'), description: video.get('description') };
+					
+					return Parse.Cloud.httpRequest(youtubeVideoRequest(params, buffer));	
+				}, function(error){
+					var reject = 'Failed to fetch video: ' + video.get('objectId') + ' with error:\n    ' + error;
+					return Parse.Promise.error(reject);
+				}).then(function(httpResponse){
+					var success = 'Successfully published video with response:\n    ' + httpResponse.text;
+					return Parse.Promise.as(success);
+				}, function(httpResponse){
+					var rejectmsg = 'Failed to publish video with error:\n     ' + httpResponse.text;
+					return Parse.Promise.error(rejectmsg);
+				})
+			);
+		});
+
+		return Parse.Promise.when(promises);
+	}).then(function(resolved){
+		resolved.forEach(function(promise){
+			console.log(promise);
+		});
+	},function(rejected){
+		rejected.forEach(function(promise){
+			console.log(promise);
+		})
+	}).always(function(test){
+		console.log(test)
+		status.success();
+	});
 });
