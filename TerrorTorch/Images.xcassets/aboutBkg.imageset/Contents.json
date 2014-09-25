@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "TerrorTorchApp-1.png"
+      "filename" : "TerrorAbout.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "TerrorTorchApp.png"
+      "filename" : "TerrorAbout-1.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "TerrorTorchApp-2.png"
+      "filename" : "TerrorAbout-2.png"
     }
   ],
   "info" : {
