@@ -42,7 +42,7 @@ class MainScreenController: UIViewController, UICollectionViewDataSource, UIColl
     override func viewWillDisappear(animated: Bool) {
 
     }
-
+    
     /**
     *  Called when user swipes to the right
     */    

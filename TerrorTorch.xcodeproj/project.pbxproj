@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0760917E19D39A4D00E00570 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0760917D19D39A4D00E00570 /* AboutController.swift */; };
+		0760917F19D39A4D00E00570 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0760917D19D39A4D00E00570 /* AboutController.swift */; };
 		2948993D1975BD2A007D0D97 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2948993B1975BD2A007D0D97 /* UIColorExtension.swift */; };
 		294899461975BD58007D0D97 /* CVDetectorViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2948993F1975BD58007D0D97 /* CVDetectorViewController.mm */; };
 		294899471975BD58007D0D97 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899401975BD58007D0D97 /* WebViewController.swift */; };
@@ -70,6 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0760917D19D39A4D00E00570 /* AboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		2948993B1975BD2A007D0D97 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		2948993F1975BD58007D0D97 /* CVDetectorViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVDetectorViewController.mm; sourceTree = "<group>"; };
 		294899401975BD58007D0D97 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +189,7 @@
 				294899441975BD58007D0D97 /* SoundBoxViewController.swift */,
 				47C8890B19BD34AC00B988B2 /* VideoUploadViewController.swift */,
 				47CEDEAB19A28C8300A8B8F7 /* TerrorMode */,
+				0760917D19D39A4D00E00570 /* AboutController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -459,6 +463,7 @@
 				294899471975BD58007D0D97 /* WebViewController.swift in Sources */,
 				B54B660C1950CBF400FF48DC /* AppDelegate.swift in Sources */,
 				47D20FF819654AF200BCB1D0 /* SoundBoxScene.swift in Sources */,
+				0760917E19D39A4D00E00570 /* AboutController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +472,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B54B661F1950CBF400FF48DC /* TerrorTorchTests.swift in Sources */,
+				0760917F19D39A4D00E00570 /* AboutController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

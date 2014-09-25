@@ -143,6 +143,7 @@
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="tem-h2-F5f" appends="YES" id="28y-ay-Ise"/>
+                            <outletCollection property="gestureRecognizers" destination="lzR-yR-fD3" appends="YES" id="wSH-I8-Mhr"/>
                         </connections>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -160,6 +161,12 @@
                         <action selector="presentSettingsScreen:" destination="BYZ-38-t0r" id="XH6-RM-4WD"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="lzR-yR-fD3">
+                    <connections>
+                        <action selector="presentAboutScreen:" destination="BYZ-38-t0r" id="t5a-Fn-I1y"/>
+                        <segue destination="6Wc-sn-bTd" kind="modal" modalTransitionStyle="flipHorizontal" id="Jbv-yr-gzu"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="832" y="142"/>
         </scene>
@@ -192,6 +199,7 @@
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="81I-GM-AvB" firstAttribute="leading" secondItem="RDj-fY-eD0" secondAttribute="leading" constant="20" id="HOs-OI-9fL"/>
                             <constraint firstAttribute="centerX" secondItem="81I-GM-AvB" secondAttribute="centerX" id="R4J-nV-dyx"/>
@@ -274,6 +282,45 @@
             </objects>
             <point key="canvasLocation" x="1714" y="772"/>
         </scene>
+        <!--About-->
+        <scene sceneID="yMT-Qc-aAd">
+            <objects>
+                <viewController id="8PA-5z-7V0" customClass="AboutController" customModule="TerrorTorch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yKY-B8-h91"/>
+                        <viewControllerLayoutGuide type="bottom" id="aW0-gP-Ane"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Re4-VQ-yvl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aboutBkg" translatesAutoresizingMaskIntoConstraints="NO" id="PBi-jE-hbV">
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="PBi-jE-hbV" secondAttribute="bottom" id="5uh-qB-1LM"/>
+                            <constraint firstItem="PBi-jE-hbV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Re4-VQ-yvl" secondAttribute="leadingMargin" constant="-16" id="7bS-xS-C2x"/>
+                            <constraint firstItem="PBi-jE-hbV" firstAttribute="top" secondItem="yKY-B8-h91" secondAttribute="bottom" id="9mo-fq-Yd2"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="PBi-jE-hbV" secondAttribute="trailing" constant="-16" id="eKc-Yt-Fx5"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="FJL-lo-6hX" appends="YES" id="yU4-in-aTe"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="About" id="bkq-vC-cLm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TXh-gE-CXj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="FJL-lo-6hX">
+                    <connections>
+                        <action selector="dismiss:" destination="8PA-5z-7V0" id="LWv-mV-9fm"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1302" y="-512"/>
+        </scene>
         <!--Sound Box-->
         <scene sceneID="pdv-TL-FM3">
             <objects>
@@ -294,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dsC-wF-fOh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1276" y="-492"/>
+            <point key="canvasLocation" x="1808" y="-492"/>
         </scene>
         <!--Video Upload-->
         <scene sceneID="Yx5-YM-8lW">
@@ -335,7 +382,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDk-Sp-vgp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1721" y="-492"/>
+            <point key="canvasLocation" x="2253" y="-492"/>
         </scene>
         <!--Terror Mode-->
         <scene sceneID="G5v-a6-eng">
@@ -368,7 +415,7 @@
                                     <action selector="cameraPositionChanged:" destination="iOa-Fz-k1s" eventType="valueChanged" id="ZEO-dC-wHg"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Countdown Time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIx-wu-i7U">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Countdown Time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIx-wu-i7U">
                                 <rect key="frame" x="90" y="210" width="140" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -384,13 +431,13 @@
                                     <segment title="3m"/>
                                 </segments>
                             </segmentedControl>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Preview disabled" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m42-c8-PcU">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Preview disabled" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m42-c8-PcU">
                                 <rect key="frame" x="20" y="108" width="280" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LW9-Ck-FvM" userLabel="videoFeedView">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LW9-Ck-FvM" userLabel="videoFeedView">
                                 <rect key="frame" x="20" y="56" width="280" height="146"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -524,8 +571,28 @@
             </objects>
             <point key="canvasLocation" x="404" y="142"/>
         </scene>
+        <!--About-->
+        <scene sceneID="YXr-NT-eHk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Wc-sn-bTd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="About" id="rfO-iH-OIx"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5vI-LK-ZR0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8PA-5z-7V0" kind="relationship" relationship="rootViewController" id="gne-Dn-uUe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JLf-8f-zzt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="924" y="-512"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="aboutBkg" width="2666" height="4260"/>
         <image name="facebookBackground" width="155" height="26"/>
         <image name="twitterBackground" width="154" height="26"/>
     </resources>
