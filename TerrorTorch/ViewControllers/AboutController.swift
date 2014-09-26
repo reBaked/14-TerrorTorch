@@ -52,6 +52,10 @@ class AboutController: UIViewController {
         attrString.endEditing()
         footer.attributedText = attrString
 
+        self.view.backgroundColor = UIColor(patternImage:(UIImage(named:"aboutBkg")))
+    }
+
+    override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
     }
 
     override func didReceiveMemoryWarning() {

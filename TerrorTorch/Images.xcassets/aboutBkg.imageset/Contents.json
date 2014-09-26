@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "TerrorAboutBackground.png"
+      "filename" : "aboutBkg.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "TerrorAboutBackground-1.png"
+      "filename" : "aboutBkg-1.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "TerrorAboutBackground-2.png"
+      "filename" : "aboutBkg-2.png"
     }
   ],
   "info" : {
