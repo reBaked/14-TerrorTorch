@@ -13,6 +13,12 @@ class AboutController: UIViewController {
     @IBOutlet var contributors :UILabel!
     @IBOutlet var disclaimer :UILabel!
     @IBOutlet var footer :UILabel!
+    @IBOutlet var gv :UIButton!
+
+    @IBAction func didClickGV
+        (button: UIButton) {
+            
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
