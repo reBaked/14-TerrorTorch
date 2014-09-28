@@ -23,7 +23,7 @@ extension UIViewController {
             
         }
         
-        if(self.title != "Video Upload"){
+        if(self.title != "Video Upload" && self.title != "About"){
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Upload", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("pushVideoUploadController"));
         }
     }
