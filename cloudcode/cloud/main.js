@@ -2,6 +2,8 @@
 // For example:
 
 const DEFAULTTAGS = [ 'Terror', 'Torch', 'TerrorTorch', 'GoldenViking', 'reBaked' ];
+const ACCESSTOKEN = 'ya29.jwCBVF_Az_MziK5DeUnUZaGkvPLRhFsH7Ls07RdHsEcdwAx5G1UZiwZD';
+const DEVELOPERKEY = 'AI39si5N2umfI-AdQ5Hiz-48Bkr73yXBbY5_fZXYvN1tjVLAX8NU-IcwT9NjQAoEbkdjTR93IDFnz-lsEzV_wC8vv83zXLjg6g';
 var Buffer = require('buffer').Buffer;
 
 function isDefined(arg){
@@ -200,7 +202,7 @@ var oauthRequest = {
 	method: 'GET',
 	url: 'https://accounts.google.com/o/oauth2/auth',
 	params: {
-		client_id: '925132976135-sue10lp4hf4httfgoakov3ic3dnqas4b.apps.googleusercontent.com',
+		client_id: '673341941039-qsut16q5jgn9qmrgofrh66n36ltr1nrs.apps.googleusercontent.com',
 		scope: 'https://www.googleapis.com/auth/youtube',
 		response_type: 'code',
 		redirect_uri: 'urn:ietf:wg:oauth:2.0:oob'
@@ -250,7 +252,7 @@ function youtubeVideoRequest(params, buffer) {
 		params: {
 			part: 'id%2C+snippet',
 			channelID: 'UCg-Hnkjq8eVT9CSSoot01uw',
-			key: 'AIzaSyDU_5S6VMcAWdOmlq039dNAK2LYvA38WhA'
+			access_token: ACCESSTOKEN
 		},
 		body: JSON.stringify({
 			kind: 'youtube#video',
@@ -269,6 +271,39 @@ function youtubeVideoRequest(params, buffer) {
 	};
 }
 
+function youtubePublishRequest(params, buffer){
+	var httpBody = '--f93dcbA3\n'+
+				'Content-Type: application/atom+xml; charset=UTF-8\n\n'+
+				'<?xml version="1.0"?>'+
+				'<entry xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:yt="http://gdata.youtube.com/schemas/2007">'+
+					'<media:group>'+
+					'<media:title type="plain">Bad Wedding Toast</media:title>'+
+					'<media:description type="plain"> I gave a bad toast at my friend\'s wedding. </media:description>'+
+					'<media:category scheme="http://gdata.youtube.com/schemas/2007/categories.cat">People </media:category>'+
+					'<media:keywords>toast, wedding</media:keywords>'+
+					'</media:group>'+
+				'</entry>\n'+
+				'--f93dcbA3\n'+
+				'Content-Type: application/octet-stream\n'+
+				'Content-Transfer-Encoding: binary\n\n'+
+				 buffer+'\n'+
+				 '--f93dcbA3--\n';
+	return {
+		method:'POST',
+		url: 'http://uploads.gdata.youtube.com/feeds/api/users/default/uploads',
+		headers:{
+			'Authorization': 'Bearer '+ACCESSTOKEN,
+			'GData-Version': 2,
+			'X-GData-Key': 'key='+DEVELOPERKEY,
+			'Slug': 'TestVideo.mov',
+			'Content-Type': 'multipart/related; boundary=f93dcbA3',
+			'Content-Length': httpBody.length,
+			'Connection': 'close'
+		},
+		body: httpBody
+	}
+}
+
 Parse.Cloud.job('youtubeUpload', function(request, status) {
 	var query = new Parse.Query('Video');
 
@@ -284,8 +319,8 @@ Parse.Cloud.job('youtubeUpload', function(request, status) {
 					var data = httpResponse.text;
 					var buffer = new Buffer(data, 'base64');
 					var params = { title: video.get('title'), description: video.get('description') };
-					
-					return Parse.Cloud.httpRequest(youtubeVideoRequest(params, buffer));	
+					console.log("Attempting to publish video...")
+					return Parse.Cloud.httpRequest(youtubePublishRequest(params, buffer));	
 				}, function(error){
 					var reject = 'Failed to fetch video: ' + video.get('objectId') + ' with error:\n    ' + error;
 					return Parse.Promise.error(reject);

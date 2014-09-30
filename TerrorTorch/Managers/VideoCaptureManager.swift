@@ -8,7 +8,7 @@
 
 class VideoCaptureManager{
     
-    private var _session    = VideoCaptureManager.getFullAVCaptureSession(AVCaptureDevicePosition.Front)!;   //Manages data between input and output
+    private var _session:AVCaptureSession!;   //Manages data between input and output
     private let _output     = AVCaptureMovieFileOutput();                   //Writes data to file
     private var _position   = AVCaptureDevicePosition.Front;                //Position of camera used to capture feed
     
@@ -24,7 +24,11 @@ class VideoCaptureManager{
             _position = position;
         }
         
-        _session.addOutput(_output);
+        _session = VideoCaptureManager.getFullAVCaptureSession(_position);
+        
+        if(VideoCaptureManager.isValidSession(_session)){
+            _session.addOutput(_output);
+        }
     }
     
     /**
