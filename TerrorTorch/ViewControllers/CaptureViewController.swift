@@ -113,18 +113,27 @@ class CaptureViewController: UIViewController, Ticker, CVDetectorDelegate, AVCap
     }
     
     //MARK: VideoCaptureManager Actions
+    var outputPath:String!
+
     func startRecording(){
 
         //Generate random file name based on currente datetime
         let dateFormatter = NSDateFormatter();
         dateFormatter.dateFormat = "HH:mm 'on' yyyy-MM-dd";             //EX: 13:45 on 2014-08-05
-        let fileName = dateFormatter.stringFromDate(NSDate(timeIntervalSinceNow: 0));
 
-        let outputPath = NSTemporaryDirectory() + fileName + ".mov";    //Quicktime extension
-        
+        let fileName = dateFormatter.stringFromDate(NSDate(timeIntervalSinceNow: 0));
+        outputPath = NSTemporaryDirectory() + fileName + ".mov";    //Quicktime extension
         _captureManager.startRecordingToPath(outputPath)
-        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("playSound"), userInfo: nil, repeats: false);
-        NSTimer.scheduledTimerWithTimeInterval(_duration, target: self, selector: Selector("endRecording"), userInfo: nil, repeats: false);
+
+        var delay = _duration * Double(NSEC_PER_SEC)
+        var time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+            self.endRecording()
+        })
+
+//        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("playSound"), userInfo: nil, repeats: false);
+
+//        NSTimer.scheduledTimerWithTimeInterval(_duration, target: self, selector: Selector("endRecording"), userInfo: nil, repeats: false);
     }
     
     func playSound() {
@@ -136,7 +145,12 @@ class CaptureViewController: UIViewController, Ticker, CVDetectorDelegate, AVCap
     //Called when recordDuration elapses
     func endRecording(){
         _captureManager.endRecording();
-        self.dismissViewControllerAnimated(false, completion: nil);
+        dispatch_async(dispatch_get_main_queue(), {
+            let url: NSURL = NSURL(fileURLWithPath: self.outputPath)
+            self.soundPlayer = AVPlayer(URL: url)
+            self.playSound()
+            self.dismissViewControllerAnimated(false, completion: nil);
+        })
     }
     
     //MARK: AVCaptureFileOutputRecording Delegate
