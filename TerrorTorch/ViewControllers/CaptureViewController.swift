@@ -131,6 +131,13 @@ class CaptureViewController: UIViewController, Ticker, CVDetectorDelegate, AVCap
             self.endRecording()
         })
 
+        delay = 1 * Double(NSEC_PER_SEC)
+        time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+            self.playSound()
+        })
+
+
 //        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("playSound"), userInfo: nil, repeats: false);
 
 //        NSTimer.scheduledTimerWithTimeInterval(_duration, target: self, selector: Selector("endRecording"), userInfo: nil, repeats: false);
@@ -145,12 +152,7 @@ class CaptureViewController: UIViewController, Ticker, CVDetectorDelegate, AVCap
     //Called when recordDuration elapses
     func endRecording(){
         _captureManager.endRecording();
-        dispatch_async(dispatch_get_main_queue(), {
-            let url: NSURL = NSURL(fileURLWithPath: self.outputPath)
-            self.soundPlayer = AVPlayer(URL: url)
-            self.playSound()
-            self.dismissViewControllerAnimated(false, completion: nil);
-        })
+        self.dismissViewControllerAnimated(false, completion: nil);
     }
     
     //MARK: AVCaptureFileOutputRecording Delegate
