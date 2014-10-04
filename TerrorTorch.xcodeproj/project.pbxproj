@@ -13,7 +13,6 @@
 		294899471975BD58007D0D97 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899401975BD58007D0D97 /* WebViewController.swift */; };
 		294899481975BD58007D0D97 /* MainScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899411975BD58007D0D97 /* MainScreenController.swift */; };
 		294899491975BD58007D0D97 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899421975BD58007D0D97 /* SettingsViewController.swift */; };
-		2948994A1975BD58007D0D97 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899431975BD58007D0D97 /* ShopViewController.swift */; };
 		2948994B1975BD58007D0D97 /* SoundBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899441975BD58007D0D97 /* SoundBoxViewController.swift */; };
 		2948994C1975BD58007D0D97 /* TMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899451975BD58007D0D97 /* TMViewController.swift */; };
 		294899581975BD6F007D0D97 /* credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 2948994E1975BD6F007D0D97 /* credits.html */; };
@@ -77,7 +76,6 @@
 		294899401975BD58007D0D97 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		294899411975BD58007D0D97 /* MainScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenController.swift; sourceTree = "<group>"; };
 		294899421975BD58007D0D97 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		294899431975BD58007D0D97 /* ShopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		294899441975BD58007D0D97 /* SoundBoxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundBoxViewController.swift; sourceTree = "<group>"; };
 		294899451975BD58007D0D97 /* TMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMViewController.swift; sourceTree = "<group>"; };
 		2948994E1975BD6F007D0D97 /* credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = credits.html; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 				294899401975BD58007D0D97 /* WebViewController.swift */,
 				294899411975BD58007D0D97 /* MainScreenController.swift */,
 				294899421975BD58007D0D97 /* SettingsViewController.swift */,
-				294899431975BD58007D0D97 /* ShopViewController.swift */,
 				294899441975BD58007D0D97 /* SoundBoxViewController.swift */,
 				47C8890B19BD34AC00B988B2 /* VideoUploadViewController.swift */,
 				47CEDEAB19A28C8300A8B8F7 /* TerrorMode */,
@@ -445,7 +442,6 @@
 				2948994B1975BD58007D0D97 /* SoundBoxViewController.swift in Sources */,
 				2948994C1975BD58007D0D97 /* TMViewController.swift in Sources */,
 				294899461975BD58007D0D97 /* CVDetectorViewController.mm in Sources */,
-				2948994A1975BD58007D0D97 /* ShopViewController.swift in Sources */,
 				47EFE840197A3D0A00AC952D /* AVCaptureSessionExt.swift in Sources */,
 				29F78D0A19836E9600F4C457 /* CountdownTimer.swift in Sources */,
 				294899481975BD58007D0D97 /* MainScreenController.swift in Sources */,
