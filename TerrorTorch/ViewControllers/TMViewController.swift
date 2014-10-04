@@ -22,7 +22,7 @@ class TMViewController: UIViewController, UICollectionViewDataSource, UICollecti
     
     var soundPlayer_ofSelectedItem:AVPlayer{
         get{
-            //self.updateSoundPlayer(collectionView.selectedItem!);
+            self.updateSoundPlayer(collectionView.selectedItem!);
             return soundPlayer;
         }
     }
