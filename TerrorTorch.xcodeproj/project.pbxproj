@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		07924B1219D4825F006AF4B7 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07924B1119D4825F006AF4B7 /* AboutController.swift */; };
+		07BFDFA519E06A070080C354 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07BFDFA419E06A070080C354 /* Social.framework */; };
 		2948993D1975BD2A007D0D97 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2948993B1975BD2A007D0D97 /* UIColorExtension.swift */; };
 		294899461975BD58007D0D97 /* CVDetectorViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2948993F1975BD58007D0D97 /* CVDetectorViewController.mm */; };
 		294899471975BD58007D0D97 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294899401975BD58007D0D97 /* WebViewController.swift */; };
@@ -72,6 +73,7 @@
 
 /* Begin PBXFileReference section */
 		07924B1119D4825F006AF4B7 /* AboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
+		07BFDFA419E06A070080C354 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		2948993B1975BD2A007D0D97 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		2948993F1975BD58007D0D97 /* CVDetectorViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVDetectorViewController.mm; sourceTree = "<group>"; };
 		294899401975BD58007D0D97 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07BFDFA519E06A070080C354 /* Social.framework in Frameworks */,
 				47CEDEC219A2F4DB00A8B8F7 /* AudioToolbox.framework in Frameworks */,
 				47CEDEC019A2F4CE00A8B8F7 /* CFNetwork.framework in Frameworks */,
 				47CEDEBE19A2F4BF00A8B8F7 /* CoreLocation.framework in Frameworks */,
@@ -239,6 +242,7 @@
 		31809728196CC8A70097E18C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07BFDFA419E06A070080C354 /* Social.framework */,
 				47F5A98E19B3E89800D4C231 /* Parse.framework */,
 				47CEDEC119A2F4DB00A8B8F7 /* AudioToolbox.framework */,
 				47CEDEBF19A2F4CE00A8B8F7 /* CFNetwork.framework */,
