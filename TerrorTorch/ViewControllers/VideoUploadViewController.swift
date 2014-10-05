@@ -70,16 +70,14 @@ class VideoUploadViewController: UICollectionViewController, UICollectionViewDat
         return cell
     }
 
-    override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 
         var movieURL = fileURLs[indexPath.item]
 
         let activityItems = [movieURL]
-        let actviewcon = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
 
-        self.presentViewController(actviewcon, animated: true, completion: nil)
-
-        var socialVC :SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+        self.presentViewController(activityVC, animated: true, completion: nil)
     }
     
     @IBAction func cancelPressed(sender: UIButton) {
