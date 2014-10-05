@@ -72,8 +72,7 @@ class VideoUploadViewController: UICollectionViewController, UICollectionViewDat
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 
-        var movieURL = fileURLs[indexPath.item]
-
+        let movieURL = fileURLs[indexPath.item]
         let activityItems = [movieURL]
         let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
 
