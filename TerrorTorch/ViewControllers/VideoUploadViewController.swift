@@ -35,7 +35,7 @@ class VideoUploadViewController: UICollectionViewController, UICollectionViewDat
             generator.appliesPreferredTrackTransform=true;
             generator.maximumSize = maxSize;
             dispatch_async(queue){
-                generator.generateCGImagesAsynchronouslyForTimes([NSValue(CMTime:thumbTime)]){ (requestedTime, im, actualTime, result, error) in
+                generator.generateCGImagesAsynchronouslyForTimes([NSValue(CMTime:thumbTime)]){ (requestedTime, im, actualTime, result, error)  in
                     if(result != AVAssetImageGeneratorResult.Succeeded){
                         println("Couldn't generate thumbnail for file: \(file)");
                     } else {
