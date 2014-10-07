@@ -5,8 +5,9 @@
 //  Created by Alfred Cepeda on 9/7/14.
 //  Copyright (c) 2014 reBaked. All rights reserved.
 //
-import CoreMedia
 
+import CoreMedia
+import Social
 
 class VideoUploadViewController: UICollectionViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -67,6 +68,15 @@ class VideoUploadViewController: UICollectionViewController, UICollectionViewDat
         
         cell.imageView.image = images[indexPath.item]
         return cell
+    }
+
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+
+        let movieURL = fileURLs[indexPath.item]
+        let activityItems = [movieURL]
+        let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+
+        self.presentViewController(activityVC, animated: true, completion: nil)
     }
     
     @IBAction func cancelPressed(sender: UIButton) {
