@@ -10,6 +10,16 @@ extension UIViewController {
 
     func viewWillLayoutSubviews() {
 
+        if  !self.isKindOfClass(WebViewController) &&
+            !self.isKindOfClass(MainScreenController) &&
+            !self.isKindOfClass(SettingsViewController) &&
+            !self.isKindOfClass(SoundBoxViewController) &&
+            !self.isKindOfClass(VideoUploadViewController) &&
+            !self.isKindOfClass(TMViewController) &&
+            !self.isKindOfClass(VideoCaptureManager) {
+            return
+        }
+
         //Set navigation title to title specified in IB
         if let title = self.getTitle(){                     //Try to get the Red/White attributed text if able
             self.navigationItem.titleView = title;
