@@ -16,6 +16,7 @@ extension UIViewController {
             !self.isKindOfClass(SoundBoxViewController) &&
             !self.isKindOfClass(VideoUploadViewController) &&
             !self.isKindOfClass(TMViewController) &&
+            !self.isKindOfClass(AboutController) &&
             !self.isKindOfClass(VideoCaptureManager) {
             return
         }
@@ -29,13 +30,18 @@ extension UIViewController {
         
         //Add back button to navigation bar unless already at main menu scene
         if(self.title != "Main Menu"){
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "logo"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("popCurrentController"));
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "logo").imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("popCurrentController"));
             
         }
         
-        if(self.title != "Video Upload" && self.title != "About"){
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Upload", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("pushVideoUploadController"));
+        if(self.title != "Video Upload" && self.title != "About") {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "upload").imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("pushVideoUploadController"));
         }
+
+        if(self.title == "About") {
+            self.navigationItem.rightBarButtonItem?.image = UIImage(named: "shopbtn").imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        }
+
     }
     
     //Returns Red/White attributed text of specified scenes
