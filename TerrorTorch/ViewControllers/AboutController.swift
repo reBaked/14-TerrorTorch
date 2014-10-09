@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 reBaked. All rights reserved.
 //
 
-class AboutController: UIViewController {
+class AboutController: UIBaseViewController {
 
     @IBOutlet var aboutTitle :UILabel!
     @IBOutlet var copyright :UILabel!

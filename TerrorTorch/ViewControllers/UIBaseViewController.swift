@@ -6,21 +6,10 @@
 //  Copyright (c) 2014 reBaked. All rights reserved.
 //
 
-extension UIViewController {
+class UIBaseViewController:UIViewController {
 
-    func viewWillLayoutSubviews() {
-
-        if  !self.isKindOfClass(WebViewController) &&
-            !self.isKindOfClass(MainScreenController) &&
-            !self.isKindOfClass(SettingsViewController) &&
-            !self.isKindOfClass(SoundBoxViewController) &&
-            !self.isKindOfClass(VideoUploadViewController) &&
-            !self.isKindOfClass(TMViewController) &&
-            !self.isKindOfClass(AboutController) &&
-            !self.isKindOfClass(VideoCaptureManager) {
-            return
-        }
-
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews();
         //Set navigation title to title specified in IB
         if let title = self.getTitle(){                     //Try to get the Red/White attributed text if able
             self.navigationItem.titleView = title;

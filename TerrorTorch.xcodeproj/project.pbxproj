@@ -187,8 +187,8 @@
 				294899421975BD58007D0D97 /* SettingsViewController.swift */,
 				294899441975BD58007D0D97 /* SoundBoxViewController.swift */,
 				47C8890B19BD34AC00B988B2 /* VideoUploadViewController.swift */,
-				47CEDEAB19A28C8300A8B8F7 /* TerrorMode */,
 				07924B1119D4825F006AF4B7 /* AboutController.swift */,
+				47CEDEAB19A28C8300A8B8F7 /* TerrorMode */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

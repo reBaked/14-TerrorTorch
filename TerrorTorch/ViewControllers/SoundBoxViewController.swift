@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class SoundBoxViewController: UIViewController {
+class SoundBoxViewController: UIBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

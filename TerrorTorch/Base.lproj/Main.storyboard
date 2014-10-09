@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uFg-jy-wQs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uFg-jy-wQs">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -171,7 +171,7 @@
                 <tapGestureRecognizer numberOfTapsRequired="2" id="lzR-yR-fD3">
                     <connections>
                         <action selector="presentAboutScreen:" destination="BYZ-38-t0r" id="t5a-Fn-I1y"/>
-                        <segue destination="6Wc-sn-bTd" kind="presentation" modalTransitionStyle="flipHorizontal" id="Jbv-yr-gzu"/>
+                        <segue destination="8PA-5z-7V0" kind="show" id="uZl-dN-WWj"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -229,7 +229,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2403.75" y="975"/>
+            <point key="canvasLocation" x="1560" y="1103"/>
         </scene>
         <!--WebViewController-->
         <scene sceneID="TJw-pb-U0b">
@@ -287,7 +287,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNs-Il-ddy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3213.75" y="965"/>
+            <point key="canvasLocation" x="1560" y="1969"/>
         </scene>
         <!--About-->
         <scene sceneID="yMT-Qc-aAd">
@@ -774,7 +774,6 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="bkq-vC-cLm">
-                        <barButtonItem key="leftBarButtonItem" image="logo" id="EsY-6L-Jk3"/>
                         <barButtonItem key="rightBarButtonItem" image="shopbtn" id="TN1-Br-Nzv"/>
                     </navigationItem>
                     <connections>
@@ -794,7 +793,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2364" y="-364.5"/>
+            <point key="canvasLocation" x="2374" y="-643"/>
         </scene>
         <!--Sound Box-->
         <scene sceneID="pdv-TL-FM3">
@@ -816,7 +815,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dsC-wF-fOh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3390" y="-615"/>
+            <point key="canvasLocation" x="2374" y="177"/>
         </scene>
         <!--Video Upload-->
         <scene sceneID="Yx5-YM-8lW">
@@ -857,7 +856,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDk-Sp-vgp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4224.375" y="-615"/>
+            <point key="canvasLocation" x="3262" y="-643"/>
         </scene>
         <!--Terror Mode-->
         <scene sceneID="G5v-a6-eng">
@@ -1042,7 +1041,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UNk-hn-EWi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2390" y="356"/>
+            <point key="canvasLocation" x="2374" y="1103"/>
         </scene>
         <!--Capture View Controller-->
         <scene sceneID="xas-wu-7eo">
@@ -1077,7 +1076,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Uk-Zn-8O9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3226.875" y="177.5"/>
+            <point key="canvasLocation" x="3262" y="1103"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0Pz-kK-5l1">
@@ -1096,25 +1095,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ejm-yC-y5H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="757.5" y="177.5"/>
-        </scene>
-        <!--About-->
-        <scene sceneID="YXr-NT-eHk">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Wc-sn-bTd" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="About" id="rfO-iH-OIx"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5vI-LK-ZR0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="8PA-5z-7V0" kind="relationship" relationship="rootViewController" id="gne-Dn-uUe"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JLf-8f-zzt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1732.5" y="-640"/>
         </scene>
     </scenes>
     <resources>
