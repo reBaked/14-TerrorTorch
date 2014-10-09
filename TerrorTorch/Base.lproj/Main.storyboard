@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uFg-jy-wQs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uFg-jy-wQs">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -11,18 +11,6 @@
         <!--Main Menu-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <tapGestureRecognizer numberOfTapsRequired="2" id="lzR-yR-fD3">
-                    <connections>
-                        <action selector="presentAboutScreen:" destination="BYZ-38-t0r" id="t5a-Fn-I1y"/>
-                        <segue destination="8PA-5z-7V0" kind="show" id="uZl-dN-WWj"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <swipeGestureRecognizer direction="left" id="tem-h2-F5f">
-                    <connections>
-                        <action selector="presentSettingsScreen:" destination="BYZ-38-t0r" id="XH6-RM-4WD"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController title="Main Menu" id="BYZ-38-t0r" customClass="MainScreenController" customModule="TerrorTorch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -89,6 +77,18 @@
                         <segue destination="M2o-U6-1h2" kind="show" identifier="mainToSettings" id="S9v-v4-BaO"/>
                     </connections>
                 </viewController>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="lzR-yR-fD3">
+                    <connections>
+                        <action selector="presentAboutScreen:" destination="BYZ-38-t0r" id="t5a-Fn-I1y"/>
+                        <segue destination="8PA-5z-7V0" kind="show" id="uZl-dN-WWj"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="tem-h2-F5f">
+                    <connections>
+                        <action selector="presentSettingsScreen:" destination="BYZ-38-t0r" id="XH6-RM-4WD"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1560" y="177.5"/>
         </scene>
