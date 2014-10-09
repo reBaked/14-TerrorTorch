@@ -16,21 +16,21 @@ class UIBaseViewController:UIViewController {
         } else {                                            //Otherwise just set the current title to default App appearance
             self.navigationItem.title = self.title;
         }
-        
+
+
+        var titleStr = self.title
+
         //Add back button to navigation bar unless already at main menu scene
         if(self.title != "Main Menu"){
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "logo").imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("popCurrentController"));
             
         }
         
-        if(self.title != "Video Upload" && self.title != "About") {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "shopbtn").imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("pushVideoUploadController"));
+        if(self.title != "About") {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "camera").imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("pushVideoUploadController"));
+        } else {
+            self.navigationItem.rightBarButtonItem?.image = UIImage(named: "camera").imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         }
-
-        if(self.title == "About") {
-            self.navigationItem.rightBarButtonItem?.image = UIImage(named: "shopbtn").imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        }
-
     }
     
     //Returns Red/White attributed text of specified scenes
