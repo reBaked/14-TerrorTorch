@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uFg-jy-wQs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uFg-jy-wQs">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -12,6 +11,18 @@
         <!--Main Menu-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="lzR-yR-fD3">
+                    <connections>
+                        <action selector="presentAboutScreen:" destination="BYZ-38-t0r" id="t5a-Fn-I1y"/>
+                        <segue destination="8PA-5z-7V0" kind="show" id="uZl-dN-WWj"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="tem-h2-F5f">
+                    <connections>
+                        <action selector="presentSettingsScreen:" destination="BYZ-38-t0r" id="XH6-RM-4WD"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController title="Main Menu" id="BYZ-38-t0r" customClass="MainScreenController" customModule="TerrorTorch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -55,97 +66,16 @@
                                     <segue destination="ihU-Vv-kGC" kind="show" id="Srz-E5-8Re"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kzo-pF-ITp">
-                                <rect key="frame" x="16" y="502" width="280" height="26"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <inset key="contentEdgeInsets" minX="25" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Sign in to Facebook" backgroundImage="facebookBackground">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="socialBtnTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WOd-Pc-KyI"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nEw-UR-2Pf">
-                                <rect key="frame" x="304" y="502" width="280" height="26"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <inset key="contentEdgeInsets" minX="25" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Sign in to Twitter" backgroundImage="twitterBackground">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="socialBtnTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EFu-3w-MT7"/>
-                                </connections>
-                            </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YkV-Aw-nJj">
-                                <rect key="frame" x="30" y="64" width="540" height="540"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="YkV-Aw-nJj" secondAttribute="height" multiplier="1:1" id="DJs-4P-xBT"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="g2C-Qr-eru">
-                                    <size key="itemSize" width="90" height="90"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="youtubeCell" id="lqn-IF-Wwf" customClass="UICollectionViewCellStyleImage" customModule="TerrorTorch" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UJ7-iR-nz9">
-                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="UJ7-iR-nz9" firstAttribute="leading" secondItem="lqn-IF-Wwf" secondAttribute="leadingMargin" constant="-8" id="OIb-If-kXz"/>
-                                            <constraint firstItem="UJ7-iR-nz9" firstAttribute="top" secondItem="lqn-IF-Wwf" secondAttribute="topMargin" constant="-8" id="Oag-hF-YUQ"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="UJ7-iR-nz9" secondAttribute="bottom" constant="-8" id="a2X-UE-xra"/>
-                                            <constraint firstAttribute="centerX" secondItem="UJ7-iR-nz9" secondAttribute="centerX" id="pvx-xd-jYy"/>
-                                            <constraint firstAttribute="centerY" secondItem="UJ7-iR-nz9" secondAttribute="centerY" id="rZk-m8-Exe"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="UJ7-iR-nz9" secondAttribute="trailing" constant="-8" id="tFj-JY-NxW"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="imageView" destination="UJ7-iR-nz9" id="eE4-hO-51N"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="DJs-4P-xBT"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="iYW-l5-Ue9"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="G1C-Uo-lel"/>
-                                </connections>
-                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Tx8-ZW-Dmp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="AcE-Np-UWo"/>
-                            <constraint firstAttribute="centerY" secondItem="YkV-Aw-nJj" secondAttribute="centerY" constant="-66" id="Htf-le-u3v"/>
-                            <constraint firstItem="Kzo-pF-ITp" firstAttribute="width" secondItem="nEw-UR-2Pf" secondAttribute="width" id="IIw-uz-j8L"/>
-                            <constraint firstItem="YkV-Aw-nJj" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="9:10" id="IPu-B6-CBJ"/>
                             <constraint firstItem="Tx8-ZW-Dmp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="Pbn-Uc-xdT"/>
-                            <constraint firstItem="Kzo-pF-ITp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Rk8-2g-QFD"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="nEw-UR-2Pf" secondAttribute="bottom" constant="8" id="Tja-9B-zD0"/>
                             <constraint firstItem="YPu-k8-tFM" firstAttribute="leading" secondItem="Tx8-ZW-Dmp" secondAttribute="trailing" constant="8" id="aos-U4-ncP"/>
-                            <constraint firstItem="nEw-UR-2Pf" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="byd-Xo-eMC"/>
-                            <constraint firstItem="nEw-UR-2Pf" firstAttribute="leading" secondItem="Kzo-pF-ITp" secondAttribute="trailing" constant="8" id="cN5-tc-Fe5"/>
-                            <constraint firstAttribute="centerX" secondItem="YkV-Aw-nJj" secondAttribute="centerX" id="eHQ-Y1-Ruf"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="Kzo-pF-ITp" secondAttribute="bottom" constant="8" id="hco-7B-rZJ"/>
                             <constraint firstItem="Tx8-ZW-Dmp" firstAttribute="width" secondItem="YPu-k8-tFM" secondAttribute="width" id="lXE-rb-Hrm"/>
                             <constraint firstItem="YPu-k8-tFM" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="mb6-tn-Q67"/>
-                            <constraint firstItem="Kzo-pF-ITp" firstAttribute="height" secondItem="nEw-UR-2Pf" secondAttribute="height" id="o7x-JR-ArF"/>
                             <constraint firstItem="YPu-k8-tFM" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="sIu-ud-3nq"/>
-                            <constraint firstItem="YkV-Aw-nJj" firstAttribute="top" secondItem="YPu-k8-tFM" secondAttribute="bottom" constant="8" id="vwE-7C-NsP"/>
                             <constraint firstItem="Tx8-ZW-Dmp" firstAttribute="height" secondItem="YPu-k8-tFM" secondAttribute="height" id="yZI-Zc-EEs"/>
                         </constraints>
                         <connections>
@@ -156,24 +86,9 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="Ner-aO-5FE"/>
                     <connections>
-                        <outlet property="btnFacebook" destination="Kzo-pF-ITp" id="8qB-kP-fak"/>
-                        <outlet property="btnTwitter" destination="nEw-UR-2Pf" id="N5d-bi-GJw"/>
-                        <outlet property="viewYoutubeVideos" destination="YkV-Aw-nJj" id="zD8-vr-ggv"/>
                         <segue destination="M2o-U6-1h2" kind="show" identifier="mainToSettings" id="S9v-v4-BaO"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="tem-h2-F5f">
-                    <connections>
-                        <action selector="presentSettingsScreen:" destination="BYZ-38-t0r" id="XH6-RM-4WD"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <tapGestureRecognizer numberOfTapsRequired="2" id="lzR-yR-fD3">
-                    <connections>
-                        <action selector="presentAboutScreen:" destination="BYZ-38-t0r" id="t5a-Fn-I1y"/>
-                        <segue destination="6Wc-sn-bTd" kind="presentation" modalTransitionStyle="flipHorizontal" id="Jbv-yr-gzu"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1560" y="177.5"/>
         </scene>
@@ -229,7 +144,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2403.75" y="975"/>
+            <point key="canvasLocation" x="1560" y="1103"/>
         </scene>
         <!--WebViewController-->
         <scene sceneID="TJw-pb-U0b">
@@ -287,7 +202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNs-Il-ddy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3213.75" y="965"/>
+            <point key="canvasLocation" x="1560" y="1969"/>
         </scene>
         <!--About-->
         <scene sceneID="yMT-Qc-aAd">
@@ -774,7 +689,6 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="bkq-vC-cLm">
-                        <barButtonItem key="leftBarButtonItem" image="logo" id="EsY-6L-Jk3"/>
                         <barButtonItem key="rightBarButtonItem" image="shopbtn" id="TN1-Br-Nzv"/>
                     </navigationItem>
                     <connections>
@@ -794,7 +708,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2364" y="-364.5"/>
+            <point key="canvasLocation" x="2374" y="-643"/>
         </scene>
         <!--Sound Box-->
         <scene sceneID="pdv-TL-FM3">
@@ -816,7 +730,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dsC-wF-fOh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3390" y="-615"/>
+            <point key="canvasLocation" x="2374" y="177"/>
         </scene>
         <!--Video Upload-->
         <scene sceneID="Yx5-YM-8lW">
@@ -857,7 +771,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDk-Sp-vgp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4224.375" y="-615"/>
+            <point key="canvasLocation" x="3262" y="-643"/>
         </scene>
         <!--Terror Mode-->
         <scene sceneID="G5v-a6-eng">
@@ -1042,7 +956,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UNk-hn-EWi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2390" y="356"/>
+            <point key="canvasLocation" x="2374" y="1103"/>
         </scene>
         <!--Capture View Controller-->
         <scene sceneID="xas-wu-7eo">
@@ -1077,7 +991,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Uk-Zn-8O9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3226.875" y="177.5"/>
+            <point key="canvasLocation" x="3262" y="1103"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0Pz-kK-5l1">
@@ -1097,30 +1011,9 @@
             </objects>
             <point key="canvasLocation" x="757.5" y="177.5"/>
         </scene>
-        <!--About-->
-        <scene sceneID="YXr-NT-eHk">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Wc-sn-bTd" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="About" id="rfO-iH-OIx"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5vI-LK-ZR0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="8PA-5z-7V0" kind="relationship" relationship="rootViewController" id="gne-Dn-uUe"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JLf-8f-zzt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1732.5" y="-640"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="facebookBackground" width="155" height="26"/>
         <image name="logo" width="30" height="30"/>
         <image name="shopbtn" width="30" height="30"/>
-        <image name="twitterBackground" width="154" height="26"/>
     </resources>
 </document>

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 reBaked. All rights reserved.
 //
 
-class WebViewController: UIViewController, UIWebViewDelegate {
+class WebViewController: UIBaseViewController, UIWebViewDelegate {
 
     @IBOutlet var webView: UIWebView!
     @IBOutlet var backButton: UIBarButtonItem!
