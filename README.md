@@ -10,101 +10,40 @@ https://www.reBaked.com/projects/14
 =======
 ## UI Explanation
 1.  On launch of app
-  *  Show splash screen of logo for a few seconds (thinking 3 seconds, but would like to experiment)
+  *  Show splash screen of logo for a few seconds
   *  Present the main screen
 
 2.  Main screen
-  *  Present button (or similar) to enter Sound boxes
-  *  Present button (or similar) to enter Settings
+  *  Present a TerrorTorch logo in the nav.  When touched, the app should enter the About page.
+  *  Present button (or similar) to enter the SoundBox
   *  Present button (or similar) to enter TerrorMode
+  *  Show a single gallery of videos in reverse-chronological order.  Merge together:
+      * Videos from our YouTube channel
+      * Videos recorded on the device
 
-3.  Sound box - a sound box is a soundboard where it's possible to audition a few pre-selected types of sounds.
-  *  Present 5 icons for each type of sound in the soundbox
+3.  SoundBox - a sound box is a soundboard where it's possible to audition a few pre-selected types of sounds.
+  *  Present 5 icons for each type of sound in the SoundBox
   *  Play the sound when the icon is tapped
 
-4.  Settings
-  *  App configuration
+4.  About view
+  *  App configuration (if any is required)
   *  About
     *  Display the TerrorTorch logo
     *  Link to www.goldenviking.org
     *  Names of all of the people that worked on this app
 
 5.  TerrorMode
-  *  A button which starts a 15 sec countdown to activating the mode (the countown time value could be an app setting).  This is to give the user enough time to place the device and get out of the view of the camera.
+  *  A button which starts a countdown to activating the mode.  This is to give the user enough time to place the device and get out of the view of the camera.
   *  When activated...
     1.  App will turn-on video camera.
     2.  App will detect when a significant number of pixels have changed on the video feed (and just assume it's a person).
     3.  App will start recording video camera.
     4.  App will play sounds.  Hopefully getting a reaction from the person or animal who walked into the frame.
     5.  App will stop recording after 10 seconds.
-    6.  App will assist in uploading the video to YouTube.  Possibly supporting other platforms as time permits.
-
-========
-## Parse Cloud Code
-
-parsecloud.sh - Bash script for sending a simple command to our backend. Must be able to see and run utility.sh in order to execute correctly.
-
-1.  Bash commands
-  * setParseEnviroonment [appname]
-    * spe
-    * Can be configured to use different apps
-  * parseFunction [function] [[key] [value]...]
-    * pf
-    * Currently supports String, boolean and numbers
-
-2. Cloud functions
-  * hello()
-    * **Required**
-      * firstname(String)
-      * lastname(String)
-  * createUser()
-    * **Required**
-      * username
-      * password
-      * email
-      * vendorID //Will later be used to authenticate user's device
-    * **Optional**
-      * firstname
-      * lastname
-  * loginUser()
-    * **Required**
-      * username OR email
-      * password
-    * **Return**
-      * sessiontoken
-  * createVideo()
-    * **Required**
-      * Authenticated User
-      * title
-      * length
-    * **Optional**
-      * description
-      * videodata //Will later be required
-
-## Hello World:
-```bash
- . ~/bash/parsecloud.sh
- spe terrortorch
-   => TerrorTorch environment set
- pf hello firstname Alfred lastname Cepeda
-   => Sending data: {"firstname":"Alfred","lastname":"Cepeda"}
-   => {"result":"Hello Alfred Cepeda, congratulations on sending a request to our TerrorTorch backend."}
-```
-
-## Simple Workflow:
-```bash
- pf createUser username Alfredosauce password Password email Alfred@rebaked.com vendorid 123456789A
-   =>{"result":"Successfully created new user: Alfredosauce"}
- pf loginUser username Alfredosauce password Password
-   =>{"result":{"sessiontoken":"jZBqCLhWMKzmZzi7AKu7jFRed"}}
- pf createVideo title TestVideo length 100 sessiontoken jZBqCLhWMKzmZzi7AKu7jFRed
-OR
- pf createVideo title TestVideo length 100 username Alfredosauce password Password
-   =>{"result":"Video was successfully saved"}
-```
+    6.  App will assist in uploading the video to YouTube.
 
 ## Vision and Purpose
 
-**TerrorTorch's main draw is its TerrorMode.**
+**TerrorTorch's main draw is its TerrorMode.** 
 
 When in TerrorMode, the user will select a sound and prop the phone to point its camera where an unsuspecting victim will walk by the camera.  The camera will detect a person walking into the frame, start recording video, then play the configured sound.  The intention is to startle the person walking into the frame and capture the experience.  Ideally then making it easy to post the video capture to YouTube.
