@@ -26,6 +26,7 @@
 		29F78D0A19836E9600F4C457 /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F78D0919836E9600F4C457 /* CountdownTimer.swift */; };
 		4700C00A19822D8D007F0279 /* UIBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4700C00919822D8D007F0279 /* UIBaseViewController.swift */; };
 		47117E5719916A5A0001A5A1 /* Global Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47117E5619916A5A0001A5A1 /* Global Context.swift */; };
+		475C354C19F374B70041E883 /* VideoFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475C354B19F374B70041E883 /* VideoFileManager.swift */; };
 		47C8890C19BD34AC00B988B2 /* VideoUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C8890B19BD34AC00B988B2 /* VideoUploadViewController.swift */; };
 		47C9E985198883D000FE794D /* UICollectionView Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C9E984198883D000FE794D /* UICollectionView Classes.swift */; };
 		47CEDEB619A2F44D00A8B8F7 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CEDEB519A2F44D00A8B8F7 /* FacebookSDK.framework */; };
@@ -89,6 +90,7 @@
 		29F78D0919836E9600F4C457 /* CountdownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
 		4700C00919822D8D007F0279 /* UIBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBaseViewController.swift; path = ../ViewControllers/UIBaseViewController.swift; sourceTree = "<group>"; };
 		47117E5619916A5A0001A5A1 /* Global Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Global Context.swift"; sourceTree = "<group>"; };
+		475C354B19F374B70041E883 /* VideoFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoFileManager.swift; sourceTree = "<group>"; };
 		47C8890B19BD34AC00B988B2 /* VideoUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUploadViewController.swift; sourceTree = "<group>"; };
 		47C9E984198883D000FE794D /* UICollectionView Classes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView Classes.swift"; sourceTree = "<group>"; };
 		47CEDEB519A2F44D00A8B8F7 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = TerrorTorch/Managers/FacebookSDK.framework; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				294899641975BD98007D0D97 /* VideoCaptureManager.swift */,
 				47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */,
 				47117E5619916A5A0001A5A1 /* Global Context.swift */,
+				475C354B19F374B70041E883 /* VideoFileManager.swift */,
 			);
 			name = Model;
 			path = Managers;
@@ -435,6 +438,7 @@
 				47EFE8391977485400AC952D /* TempDirBrowseViewController.swift in Sources */,
 				2948994B1975BD58007D0D97 /* SoundBoxViewController.swift in Sources */,
 				2948994C1975BD58007D0D97 /* TMViewController.swift in Sources */,
+				475C354C19F374B70041E883 /* VideoFileManager.swift in Sources */,
 				294899461975BD58007D0D97 /* CVDetectorViewController.mm in Sources */,
 				47EFE840197A3D0A00AC952D /* AVCaptureSessionExt.swift in Sources */,
 				29F78D0A19836E9600F4C457 /* CountdownTimer.swift in Sources */,
