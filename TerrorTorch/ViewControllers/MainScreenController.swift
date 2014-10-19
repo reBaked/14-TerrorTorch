@@ -13,7 +13,6 @@ class MainScreenController: UIBaseViewController, UICollectionViewDelegate, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        self.collectionView.backgroundColor = UIColor.clearColor();
         
         VideoFileManager.generateImages(){
             println("Completion called");

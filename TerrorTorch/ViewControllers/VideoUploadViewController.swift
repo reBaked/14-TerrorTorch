@@ -10,11 +10,6 @@ import CoreMedia
 import Social
 
 class VideoUploadViewController: UIBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    override func viewDidLoad() {
-        super.viewDidLoad();
-        
-        
-    }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return VideoFileManager.images.count;
