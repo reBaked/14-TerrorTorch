@@ -781,45 +781,68 @@
             <point key="canvasLocation" x="2374" y="177"/>
         </scene>
         <!--Video Upload-->
-        <scene sceneID="Yx5-YM-8lW">
+        <scene sceneID="hJA-sH-wGZ">
             <objects>
-                <collectionViewController storyboardIdentifier="videoUpload" title="Video Upload" id="YCR-cH-Y17" customClass="VideoUploadViewController" customModule="TerrorTorch" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="cMF-6Q-VWC">
+                <viewController storyboardIdentifier="videoUpload" title="Video Upload" id="jf3-HR-jFC" customClass="VideoUploadViewController" customModule="TerrorTorch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2BA-a5-q1G"/>
+                        <viewControllerLayoutGuide type="bottom" id="q4k-XM-uDz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bm9-OI-8Io">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bQO-zv-oiK">
-                            <size key="itemSize" width="75" height="75"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="videoCell" id="IHk-RQ-DrH" customClass="UICollectionViewCellStyleImage" customModule="TerrorTorch" customModuleProvider="target">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kRa-fN-6b4">
-                                            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fR3-dT-cTx">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gVs-qo-rhC">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="videoCell" id="IK7-l3-BDL" customClass="UICollectionViewCellStyleImage" customModule="TerrorTorch" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="je5-ua-u2e">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="je5-ua-u2e" firstAttribute="leading" secondItem="IK7-l3-BDL" secondAttribute="leadingMargin" constant="-8" id="3sQ-kP-m0w"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="je5-ua-u2e" secondAttribute="trailing" constant="-8" id="9Su-uR-PQt"/>
+                                            <constraint firstItem="je5-ua-u2e" firstAttribute="top" secondItem="IK7-l3-BDL" secondAttribute="topMargin" constant="-8" id="PlL-Y7-rhx"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="je5-ua-u2e" secondAttribute="bottom" constant="-8" id="oDh-Vy-Qht"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="je5-ua-u2e" id="qQO-MT-C7e"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
                                 <connections>
-                                    <outlet property="imageView" destination="kRa-fN-6b4" id="kXb-u1-e0c"/>
+                                    <outlet property="dataSource" destination="jf3-HR-jFC" id="MSL-H7-3V4"/>
+                                    <outlet property="delegate" destination="jf3-HR-jFC" id="utj-Eh-ifw"/>
                                 </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="YCR-cH-Y17" id="Ioj-so-Qx0"/>
-                            <outlet property="delegate" destination="YCR-cH-Y17" id="y99-ND-yII"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bDk-Sp-vgp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fR3-dT-cTx" firstAttribute="top" secondItem="bm9-OI-8Io" secondAttribute="topMargin" id="6yq-Xb-2pS"/>
+                            <constraint firstItem="fR3-dT-cTx" firstAttribute="leading" secondItem="bm9-OI-8Io" secondAttribute="leadingMargin" constant="-16" id="7GN-Xu-kbD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fR3-dT-cTx" secondAttribute="trailing" constant="-16" id="hV8-3q-MGU"/>
+                            <constraint firstItem="q4k-XM-uDz" firstAttribute="top" secondItem="fR3-dT-cTx" secondAttribute="bottom" id="uQs-Fq-zTP"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yft-2v-173" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3262" y="-643"/>
+            <point key="canvasLocation" x="3173" y="-643"/>
         </scene>
         <!--Terror Mode-->
         <scene sceneID="G5v-a6-eng">

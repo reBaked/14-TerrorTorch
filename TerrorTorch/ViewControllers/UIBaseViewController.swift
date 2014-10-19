@@ -26,7 +26,7 @@ class UIBaseViewController:UIViewController {
             
         }
         
-        if(self.title != "About") {
+        if(self.title != "About" && self.title != "Video Upload") {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "camera").imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("pushVideoUploadController"));
         } else {
             self.navigationItem.rightBarButtonItem?.image = UIImage(named: "camera").imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
