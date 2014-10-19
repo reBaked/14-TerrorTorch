@@ -26,7 +26,7 @@
 		29F78D0A19836E9600F4C457 /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F78D0919836E9600F4C457 /* CountdownTimer.swift */; };
 		4700C00A19822D8D007F0279 /* UIBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4700C00919822D8D007F0279 /* UIBaseViewController.swift */; };
 		47117E5719916A5A0001A5A1 /* Global Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47117E5619916A5A0001A5A1 /* Global Context.swift */; };
-		478D9B9F19A0255700BDAC79 /* YoutubeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478D9B9E19A0255700BDAC79 /* YoutubeManager.swift */; };
+		475C354C19F374B70041E883 /* VideoFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475C354B19F374B70041E883 /* VideoFileManager.swift */; };
 		47C8890C19BD34AC00B988B2 /* VideoUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C8890B19BD34AC00B988B2 /* VideoUploadViewController.swift */; };
 		47C9E985198883D000FE794D /* UICollectionView Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C9E984198883D000FE794D /* UICollectionView Classes.swift */; };
 		47CEDEB619A2F44D00A8B8F7 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CEDEB519A2F44D00A8B8F7 /* FacebookSDK.framework */; };
@@ -41,8 +41,6 @@
 		47EFE8391977485400AC952D /* TempDirBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EFE8381977485400AC952D /* TempDirBrowseViewController.swift */; };
 		47EFE83E197A1C0600AC952D /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EFE83D197A1C0600AC952D /* CaptureViewController.swift */; };
 		47EFE840197A3D0A00AC952D /* AVCaptureSessionExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EFE83F197A3D0A00AC952D /* AVCaptureSessionExt.swift */; };
-		47F5A98D19B3E86D00D4C231 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F5A98C19B3E86D00D4C231 /* User.swift */; };
-		47F5A98F19B3E89800D4C231 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F5A98E19B3E89800D4C231 /* Parse.framework */; };
 		9E12A468196EE9E40018AD6F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A467196EE9E40018AD6F /* Accelerate.framework */; };
 		9E12A46A196EE9E90018AD6F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A469196EE9E90018AD6F /* AssetsLibrary.framework */; };
 		9E12A46C196EE9F20018AD6F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E12A46B196EE9F20018AD6F /* CoreGraphics.framework */; };
@@ -92,7 +90,7 @@
 		29F78D0919836E9600F4C457 /* CountdownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
 		4700C00919822D8D007F0279 /* UIBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBaseViewController.swift; path = ../ViewControllers/UIBaseViewController.swift; sourceTree = "<group>"; };
 		47117E5619916A5A0001A5A1 /* Global Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Global Context.swift"; sourceTree = "<group>"; };
-		478D9B9E19A0255700BDAC79 /* YoutubeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeManager.swift; sourceTree = "<group>"; };
+		475C354B19F374B70041E883 /* VideoFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoFileManager.swift; sourceTree = "<group>"; };
 		47C8890B19BD34AC00B988B2 /* VideoUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUploadViewController.swift; sourceTree = "<group>"; };
 		47C9E984198883D000FE794D /* UICollectionView Classes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView Classes.swift"; sourceTree = "<group>"; };
 		47CEDEB519A2F44D00A8B8F7 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = TerrorTorch/Managers/FacebookSDK.framework; sourceTree = "<group>"; };
@@ -107,8 +105,6 @@
 		47EFE8381977485400AC952D /* TempDirBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempDirBrowseViewController.swift; sourceTree = "<group>"; };
 		47EFE83D197A1C0600AC952D /* CaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
 		47EFE83F197A3D0A00AC952D /* AVCaptureSessionExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCaptureSessionExt.swift; sourceTree = "<group>"; };
-		47F5A98C19B3E86D00D4C231 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = TerrorTorch/Models/User.swift; sourceTree = SOURCE_ROOT; };
-		47F5A98E19B3E89800D4C231 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = TerrorTorch/Parse.framework; sourceTree = "<group>"; };
 		9E12A467196EE9E40018AD6F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		9E12A469196EE9E90018AD6F /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		9E12A46B196EE9F20018AD6F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -146,7 +142,6 @@
 				9E12A476196EEA0B0018AD6F /* UIKit.framework in Frameworks */,
 				9E12A474196EEA040018AD6F /* QuartzCore.framework in Frameworks */,
 				9E12A472196EE9FE0018AD6F /* CoreVideo.framework in Frameworks */,
-				47F5A98F19B3E89800D4C231 /* Parse.framework in Frameworks */,
 				9E12A470196EE9F90018AD6F /* CoreMedia.framework in Frameworks */,
 				9E12A46E196EE9F50018AD6F /* CoreImage.framework in Frameworks */,
 				9E12A46C196EE9F20018AD6F /* CoreGraphics.framework in Frameworks */,
@@ -187,8 +182,8 @@
 				294899421975BD58007D0D97 /* SettingsViewController.swift */,
 				294899441975BD58007D0D97 /* SoundBoxViewController.swift */,
 				47C8890B19BD34AC00B988B2 /* VideoUploadViewController.swift */,
-				47CEDEAB19A28C8300A8B8F7 /* TerrorMode */,
 				07924B1119D4825F006AF4B7 /* AboutController.swift */,
+				47CEDEAB19A28C8300A8B8F7 /* TerrorMode */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -217,12 +212,11 @@
 		294899631975BD98007D0D97 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				47F5A98C19B3E86D00D4C231 /* User.swift */,
 				29F78D0919836E9600F4C457 /* CountdownTimer.swift */,
 				294899641975BD98007D0D97 /* VideoCaptureManager.swift */,
-				478D9B9E19A0255700BDAC79 /* YoutubeManager.swift */,
 				47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */,
 				47117E5619916A5A0001A5A1 /* Global Context.swift */,
+				475C354B19F374B70041E883 /* VideoFileManager.swift */,
 			);
 			name = Model;
 			path = Managers;
@@ -240,7 +234,6 @@
 			isa = PBXGroup;
 			children = (
 				07BFDFA419E06A070080C354 /* Social.framework */,
-				47F5A98E19B3E89800D4C231 /* Parse.framework */,
 				47CEDEC119A2F4DB00A8B8F7 /* AudioToolbox.framework */,
 				47CEDEBF19A2F4CE00A8B8F7 /* CFNetwork.framework */,
 				47CEDEBD19A2F4BF00A8B8F7 /* CoreLocation.framework */,
@@ -445,16 +438,15 @@
 				47EFE8391977485400AC952D /* TempDirBrowseViewController.swift in Sources */,
 				2948994B1975BD58007D0D97 /* SoundBoxViewController.swift in Sources */,
 				2948994C1975BD58007D0D97 /* TMViewController.swift in Sources */,
+				475C354C19F374B70041E883 /* VideoFileManager.swift in Sources */,
 				294899461975BD58007D0D97 /* CVDetectorViewController.mm in Sources */,
 				47EFE840197A3D0A00AC952D /* AVCaptureSessionExt.swift in Sources */,
 				29F78D0A19836E9600F4C457 /* CountdownTimer.swift in Sources */,
 				294899481975BD58007D0D97 /* MainScreenController.swift in Sources */,
 				47C9E985198883D000FE794D /* UICollectionView Classes.swift in Sources */,
 				294899491975BD58007D0D97 /* SettingsViewController.swift in Sources */,
-				478D9B9F19A0255700BDAC79 /* YoutubeManager.swift in Sources */,
 				2948993D1975BD2A007D0D97 /* UIColorExtension.swift in Sources */,
 				47EFE83E197A1C0600AC952D /* CaptureViewController.swift in Sources */,
-				47F5A98D19B3E86D00D4C231 /* User.swift in Sources */,
 				47117E5719916A5A0001A5A1 /* Global Context.swift in Sources */,
 				07924B1219D4825F006AF4B7 /* AboutController.swift in Sources */,
 				47C8890C19BD34AC00B988B2 /* VideoUploadViewController.swift in Sources */,

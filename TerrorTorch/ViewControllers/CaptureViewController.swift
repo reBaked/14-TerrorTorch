@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 reBaked. All rights reserved.
 //
 
-class CaptureViewController: UIViewController, Ticker, CVDetectorDelegate, AVCaptureFileOutputRecordingDelegate{
+class CaptureViewController: UIBaseViewController, Ticker, CVDetectorDelegate, AVCaptureFileOutputRecordingDelegate{
     @IBOutlet var labelCountdown: UILabel!
     
     var cameraPosition = AVCaptureDevicePosition.Front;
@@ -19,7 +19,7 @@ class CaptureViewController: UIViewController, Ticker, CVDetectorDelegate, AVCap
     private var _recordingTimer:NSTimer!
     private var _captureManager:VideoCaptureManager!
     
-    required init(coder aDecoder: NSCoder) {
+    required override init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
         _timer.delegate = self;
     }

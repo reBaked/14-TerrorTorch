@@ -4,4 +4,3 @@
 
 #import "CVDetectorViewController.h"
 #import <UIKit/UIGestureRecognizerSubclass.h>
-#import <Parse/Parse.h>

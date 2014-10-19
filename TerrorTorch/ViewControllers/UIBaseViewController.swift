@@ -6,35 +6,30 @@
 //  Copyright (c) 2014 reBaked. All rights reserved.
 //
 
-extension UIViewController {
+class UIBaseViewController:UIViewController {
 
-    func viewWillLayoutSubviews() {
-
-        if  !self.isKindOfClass(WebViewController) &&
-            !self.isKindOfClass(MainScreenController) &&
-            !self.isKindOfClass(SettingsViewController) &&
-            !self.isKindOfClass(SoundBoxViewController) &&
-            !self.isKindOfClass(VideoUploadViewController) &&
-            !self.isKindOfClass(TMViewController) &&
-            !self.isKindOfClass(VideoCaptureManager) {
-            return
-        }
-
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews();
         //Set navigation title to title specified in IB
         if let title = self.getTitle(){                     //Try to get the Red/White attributed text if able
             self.navigationItem.titleView = title;
         } else {                                            //Otherwise just set the current title to default App appearance
             self.navigationItem.title = self.title;
         }
-        
+
+
+        var titleStr = self.title
+
         //Add back button to navigation bar unless already at main menu scene
         if(self.title != "Main Menu"){
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "logo"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("popCurrentController"));
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "logo").imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("popCurrentController"));
             
         }
         
-        if(self.title != "Video Upload" && self.title != "About"){
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Upload", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("pushVideoUploadController"));
+        if(self.title != "Video Upload") {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "camera").imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("pushVideoUploadController"));
+        } else {
+            self.navigationItem.rightBarButtonItem?.image = UIImage(named: "camera").imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         }
     }
     
