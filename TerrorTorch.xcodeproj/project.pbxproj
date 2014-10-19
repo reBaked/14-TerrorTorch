@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07924B1219D4825F006AF4B7 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07924B1119D4825F006AF4B7 /* AboutController.swift */; };
 		07BFDFA519E06A070080C354 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07BFDFA419E06A070080C354 /* Social.framework */; };
 		2948993D1975BD2A007D0D97 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2948993B1975BD2A007D0D97 /* UIColorExtension.swift */; };
 		294899461975BD58007D0D97 /* CVDetectorViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2948993F1975BD58007D0D97 /* CVDetectorViewController.mm */; };
@@ -69,7 +68,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		07924B1119D4825F006AF4B7 /* AboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		07BFDFA419E06A070080C354 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		2948993B1975BD2A007D0D97 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		2948993F1975BD58007D0D97 /* CVDetectorViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVDetectorViewController.mm; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 				294899421975BD58007D0D97 /* SettingsViewController.swift */,
 				294899441975BD58007D0D97 /* SoundBoxViewController.swift */,
 				47C8890B19BD34AC00B988B2 /* VideoUploadViewController.swift */,
-				07924B1119D4825F006AF4B7 /* AboutController.swift */,
 				47CEDEAB19A28C8300A8B8F7 /* TerrorMode */,
 			);
 			path = ViewControllers;
@@ -448,7 +445,6 @@
 				2948993D1975BD2A007D0D97 /* UIColorExtension.swift in Sources */,
 				47EFE83E197A1C0600AC952D /* CaptureViewController.swift in Sources */,
 				47117E5719916A5A0001A5A1 /* Global Context.swift in Sources */,
-				07924B1219D4825F006AF4B7 /* AboutController.swift in Sources */,
 				47C8890C19BD34AC00B988B2 /* VideoUploadViewController.swift in Sources */,
 				294899651975BD98007D0D97 /* VideoCaptureManager.swift in Sources */,
 				4700C00A19822D8D007F0279 /* UIBaseViewController.swift in Sources */,
