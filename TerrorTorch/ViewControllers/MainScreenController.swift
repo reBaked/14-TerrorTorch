@@ -15,7 +15,6 @@ class MainScreenController: UIBaseViewController, UICollectionViewDelegate, UICo
         super.viewDidLoad();
         
         VideoFileManager.generateImages(){
-            println("Completion called");
             self.collectionView.reloadData();
         }
     }

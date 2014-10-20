@@ -26,7 +26,6 @@
 		4700C00A19822D8D007F0279 /* UIBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4700C00919822D8D007F0279 /* UIBaseViewController.swift */; };
 		47117E5719916A5A0001A5A1 /* Global Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47117E5619916A5A0001A5A1 /* Global Context.swift */; };
 		475C354C19F374B70041E883 /* VideoFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475C354B19F374B70041E883 /* VideoFileManager.swift */; };
-		47C8890C19BD34AC00B988B2 /* VideoUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C8890B19BD34AC00B988B2 /* VideoUploadViewController.swift */; };
 		47C9E985198883D000FE794D /* UICollectionView Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C9E984198883D000FE794D /* UICollectionView Classes.swift */; };
 		47CEDEB619A2F44D00A8B8F7 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CEDEB519A2F44D00A8B8F7 /* FacebookSDK.framework */; };
 		47CEDEB819A2F48F00A8B8F7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CEDEB719A2F48F00A8B8F7 /* SystemConfiguration.framework */; };
@@ -36,6 +35,7 @@
 		47CEDEC019A2F4CE00A8B8F7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CEDEBF19A2F4CE00A8B8F7 /* CFNetwork.framework */; };
 		47CEDEC219A2F4DB00A8B8F7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CEDEC119A2F4DB00A8B8F7 /* AudioToolbox.framework */; };
 		47D20FF819654AF200BCB1D0 /* SoundBoxScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */; };
+		47D6430919F4ABC200B1A0D3 /* VideoUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D6430819F4ABC200B1A0D3 /* VideoUploadViewController.swift */; };
 		47DE6AD3196123E90049C253 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47DE6AD2196123E90049C253 /* AVFoundation.framework */; };
 		47EFE8391977485400AC952D /* TempDirBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EFE8381977485400AC952D /* TempDirBrowseViewController.swift */; };
 		47EFE83E197A1C0600AC952D /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EFE83D197A1C0600AC952D /* CaptureViewController.swift */; };
@@ -89,7 +89,6 @@
 		4700C00919822D8D007F0279 /* UIBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBaseViewController.swift; path = ../ViewControllers/UIBaseViewController.swift; sourceTree = "<group>"; };
 		47117E5619916A5A0001A5A1 /* Global Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Global Context.swift"; sourceTree = "<group>"; };
 		475C354B19F374B70041E883 /* VideoFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoFileManager.swift; sourceTree = "<group>"; };
-		47C8890B19BD34AC00B988B2 /* VideoUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUploadViewController.swift; sourceTree = "<group>"; };
 		47C9E984198883D000FE794D /* UICollectionView Classes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView Classes.swift"; sourceTree = "<group>"; };
 		47CEDEB519A2F44D00A8B8F7 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = TerrorTorch/Managers/FacebookSDK.framework; sourceTree = "<group>"; };
 		47CEDEB719A2F48F00A8B8F7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -99,6 +98,7 @@
 		47CEDEBF19A2F4CE00A8B8F7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		47CEDEC119A2F4DB00A8B8F7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		47D20FE819654AF200BCB1D0 /* SoundBoxScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SoundBoxScene.swift; path = ../Scenes/SoundBoxScene.swift; sourceTree = "<group>"; };
+		47D6430819F4ABC200B1A0D3 /* VideoUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUploadViewController.swift; sourceTree = "<group>"; };
 		47DE6AD2196123E90049C253 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		47EFE8381977485400AC952D /* TempDirBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempDirBrowseViewController.swift; sourceTree = "<group>"; };
 		47EFE83D197A1C0600AC952D /* CaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
@@ -175,11 +175,11 @@
 		2948993E1975BD58007D0D97 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				47D6430819F4ABC200B1A0D3 /* VideoUploadViewController.swift */,
 				294899401975BD58007D0D97 /* WebViewController.swift */,
 				294899411975BD58007D0D97 /* MainScreenController.swift */,
 				294899421975BD58007D0D97 /* SettingsViewController.swift */,
 				294899441975BD58007D0D97 /* SoundBoxViewController.swift */,
-				47C8890B19BD34AC00B988B2 /* VideoUploadViewController.swift */,
 				47CEDEAB19A28C8300A8B8F7 /* TerrorMode */,
 			);
 			path = ViewControllers;
@@ -445,8 +445,8 @@
 				2948993D1975BD2A007D0D97 /* UIColorExtension.swift in Sources */,
 				47EFE83E197A1C0600AC952D /* CaptureViewController.swift in Sources */,
 				47117E5719916A5A0001A5A1 /* Global Context.swift in Sources */,
-				47C8890C19BD34AC00B988B2 /* VideoUploadViewController.swift in Sources */,
 				294899651975BD98007D0D97 /* VideoCaptureManager.swift in Sources */,
+				47D6430919F4ABC200B1A0D3 /* VideoUploadViewController.swift in Sources */,
 				4700C00A19822D8D007F0279 /* UIBaseViewController.swift in Sources */,
 				294899471975BD58007D0D97 /* WebViewController.swift in Sources */,
 				B54B660C1950CBF400FF48DC /* AppDelegate.swift in Sources */,
@@ -501,7 +501,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alfred Cepeda (QH8A8JRGJ4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alfred Cepeda (QH8A8JRGJ4)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -521,6 +522,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				METAL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "b7bebdf8-94c8-4d25-af7c-f17639a743b5";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -544,7 +546,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Golden Viking LLC (JGJYLU4XV5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Golden Viking LLC (JGJYLU4XV5)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -557,6 +560,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				METAL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "5267d220-ec21-4bfc-af4f-d00ba18d2900";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
