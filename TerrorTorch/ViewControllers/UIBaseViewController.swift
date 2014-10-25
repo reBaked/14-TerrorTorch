@@ -7,6 +7,18 @@
 //
 
 class UIBaseViewController:UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad();
+        
+        if(self.title != "Sound Box"){
+            let backgroundImage = UIImage(named: "appBackground");
+            let imageView = UIImageView(image: backgroundImage);
+            imageView.frame = self.view.frame;
+            self.view.addSubview(imageView);
+            self.view.sendSubviewToBack(imageView);
+        }
+    }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews();

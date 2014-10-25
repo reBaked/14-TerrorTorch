@@ -12,8 +12,9 @@ class MainScreenController: UIBaseViewController, UICollectionViewDelegate, UICo
     var selectedItem = 0;
     
     override func viewDidLoad() {
+        super.viewDidLoad();
+        
         VideoFileManager.generateImages(){
-            println("Completion called");
             self.collectionView.reloadData();
         }
     }
